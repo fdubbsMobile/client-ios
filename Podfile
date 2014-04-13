@@ -1,5 +1,8 @@
 platform :ios, 7.0
+pod 'AMScrollingNavbar'
+pod 'ProgressHUD'
 pod 'RestKit', '~> 0.20.0rc'
+
 
 # Include optional Testing and Search components
 pod 'RestKit/Testing', '~> 0.20.0rc'

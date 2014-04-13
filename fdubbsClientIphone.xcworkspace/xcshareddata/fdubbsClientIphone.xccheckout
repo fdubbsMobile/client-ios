@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EDA30D01-4A9D-4E4C-8E1F-16E98DBBF40D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>fdubbsClientIphone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>772F70B6-B51F-4E65-9026-C016667D3254</key>
+		<string>https://github.com/fdubbs-client/fdubbsClientIphone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>fdubbsClientIphone.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>772F70B6-B51F-4E65-9026-C016667D3254</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fdubbs-client/fdubbsClientIphone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>772F70B6-B51F-4E65-9026-C016667D3254</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>772F70B6-B51F-4E65-9026-C016667D3254</string>
+			<key>IDESourceControlWCCName</key>
+			<string>fdubbsClientIphone</string>
+		</dict>
+	</array>
+</dict>
+</plist>
