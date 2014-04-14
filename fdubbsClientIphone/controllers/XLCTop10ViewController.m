@@ -18,7 +18,7 @@
 #import "XLCPostSummaryViewCell.h"
 
 @interface XLCTop10ViewController () {
-    NSArray *top10Posts;
+    __block NSArray *top10Posts;
 }
 
 @end
@@ -38,16 +38,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    top10Posts = [[XLCPostManager sharedXLCPostManager] doLoadTop10Posts];
 
     self.title = @"今日十大";
     //self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     //[self.navigationController.navigationBar setTranslucent:NO];
     
+    void (^successBlock)(NSArray *) = ^(NSArray *topPosts){
+        top10Posts = topPosts;
+        DebugLog(@"Success to load top 10 posts!");
+        [self.tableView reloadData];
+    };
+    
+    [ProgressHUD show:@"正在努力地登录中..."];
+    [[XLCPostManager sharedXLCPostManager] doLoadTop10Posts:successBlock];
+    
+    //[self addRefreshViewController];
     DebugLog(@"init XLCTop10ViewController");
 
 }
+
+-(void)addRefreshViewController{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    [self.refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)RefreshViewControlEventValueChanged{
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"刷新中..."];
+    
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
+}
+
+-(void)loadData{
+    
+    [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    
+    [self.tableView reloadData];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -108,3 +137,4 @@
 
 
 @end
+

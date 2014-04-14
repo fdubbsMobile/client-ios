@@ -27,19 +27,17 @@ SINGLETON_GCD(XLCPostManager);
     return self;
 }
 
-- (NSArray *) doLoadTop10Posts
+- (void) doLoadTop10Posts:(void (^)(NSArray *))successBlock
 {
-    NSArray __block *topPosts = [[NSMutableArray alloc] init];
-    
-    [ProgressHUD show:@"正在努力地登录中..."];
     
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    [objectManager ];
+    
     [objectManager getObjectsAtPath:@"/api/v1/post/top10"
                          parameters:nil
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                topPosts = [mappingResult array];
+                                NSArray *topPosts = [mappingResult array];
+                                successBlock(topPosts);
                                 NSLog(@"Loaded post summaries: %@", topPosts);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -52,6 +50,6 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Hit error: %@", error);
                             }];
     
-    return topPosts;
 }
+
 @end

@@ -14,6 +14,6 @@
 
 + (XLCPostManager *) sharedXLCPostManager;
 
-- (NSArray *)doLoadTop10Posts;
+- (void) doLoadTop10Posts:(void (^)(NSArray *))successBlock;
 
 @end

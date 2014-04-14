@@ -147,9 +147,9 @@
 		95AEBDCD18F98AAF00C7E8E4 /* fdubbsClientIphone */ = {
 			isa = PBXGroup;
 			children = (
+				95AEBE0918FA60C200C7E8E4 /* utils */,
 				95AEBE2A18FA915900C7E8E4 /* views */,
 				95AEBE2018FA7F5800C7E8E4 /* RESTfulClient */,
-				95AEBE0918FA60C200C7E8E4 /* utils */,
 				95AEBE0418FA5CF500C7E8E4 /* model */,
 				95AEBDD618F98AAF00C7E8E4 /* XLCAppDelegate.h */,
 				95AEBDD718F98AAF00C7E8E4 /* XLCAppDelegate.m */,
