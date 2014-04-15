@@ -17,9 +17,10 @@
 #import "XLCPostSummary.h"
 #import "XLCPostSummaryViewCell.h"
 
-@interface XLCTop10ViewController () {
-    __block NSArray *top10Posts;
-}
+@interface XLCTop10ViewController () <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property  __block NSArray *top10Posts;
 
 @end
 
@@ -38,43 +39,72 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.title = @"今日十大";
-    //self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    //[self.navigationController.navigationBar setTranslucent:NO];
     
-    void (^successBlock)(NSArray *) = ^(NSArray *topPosts){
-        top10Posts = topPosts;
+    [self.tableView setDelegate:self];
+	[self.tableView setDataSource:self];
+    
+    // Remember to set the navigation bar to be NOT translucent
+	[self.navigationController.navigationBar setTranslucent:NO];
+    [self setTitle:@"今日十大"];
+    
+    
+    // Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
+        //[self.navigationController.navigationBar setBarTintColor:[[XLCFlatSettings sharedInstance] mainColor]];
+        [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
+    }
+	
+	// Just call this line to enable the scrolling navbar
+	[self followScrollView:self.tableView withDelay:60];
+    
+    DebugLog(@"init XLCTop10ViewController");
+    
+    [self loadData];
+
+}
+
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+{
+	// This enables the user to scroll down the navbar by tapping the status bar.
+	[self showNavbar];
+	
+	return YES;
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[self showNavBarAnimated:NO];
+}
+
+-(void)loadData
+{
+    
+    [ProgressHUD show:@"正在努力地加载中..."];
+    
+    void (^successBlock)(NSArray *) = ^(NSArray *topPosts)
+    {
+        _top10Posts = topPosts;
         DebugLog(@"Success to load top 10 posts!");
         [self.tableView reloadData];
+        [ProgressHUD dismiss];
     };
     
-    [ProgressHUD show:@"正在努力地登录中..."];
-    [[XLCPostManager sharedXLCPostManager] doLoadTop10Posts:successBlock];
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        [ProgressHUD dismiss];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
     
-    //[self addRefreshViewController];
-    DebugLog(@"init XLCTop10ViewController");
-
-}
-
--(void)addRefreshViewController{
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-    [self.refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged) forControlEvents:UIControlEventValueChanged];
-}
-
--(void)RefreshViewControlEventValueChanged{
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"刷新中..."];
-    
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
-}
-
--(void)loadData{
-    
-    [self.refreshControl endRefreshing];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-    
-    [self.tableView reloadData];
+    [[XLCPostManager sharedXLCPostManager] doLoadTop10PostsWithSuccessBlock:successBlock failBlock:failBlock];
 }
 
 
@@ -95,7 +125,7 @@
         cell=[[XLCPostSummaryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    XLCPostSummary *post = [top10Posts objectAtIndex:indexPath.row];
+    XLCPostSummary *post = [_top10Posts objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = post.metaData.title;
     cell.replyCountLabel.text = [NSString stringWithFormat:@"回复:%@", post.count];
@@ -110,7 +140,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [top10Posts count];
+    return [_top10Posts count];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -128,12 +158,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self showNavBarAnimated:NO];
-}
 
 
 @end

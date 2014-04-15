@@ -1,6 +1,6 @@
 platform :ios, 7.0
-pod 'AMScrollingNavbar'
-#pod 'ProgressHUD'
+# pod 'AMScrollingNavbar'
+# pod 'ProgressHUD'
 pod 'RestKit', '~> 0.20.0rc'
 
 

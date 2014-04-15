@@ -15,7 +15,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Z87-CG-vrU" kind="relationship" relationship="viewControllers" id="RfP-41-1qr"/>
+                        <segue destination="3Iu-mC-uTO" kind="relationship" relationship="viewControllers" id="wyE-gn-mPb"/>
                         <segue destination="xuV-Oi-XCm" kind="relationship" relationship="viewControllers" id="Lwm-Ge-eB5"/>
                         <segue destination="Yxk-HY-NtT" kind="relationship" relationship="viewControllers" id="6tq-c9-duT"/>
                         <segue destination="xJd-WL-H1f" kind="relationship" relationship="viewControllers" id="XqR-EC-5TF"/>
@@ -27,66 +27,23 @@
             <point key="canvasLocation" x="-272" y="-248"/>
         </scene>
         <!--Top10 View Controller - 今日十大-->
-        <scene sceneID="49J-65-vbl">
+        <scene sceneID="SgB-A7-Yt0">
             <objects>
-                <tableViewController title="今日十大" id="Z87-CG-vrU" customClass="XLCTop10ViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="fME-DG-aOc">
+                <viewController title="今日十大" id="GDW-qU-i4V" customClass="XLCTop10ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nYU-gq-bh0"/>
+                        <viewControllerLayoutGuide type="bottom" id="x6E-zJ-5Bt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JCf-40-Mi2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Top10PostCell" rowHeight="75" id="OtS-BH-mYj" customClass="XLCPostSummaryViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="75"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OtS-BH-mYj" id="V9T-Rj-Scz">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="74"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标题" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="166" translatesAutoresizingMaskIntoConstraints="NO" id="uov-8z-FH9">
-                                            <rect key="frame" x="14" y="10" width="166" height="53"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.21112739959999999" green="0.4278674972" blue="0.875" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="回复:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaT-eb-tET">
-                                            <rect key="frame" x="180" y="53" width="93" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="楼主:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dA5-jP-H59">
-                                            <rect key="frame" x="180" y="26" width="93" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="版面:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjc-hh-KBg">
-                                            <rect key="frame" x="180" y="0.0" width="93" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="boardLabel" destination="cjc-hh-KBg" id="gbL-TE-g3q"/>
-                                    <outlet property="onwerLabel" destination="dA5-jP-H59" id="5EA-gZ-DCp"/>
-                                    <outlet property="replyCountLabel" destination="YaT-eb-tET" id="aLI-QP-mgO"/>
-                                    <outlet property="titleLabel" destination="uov-8z-FH9" id="Sca-N5-hNf"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Z87-CG-vrU" id="Xwc-kt-Zo4"/>
-                            <outlet property="delegate" destination="Z87-CG-vrU" id="Zph-r6-d2C"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="今日十大" image="top10" id="1dA-5O-PPl"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kOS-gn-B7n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="n6f-ud-Yh1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mft-EI-7O5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-1713"/>
+            <point key="canvasLocation" x="946" y="-1721"/>
         </scene>
         <!--Table View Controller - 所有版面-->
         <scene sceneID="fKV-5J-ZCj">
@@ -203,6 +160,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fon-It-vTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="425" y="1140"/>
+        </scene>
+        <!--Navigation Controller - 今日十大-->
+        <scene sceneID="6NR-Qn-bl5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Iu-mC-uTO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="今日十大" image="top10" id="p6k-KS-n63"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zRG-zi-0a7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="GDW-qU-i4V" kind="relationship" relationship="rootViewController" id="nu8-y8-Lm4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i21-0n-xQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="-1721"/>
         </scene>
     </scenes>
     <resources>

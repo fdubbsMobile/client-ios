@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "XLCPostDetailPassValueDelegate.h"
 
-@interface XLCTop10ViewController : UITableViewController {
+@interface XLCTop10ViewController : UIViewController {
     NSObject<XLCPostDetailPassValueDelegate> *postDetailPassValueDelegte ;
 }
 

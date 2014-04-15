@@ -27,7 +27,8 @@ SINGLETON_GCD(XLCPostManager);
     return self;
 }
 
-- (void) doLoadTop10Posts:(void (^)(NSArray *))successBlock
+- (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
+                                failBlock:(void (^)(NSError *))failure
 {
     
     // Load the object model via RestKit
@@ -37,17 +38,11 @@ SINGLETON_GCD(XLCPostManager);
                          parameters:nil
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 NSArray *topPosts = [mappingResult array];
-                                successBlock(topPosts);
+                                success(topPosts);
                                 NSLog(@"Loaded post summaries: %@", topPosts);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                                message:[error localizedDescription]
-                                                                               delegate:nil
-                                                                      cancelButtonTitle:@"OK"
-                                                                      otherButtonTitles:nil];
-                                [alert show];
-                                NSLog(@"Hit error: %@", error);
+                                failure(error);
                             }];
     
 }

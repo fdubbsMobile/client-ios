@@ -28,6 +28,7 @@
 		95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2218FA7FAD00C7E8E4 /* XLCRESTfulClient.m */; };
 		95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */; };
 		95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */; };
+		95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */; };
 		9634192B981A47F3B48B8A6C /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */; };
 		B7CB102EE63E4C35A85AB53A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C115E71F3CCC422DB3343D8E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,8 @@
 		95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCRestConstants.m; path = rest/XLCRestConstants.m; sourceTree = "<group>"; };
 		95AEBE2B18FA916600C7E8E4 /* XLCPostSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostSummaryViewCell.h; path = views/XLCPostSummaryViewCell.h; sourceTree = "<group>"; };
 		95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
+		95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFlatSettings.h; path = views/XLCFlatSettings.h; sourceTree = "<group>"; };
+		95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFlatSettings.m; path = views/XLCFlatSettings.m; sourceTree = "<group>"; };
 		C115E71F3CCC422DB3343D8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,15 +150,13 @@
 		95AEBDCD18F98AAF00C7E8E4 /* fdubbsClientIphone */ = {
 			isa = PBXGroup;
 			children = (
+				95B605B118FD6910009F9A39 /* application */,
+				95B605B018FD68FA009F9A39 /* resources */,
+				95B605AF18FD68C4009F9A39 /* ViewControllers */,
 				95AEBE0918FA60C200C7E8E4 /* utils */,
 				95AEBE2A18FA915900C7E8E4 /* views */,
 				95AEBE2018FA7F5800C7E8E4 /* RESTfulClient */,
 				95AEBE0418FA5CF500C7E8E4 /* model */,
-				95AEBDD618F98AAF00C7E8E4 /* XLCAppDelegate.h */,
-				95AEBDD718F98AAF00C7E8E4 /* XLCAppDelegate.m */,
-				95AEBDFF18FA5AB600C7E8E4 /* controllers */,
-				95AEBDD918F98AAF00C7E8E4 /* Main.storyboard */,
-				95AEBDE218F98AAF00C7E8E4 /* Images.xcassets */,
 				95AEBDCE18F98AAF00C7E8E4 /* Supporting Files */,
 			);
 			path = fdubbsClientIphone;
@@ -188,16 +189,6 @@
 				95AEBDF218F98AAF00C7E8E4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		95AEBDFF18FA5AB600C7E8E4 /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				95AEBE0318FA5C6400C7E8E4 /* XLCPostDetailPassValueDelegate.h */,
-				95AEBE0018FA5C1B00C7E8E4 /* XLCTop10ViewController.h */,
-				95AEBE0118FA5C1B00C7E8E4 /* XLCTop10ViewController.m */,
-			);
-			name = controllers;
 			sourceTree = "<group>";
 		};
 		95AEBE0418FA5CF500C7E8E4 /* model */ = {
@@ -253,10 +244,40 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */,
+				95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */,
 				95AEBE2B18FA916600C7E8E4 /* XLCPostSummaryViewCell.h */,
 				95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		95B605AF18FD68C4009F9A39 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				95AEBE0318FA5C6400C7E8E4 /* XLCPostDetailPassValueDelegate.h */,
+				95AEBE0018FA5C1B00C7E8E4 /* XLCTop10ViewController.h */,
+				95AEBE0118FA5C1B00C7E8E4 /* XLCTop10ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		95B605B018FD68FA009F9A39 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				95AEBDE218F98AAF00C7E8E4 /* Images.xcassets */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		95B605B118FD6910009F9A39 /* application */ = {
+			isa = PBXGroup;
+			children = (
+				95AEBDD618F98AAF00C7E8E4 /* XLCAppDelegate.h */,
+				95AEBDD718F98AAF00C7E8E4 /* XLCAppDelegate.m */,
+				95AEBDD918F98AAF00C7E8E4 /* Main.storyboard */,
+			);
+			name = application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +453,7 @@
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
+				95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */,
 				95AEBDD418F98AAF00C7E8E4 /* main.m in Sources */,
 				95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */,
 			);
