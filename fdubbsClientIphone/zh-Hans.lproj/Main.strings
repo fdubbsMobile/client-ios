@@ -1,0 +1,45 @@
+
+/* Class = "IBUITabBarController"; title = "主界面"; ObjectID = "8YX-ce-x5E"; */
+"8YX-ce-x5E.title" = "主界面";
+
+/* Class = "IBUIViewController"; title = "今日十大"; ObjectID = "GDW-qU-i4V"; */
+"GDW-qU-i4V.title" = "今日十大";
+
+/* Class = "IBUITabBarItem"; title = "所有版面"; ObjectID = "M9H-mE-TdZ"; */
+"M9H-mE-TdZ.title" = "所有版面";
+
+/* Class = "IBUITabBarItem"; title = "我的账号"; ObjectID = "Uy8-jx-XdL"; */
+"Uy8-jx-XdL.title" = "我的账号";
+
+/* Class = "IBUITableViewController"; title = "我的账号"; ObjectID = "Yxk-HY-NtT"; */
+"Yxk-HY-NtT.title" = "我的账号";
+
+/* Class = "IBUILabel"; text = "版面:"; ObjectID = "cie-T4-AkL"; */
+"cie-T4-AkL.text" = "版面:";
+
+/* Class = "IBUITableViewController"; title = "应用设置"; ObjectID = "h6Y-lx-0m4"; */
+"h6Y-lx-0m4.title" = "应用设置";
+
+/* Class = "IBUILabel"; text = "楼主:"; ObjectID = "ig5-hO-Mhp"; */
+"ig5-hO-Mhp.text" = "楼主:";
+
+/* Class = "IBUITabBarItem"; title = "应用设置"; ObjectID = "mpE-Wg-BUa"; */
+"mpE-Wg-BUa.title" = "应用设置";
+
+/* Class = "IBUITabBarItem"; title = "今日十大"; ObjectID = "p6k-KS-n63"; */
+"p6k-KS-n63.title" = "今日十大";
+
+/* Class = "IBUITabBarItem"; title = "我的收藏"; ObjectID = "uON-kX-b8d"; */
+"uON-kX-b8d.title" = "我的收藏";
+
+/* Class = "IBUILabel"; text = "标题"; ObjectID = "vL5-A5-Hhg"; */
+"vL5-A5-Hhg.text" = "标题";
+
+/* Class = "IBUITableViewController"; title = "我的收藏"; ObjectID = "xJd-WL-H1f"; */
+"xJd-WL-H1f.title" = "我的收藏";
+
+/* Class = "IBUITableViewController"; title = "所有版面"; ObjectID = "xuV-Oi-XCm"; */
+"xuV-Oi-XCm.title" = "所有版面";
+
+/* Class = "IBUILabel"; text = "回复:"; ObjectID = "zpd-kk-0re"; */
+"zpd-kk-0re.text" = "回复:";

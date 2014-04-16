@@ -8,7 +8,7 @@
 #import "ProgressHUD.h"
 
 #import "XLCUtil.h"
-
+#import "EGORefreshTableHeaderView.h"
 #import "XLCTop10ViewController.h"
 #import "UIViewController+ScrollingNavbar.h"
 
@@ -17,15 +17,38 @@
 #import "XLCPostSummary.h"
 #import "XLCPostSummaryViewCell.h"
 
-@interface XLCTop10ViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface XLCTop10ViewController () <EGORefreshTableHeaderDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property  __block NSArray *top10Posts;
 
 @end
 
 @implementation XLCTop10ViewController
 
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    InfoLog(@"egoRefreshTableHeaderDidTriggerRefresh");
+    [self loadData];
+}
+
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+    InfoLog(@"egoRefreshTableHeaderDataSourceIsLoading");
+    return _reloading;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{
+    InfoLog(@"egoRefreshTableHeaderDataSourceLastUpdated");
+    return [NSDate date];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +65,8 @@
     
     [self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
+    
+    [self addRefreshViewController];
     
     // Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
@@ -63,6 +88,21 @@
 
 }
 
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    InfoLog(@"scrollViewDidScroll");
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    InfoLog(@"scrollViewDidEndDragging");
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+}
+
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
@@ -81,6 +121,7 @@
 
 -(void)loadData
 {
+    _reloading = YES;
     
     [ProgressHUD show:@"正在努力地加载中..."];
     
@@ -88,7 +129,13 @@
     {
         _top10Posts = topPosts;
         DebugLog(@"Success to load top 10 posts!");
+        
         [self.tableView reloadData];
+        
+        [_refreshHeaderView refreshLastUpdatedDate];
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
         [ProgressHUD dismiss];
     };
     
@@ -151,6 +198,37 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 }
+
+-(void)addRefreshViewController
+{
+    /*
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    refreshControl.tintColor = UIColorFromRGB(0x184fa2);
+    [refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.tableView addSubview:refreshControl];
+     */
+    
+    if (_refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        
+        refreshView.delegate = self;
+        [self.tableView addSubview:refreshView];
+        
+        _refreshHeaderView = refreshView;
+    }
+}
+
+-(void)RefreshViewControlEventValueChanged:(UIRefreshControl *)refresh
+{
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"刷新中..."];
+    [refresh endRefreshing];
+    
+    [self loadData];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -1,0 +1,3 @@
+[submodule "fdubbsClientIphone/views/TableViewRefresh"]
+	path = fdubbsClientIphone/views/TableViewRefresh
+	url = https://github.com/fdubbs-client/TableViewRefresh.git

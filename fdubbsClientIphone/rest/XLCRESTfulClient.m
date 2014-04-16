@@ -18,8 +18,8 @@
 
 + (void)initClient
 {
-    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network*", RKLogLevelWarning);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelWarning);
     
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;

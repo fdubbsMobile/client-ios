@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
+		95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */; };
+		95A2087318FE73BC009CDEA3 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086818FE73BC009CDEA3 /* blueArrow.png */; };
+		95A2087418FE73BC009CDEA3 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086918FE73BC009CDEA3 /* blueArrow@2x.png */; };
+		95A2087518FE73BC009CDEA3 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086A18FE73BC009CDEA3 /* grayArrow.png */; };
+		95A2087618FE73BC009CDEA3 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086B18FE73BC009CDEA3 /* grayArrow@2x.png */; };
+		95A2087718FE73BC009CDEA3 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086C18FE73BC009CDEA3 /* whiteArrow.png */; };
+		95A2087818FE73BC009CDEA3 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086D18FE73BC009CDEA3 /* whiteArrow@2x.png */; };
+		95A2087918FE73BC009CDEA3 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A2087018FE73BC009CDEA3 /* EGORefreshTableHeaderView.m */; };
+		95A2088118FE887D009CDEA3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95A2088318FE887D009CDEA3 /* Localizable.strings */; };
 		95AEBDC818F98AAF00C7E8E4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEBDC718F98AAF00C7E8E4 /* Foundation.framework */; };
 		95AEBDCA18F98AAF00C7E8E4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEBDC918F98AAF00C7E8E4 /* CoreGraphics.framework */; };
 		95AEBDCC18F98AAF00C7E8E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEBDCB18F98AAF00C7E8E4 /* UIKit.framework */; };
@@ -47,6 +57,22 @@
 		6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D23146EEBF44C4BA649739 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7C84AD7A515B4332B1E544A5 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
+		95A2086618FE73BC009CDEA3 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		95A2086818FE73BC009CDEA3 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		95A2086918FE73BC009CDEA3 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		95A2086A18FE73BC009CDEA3 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		95A2086B18FE73BC009CDEA3 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		95A2086C18FE73BC009CDEA3 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		95A2086D18FE73BC009CDEA3 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		95A2086F18FE73BC009CDEA3 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		95A2087018FE73BC009CDEA3 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		95A2087C18FE87F3009CDEA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		95A2087D18FE87F3009CDEA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		95A2087E18FE87F3009CDEA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		95A2088218FE887D009CDEA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		95A2088418FE88B7009CDEA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		95A2088518FE88BA009CDEA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95AEBDC418F98AAF00C7E8E4 /* fdubbsClientIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fdubbsClientIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AEBDC718F98AAF00C7E8E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95AEBDC918F98AAF00C7E8E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,6 +139,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95A2086418FE73A4009CDEA3 /* TableViewRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				95A2086518FE73BC009CDEA3 /* Resources */,
+				95A2086E18FE73BC009CDEA3 /* View */,
+			);
+			name = TableViewRefresh;
+			sourceTree = "<group>";
+		};
+		95A2086518FE73BC009CDEA3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				95A2086618FE73BC009CDEA3 /* blackArrow.png */,
+				95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */,
+				95A2086818FE73BC009CDEA3 /* blueArrow.png */,
+				95A2086918FE73BC009CDEA3 /* blueArrow@2x.png */,
+				95A2086A18FE73BC009CDEA3 /* grayArrow.png */,
+				95A2086B18FE73BC009CDEA3 /* grayArrow@2x.png */,
+				95A2086C18FE73BC009CDEA3 /* whiteArrow.png */,
+				95A2086D18FE73BC009CDEA3 /* whiteArrow@2x.png */,
+			);
+			name = Resources;
+			path = views/TableViewRefresh/Resources;
+			sourceTree = "<group>";
+		};
+		95A2086E18FE73BC009CDEA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95A2086F18FE73BC009CDEA3 /* EGORefreshTableHeaderView.h */,
+				95A2087018FE73BC009CDEA3 /* EGORefreshTableHeaderView.m */,
+			);
+			name = View;
+			path = views/TableViewRefresh/View;
+			sourceTree = "<group>";
+		};
 		95AEBDBB18F98AAF00C7E8E4 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +226,7 @@
 		95AEBDCE18F98AAF00C7E8E4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				95A2088318FE887D009CDEA3 /* Localizable.strings */,
 				95AEBDCF18F98AAF00C7E8E4 /* fdubbsClientIphone-Info.plist */,
 				95AEBDD018F98AAF00C7E8E4 /* InfoPlist.strings */,
 				95AEBDD318F98AAF00C7E8E4 /* main.m */,
@@ -244,6 +306,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95A2086418FE73A4009CDEA3 /* TableViewRefresh */,
 				95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */,
 				95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */,
 				95AEBE2B18FA916600C7E8E4 /* XLCPostSummaryViewCell.h */,
@@ -344,6 +407,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 95AEBDBB18F98AAF00C7E8E4;
 			productRefGroup = 95AEBDC518F98AAF00C7E8E4 /* Products */;
@@ -362,7 +426,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				95AEBDE318F98AAF00C7E8E4 /* Images.xcassets in Resources */,
+				95A2088118FE887D009CDEA3 /* Localizable.strings in Resources */,
+				95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */,
 				95AEBDD218F98AAF00C7E8E4 /* InfoPlist.strings in Resources */,
+				95A2087818FE73BC009CDEA3 /* whiteArrow@2x.png in Resources */,
+				95A2087618FE73BC009CDEA3 /* grayArrow@2x.png in Resources */,
+				95A2087418FE73BC009CDEA3 /* blueArrow@2x.png in Resources */,
+				95A2087318FE73BC009CDEA3 /* blueArrow.png in Resources */,
+				95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */,
+				95A2087718FE73BC009CDEA3 /* whiteArrow.png in Resources */,
+				95A2087518FE73BC009CDEA3 /* grayArrow.png in Resources */,
 				95AEBDDB18F98AAF00C7E8E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A2087918FE73BC009CDEA3 /* EGORefreshTableHeaderView.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
 				95AEBDD818F98AAF00C7E8E4 /* XLCAppDelegate.m in Sources */,
@@ -478,10 +552,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		95A2088318FE887D009CDEA3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95A2088218FE887D009CDEA3 /* zh-Hans */,
+				95A2088418FE88B7009CDEA3 /* en */,
+				95A2088518FE88BA009CDEA3 /* Base */,
+			);
+			name = Localizable.strings;
+			path = views/TableViewRefresh/Resources;
+			sourceTree = "<group>";
+		};
 		95AEBDD018F98AAF00C7E8E4 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				95AEBDD118F98AAF00C7E8E4 /* en */,
+				95A2087D18FE87F3009CDEA3 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -490,6 +576,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				95AEBDDA18F98AAF00C7E8E4 /* Base */,
+				95A2087C18FE87F3009CDEA3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -498,6 +585,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				95AEBDF318F98AAF00C7E8E4 /* en */,
+				95A2087E18FE87F3009CDEA3 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
