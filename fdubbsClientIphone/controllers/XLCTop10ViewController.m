@@ -66,6 +66,9 @@
     [self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
     
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    
     [self addRefreshViewController];
     
     // Remember to set the navigation bar to be NOT translucent
