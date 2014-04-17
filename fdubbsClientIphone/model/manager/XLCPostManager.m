@@ -31,6 +31,7 @@ SINGLETON_GCD(XLCPostManager);
 - (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure
 {
+    /*
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
         NSMutableArray *topPosts = [[NSMutableArray alloc] init];
@@ -54,8 +55,8 @@ SINGLETON_GCD(XLCPostManager);
     }];
     
     [queue addOperation:op];
+    */
     
-    /*
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
@@ -69,7 +70,7 @@ SINGLETON_GCD(XLCPostManager);
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 failure(error);
                             }];
-    */
+    
 }
 
 @end

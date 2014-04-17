@@ -10,7 +10,6 @@
 #import "XLCUtil.h"
 #import "EGORefreshTableHeaderView.h"
 #import "XLCTop10ViewController.h"
-#import "UIViewController+ScrollingNavbar.h"
 
 #import "XLCPostManager.h"
 #import "XLCPostMetaData.h"
@@ -31,24 +30,6 @@
 
 @implementation XLCTop10ViewController
 
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
-{
-    InfoLog(@"egoRefreshTableHeaderDidTriggerRefresh");
-    [self loadData];
-}
-
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
-{
-    InfoLog(@"egoRefreshTableHeaderDataSourceIsLoading");
-    return _reloading;
-}
-
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
-{
-    InfoLog(@"egoRefreshTableHeaderDataSourceLastUpdated");
-    return [NSDate date];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,52 +62,61 @@
         //[self.navigationController.navigationBar setBarTintColor:[[XLCFlatSettings sharedInstance] mainColor]];
         [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
     }
-	
-	// Just call this line to enable the scrolling navbar
-	[self followScrollView:self.tableView withDelay:60];
     
     DebugLog(@"init XLCTop10ViewController");
     
-    [self loadData];
+    [self performSelector:@selector(initRefreshTopPosts) withObject:nil afterDelay:0.4];
 
+}
+
+- (IBAction)initRefreshTopPosts
+{
+    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+}
+
+-(void)doPullRefresh
+{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:self.tableView];
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
 }
 
 #pragma mark -
 #pragma mark UIScrollViewDelegate Methods
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    InfoLog(@"scrollViewDidScroll");
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
 	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    InfoLog(@"scrollViewDidEndDragging");
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
     
 }
 
-
-- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
-	// This enables the user to scroll down the navbar by tapping the status bar.
-	[self showNavbar];
-	
-	return YES;
+    [self loadData];
 }
 
 
-- (void)viewWillDisappear:(BOOL)animated
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
 {
-	[super viewWillDisappear:animated];
-	[self showNavBarAnimated:NO];
+    return _reloading;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{
+    return [NSDate date];
 }
 
 -(void)loadData
 {
     _reloading = YES;
-    
-    [ProgressHUD show:@"正在努力地加载中..."];
     
     void (^successBlock)(NSArray *) = ^(NSArray *topPosts)
     {
@@ -139,12 +129,10 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
-        [ProgressHUD dismiss];
     };
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
-        [ProgressHUD dismiss];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -197,40 +185,22 @@
     return YES;
 }
 
-#pragma mark - Navigation
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-}
+
 
 -(void)addRefreshViewController
 {
-    /*
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-    refreshControl.tintColor = UIColorFromRGB(0x184fa2);
-    [refreshControl addTarget:self action:@selector(RefreshViewControlEventValueChanged:) forControlEvents:UIControlEventValueChanged];
-    
-    [self.tableView addSubview:refreshControl];
-     */
-    
     if (_refreshHeaderView == nil) {
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         
         refreshView.delegate = self;
+        [refreshView showLoadingOnFirstRefresh];
+        
         [self.tableView addSubview:refreshView];
         
         _refreshHeaderView = refreshView;
     }
 }
 
--(void)RefreshViewControlEventValueChanged:(UIRefreshControl *)refresh
-{
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"刷新中..."];
-    [refresh endRefreshing];
-    
-    [self loadData];
-    
-}
 
 
 - (void)didReceiveMemoryWarning
@@ -239,7 +209,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+#pragma mark - Navigation
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+}
 
 @end
 
