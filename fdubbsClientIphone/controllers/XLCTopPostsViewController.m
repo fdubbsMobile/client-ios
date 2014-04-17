@@ -1,39 +1,37 @@
 //
-//  XLCTop10ViewController.m
+//  XLCTopPostsViewController.m
 //  fdubbsClientIphone
 //
-//  Created by 许铝才 on 14-4-12.
+//  Created by dennis on 14-4-17.
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
-#import "ProgressHUD.h"
 
 #import "XLCUtil.h"
 #import "EGORefreshTableHeaderView.h"
-#import "XLCTop10ViewController.h"
+#import "XLCTopPostsViewController.h"
 
 #import "XLCPostManager.h"
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
 #import "XLCPostSummaryViewCell.h"
 
-@interface XLCTop10ViewController () <EGORefreshTableHeaderDelegate, UITableViewDataSource, UITableViewDelegate>
+
+
+@interface XLCTopPostsViewController () <EGORefreshTableHeaderDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
 }
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property  __block NSArray *top10Posts;
 
 @end
 
-@implementation XLCTop10ViewController
+@implementation XLCTopPostsViewController
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
     }
@@ -44,6 +42,9 @@
 {
     [super viewDidLoad];
     
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+        
     [self.tableView setDelegate:self];
 	[self.tableView setDataSource:self];
     
@@ -60,16 +61,15 @@
     // Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
         //[self.navigationController.navigationBar setBarTintColor:[[XLCFlatSettings sharedInstance] mainColor]];
-        [self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
+        //[self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
     }
     
     DebugLog(@"init XLCTop10ViewController");
     
     [self performSelector:@selector(initRefreshTopPosts) withObject:nil afterDelay:0.4];
-
 }
 
-- (IBAction)initRefreshTopPosts
+- (void)initRefreshTopPosts
 {
     [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
     [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
@@ -93,10 +93,11 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-
+    
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
     
 }
+
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
@@ -211,10 +212,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Navigation
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-}
-
 @end
-

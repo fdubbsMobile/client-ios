@@ -14,6 +14,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
+    // set the status bar to white
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0){
+        [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    }
+    
     [XLCRESTfulClient initClient];
     
     return YES;

@@ -39,6 +39,7 @@
 		95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */; };
 		95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */; };
 		95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */; };
+		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		9634192B981A47F3B48B8A6C /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */; };
 		B7CB102EE63E4C35A85AB53A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C115E71F3CCC422DB3343D8E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -110,6 +111,8 @@
 		95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
 		95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFlatSettings.h; path = views/XLCFlatSettings.h; sourceTree = "<group>"; };
 		95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFlatSettings.m; path = views/XLCFlatSettings.m; sourceTree = "<group>"; };
+		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
+		95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
 		C115E71F3CCC422DB3343D8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -321,6 +324,8 @@
 				95AEBE0318FA5C6400C7E8E4 /* XLCPostDetailPassValueDelegate.h */,
 				95AEBE0018FA5C1B00C7E8E4 /* XLCTop10ViewController.h */,
 				95AEBE0118FA5C1B00C7E8E4 /* XLCTop10ViewController.m */,
+				95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */,
+				95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
+				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */,
 				95AEBDD418F98AAF00C7E8E4 /* main.m in Sources */,
 				95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */,
