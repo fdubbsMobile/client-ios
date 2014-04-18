@@ -40,6 +40,7 @@
 		95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */; };
 		95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */; };
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
+		95B8C603190151D7001017EA /* TBCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B8C602190151D7001017EA /* TBCell.xib */; };
 		9634192B981A47F3B48B8A6C /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */; };
 		B7CB102EE63E4C35A85AB53A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C115E71F3CCC422DB3343D8E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFlatSettings.m; path = views/XLCFlatSettings.m; sourceTree = "<group>"; };
 		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
 		95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
+		95B8C602190151D7001017EA /* TBCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TBCell.xib; path = views/TBCell.xib; sourceTree = "<group>"; };
 		C115E71F3CCC422DB3343D8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -341,6 +343,7 @@
 		95B605B118FD6910009F9A39 /* application */ = {
 			isa = PBXGroup;
 			children = (
+				95B8C602190151D7001017EA /* TBCell.xib */,
 				95AEBDD618F98AAF00C7E8E4 /* XLCAppDelegate.h */,
 				95AEBDD718F98AAF00C7E8E4 /* XLCAppDelegate.m */,
 				95AEBDD918F98AAF00C7E8E4 /* Main.storyboard */,
@@ -432,6 +435,7 @@
 			files = (
 				95AEBDE318F98AAF00C7E8E4 /* Images.xcassets in Resources */,
 				95A2088118FE887D009CDEA3 /* Localizable.strings in Resources */,
+				95B8C603190151D7001017EA /* TBCell.xib in Resources */,
 				95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */,
 				95AEBDD218F98AAF00C7E8E4 /* InfoPlist.strings in Resources */,
 				95A2087818FE73BC009CDEA3 /* whiteArrow@2x.png in Resources */,
