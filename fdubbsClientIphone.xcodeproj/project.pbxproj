@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
 		95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */; };
 		95A2087318FE73BC009CDEA3 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086818FE73BC009CDEA3 /* blueArrow.png */; };
@@ -59,6 +60,7 @@
 		6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D23146EEBF44C4BA649739 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7C84AD7A515B4332B1E544A5 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
+		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
 		95A2086618FE73BC009CDEA3 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		95A2086818FE73BC009CDEA3 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -144,6 +146,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95951BB1190296C50051B628 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				95951BB2190296C50051B628 /* list_divider_line.png */,
+			);
+			name = image;
+			path = fdubbsClientIphone/views/image;
+			sourceTree = SOURCE_ROOT;
+		};
 		95A2086418FE73A4009CDEA3 /* TableViewRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +183,7 @@
 		95A2086E18FE73BC009CDEA3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				95951BB1190296C50051B628 /* image */,
 				95A2086F18FE73BC009CDEA3 /* EGORefreshTableHeaderView.h */,
 				95A2087018FE73BC009CDEA3 /* EGORefreshTableHeaderView.m */,
 			);
@@ -444,6 +456,7 @@
 				95A2087318FE73BC009CDEA3 /* blueArrow.png in Resources */,
 				95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */,
 				95A2087718FE73BC009CDEA3 /* whiteArrow.png in Resources */,
+				95951BB3190296C50051B628 /* list_divider_line.png in Resources */,
 				95A2087518FE73BC009CDEA3 /* grayArrow.png in Resources */,
 				95AEBDDB18F98AAF00C7E8E4 /* Main.storyboard in Resources */,
 			);

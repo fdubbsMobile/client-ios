@@ -169,9 +169,9 @@
     XLCPostSummary *post = [_top10Posts objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = post.metaData.title;
-    cell.replyCountLabel.text = [NSString stringWithFormat:@"回复:%@", post.count];
-    cell.onwerLabel.text = [NSString stringWithFormat:@"楼主:%@", post.metaData.owner];
-    cell.boardLabel.text = [NSString stringWithFormat:@"版面:%@", post.metaData.board];
+    cell.replyCountLabel.text = [NSString stringWithFormat:@"%@", post.count];
+    cell.onwerLabel.text = [NSString stringWithFormat:@"%@", post.metaData.owner];
+    cell.boardLabel.text = [NSString stringWithFormat:@"%@", post.metaData.board];
     
     cell.rowIndex = indexPath.row;
     
