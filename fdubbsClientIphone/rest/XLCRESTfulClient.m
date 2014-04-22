@@ -12,7 +12,9 @@
 
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
-
+#import "XLCParagraphContent.h"
+#import "XLCParagraph.h"
+#import "XLCPostDetail.h"
 
 @implementation XLCRESTfulClient
 
@@ -67,20 +69,62 @@
                                                               }];
     
     
-    RKRelationshipMapping* relationShipMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_meta_data"
+    RKRelationshipMapping* postMetaRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_meta_data"
                                                                                              toKeyPath:@"metaData"
                                                                                            withMapping:postMetaDataMapping];
-    [postSummaryMapping addPropertyMapping:relationShipMapping];
+    [postSummaryMapping addPropertyMapping:postMetaRSMapping];
     
     // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryMapping
+    RKResponseDescriptor *topPostRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryMapping
                                                                                             method:RKRequestMethodGET
                                                                                        pathPattern:@"/api/v1/post/top10"
                                                                                            keyPath:nil
                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:responseDescriptor];
+    [objectManager addResponseDescriptor:topPostRespDesc];
     
     
+    RKObjectMapping *paraContentMapping = [RKObjectMapping mappingForClass:[XLCParagraphContent class]];
+    [paraContentMapping addAttributeMappingsFromDictionary:@{
+                                                              @"br" : @"isNewLine",
+                                                              @"l" : @"isLink",
+                                                              @"i" : @"isImage",
+                                                              @"lr" : @"linkRef",
+                                                              @"c" : @"content"
+                                                              }];
+    
+    RKObjectMapping *paragraphMapping = [RKObjectMapping mappingForClass:[XLCParagraph class]];
+    RKRelationshipMapping* paraContentRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"c"
+                                                                                             toKeyPath:@"paraContent"
+                                                                                           withMapping:paraContentMapping];
+    [paragraphMapping addPropertyMapping:paraContentRSMapping];
+    
+    RKObjectMapping *postDetailMapping = [RKObjectMapping mappingForClass:[XLCPostDetail class]];
+    
+    RKRelationshipMapping* postBodyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"body"
+                                                                                              toKeyPath:@"body"
+                                                                                            withMapping:paragraphMapping];
+    RKRelationshipMapping* postQouteRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"qoute"
+                                                                                           toKeyPath:@"qoute"
+                                                                                         withMapping:paragraphMapping];
+    RKRelationshipMapping* postSignRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"sign"
+                                                                                            toKeyPath:@"sign"
+                                                                                          withMapping:paragraphMapping];
+    RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"replies"
+                                                                                           toKeyPath:@"replies"
+                                                                                         withMapping:postDetailMapping];
+    
+    [postDetailMapping addPropertyMapping:postBodyRSMapping];
+    [postDetailMapping addPropertyMapping:postQouteRSMapping];
+    [postDetailMapping addPropertyMapping:postSignRSMapping];
+    [postDetailMapping addPropertyMapping:postReplyRSMapping];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *postDetailRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postDetailMapping
+                                                                                            method:RKRequestMethodGET
+                                                                                       pathPattern:@"/api/v1/post/detail/board/:boardName/:postId"
+                                                                                           keyPath:nil
+                                                                                       statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:postDetailRespDesc];
 }
 
 @end

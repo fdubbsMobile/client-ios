@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-
+@class XLCPostDetail;
 
 @interface XLCPostManager : NSObject
 
@@ -17,4 +17,7 @@
 - (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure;
 
+- (void) doLoadPostDetailWithBoardName:(NSString *)boardName postId:(NSString *)postId
+                          SuccessBlock:(void (^)(XLCPostDetail *))success
+                             failBlock:(void (^)(NSError *))failure;
 @end

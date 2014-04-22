@@ -73,4 +73,11 @@ SINGLETON_GCD(XLCPostManager);
     
 }
 
+- (void) doLoadPostDetailWithBoardName:(NSString *)boardName postId:(NSString *)postId
+                          SuccessBlock:(void (^)(XLCPostDetail *))success
+                             failBlock:(void (^)(NSError *))failure
+{
+    
+}
+
 @end
