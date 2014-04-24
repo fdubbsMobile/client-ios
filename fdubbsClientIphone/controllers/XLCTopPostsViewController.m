@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
-#import "XLCUtil.h"
+
 #import "EGORefreshTableHeaderView.h"
 #import "XLCTopPostsViewController.h"
 
@@ -15,12 +15,14 @@
 #import "XLCPostSummary.h"
 #import "XLCPostSummaryViewCell.h"
 
-
+#import "XLCPostDetailPassValueDelegate.h"
 
 @interface XLCTopPostsViewController () <EGORefreshTableHeaderDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    
+    NSObject<XLCPostDetailPassValueDelegate> *postDetailPassValueDelegte ;
 }
 
 @property  __block NSArray *top10Posts;
@@ -42,12 +44,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-        
-    [self.tableView setDelegate:self];
-	[self.tableView setDataSource:self];
-    
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     
@@ -57,6 +53,8 @@
 	[self.navigationController.navigationBar setTranslucent:NO];
     [self setTitle:@"今日十大"];
     
+    // Set this in every view controller so that the back button displays back instead of the root view controller name
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     
     // Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
@@ -64,7 +62,7 @@
         //[self.navigationController.navigationBar setBarTintColor:UIColorFromRGB(0x184fa2)];
     }
     
-    DebugLog(@"init XLCTop10ViewController");
+    DebugLog(@"init XLCTopPostsViewController");
     
     [self performSelector:@selector(initRefreshTopPosts) withObject:nil afterDelay:0.4];
 }
@@ -202,6 +200,25 @@
         
         _refreshHeaderView = refreshView;
     }
+}
+
+
+#pragma mark - Navigation
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue");
+    NSLog(@"The segue id is %@", segue.identifier );
+	
+	UIViewController *destination = segue.destinationViewController;
+    NSLog(@"Send is %@", destination);
+	if([segue.identifier isEqualToString:@"showPostDetail"])
+    {
+        NSLog(@"showPostDetail");
+        NSInteger selectedIdx = [(XLCPostSummaryViewCell *)sender rowIndex];
+        XLCPostSummary *selectedPost = [_top10Posts objectAtIndex:selectedIdx];
+        postDetailPassValueDelegte = (NSObject<XLCPostDetailPassValueDelegate> *)destination;
+		[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title Board:selectedPost.metaData.board postId:selectedPost.metaData.postId];
+	}
 }
 
 

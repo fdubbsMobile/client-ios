@@ -1,2 +1,6 @@
 Pods
 *.xcuserdata
+.DS_Store
+fdubbsClientIphone/.DS_Store
+fdubbsClientIphone/views/.DS_Store
+fdubbsClientIphone/views/image/.DS_Store

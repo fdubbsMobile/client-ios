@@ -9,7 +9,7 @@
 
 @protocol XLCPostDetailPassValueDelegate <NSObject>
 
--(void) passValueWithBoardName:(NSString *) boardName postGid:(NSString *)gid;
+-(void) passValueWithTitle:(NSString *)title Board:(NSString *)board postId:(NSString *)postId;
 
 
 @end
