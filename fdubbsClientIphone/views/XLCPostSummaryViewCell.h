@@ -10,10 +10,10 @@
 
 @interface XLCPostSummaryViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *replyCountLabel;
-@property (weak, nonatomic) IBOutlet UILabel *onwerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *boardLabel;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *replyCountLabel;
+@property (strong, nonatomic) IBOutlet UILabel *onwerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *boardLabel;
 
 @property NSInteger rowIndex;
 

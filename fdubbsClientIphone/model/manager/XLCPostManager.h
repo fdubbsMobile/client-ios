@@ -17,7 +17,7 @@
 - (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure;
 
-- (void) doLoadPostDetailWithBoardName:(NSString *)boardName postId:(NSString *)postId
+- (void) doLoadPostDetailWithBoard:(NSString *)board postId:(NSString *)postId
                           SuccessBlock:(void (^)(XLCPostDetail *))success
                              failBlock:(void (^)(NSError *))failure;
 @end

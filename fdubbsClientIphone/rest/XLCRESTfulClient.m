@@ -112,6 +112,7 @@
     RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"replies"
                                                                                            toKeyPath:@"replies"
                                                                                          withMapping:postDetailMapping];
+    [postDetailMapping addPropertyMapping:[postMetaRSMapping copy]];
     
     [postDetailMapping addPropertyMapping:postBodyRSMapping];
     [postDetailMapping addPropertyMapping:postQouteRSMapping];

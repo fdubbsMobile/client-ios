@@ -16,6 +16,7 @@
 
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
+#import "XLCPostDetail.h"
 
 @implementation XLCPostManager
 
@@ -73,11 +74,26 @@ SINGLETON_GCD(XLCPostManager);
     
 }
 
-- (void) doLoadPostDetailWithBoardName:(NSString *)boardName postId:(NSString *)postId
+- (void) doLoadPostDetailWithBoard:(NSString *)board postId:(NSString *)postId
                           SuccessBlock:(void (^)(XLCPostDetail *))success
                              failBlock:(void (^)(NSError *))failure
 {
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSString *path = [NSString stringWithFormat:@"/api/v1/post/detail/board/%@/%@", board, postId];
+    NSLog(@"path is %@", path);
     
+    [objectManager getObjectsAtPath:path
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCPostDetail *postDetail = [mappingResult firstObject];
+                                success(postDetail);
+                                NSLog(@"Loaded post detail: %@", postDetail);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
+
 }
 
 @end

@@ -7,11 +7,17 @@
 //
 
 #import "XLCPostDetailViewController.h"
+#import "XLCPostDetail.h"
+#import "XLCPostManager.h"
+
+#import "XLCPostDetailViewCell.h"
 
 @interface XLCPostDetailViewController () {
     NSString *_title;
     NSString *_postId;
     NSString *_board;
+    
+    XLCPostDetail *_postDetail;
 }
 
 @end
@@ -46,15 +52,9 @@
     NSDictionary *navTitleArr = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
     self.navigationController.navigationBar.titleTextAttributes = navTitleArr;
     
-    UIBarButtonItem *btnPubPost = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     
-    UIBarButtonItem *btnPubPost1 = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reply"] style:UIBarButtonItemStylePlain target:self action:nil];
-    
-    self.navigationItem.leftBarButtonItem = btnPubPost;
-    self.navigationItem.rightBarButtonItem = btnPubPost1;
-    
-    
-    //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"回复" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reply"] style:UIBarButtonItemStylePlain target:self action:nil];
+    [self addRightBarButtonItem:rightBarButtonItem];
     
     //NavBar tint color for elements:
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
@@ -63,12 +63,67 @@
     
     //[self setTitle:_title];
     DebugLog(@"init XLCPostDetailViewController");
+    [self loadData];
 }
 
-- (void) back
+- (void)addLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        // Add a negative spacer on iOS >= 7.0
+        negativeSpacer.width = -10;
+    } else {
+        // Just set the UIBarButtonItem as you would normally
+        negativeSpacer.width = 0;
+        [self.navigationItem setLeftBarButtonItem:leftBarButtonItem];
+    }
+    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, leftBarButtonItem, nil]];
 }
+
+- (void)addRightBarButtonItem:(UIBarButtonItem *)rightBarButtonItem
+{
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        
+        negativeSpacer.width = -10;
+        
+    } else {
+        negativeSpacer.width = 0;
+    }
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
+}
+
+-(void)loadData
+{
+    
+    void (^successBlock)(XLCPostDetail *) = ^(XLCPostDetail *postDetail)
+    {
+        DebugLog(@"Success to load post detail!");
+        
+        _postDetail = postDetail;
+        [self.tableView reloadData];
+        
+        DebugLog(@"post id : %@", postDetail.metaData.postId);
+        DebugLog(@"post owner : %@", postDetail.metaData.owner);
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    [[XLCPostManager sharedXLCPostManager] doLoadPostDetailWithBoard:_board postId:_postId SuccessBlock:successBlock failBlock:failBlock];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -80,37 +135,63 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    /*
+    if (_postDetail.replies.count > 0) {
+        NSLog(@"Total section : 2 .");
+        return 2;
+    }
+    */
+    NSLog(@"Total section : 1 .");
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    /*
+    if (section == 1) {
+        return 1;
+    }
+    
+    return _postDetail.replies.count;
+     */
+    
+    return 1;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"PostDetailViewCell";
+    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView
+                                                              dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+  
+    /*
+    XLCPostSummary *post = [_top10Posts objectAtIndex:indexPath.row];
     
+    cell.titleLabel.text = post.metaData.title;
+    cell.replyCountLabel.text = [NSString stringWithFormat:@"%@", post.count];
+    cell.onwerLabel.text = [NSString stringWithFormat:@"%@", post.metaData.owner];
+    cell.boardLabel.text = [NSString stringWithFormat:@"%@", post.metaData.board];
+    
+    cell.rowIndex = indexPath.row;
+    */
     return cell;
+    
 }
-*/
 
-/*
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
+
 
 /*
 // Override to support editing the table view.
@@ -132,14 +213,14 @@
 }
 */
 
-/*
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return NO;
 }
-*/
+
 
 /*
 #pragma mark - Navigation

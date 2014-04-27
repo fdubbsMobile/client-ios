@@ -44,6 +44,7 @@
 		95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD1309190635A000CC1F61 /* XLCPostDetail.m */; };
 		95CD130D190636A000CC1F61 /* XLCParagraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD130C190636A000CC1F61 /* XLCParagraph.m */; };
 		95CD1310190636FE00CC1F61 /* XLCParagraphContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD130F190636FE00CC1F61 /* XLCParagraphContent.m */; };
+		95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */; };
 		9634192B981A47F3B48B8A6C /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */; };
 		B7CB102EE63E4C35A85AB53A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C115E71F3CCC422DB3343D8E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,8 @@
 		95CD130C190636A000CC1F61 /* XLCParagraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCParagraph.m; path = model/pojo/XLCParagraph.m; sourceTree = "<group>"; };
 		95CD130E190636FE00CC1F61 /* XLCParagraphContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCParagraphContent.h; path = model/pojo/XLCParagraphContent.h; sourceTree = "<group>"; };
 		95CD130F190636FE00CC1F61 /* XLCParagraphContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCParagraphContent.m; path = model/pojo/XLCParagraphContent.m; sourceTree = "<group>"; };
+		95D78450190BF4F7009779EA /* XLCPostDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewCell.h; path = views/XLCPostDetailViewCell.h; sourceTree = "<group>"; };
+		95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewCell.m; path = views/XLCPostDetailViewCell.m; sourceTree = "<group>"; };
 		C115E71F3CCC422DB3343D8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -341,6 +344,8 @@
 				95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */,
 				95AEBE2B18FA916600C7E8E4 /* XLCPostSummaryViewCell.h */,
 				95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */,
+				95D78450190BF4F7009779EA /* XLCPostDetailViewCell.h */,
+				95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -564,6 +569,7 @@
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
 				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95CD130D190636A000CC1F61 /* XLCParagraph.m in Sources */,
+				95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */,
 				95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */,
 				95AEBDD418F98AAF00C7E8E4 /* main.m in Sources */,
 				95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */,

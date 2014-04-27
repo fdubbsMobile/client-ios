@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class XLCPostMetaData;
+#import "XLCPostMetaData.h"
 
 @interface XLCPostDetail : NSObject
 
