@@ -6,13 +6,20 @@
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
+#import "EGORefreshTableHeaderView.h"
+
+
 #import "XLCPostDetailViewController.h"
 #import "XLCPostDetail.h"
 #import "XLCPostManager.h"
 
 #import "XLCPostDetailViewCell.h"
 
-@interface XLCPostDetailViewController () {
+@interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate> {
+    
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
+    
     NSString *_title;
     NSString *_postId;
     NSString *_board;
@@ -29,6 +36,9 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        _refreshHeaderView = nil;
+        _postDetail = nil;
+        _reloading = NO;
     }
     return self;
 }
@@ -36,6 +46,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self addRefreshViewController];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -63,7 +75,7 @@
     
     //[self setTitle:_title];
     DebugLog(@"init XLCPostDetailViewController");
-    [self loadData];
+    [self performSelector:@selector(initRefreshPostDetail) withObject:nil afterDelay:0.4];
 }
 
 - (void)addLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem
@@ -97,6 +109,8 @@
 
 -(void)loadData
 {
+    _reloading = YES;
+    
     
     void (^successBlock)(XLCPostDetail *) = ^(XLCPostDetail *postDetail)
     {
@@ -107,11 +121,19 @@
         
         DebugLog(@"post id : %@", postDetail.metaData.postId);
         DebugLog(@"post owner : %@", postDetail.metaData.owner);
+        DebugLog(@"post title : %@", postDetail.metaData.title);
+        
+        [_refreshHeaderView refreshLastUpdatedDate];
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
     };
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -154,6 +176,9 @@
     
     return _postDetail.replies.count;
      */
+    if (_postDetail == nil) {
+        return 0;
+    }
     
     return 1;
 }
@@ -161,26 +186,50 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DebugLog(@"load table view cell : section -> %d, row -> %d", indexPath.section, indexPath.row);
+    
+    NSInteger sectionId = indexPath.section;
+    
+    if (sectionId == 0) {
+        return [self getPostDetailViewCell:tableView index:indexPath];
+    }
+    
+    return [self getReplyDetailViewCell:tableView index:indexPath];
+    
+}
+
+- (UITableViewCell *)getReplyDetailViewCell:(UITableView *)tableView index:(NSIndexPath *)indexPath
+{
     static NSString *CellIdentifier = @"PostDetailViewCell";
     XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView
-                                                              dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+                                                            dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
         cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-  
-    /*
-    XLCPostSummary *post = [_top10Posts objectAtIndex:indexPath.row];
     
-    cell.titleLabel.text = post.metaData.title;
-    cell.replyCountLabel.text = [NSString stringWithFormat:@"%@", post.count];
-    cell.onwerLabel.text = [NSString stringWithFormat:@"%@", post.metaData.owner];
-    cell.boardLabel.text = [NSString stringWithFormat:@"%@", post.metaData.board];
-    
-    cell.rowIndex = indexPath.row;
-    */
     return cell;
+}
+
+- (UITableViewCell *)getPostDetailViewCell:(UITableView *)tableView index:(NSIndexPath *)indexPath
+{
+    DebugLog(@"getPostDetailViewCell : section -> %d, row -> %d", indexPath.section, indexPath.row);
     
+    static NSString *CellIdentifier = @"PostDetailViewCell";
+    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView
+                                                            dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    XLCPostDetail *postDetail = _postDetail;
+    
+    cell.ownerLabel.text = postDetail.metaData.owner;
+    cell.dateLabel.text = postDetail.metaData.date;
+    cell.titleLabel.text = postDetail.metaData.title;
+    
+    return cell;
 }
 
 
@@ -232,6 +281,67 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)addRefreshViewController
+{
+    if (_refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        
+        refreshView.delegate = self;
+        [refreshView showLoadingOnFirstRefresh];
+        
+        [self.tableView addSubview:refreshView];
+        
+        _refreshHeaderView = refreshView;
+    }
+}
+
+- (void)initRefreshPostDetail
+{
+    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+}
+
+-(void)doPullRefresh
+{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:self.tableView];
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+}
+
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    [self loadData];
+}
+
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+    return _reloading;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{
+    return [NSDate date];
+}
+
 
 -(void) passValueWithTitle:(NSString *)title Board:(NSString *)board postId:(NSString *)postId
 {
