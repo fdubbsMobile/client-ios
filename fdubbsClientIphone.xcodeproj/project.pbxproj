@@ -383,9 +383,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		95AEBDC318F98AAF00C7E8E4 /* fdubbsClientIphone */ = {
+		95AEBDC318F98AAF00C7E8E4 /* 日月光华bbs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "fdubbsClientIphone" */;
+			buildConfigurationList = 95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "日月光华bbs" */;
 			buildPhases = (
 				7298D10E96854DC695EBA262 /* Check Pods Manifest.lock */,
 				95AEBDC018F98AAF00C7E8E4 /* Sources */,
@@ -397,7 +397,7 @@
 			);
 			dependencies = (
 			);
-			name = fdubbsClientIphone;
+			name = "日月光华bbs";
 			productName = fdubbsClientIphone;
 			productReference = 95AEBDC418F98AAF00C7E8E4 /* fdubbsClientIphone.app */;
 			productType = "com.apple.product-type.application";
@@ -451,7 +451,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95AEBDC318F98AAF00C7E8E4 /* fdubbsClientIphone */,
+				95AEBDC318F98AAF00C7E8E4 /* 日月光华bbs */,
 				95AEBDE718F98AAF00C7E8E4 /* fdubbsClientIphoneTests */,
 			);
 		};
@@ -589,7 +589,7 @@
 /* Begin PBXTargetDependency section */
 		95AEBDEE18F98AAF00C7E8E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 95AEBDC318F98AAF00C7E8E4 /* fdubbsClientIphone */;
+			target = 95AEBDC318F98AAF00C7E8E4 /* 日月光华bbs */;
 			targetProxy = 95AEBDED18F98AAF00C7E8E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -788,7 +788,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "fdubbsClientIphone" */ = {
+		95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "日月光华bbs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95AEBDFA18F98AAF00C7E8E4 /* Debug */,
