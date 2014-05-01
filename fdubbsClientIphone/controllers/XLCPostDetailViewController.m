@@ -183,6 +183,15 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    //XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    CGFloat cellHeight = [cell getHeight];
+    NSLog(@"The height of cell %d is %f", indexPath.row, cellHeight);
+    return cellHeight;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -201,8 +210,7 @@
 - (UITableViewCell *)getReplyDetailViewCell:(UITableView *)tableView index:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"PostDetailViewCell";
-    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView
-                                                            dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -216,8 +224,7 @@
     DebugLog(@"getPostDetailViewCell : section -> %d, row -> %d", indexPath.section, indexPath.row);
     
     static NSString *CellIdentifier = @"PostDetailViewCell";
-    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView
-                                                            dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -298,7 +305,7 @@
 
 - (void)initRefreshPostDetail
 {
-    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    [self.tableView setContentOffset:CGPointMake(0, -150) animated:YES];
     [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
 }
 

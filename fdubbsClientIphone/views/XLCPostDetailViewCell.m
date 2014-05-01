@@ -24,6 +24,17 @@
     // Initialization code
 }
 
+- (CGFloat)getHeight
+{
+    CGFloat height = 0;
+    
+    height += _postMetadataView.frame.size.height;
+    
+    height += 300;
+    
+    return height;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

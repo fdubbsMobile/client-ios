@@ -14,6 +14,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
-@property (strong, nonatomic) IBOutlet UIView *postContentView;
+@property (strong, nonatomic) IBOutlet UIView *postMetadataView;
+
+
+- (CGFloat)getHeight;
 
 @end
