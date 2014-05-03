@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FTCoreTextView.h"
+#import "XLCPostDetail.h"
+
 @interface XLCPostDetailViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *ownerLabel;
@@ -16,7 +19,14 @@
 
 @property (strong, nonatomic) IBOutlet UIView *postMetadataView;
 
+@property (nonatomic, strong) FTCoreTextView *postContentView;
 
+//@property (strong, nonatomic) UIView *qouteView;
+
+//@property (strong, nonatomic) UIImageView *qouteBgView;
+
+- (void)setupWithInitialization;
+- (void)setupWithPostDetail:(XLCPostDetail *)postDetail isReply:(BOOL)isReply;
 - (CGFloat)getHeight;
 
 @end

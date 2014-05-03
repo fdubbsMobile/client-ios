@@ -53,9 +53,6 @@
 	[self.navigationController.navigationBar setTranslucent:NO];
     [self setTitle:@"今日十大"];
     
-    // Set this in every view controller so that the back button displays back instead of the root view controller name
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-    
     // Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {
         //[self.navigationController.navigationBar setBarTintColor:[[XLCFlatSettings sharedInstance] mainColor]];

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95234C621913632900C80BEB /* FTCoreTextStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C5F1913632900C80BEB /* FTCoreTextStyle.m */; };
+		95234C631913632900C80BEB /* FTCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C611913632900C80BEB /* FTCoreTextView.m */; };
+		95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C661913AB1000C80BEB /* FRDLivelyButton.m */; };
 		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
 		95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */; };
@@ -63,6 +66,12 @@
 		6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D23146EEBF44C4BA649739 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7C84AD7A515B4332B1E544A5 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
+		95234C5E1913632900C80BEB /* FTCoreTextStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCoreTextStyle.h; sourceTree = "<group>"; };
+		95234C5F1913632900C80BEB /* FTCoreTextStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCoreTextStyle.m; sourceTree = "<group>"; };
+		95234C601913632900C80BEB /* FTCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCoreTextView.h; sourceTree = "<group>"; };
+		95234C611913632900C80BEB /* FTCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCoreTextView.m; sourceTree = "<group>"; };
+		95234C651913AB1000C80BEB /* FRDLivelyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDLivelyButton.h; sourceTree = "<group>"; };
+		95234C661913AB1000C80BEB /* FRDLivelyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDLivelyButton.m; sourceTree = "<group>"; };
 		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
 		95A2086618FE73BC009CDEA3 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
@@ -80,7 +89,7 @@
 		95A2088218FE887D009CDEA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		95A2088418FE88B7009CDEA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95A2088518FE88BA009CDEA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95AEBDC418F98AAF00C7E8E4 /* fdubbsClientIphone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fdubbsClientIphone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95AEBDC418F98AAF00C7E8E4 /* 日月光华bbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "日月光华bbs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AEBDC718F98AAF00C7E8E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95AEBDC918F98AAF00C7E8E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		95AEBDCB18F98AAF00C7E8E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +165,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95234C5D1913632900C80BEB /* FTCoreText */ = {
+			isa = PBXGroup;
+			children = (
+				95234C5E1913632900C80BEB /* FTCoreTextStyle.h */,
+				95234C5F1913632900C80BEB /* FTCoreTextStyle.m */,
+				95234C601913632900C80BEB /* FTCoreTextView.h */,
+				95234C611913632900C80BEB /* FTCoreTextView.m */,
+			);
+			name = FTCoreText;
+			path = views/FTCoreText;
+			sourceTree = "<group>";
+		};
+		95234C641913AB1000C80BEB /* FRDLivelyButton */ = {
+			isa = PBXGroup;
+			children = (
+				95234C651913AB1000C80BEB /* FRDLivelyButton.h */,
+				95234C661913AB1000C80BEB /* FRDLivelyButton.m */,
+			);
+			name = FRDLivelyButton;
+			path = views/FRDLivelyButton;
+			sourceTree = "<group>";
+		};
 		95951BB1190296C50051B628 /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,7 +247,7 @@
 		95AEBDC518F98AAF00C7E8E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				95AEBDC418F98AAF00C7E8E4 /* fdubbsClientIphone.app */,
+				95AEBDC418F98AAF00C7E8E4 /* 日月光华bbs.app */,
 				95AEBDE818F98AAF00C7E8E4 /* fdubbsClientIphoneTests.xctest */,
 			);
 			name = Products;
@@ -339,6 +370,8 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95234C641913AB1000C80BEB /* FRDLivelyButton */,
+				95234C5D1913632900C80BEB /* FTCoreText */,
 				95A2086418FE73A4009CDEA3 /* TableViewRefresh */,
 				95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */,
 				95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */,
@@ -399,7 +432,7 @@
 			);
 			name = "日月光华bbs";
 			productName = fdubbsClientIphone;
-			productReference = 95AEBDC418F98AAF00C7E8E4 /* fdubbsClientIphone.app */;
+			productReference = 95AEBDC418F98AAF00C7E8E4 /* 日月光华bbs.app */;
 			productType = "com.apple.product-type.application";
 		};
 		95AEBDE718F98AAF00C7E8E4 /* fdubbsClientIphoneTests */ = {
@@ -557,6 +590,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95A2087918FE73BC009CDEA3 /* EGORefreshTableHeaderView.m in Sources */,
+				95234C621913632900C80BEB /* FTCoreTextStyle.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
@@ -565,8 +599,10 @@
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				95CD1310190636FE00CC1F61 /* XLCParagraphContent.m in Sources */,
+				95234C631913632900C80BEB /* FTCoreTextView.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
+				95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */,
 				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95CD130D190636A000CC1F61 /* XLCParagraph.m in Sources */,
 				95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */,

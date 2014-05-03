@@ -14,6 +14,7 @@
 #import "XLCPostManager.h"
 
 #import "XLCPostDetailViewCell.h"
+#import "FRDLivelyButton.h"
 
 @interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate> {
     
@@ -61,12 +62,27 @@
 	[self.navigationController.navigationBar setTranslucent:NO];
 
     
-    NSDictionary *navTitleArr = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor],NSForegroundColorAttributeName,nil];
-    self.navigationController.navigationBar.titleTextAttributes = navTitleArr;
+    FRDLivelyButton *leftBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,25,20)];
+    [leftBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
+                                  kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
+                                  kFRDLivelyButtonColor: [UIColor whiteColor]
+                                  }];
+    [leftBarButton setStyle:kFRDLivelyButtonStyleCaretLeft animated:NO];
+    [leftBarButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButton];
+    [self addLeftBarButtonItem:leftBarButtonItem];
     
     
-    UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"reply"] style:UIBarButtonItemStylePlain target:self action:nil];
+    FRDLivelyButton *rightBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,25,20)];
+    [rightBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
+                          kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
+                          kFRDLivelyButtonColor: [UIColor whiteColor]
+                          }];
+    [rightBarButton setStyle:kFRDLivelyButtonStyleHamburger animated:NO];
+    //[rightBarButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
     [self addRightBarButtonItem:rightBarButtonItem];
+    
     
     //NavBar tint color for elements:
     self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
@@ -76,6 +92,11 @@
     //[self setTitle:_title];
     DebugLog(@"init XLCPostDetailViewController");
     [self performSelector:@selector(initRefreshPostDetail) withObject:nil afterDelay:0.4];
+}
+
+- (void)backAction
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)addLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem
@@ -157,30 +178,20 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    /*
-    if (_postDetail.replies.count > 0) {
-        NSLog(@"Total section : 2 .");
-        return 2;
-    }
-    */
+     
     NSLog(@"Total section : 1 .");
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    /*
-    if (section == 1) {
-        return 1;
-    }
-    
-    return _postDetail.replies.count;
-     */
+
     if (_postDetail == nil) {
         return 0;
     }
     
-    return 1;
+    return _postDetail.replies.count + 1;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -197,49 +208,32 @@
 {
     DebugLog(@"load table view cell : section -> %d, row -> %d", indexPath.section, indexPath.row);
     
-    NSInteger sectionId = indexPath.section;
-    
-    if (sectionId == 0) {
-        return [self getPostDetailViewCell:tableView index:indexPath];
-    }
-    
-    return [self getReplyDetailViewCell:tableView index:indexPath];
-    
-}
-
-- (UITableViewCell *)getReplyDetailViewCell:(UITableView *)tableView index:(NSIndexPath *)indexPath
-{
     static NSString *CellIdentifier = @"PostDetailViewCell";
     XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }else{
+        [cell setupWithInitialization];
     }
     
-    return cell;
-}
-
-- (UITableViewCell *)getPostDetailViewCell:(UITableView *)tableView index:(NSIndexPath *)indexPath
-{
-    DebugLog(@"getPostDetailViewCell : section -> %d, row -> %d", indexPath.section, indexPath.row);
+    BOOL isReply = NO;
+    XLCPostDetail *postDetail = nil;
     
-    static NSString *CellIdentifier = @"PostDetailViewCell";
-    XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    if (indexPath.row > 0) {
+        isReply = YES;
+        postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
+    }
+    else {
+        isReply = NO;
+        postDetail = _postDetail;
     }
     
-    XLCPostDetail *postDetail = _postDetail;
-    
-    cell.ownerLabel.text = postDetail.metaData.owner;
-    cell.dateLabel.text = postDetail.metaData.date;
-    cell.titleLabel.text = postDetail.metaData.title;
+    [cell setupWithPostDetail:postDetail isReply:isReply];
     
     return cell;
+    
 }
-
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
