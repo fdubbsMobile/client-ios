@@ -41,6 +41,7 @@
 		95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2218FA7FAD00C7E8E4 /* XLCRESTfulClient.m */; };
 		95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */; };
 		95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */; };
+		95B45FD619161859004CF5AC /* XLCCustomLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B45FD519161859004CF5AC /* XLCCustomLinkView.m */; };
 		95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */; };
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
@@ -122,6 +123,8 @@
 		95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCRestConstants.m; path = rest/XLCRestConstants.m; sourceTree = "<group>"; };
 		95AEBE2B18FA916600C7E8E4 /* XLCPostSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostSummaryViewCell.h; path = views/XLCPostSummaryViewCell.h; sourceTree = "<group>"; };
 		95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
+		95B45FD419161859004CF5AC /* XLCCustomLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCCustomLinkView.h; path = views/XLCCustomLinkView.h; sourceTree = "<group>"; };
+		95B45FD519161859004CF5AC /* XLCCustomLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCCustomLinkView.m; path = views/XLCCustomLinkView.m; sourceTree = "<group>"; };
 		95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFlatSettings.h; path = views/XLCFlatSettings.h; sourceTree = "<group>"; };
 		95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFlatSettings.m; path = views/XLCFlatSettings.m; sourceTree = "<group>"; };
 		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95B45FD419161859004CF5AC /* XLCCustomLinkView.h */,
+				95B45FD519161859004CF5AC /* XLCCustomLinkView.m */,
 				95234C641913AB1000C80BEB /* FRDLivelyButton */,
 				95234C5D1913632900C80BEB /* FTCoreText */,
 				95A2086418FE73A4009CDEA3 /* TableViewRefresh */,
@@ -594,6 +599,7 @@
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
+				95B45FD619161859004CF5AC /* XLCCustomLinkView.m in Sources */,
 				95AEBDD818F98AAF00C7E8E4 /* XLCAppDelegate.m in Sources */,
 				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
