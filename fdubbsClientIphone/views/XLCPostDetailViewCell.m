@@ -17,6 +17,8 @@
     BOOL hasInitialied;
     BOOL hasQuote;
     CGFloat heightOfCell;
+    
+    NSMutableArray *bottomBorderLayers;
 }
 @end
 
@@ -54,11 +56,14 @@
     hasInitialied = FALSE;
     hasQuote = FALSE;
     heightOfCell = INITIAL_HEIGHT;
+    
+    bottomBorderLayers = [[NSMutableArray alloc] init];
 }
 
 - (void)setupWithInitialization
 {
     if (hasInitialied == TRUE) {
+        [self removeBottomBorderLayers];
         return;
     }
     
@@ -73,21 +78,6 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    CGRect bounds = self.bounds;
-    
-    NSLog(@"x=%f, y=%f", bounds.origin.x, bounds.origin.y);
-    
-    //  Create FTCoreTextView. Everything will be rendered within this view
-    self.postContentView = [[FTCoreTextView alloc] initWithFrame:CGRectInset(bounds, 20.0f, 0)];
-	self.postContentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    CGRect contentFrame = self.postContentView.frame;
-    contentFrame.origin.y = self.postMetadataView.frame.origin.y +
-    self.postMetadataView.frame.size.height + 10;
-    self.postContentView.frame = contentFrame;
-    [self.postContentView setBackgroundColor:[UIColor blueColor]];
-    //  Add custom styles to the FTCoreTextView
-    [self.postContentView addStyles:[self coreTextStyle]];
     /*
     UIImage *stretchableImage = [[UIImage imageNamed:@"quoteBackground"]
                                  stretchableImageWithLeftCapWidth:130 topCapHeight:14];
@@ -96,7 +86,6 @@
     [self.qouteView addSubview:self.qouteBgView];
     //[self.qouteView setBackgroundColor:[UIColor redColor]];
     */
-    [self addSubview:self.postContentView];
     //[self addSubview:self.qouteView];
     
     
@@ -113,11 +102,7 @@
     self.dateLabel.text = postDetail.metaData.date;
     self.titleLabel.text = postDetail.metaData.title;
     
-    //  Set the custom-formatted text to the FTCoreTextView
-    self.postContentView.text = [self textContentOfPost:postDetail];
-    [self.postContentView drawRect:self.postContentView.frame];
-    [self.postContentView fitToSuggestedHeight];
-    
+    [self constructPostContent:postDetail];
     
     heightOfCell += self.postMetadataView.frame.size.height;
     heightOfCell += self.postContentView.frame.size.height;
@@ -136,15 +121,51 @@
     
     [self adjustViewHeight];
     //[self addBottomBorderForView:self.postMetadataView];
-    //[self addBottomBorderForView:self];
+    [self addBottomBorderForView:self];
     
     
     
     NSLog(@"height is %f", [self getHeight]);
 }
 
+#pragma mark Load Post Content
+
+- (void)constructPostContent:(XLCPostDetail *)postDetail
+{
+    NSLog(@"constructPostContent");
+    [self.postContentView setText:@""];
+    
+    NSArray *paragraphs = postDetail.body;
+    
+    for (XLCParagraph *paragraph in paragraphs) {
+        NSArray *contents = paragraph.paraContent;
+        for (XLCParagraphContent *content in contents) {
+            if (content.isNewLine) {
+                [self.postContentView appendText:@"\n"];
+            }
+            else if (content.isImage) {
+                
+            }
+            else if (content.isLink) {
+                
+            }
+            else {
+                [self.postContentView appendText:content.content];
+            }
+        }
+    }
+    
+    CGSize contentSize = [self.postContentView sizeThatFits:CGSizeMake(300, 10000)];
+    
+    CGRect postContentFrame = self.postContentView.frame;
+    postContentFrame.size.height = contentSize.height;
+    self.postContentView.frame = postContentFrame;
+    
+}
+
 - (void) adjustViewHeight
 {
+    
     
     
     /*
@@ -168,58 +189,21 @@
     bottomBorder.frame = CGRectMake(0.0f, height, width, 0.5f);
     bottomBorder.backgroundColor = [UIColor colorWithWhite:0.8f alpha:1.0f].CGColor;
     [theView.layer addSublayer:bottomBorder];
+    
+    [bottomBorderLayers addObject:bottomBorder];
 }
 
-#pragma mark Load Post Content
-
-- (NSString *)textContentOfPost:(XLCPostDetail *)postDetail
+- (void) removeBottomBorderLayers
 {
-    NSLog(@"get textContentOfPost");
-    
-    NSArray *paragraphs = postDetail.body;
-    NSString *postContent = [[NSString alloc] init];
-    
-    for (XLCParagraph *paragraph in paragraphs) {
-        NSString *paraContent = [[NSString alloc] init];
-        NSArray *contents = paragraph.paraContent;
-        for (XLCParagraphContent *content in contents) {
-            if (content.isNewLine) {
-                paraContent = [paraContent stringByAppendingString:@"\n"];
-            }
-            else if (content.isImage) {
-                
-            }
-            else if (content.isLink) {
-                
-            }
-            else {
-                paraContent = [paraContent stringByAppendingString:content.content];
-                paraContent = [paraContent stringByAppendingString:@"\n"];
-            }
-        }
-        //paraContent = [paraContent stringByAppendingTagName:@"p"];
-        postContent = [postContent stringByAppendingString:paraContent];
+    for (CALayer *bottomBorder in bottomBorderLayers) {
+        [bottomBorder removeFromSuperlayer];
     }
     
-    NSLog(@"post content : %@", postContent);
-    return postContent;
+    [bottomBorderLayers removeAllObjects];
 }
 
-#pragma mark Styling
 
-- (NSArray *)coreTextStyle
-{
-    NSMutableArray *result = [NSMutableArray array];
-    
-	//  Define styles
-    FTCoreTextStyle *defaultStyle = [[FTCoreTextStyle alloc] init];
-    defaultStyle.name = FTCoreTextTagDefault;
-    defaultStyle.textAlignment = FTCoreTextAlignementJustified;
-    defaultStyle.font = [UIFont systemFontOfSize:16.0f];
-    [result addObject:defaultStyle];
-    
-    return  result;
-}
+
 
 - (CGFloat)getHeight
 {

@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "FTCoreTextView.h"
 #import "XLCPostDetail.h"
+#import "M80AttributedLabel.h"
 
 @interface XLCPostDetailViewCell : UITableViewCell
 
@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) IBOutlet UIView *postMetadataView;
 
-@property (nonatomic, strong) FTCoreTextView *postContentView;
+@property (nonatomic, strong) IBOutlet M80AttributedLabel *postContentView;
 
 //@property (strong, nonatomic) UIView *qouteView;
 

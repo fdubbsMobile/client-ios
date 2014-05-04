@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95234C621913632900C80BEB /* FTCoreTextStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C5F1913632900C80BEB /* FTCoreTextStyle.m */; };
-		95234C631913632900C80BEB /* FTCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C611913632900C80BEB /* FTCoreTextView.m */; };
 		95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C661913AB1000C80BEB /* FRDLivelyButton.m */; };
 		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
@@ -42,6 +40,11 @@
 		95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */; };
 		95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */; };
 		95B45FD619161859004CF5AC /* XLCCustomLinkView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B45FD519161859004CF5AC /* XLCCustomLinkView.m */; };
+		95B59A7C191680DE000B069C /* M80AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B59A74191680DE000B069C /* M80AttributedLabel.m */; };
+		95B59A7D191680DE000B069C /* M80AttributedLabelAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B59A76191680DE000B069C /* M80AttributedLabelAttachment.m */; };
+		95B59A7E191680DE000B069C /* M80AttributedLabelURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B59A79191680DE000B069C /* M80AttributedLabelURL.m */; };
+		95B59A7F191680DE000B069C /* NSMutableAttributedString+M80.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B59A7B191680DE000B069C /* NSMutableAttributedString+M80.m */; };
+		95B59A81191682A3000B069C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B59A80191682A3000B069C /* CoreText.framework */; };
 		95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */; };
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
@@ -67,10 +70,6 @@
 		6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D23146EEBF44C4BA649739 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7C84AD7A515B4332B1E544A5 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
-		95234C5E1913632900C80BEB /* FTCoreTextStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCoreTextStyle.h; sourceTree = "<group>"; };
-		95234C5F1913632900C80BEB /* FTCoreTextStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCoreTextStyle.m; sourceTree = "<group>"; };
-		95234C601913632900C80BEB /* FTCoreTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCoreTextView.h; sourceTree = "<group>"; };
-		95234C611913632900C80BEB /* FTCoreTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCoreTextView.m; sourceTree = "<group>"; };
 		95234C651913AB1000C80BEB /* FRDLivelyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDLivelyButton.h; sourceTree = "<group>"; };
 		95234C661913AB1000C80BEB /* FRDLivelyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDLivelyButton.m; sourceTree = "<group>"; };
 		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
@@ -125,6 +124,16 @@
 		95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
 		95B45FD419161859004CF5AC /* XLCCustomLinkView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCCustomLinkView.h; path = views/XLCCustomLinkView.h; sourceTree = "<group>"; };
 		95B45FD519161859004CF5AC /* XLCCustomLinkView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCCustomLinkView.m; path = views/XLCCustomLinkView.m; sourceTree = "<group>"; };
+		95B59A73191680DE000B069C /* M80AttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M80AttributedLabel.h; sourceTree = "<group>"; };
+		95B59A74191680DE000B069C /* M80AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M80AttributedLabel.m; sourceTree = "<group>"; };
+		95B59A75191680DE000B069C /* M80AttributedLabelAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M80AttributedLabelAttachment.h; sourceTree = "<group>"; };
+		95B59A76191680DE000B069C /* M80AttributedLabelAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M80AttributedLabelAttachment.m; sourceTree = "<group>"; };
+		95B59A77191680DE000B069C /* M80AttributedLabelDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M80AttributedLabelDefines.h; sourceTree = "<group>"; };
+		95B59A78191680DE000B069C /* M80AttributedLabelURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M80AttributedLabelURL.h; sourceTree = "<group>"; };
+		95B59A79191680DE000B069C /* M80AttributedLabelURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M80AttributedLabelURL.m; sourceTree = "<group>"; };
+		95B59A7A191680DE000B069C /* NSMutableAttributedString+M80.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+M80.h"; sourceTree = "<group>"; };
+		95B59A7B191680DE000B069C /* NSMutableAttributedString+M80.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+M80.m"; sourceTree = "<group>"; };
+		95B59A80191682A3000B069C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFlatSettings.h; path = views/XLCFlatSettings.h; sourceTree = "<group>"; };
 		95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFlatSettings.m; path = views/XLCFlatSettings.m; sourceTree = "<group>"; };
 		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
@@ -147,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B59A81191682A3000B069C /* CoreText.framework in Frameworks */,
 				95AEBDCA18F98AAF00C7E8E4 /* CoreGraphics.framework in Frameworks */,
 				95AEBDCC18F98AAF00C7E8E4 /* UIKit.framework in Frameworks */,
 				95AEBDC818F98AAF00C7E8E4 /* Foundation.framework in Frameworks */,
@@ -168,18 +178,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		95234C5D1913632900C80BEB /* FTCoreText */ = {
-			isa = PBXGroup;
-			children = (
-				95234C5E1913632900C80BEB /* FTCoreTextStyle.h */,
-				95234C5F1913632900C80BEB /* FTCoreTextStyle.m */,
-				95234C601913632900C80BEB /* FTCoreTextView.h */,
-				95234C611913632900C80BEB /* FTCoreTextView.m */,
-			);
-			name = FTCoreText;
-			path = views/FTCoreText;
-			sourceTree = "<group>";
-		};
 		95234C641913AB1000C80BEB /* FRDLivelyButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +257,7 @@
 		95AEBDC618F98AAF00C7E8E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95B59A80191682A3000B069C /* CoreText.framework */,
 				95AEBDC718F98AAF00C7E8E4 /* Foundation.framework */,
 				95AEBDC918F98AAF00C7E8E4 /* CoreGraphics.framework */,
 				95AEBDCB18F98AAF00C7E8E4 /* UIKit.framework */,
@@ -373,10 +372,10 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95B59A72191680DE000B069C /* M80AttributedLabel */,
 				95B45FD419161859004CF5AC /* XLCCustomLinkView.h */,
 				95B45FD519161859004CF5AC /* XLCCustomLinkView.m */,
 				95234C641913AB1000C80BEB /* FRDLivelyButton */,
-				95234C5D1913632900C80BEB /* FTCoreText */,
 				95A2086418FE73A4009CDEA3 /* TableViewRefresh */,
 				95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */,
 				95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */,
@@ -386,6 +385,23 @@
 				95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		95B59A72191680DE000B069C /* M80AttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				95B59A73191680DE000B069C /* M80AttributedLabel.h */,
+				95B59A74191680DE000B069C /* M80AttributedLabel.m */,
+				95B59A75191680DE000B069C /* M80AttributedLabelAttachment.h */,
+				95B59A76191680DE000B069C /* M80AttributedLabelAttachment.m */,
+				95B59A77191680DE000B069C /* M80AttributedLabelDefines.h */,
+				95B59A78191680DE000B069C /* M80AttributedLabelURL.h */,
+				95B59A79191680DE000B069C /* M80AttributedLabelURL.m */,
+				95B59A7A191680DE000B069C /* NSMutableAttributedString+M80.h */,
+				95B59A7B191680DE000B069C /* NSMutableAttributedString+M80.m */,
+			);
+			name = M80AttributedLabel;
+			path = views/M80AttributedLabel;
 			sourceTree = "<group>";
 		};
 		95B605AF18FD68C4009F9A39 /* ViewControllers */ = {
@@ -594,18 +610,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B59A7C191680DE000B069C /* M80AttributedLabel.m in Sources */,
 				95A2087918FE73BC009CDEA3 /* EGORefreshTableHeaderView.m in Sources */,
-				95234C621913632900C80BEB /* FTCoreTextStyle.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
+				95B59A7D191680DE000B069C /* M80AttributedLabelAttachment.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
 				95B45FD619161859004CF5AC /* XLCCustomLinkView.m in Sources */,
 				95AEBDD818F98AAF00C7E8E4 /* XLCAppDelegate.m in Sources */,
+				95B59A7F191680DE000B069C /* NSMutableAttributedString+M80.m in Sources */,
 				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
+				95B59A7E191680DE000B069C /* M80AttributedLabelURL.m in Sources */,
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				95CD1310190636FE00CC1F61 /* XLCParagraphContent.m in Sources */,
-				95234C631913632900C80BEB /* FTCoreTextView.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
 				95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */,
