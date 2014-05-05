@@ -195,9 +195,8 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    DebugLog(@"heightForRowAtIndexPath : section -> %d, row -> %d", indexPath.section, indexPath.row);
     XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-    //XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     CGFloat cellHeight = [cell getHeight];
     NSLog(@"The height of cell %d is %f", indexPath.row, cellHeight);
     return cellHeight;
@@ -208,28 +207,46 @@
 {
     DebugLog(@"load table view cell : section -> %d, row -> %d", indexPath.section, indexPath.row);
     
-    static NSString *CellIdentifier = @"PostDetailViewCell";
+    NSString *CellIdentifier = nil;
+    if (indexPath.row == 0) {
+        CellIdentifier = @"PostDetailViewCell";
+    } else {
+        NSInteger mod = indexPath.row % 20;
+        CellIdentifier = [[NSString alloc] initWithFormat:@"PostReplyViewCell_%d", mod];
+    }
+    
     XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell=[[XLCPostDetailViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }else{
+        NSLog(@"No reusablecell for %@", CellIdentifier);
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"XLCPostDetailViewCell" owner:self options:nil];
+        cell = (XLCPostDetailViewCell *)[nibArray objectAtIndex:0];
+        
+        cell = [cell initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if (![cell isForIndexPath:indexPath]) {
+
+        NSLog(@"not for index.section = %d, row = %d", indexPath.section, indexPath.row);
         [cell setupWithInitialization];
+        
+        BOOL isReply = NO;
+        XLCPostDetail *postDetail = nil;
+        
+        if (indexPath.row > 0) {
+            isReply = NO;
+            postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
+        }
+        else {
+            isReply = NO;
+            postDetail = _postDetail;
+        }
+        
+        [cell setupWithPostDetail:postDetail isReply:isReply AtIndexPath:indexPath];
+        
     }
     
-    BOOL isReply = NO;
-    XLCPostDetail *postDetail = nil;
     
-    if (indexPath.row > 0) {
-        isReply = YES;
-        postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
-    }
-    else {
-        isReply = NO;
-        postDetail = _postDetail;
-    }
-    
-    [cell setupWithPostDetail:postDetail isReply:isReply];
     
     return cell;
     

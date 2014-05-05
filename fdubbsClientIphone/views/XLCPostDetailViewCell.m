@@ -18,6 +18,9 @@
     BOOL hasQuote;
     CGFloat heightOfCell;
     
+    NSInteger section;
+    NSInteger row;
+    
     NSMutableArray *bottomBorderLayers;
 }
 @end
@@ -26,6 +29,7 @@
 
 - (id)init
 {
+    NSLog(@"XLCPostDetailViewCell init");
     self = [super init];
     if (self) {
         [self initCell];
@@ -56,6 +60,9 @@
     hasInitialied = FALSE;
     hasQuote = FALSE;
     heightOfCell = INITIAL_HEIGHT;
+    
+    section = -1;
+    row = -1;
     
     bottomBorderLayers = [[NSMutableArray alloc] init];
 }
@@ -94,13 +101,14 @@
     hasInitialied = TRUE;
 }
 
-- (void)setupWithPostDetail:(XLCPostDetail *)postDetail isReply:(BOOL)isReply
+- (void)setupWithPostDetail:(XLCPostDetail *)postDetail
+                    isReply:(BOOL)isReply AtIndexPath:(NSIndexPath *)index
 {
     heightOfCell = INITIAL_HEIGHT;
+    section = index.section;
+    row = index.row;
     
-    self.ownerLabel.text = postDetail.metaData.owner;
-    self.dateLabel.text = postDetail.metaData.date;
-    self.titleLabel.text = postDetail.metaData.title;
+    [self constructPostMetadata:postDetail isReply:isReply];
     
     [self constructPostContent:postDetail];
     
@@ -128,6 +136,24 @@
     NSLog(@"height is %f", [self getHeight]);
 }
 
+#pragma mark Load Post Metadata
+- (void)constructPostMetadata:(XLCPostDetail *)postDetail isReply:(BOOL)isReply
+{
+    self.ownerLabel.text = postDetail.metaData.owner;
+    self.dateLabel.text = postDetail.metaData.date;
+    
+    if (isReply) {
+        //self.titleLabel.hidden = YES;
+        [self.titleLabel removeFromSuperview];
+        CGRect metadataFrame = self.postMetadataView.frame;
+        metadataFrame.size.height -= self.titleLabel.frame.size.height;
+        self.postMetadataView.frame = metadataFrame;
+    } else {
+        
+        self.titleLabel.text = postDetail.metaData.title;
+    }
+}
+
 #pragma mark Load Post Content
 
 - (void)constructPostContent:(XLCPostDetail *)postDetail
@@ -150,24 +176,27 @@
                 
             }
             else {
-                [self.postContentView appendText:content.content];
+                NSLog(@"post content : %@", content.content);
+                [self.postContentView appendText:[NSString stringWithFormat:@"%@", content.content]];
             }
         }
+        [self.postContentView appendText:@"\n"];
     }
     
     CGSize contentSize = [self.postContentView sizeThatFits:CGSizeMake(300, 10000)];
     
+    NSLog(@"width : %f, height : %f", contentSize.width, contentSize.height);
     CGRect postContentFrame = self.postContentView.frame;
     postContentFrame.size.height = contentSize.height;
-    self.postContentView.frame = postContentFrame;
+    //postContentFrame.origin.y = self.postMetadataView.frame.origin.y + self.postMetadataView.frame.size.height;
+    
+    //self.postContentView.frame = postContentFrame;
+    [self.postContentView setFrame:postContentFrame];
     
 }
 
 - (void) adjustViewHeight
 {
-    
-    
-    
     /*
     if (hasQuote) {
         CGRect qouteFrame = self.qouteView.frame;
@@ -208,6 +237,11 @@
 - (CGFloat)getHeight
 {
     return heightOfCell;
+}
+
+- (BOOL) isForIndexPath:(NSIndexPath *)index
+{
+    return section == index.section && row == index.row;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

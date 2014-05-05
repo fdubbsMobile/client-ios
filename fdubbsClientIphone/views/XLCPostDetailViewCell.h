@@ -26,7 +26,7 @@
 //@property (strong, nonatomic) UIImageView *qouteBgView;
 
 - (void)setupWithInitialization;
-- (void)setupWithPostDetail:(XLCPostDetail *)postDetail isReply:(BOOL)isReply;
+- (void)setupWithPostDetail:(XLCPostDetail *)postDetail isReply:(BOOL)isReply AtIndexPath:(NSIndexPath *)index;
 - (CGFloat)getHeight;
-
+- (BOOL) isForIndexPath:(NSIndexPath *)index;
 @end

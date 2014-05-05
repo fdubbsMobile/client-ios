@@ -232,6 +232,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
 #pragma mark - 辅助方法
 - (NSAttributedString *)attributedString:(NSString *)text
 {
+    NSLog(@"add text : %@", text);
     if ([text length])
     {
         NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:text];
@@ -248,7 +249,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
 - (NSInteger)numberOfDisplayedLines
 {
     CFArrayRef lines = CTFrameGetLines(_textFrame);
-    return _numberOfLines > 0 ? MIN(CFArrayGetCount(lines), _numberOfLines) : CFArrayGetCount(lines);
+    return CFArrayGetCount(lines);
 }
 
 - (NSAttributedString *)attributedStringForDraw
@@ -570,7 +571,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     CFAttributedStringRef attributedStringRef = (__bridge CFAttributedStringRef)drawString;
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(attributedStringRef);
     CFRange range = CFRangeMake(0, 0);
-    if (_numberOfLines > 0 && framesetter)
+    if (framesetter)
     {
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathAddRect(path, NULL, CGRectMake(0, 0, size.width, size.height));
@@ -579,7 +580,7 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
         
         if (nil != lines && CFArrayGetCount(lines) > 0)
         {
-            NSInteger lastVisibleLineIndex = MIN(_numberOfLines, CFArrayGetCount(lines)) - 1;
+            NSInteger lastVisibleLineIndex = CFArrayGetCount(lines) - 1;
             CTLineRef lastVisibleLine = CFArrayGetValueAtIndex(lines, lastVisibleLineIndex);
             
             CFRange rangeToLayout = CTLineGetStringRange(lastVisibleLine);
@@ -633,11 +634,12 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
     [self recomputeLinksIfNeeded];
     
     NSAttributedString *drawString = [self attributedStringForDraw];
+    NSLog(@"draw string : %@", [drawString string]);
     if (drawString)
     {
         [self prepareTextFrame:drawString rect:rect];
-        [self drawHighlightWithRect:rect];
-        [self drawAttachments];
+        //[self drawHighlightWithRect:rect];
+        //[self drawAttachments];
         [self drawText:drawString
                   rect:rect
                context:ctx];
@@ -719,13 +721,16 @@ static dispatch_queue_t get_m80_attributed_label_parse_queue() \
             rect: (CGRect)rect
          context: (CGContextRef)context
 {
+    NSLog(@"drawText");
     if (_textFrame)
     {
-        if (_numberOfLines > 0)
+        NSLog(@"_textFrame");
+        NSLog(@"_numberOfLines : %d", _numberOfLines);
+        if (TRUE)
         {
             CFArrayRef lines = CTFrameGetLines(_textFrame);
             NSInteger numberOfLines = [self numberOfDisplayedLines];
-            
+            NSLog(@"DISPLAY LINES : %d", numberOfLines);
             CGPoint lineOrigins[numberOfLines];
             CTFrameGetLineOrigins(_textFrame, CFRangeMake(0, numberOfLines), lineOrigins);
             
