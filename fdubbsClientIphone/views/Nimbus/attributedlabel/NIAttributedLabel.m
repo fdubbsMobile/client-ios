@@ -1172,7 +1172,6 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
 }
 
 - (void)drawAttachments {
-    NSLog(@"attachment count : %d", self.attachments.count);
   if (0 == self.attachments.count) {
     return;
   }
@@ -1187,8 +1186,6 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
   CGPoint lineOrigins[lineCount];
   CTFrameGetLineOrigins(self.textFrame, CFRangeMake(0, 0), lineOrigins);
   NSInteger numberOfLines = [self numberOfDisplayedLines];
-
-    NSLog(@"line number  : %d", numberOfLines);
     
   for (CFIndex i = 0; i < numberOfLines; i++) {
     CTLineRef line = CFArrayGetValueAtIndex(lines, i);
@@ -1200,8 +1197,6 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
     CTLineGetTypographicBounds(line, &lineAscent, &lineDescent, NULL);
     CGFloat lineHeight = lineAscent + lineDescent;
     CGFloat lineBottomY = lineOrigin.y - lineDescent;
-
-      NSLog(@"runCount  : %ld", runCount);
       
     // Iterate through each of the "runs" (i.e. a chunk of text) and find the runs that
     // intersect with the range.
@@ -1264,7 +1259,6 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
                                           attachmentRect.size.width,
                                           attachmentRect.size.height);
             
-            NSLog(@"viewFrame : x = %f, y = %f", viewFrame.origin.x, viewFrame.origin.y);
             [view setFrame:viewFrame];
             [self addSubview:view];
         }
@@ -1640,7 +1634,6 @@ CGFloat NIAttachmentDelegateGetWidthCallback(void* refCon) {
         self.attachments = [NSMutableArray array];
     }
     [self.attachments addObject:labelView];
-    NSLog(@"add label view at index : %d", index);
 }
 
 @end

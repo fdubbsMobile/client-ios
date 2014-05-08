@@ -13,6 +13,10 @@
 @property (nonatomic, strong) UIButton              *button;
 @property (nonatomic, strong) UILabel               *label;
 
+@property (nonatomic, strong) NSString               *linkRef;
+
+@property NSInteger position;
+
 - (void)updateWithString:(NSString*)text;
 - (void)setLabelText:(NSString*)text;
 - (void)setCornerRadius:(CGFloat)cornerRadius;

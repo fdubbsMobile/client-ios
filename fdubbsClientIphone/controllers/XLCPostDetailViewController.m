@@ -62,7 +62,7 @@
 	[self.navigationController.navigationBar setTranslucent:NO];
 
     
-    FRDLivelyButton *leftBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,25,20)];
+    FRDLivelyButton *leftBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,30,25)];
     [leftBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
                                   kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
                                   kFRDLivelyButtonColor: [UIColor whiteColor]

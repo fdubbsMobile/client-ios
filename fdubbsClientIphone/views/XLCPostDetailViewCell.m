@@ -168,7 +168,7 @@
     
     NSArray *paragraphs = postDetail.body;
     
-    
+    NSMutableArray *iamgeViews = [[NSMutableArray alloc] init];
     NSString *postContent = [[NSString alloc] init];
     for (XLCParagraph *paragraph in paragraphs) {
         NSArray *contents = paragraph.paraContent;
@@ -179,37 +179,38 @@
             else if (content.isImage) {
                 XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
                 [imageLinkView updateWithString:@"图片链接"];
-                [postContentLabel insertSubview:imageLinkView atIndex:[postContent length]];
+                imageLinkView.linkRef = content.linkRef;
+                imageLinkView.position = [postContent length];
+                [iamgeViews addObject:imageLinkView];
             }
             else if (content.isLink) {
-                NSLog(@"link ref : %@", content.linkRef);
                 postContent = [postContent stringByAppendingString:content.linkRef];
             }
             else {
-                NSLog(@"post content : %@", content.content);
                 postContent = [postContent stringByAppendingString:content.content];
             }
         }
         postContent = [postContent stringByAppendingString:@"\n"];
     }
     
-    NSLog(@"Post Content : \n%@", postContent);
+    postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSLog(@"Post Content : length - %lu\n%@", (unsigned long)[postContent length], postContent);
     
     postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
     postContentLabel.numberOfLines = 0;
+    postContentLabel.autoDetectLinks = YES;
     postContentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     postContentLabel.font = [UIFont systemFontOfSize:15];
     postContentLabel.text = postContent;
     
-    NSLog(@"text length : %d", postContentLabel.text.length);
-    XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
-    [imageLinkView updateWithString:@"图片链接"];
-    [postContentLabel insertView:imageLinkView atIndex:0];
+    for (XLCCustomLinkView *imageLinkView in iamgeViews) {
+        NSLog(@"insert subview - %@ - at %ld", imageLinkView.linkRef, (long)imageLinkView.position);
+        [postContentLabel insertView:imageLinkView atIndex:imageLinkView.position];
+    }
     
     [self.postContentView addSubview:postContentLabel];
     
     CGSize size = [postContentLabel sizeThatFits:CGSizeMake(self.postContentView.bounds.size.width, CGFLOAT_MAX)];
-    NSLog(@"lable size : width = %f, height = %f", size.width, size.height);
     postContentLabel.frame = CGRectMake(0, 0, size.width, size.height);
     
     CGRect contentFrame = self.postContentView.frame;
