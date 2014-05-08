@@ -123,7 +123,6 @@
     _label.font = font;
     
     [_button setAccessibilityLabel:self.label.text];
-    [self setBackgroundColor:[UIColor blueColor]];
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius

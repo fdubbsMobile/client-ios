@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -41,17 +41,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFf-pF-Pm3" userLabel="post content" customClass="M80AttributedLabel">
-                        <rect key="frame" x="20" y="64" width="280" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="Uui-TU-PuO" id="Nne-xy-dcb"/>
                 <outlet property="ownerLabel" destination="Ly1-4E-SOd" id="iAs-2q-leh"/>
-                <outlet property="postContentView" destination="UFf-pF-Pm3" id="0Th-ks-7gT"/>
                 <outlet property="postMetadataView" destination="S3F-Nq-Ib8" id="TNt-Nc-Heh"/>
                 <outlet property="titleLabel" destination="Pww-H9-b6J" id="cyb-hk-oaG"/>
             </connections>

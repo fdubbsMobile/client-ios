@@ -10,6 +10,10 @@
 #import "XLCParagraph.h"
 #import "XLCParagraphContent.h"
 
+
+#import "NIAttributedLabel.h"
+#import "XLCCustomLinkView.h"
+
 #define INITIAL_HEIGHT 30
 
 @interface XLCPostDetailViewCell ()
@@ -21,6 +25,7 @@
     NSInteger section;
     NSInteger row;
     
+    NIAttributedLabel *postContentLabel;
     NSMutableArray *bottomBorderLayers;
 }
 @end
@@ -64,6 +69,7 @@
     section = -1;
     row = -1;
     
+    postContentLabel = nil;
     bottomBorderLayers = [[NSMutableArray alloc] init];
 }
 
@@ -159,41 +165,58 @@
 - (void)constructPostContent:(XLCPostDetail *)postDetail
 {
     NSLog(@"constructPostContent");
-    [self.postContentView setText:@""];
     
     NSArray *paragraphs = postDetail.body;
     
+    
+    NSString *postContent = [[NSString alloc] init];
     for (XLCParagraph *paragraph in paragraphs) {
         NSArray *contents = paragraph.paraContent;
         for (XLCParagraphContent *content in contents) {
             if (content.isNewLine) {
-                [self.postContentView appendText:@"\n"];
+                postContent = [postContent stringByAppendingString:@"\n"];
             }
             else if (content.isImage) {
-                
+                XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+                [imageLinkView updateWithString:@"图片链接"];
+                [postContentLabel insertSubview:imageLinkView atIndex:[postContent length]];
             }
             else if (content.isLink) {
-                
+                NSLog(@"link ref : %@", content.linkRef);
+                postContent = [postContent stringByAppendingString:content.linkRef];
             }
             else {
                 NSLog(@"post content : %@", content.content);
-                [self.postContentView appendText:[NSString stringWithFormat:@"%@", content.content]];
+                postContent = [postContent stringByAppendingString:content.content];
             }
         }
-        [self.postContentView appendText:@"\n"];
+        postContent = [postContent stringByAppendingString:@"\n"];
     }
     
-    CGSize contentSize = [self.postContentView sizeThatFits:CGSizeMake(300, 10000)];
+    NSLog(@"Post Content : \n%@", postContent);
     
-    NSLog(@"width : %f, height : %f", contentSize.width, contentSize.height);
-    CGRect postContentFrame = self.postContentView.frame;
-    postContentFrame.size.height = contentSize.height;
-    //postContentFrame.origin.y = self.postMetadataView.frame.origin.y + self.postMetadataView.frame.size.height;
+    postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+    postContentLabel.numberOfLines = 0;
+    postContentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    postContentLabel.font = [UIFont systemFontOfSize:15];
+    postContentLabel.text = postContent;
     
-    //self.postContentView.frame = postContentFrame;
-    [self.postContentView setFrame:postContentFrame];
+    NSLog(@"text length : %d", postContentLabel.text.length);
+    XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+    [imageLinkView updateWithString:@"图片链接"];
+    [postContentLabel insertView:imageLinkView atIndex:0];
     
+    [self.postContentView addSubview:postContentLabel];
+    
+    CGSize size = [postContentLabel sizeThatFits:CGSizeMake(self.postContentView.bounds.size.width, CGFLOAT_MAX)];
+    NSLog(@"lable size : width = %f, height = %f", size.width, size.height);
+    postContentLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    CGRect contentFrame = self.postContentView.frame;
+    contentFrame.size.height = postContentLabel.frame.size.height;
+    self.postContentView.frame = contentFrame;
 }
+
 
 - (void) adjustViewHeight
 {

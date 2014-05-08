@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -140,8 +140,8 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K1Q-Uo-1qg" userLabel="post content" customClass="M80AttributedLabel">
-                                            <rect key="frame" x="20" y="62" width="280" height="30"/>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K1Q-Uo-1qg" userLabel="post content">
+                                            <rect key="frame" x="20" y="64" width="280" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -150,7 +150,7 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="9Ap-DH-P0V" id="kpg-6b-dAz"/>
                                     <outlet property="ownerLabel" destination="yui-az-n3Q" id="6n4-q1-oGz"/>
-                                    <outlet property="postContentView" destination="K1Q-Uo-1qg" id="ZFv-BN-dvG"/>
+                                    <outlet property="postContentView" destination="K1Q-Uo-1qg" id="RzB-lk-4fD"/>
                                     <outlet property="postMetadataView" destination="PQ6-ZI-CmS" id="HCL-i6-ABO"/>
                                     <outlet property="titleLabel" destination="cBL-dB-mV7" id="HAN-NN-JKK"/>
                                 </connections>
