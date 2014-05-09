@@ -45,6 +45,8 @@
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B71A96191767CA0002B251 /* XLCPostDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
+		95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */; };
+		95C25647191CBD6B00893317 /* ZGNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */; };
 		95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB60E191B555700B261D6 /* NIAttributedLabel.m */; };
 		95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB610191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m */; };
 		95CCB645191B561600B261D6 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB616191B561600B261D6 /* NIActions.m */; };
@@ -153,6 +155,10 @@
 		95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostDetailViewCell.xib; sourceTree = "<group>"; };
 		95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewController.h; path = controllers/XLCPostDetailViewController.h; sourceTree = "<group>"; };
 		95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewController.m; path = controllers/XLCPostDetailViewController.m; sourceTree = "<group>"; };
+		95C25642191CBD5E00893317 /* ZGNavigationBarTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationBarTitleViewController.h; path = controllers/ZGNavigationBarTitleViewController.h; sourceTree = "<group>"; };
+		95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationBarTitleViewController.m; path = controllers/ZGNavigationBarTitleViewController.m; sourceTree = "<group>"; };
+		95C25645191CBD6B00893317 /* ZGNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationTitleView.h; path = views/ZGNavigationTitleView.h; sourceTree = "<group>"; };
+		95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationTitleView.m; path = views/ZGNavigationTitleView.m; sourceTree = "<group>"; };
 		95CCB60D191B555700B261D6 /* NIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIAttributedLabel.h; sourceTree = "<group>"; };
 		95CCB60E191B555700B261D6 /* NIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIAttributedLabel.m; sourceTree = "<group>"; };
 		95CCB60F191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+NimbusAttributedLabel.h"; sourceTree = "<group>"; };
@@ -439,8 +445,6 @@
 			isa = PBXGroup;
 			children = (
 				95CCB60B191B555700B261D6 /* Nimbus */,
-				95B45FD419161859004CF5AC /* XLCCustomLinkView.h */,
-				95B45FD519161859004CF5AC /* XLCCustomLinkView.m */,
 				95234C641913AB1000C80BEB /* FRDLivelyButton */,
 				95A2086418FE73A4009CDEA3 /* TableViewRefresh */,
 				95B605B218FD6FC3009F9A39 /* XLCFlatSettings.h */,
@@ -450,6 +454,10 @@
 				95D78450190BF4F7009779EA /* XLCPostDetailViewCell.h */,
 				95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */,
 				95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */,
+				95B45FD419161859004CF5AC /* XLCCustomLinkView.h */,
+				95B45FD519161859004CF5AC /* XLCCustomLinkView.m */,
+				95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */,
+				95C25645191CBD6B00893317 /* ZGNavigationTitleView.h */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -457,6 +465,8 @@
 		95B605AF18FD68C4009F9A39 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				95C25642191CBD5E00893317 /* ZGNavigationBarTitleViewController.h */,
+				95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */,
 				95AEBE0318FA5C6400C7E8E4 /* XLCPostDetailPassValueDelegate.h */,
 				95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */,
 				95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */,
@@ -744,6 +754,7 @@
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
 				95CCB655191B561600B261D6 /* NIRuntimeClassModifications.m in Sources */,
 				95CCB653191B561600B261D6 /* NIOperations.m in Sources */,
+				95C25647191CBD6B00893317 /* ZGNavigationTitleView.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
 				95B45FD619161859004CF5AC /* XLCCustomLinkView.m in Sources */,
@@ -756,6 +767,7 @@
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
+				95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */,
 				95CCB654191B561600B261D6 /* NIPaths.m in Sources */,
 				95CD1310190636FE00CC1F61 /* XLCParagraphContent.m in Sources */,
 				95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */,

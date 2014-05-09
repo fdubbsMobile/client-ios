@@ -8,7 +8,6 @@
 
 #import "EGORefreshTableHeaderView.h"
 
-
 #import "XLCPostDetailViewController.h"
 #import "XLCPostDetail.h"
 #import "XLCPostManager.h"
@@ -85,11 +84,14 @@
     
     
     //NavBar tint color for elements:
-    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    [self.navigationItem setTitle:_title];
     
-    //[self setTitle:_title];
+    self.title = _title;
+    self.subtitle = [[NSString alloc] initWithFormat:@"%@版", _board];
+    self.titleColor = [UIColor whiteColor];
+    self.subtitleColor = [UIColor whiteColor];
+    
     DebugLog(@"init XLCPostDetailViewController");
     [self performSelector:@selector(initRefreshPostDetail) withObject:nil afterDelay:0.4];
 }
@@ -178,8 +180,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-     
-    NSLog(@"Total section : 1 .");
     return 1;
 }
 
@@ -190,7 +190,8 @@
         return 0;
     }
     
-    return _postDetail.replies.count + 1;
+    return 1;
+    //return _postDetail.replies.count + 1;
     
 }
 
@@ -230,19 +231,16 @@
         NSLog(@"not for index.section = %d, row = %d", indexPath.section, indexPath.row);
         [cell setupWithInitialization];
         
-        BOOL isReply = NO;
+
         XLCPostDetail *postDetail = nil;
         
         if (indexPath.row > 0) {
-            isReply = NO;
             postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
         }
         else {
-            isReply = NO;
             postDetail = _postDetail;
+            [cell setupWithPostDetail:postDetail AtIndexPath:indexPath];
         }
-        
-        [cell setupWithPostDetail:postDetail isReply:isReply AtIndexPath:indexPath];
         
     }
     

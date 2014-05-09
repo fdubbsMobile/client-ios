@@ -118,7 +118,6 @@
     frame.size.height = textSize.height;
     self.frame = frame;
     
-    NSLog(@"frame.width = %f", self.frame.size.width);
     _label.frame = CGRectMake(padding.width, 0, MIN(textSize.width, self.frame.size.width), textSize.height);
     _label.font = font;
     

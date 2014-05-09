@@ -101,6 +101,9 @@ extern NSString* const NIAttributedLabelLinkAttributeName; // Value is an NSText
 @property (nonatomic, strong) UIColor*                  strokeColor;
 @property (nonatomic)         CGFloat                   textKern;
 
+@property (nonatomic)         CGFloat                   lineSpacing;
+@property (nonatomic)         CGFloat                   paragraphSpacing;
+
 @property (nonatomic, copy) NSString* tailTruncationString;
 
 - (void)setFont:(UIFont *)font            range:(NSRange)range;

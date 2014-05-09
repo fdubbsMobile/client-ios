@@ -51,7 +51,8 @@
     
     // Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
-    [self setTitle:@"今日十大"];
+    self.title = @"今日十大";
+    self.titleColor = [UIColor whiteColor];
     
     // Set the barTintColor (if available). This will determine the overlay that fades in and out upon scrolling.
     if ([self.navigationController.navigationBar respondsToSelector:@selector(setBarTintColor:)]) {

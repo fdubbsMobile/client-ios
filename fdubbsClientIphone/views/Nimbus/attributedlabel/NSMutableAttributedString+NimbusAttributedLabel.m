@@ -128,4 +128,21 @@ NI_FIX_CATEGORY_BUG(NSMutableAttributedStringNimbusAttributedLabel)
   [self setKern:kern range:NSMakeRange(0, self.length)];
 }
 
+- (void)setParagraphSpace:(CGFloat)paragraphSpacing
+                lineSpace:(CGFloat)lineSpacing
+{
+    [self setParagraphSpace:paragraphSpacing
+                  lineSpace:lineSpacing range:NSMakeRange(0, self.length)];
+}
+
+- (void)setParagraphSpace:(CGFloat)paragraphSpacing
+                lineSpace:(CGFloat)lineSpacing range:(NSRange)range
+{
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.paragraphSpacing = paragraphSpacing;
+    paragraphStyle.lineSpacing = lineSpacing;
+    
+    [self addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:range];
+}
+
 @end

@@ -105,4 +105,10 @@
  */
 - (void)setKern:(CGFloat)kern;
 
+- (void)setParagraphSpace:(CGFloat)paragraphSpacing
+                lineSpace:(CGFloat)lineSpacing;
+
+- (void)setParagraphSpace:(CGFloat)paragraphSpacing
+                lineSpace:(CGFloat)lineSpacing range:(NSRange)range;
+
 @end

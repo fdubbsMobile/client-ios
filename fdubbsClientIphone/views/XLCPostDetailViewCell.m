@@ -34,7 +34,6 @@
 
 - (id)init
 {
-    NSLog(@"XLCPostDetailViewCell init");
     self = [super init];
     if (self) {
         [self initCell];
@@ -80,7 +79,6 @@
         return;
     }
     
-    //NSLog(@"Init setupWithInitialization");
     [self setup];
 }
 
@@ -102,19 +100,18 @@
     //[self addSubview:self.qouteView];
     
     
-    
     hasQuote = FALSE;
     hasInitialied = TRUE;
 }
 
 - (void)setupWithPostDetail:(XLCPostDetail *)postDetail
-                    isReply:(BOOL)isReply AtIndexPath:(NSIndexPath *)index
+                    AtIndexPath:(NSIndexPath *)index
 {
     heightOfCell = INITIAL_HEIGHT;
     section = index.section;
     row = index.row;
     
-    [self constructPostMetadata:postDetail isReply:isReply];
+    [self constructPostMetadata:postDetail];
     
     [self constructPostContent:postDetail];
     
@@ -137,44 +134,49 @@
     //[self addBottomBorderForView:self.postMetadataView];
     [self addBottomBorderForView:self];
     
-    
-    
-    NSLog(@"height is %f", [self getHeight]);
 }
 
 #pragma mark Load Post Metadata
-- (void)constructPostMetadata:(XLCPostDetail *)postDetail isReply:(BOOL)isReply
+- (void)constructPostMetadata:(XLCPostDetail *)postDetail
 {
     self.ownerLabel.text = postDetail.metaData.owner;
     self.dateLabel.text = postDetail.metaData.date;
+    [self layoutTitleLabel:postDetail.metaData.title];
     
-    if (isReply) {
-        //self.titleLabel.hidden = YES;
-        [self.titleLabel removeFromSuperview];
-        CGRect metadataFrame = self.postMetadataView.frame;
-        metadataFrame.size.height -= self.titleLabel.frame.size.height;
-        self.postMetadataView.frame = metadataFrame;
-    } else {
-        
-        self.titleLabel.text = postDetail.metaData.title;
-    }
+    CGRect frame = self.postMetadataView.frame;
+    frame.size.height = self.ownerLabel.frame.size.height + self.titleLabel.frame.size.height + 15;
+    self.postMetadataView.frame = frame;
+}
+
+- (void)layoutTitleLabel:(NSString *)title
+{
+    self.titleLabel.numberOfLines = 0;
+    CGRect frame = self.titleLabel.frame;
+    
+    CGSize size = [title sizeWithFont:self.titleLabel.font
+                    constrainedToSize:CGSizeMake(frame.size.width, MAXFLOAT)
+                        lineBreakMode:NSLineBreakByWordWrapping];
+    
+    frame.size.height = size.height;
+    self.titleLabel.frame = frame;
+    self.titleLabel.text = title;
 }
 
 #pragma mark Load Post Content
 
 - (void)constructPostContent:(XLCPostDetail *)postDetail
 {
-    NSLog(@"constructPostContent");
     
     NSArray *paragraphs = postDetail.body;
     
     NSMutableArray *iamgeViews = [[NSMutableArray alloc] init];
     NSString *postContent = [[NSString alloc] init];
+    
     for (XLCParagraph *paragraph in paragraphs) {
         NSArray *contents = paragraph.paraContent;
         for (XLCParagraphContent *content in contents) {
             if (content.isNewLine) {
-                postContent = [postContent stringByAppendingString:@"\n"];
+                //postContent = [postContent stringByAppendingString:@"\n"];
             }
             else if (content.isImage) {
                 XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
@@ -193,19 +195,18 @@
         postContent = [postContent stringByAppendingString:@"\n"];
     }
     
-    postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSLog(@"Post Content : length - %lu\n%@", (unsigned long)[postContent length], postContent);
+    //postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
     
     postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
     postContentLabel.numberOfLines = 0;
     postContentLabel.autoDetectLinks = YES;
-    postContentLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    postContentLabel.lineBreakMode = NSLineBreakByCharWrapping;
     postContentLabel.font = [UIFont systemFontOfSize:15];
     postContentLabel.text = postContent;
     
     for (XLCCustomLinkView *imageLinkView in iamgeViews) {
-        NSLog(@"insert subview - %@ - at %ld", imageLinkView.linkRef, (long)imageLinkView.position);
-        [postContentLabel insertView:imageLinkView atIndex:imageLinkView.position];
+        [postContentLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
     
     [self.postContentView addSubview:postContentLabel];
@@ -214,8 +215,10 @@
     postContentLabel.frame = CGRectMake(0, 0, size.width, size.height);
     
     CGRect contentFrame = self.postContentView.frame;
+    contentFrame.origin.y = self.postMetadataView.frame.origin.y + self.postMetadataView.frame.size.height;
     contentFrame.size.height = postContentLabel.frame.size.height;
     self.postContentView.frame = contentFrame;
+
 }
 
 
@@ -232,6 +235,7 @@
     CGRect cellFrame = self.frame;
     cellFrame.size.height = [self getHeight];
     self.frame = cellFrame;
+    
 }
 
 - (void) addBottomBorderForView:(UIView *)theView

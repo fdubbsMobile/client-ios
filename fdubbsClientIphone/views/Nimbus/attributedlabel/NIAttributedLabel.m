@@ -40,6 +40,10 @@ static const CGFloat kTouchGutter = 22;
 
 static const CGFloat kVMargin = 5.0f;
 
+static const CGFloat kLineSpacing = 8.0f;
+
+static const CGFloat kParagraphSpacing = 8.0f;
+
 // \u2026 is the Unicode horizontal ellipsis character code
 static NSString* const kEllipsesCharacter = @"\u2026";
 
@@ -245,6 +249,8 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
   self.linkColor = NIIsTintColorGloballySupported() ? self.tintColor : [UIColor blueColor];
   self.dataDetectorTypes = NSTextCheckingTypeLink;
   self.highlightedLinkBackgroundColor = [UIColor colorWithWhite:0.5f alpha:0.5f];
+    self.lineSpacing = kLineSpacing;
+    self.paragraphSpacing = kParagraphSpacing;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -308,6 +314,7 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
   [self.mutableAttributedString setStrokeWidth:_strokeWidth];
   [self.mutableAttributedString setStrokeColor:_strokeColor];
   [self.mutableAttributedString setKern:_textKern];
+  [self.mutableAttributedString setParagraphSpace:_paragraphSpacing lineSpace:_lineSpacing];
 }
 
 // Deprecated.
@@ -496,6 +503,26 @@ CGSize NISizeOfAttributedStringConstrainedToSize(NSAttributedString* attributedS
   [self.mutableAttributedString setKern:kern range:range];
 
   [self attributedTextDidChange];
+}
+
+- (void)setLineSpacing:(CGFloat)lineSpacing
+{
+    if (_lineSpacing != lineSpacing) {
+        _lineSpacing = lineSpacing;
+        [self.mutableAttributedString setParagraphSpace:_paragraphSpacing lineSpace:_lineSpacing];
+        
+        [self attributedTextDidChange];
+    }
+}
+
+-(void)setParagraphSpacing:(CGFloat)paragraphSpacing
+{
+    if (_paragraphSpacing != paragraphSpacing) {
+        _paragraphSpacing = paragraphSpacing;
+        [self.mutableAttributedString setParagraphSpace:_paragraphSpacing lineSpace:_lineSpacing];
+        
+        [self attributedTextDidChange];
+    }
 }
 
 - (void)setTailTruncationString:(NSString *)tailTruncationString {
