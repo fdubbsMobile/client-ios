@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 
 #import "XLCPostMetaData.h"
+#import "XLCContent.h"
 
 @interface XLCPostDetail : NSObject
 
 @property (strong, nonatomic) XLCPostMetaData *metaData;
 
-@property (strong, nonatomic) NSArray *body;
-@property (strong, nonatomic) NSArray *qoute;
-@property (strong, nonatomic) NSArray *sign;
+@property (strong, nonatomic) XLCContent *body;
+@property (strong, nonatomic) XLCContent *qoute;
+@property (strong, nonatomic) XLCContent *sign;
 
 @property (strong, nonatomic) NSArray *replies;
 

@@ -12,8 +12,8 @@
 
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
-#import "XLCParagraphContent.h"
-#import "XLCParagraph.h"
+#import "XLCContent.h"
+#import "XLCImage.h"
 #import "XLCPostDetail.h"
 
 @implementation XLCRESTfulClient
@@ -27,7 +27,7 @@
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // Initialize HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"http://rest-api-for-fdubbs.herokuapp.com"];
+    NSURL *baseURL = [NSURL URLWithString:@"https://rest-fdubbs.rhcloud.com"];
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // HACK: Set User-Agent to Mac OS X so that Twitter will let us access the Timeline
@@ -83,32 +83,34 @@
     [objectManager addResponseDescriptor:topPostRespDesc];
     
     
-    RKObjectMapping *paraContentMapping = [RKObjectMapping mappingForClass:[XLCParagraphContent class]];
-    [paraContentMapping addAttributeMappingsFromDictionary:@{
-                                                              @"br" : @"isNewLine",
-                                                              @"l" : @"isLink",
-                                                              @"i" : @"isImage",
-                                                              @"lr" : @"linkRef",
-                                                              @"c" : @"content"
-                                                              }];
     
-    RKObjectMapping *paragraphMapping = [RKObjectMapping mappingForClass:[XLCParagraph class]];
-    RKRelationshipMapping* paraContentRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"c"
-                                                                                             toKeyPath:@"paraContent"
-                                                                                           withMapping:paraContentMapping];
-    [paragraphMapping addPropertyMapping:paraContentRSMapping];
+    
+    RKObjectMapping *postImageMapping = [RKObjectMapping mappingForClass:[XLCImage class]];
+    [postImageMapping addAttributeMappingsFromDictionary:@{
+                                                             @"pos" : @"pos",
+                                                             @"ref" : @"ref"
+                                                             }];
+    
+    RKObjectMapping *postContentMapping = [RKObjectMapping mappingForClass:[XLCContent class]];
+    [postContentMapping addAttributeMappingsFromDictionary:@{
+                                                           @"text" : @"text"
+                                                           }];
+    RKRelationshipMapping* contentImageRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"images"
+                                                                                           toKeyPath:@"images"
+                                                                                         withMapping:postImageMapping];
+    [postContentMapping addPropertyMapping:contentImageRSMapping];
     
     RKObjectMapping *postDetailMapping = [RKObjectMapping mappingForClass:[XLCPostDetail class]];
     
     RKRelationshipMapping* postBodyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"body"
                                                                                               toKeyPath:@"body"
-                                                                                            withMapping:paragraphMapping];
+                                                                                            withMapping:postContentMapping];
     RKRelationshipMapping* postQouteRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"qoute"
                                                                                            toKeyPath:@"qoute"
-                                                                                         withMapping:paragraphMapping];
+                                                                                         withMapping:postContentMapping];
     RKRelationshipMapping* postSignRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"sign"
                                                                                             toKeyPath:@"sign"
-                                                                                          withMapping:paragraphMapping];
+                                                                                          withMapping:postContentMapping];
     RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"replies"
                                                                                            toKeyPath:@"replies"
                                                                                          withMapping:postDetailMapping];

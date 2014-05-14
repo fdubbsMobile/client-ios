@@ -1,15 +1,16 @@
 //
-//  XLCParagraph.h
+//  XLCImage.h
 //  fdubbsClientIphone
 //
-//  Created by dennis on 14-4-22.
+//  Created by dennis on 14-5-14.
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface XLCParagraph : NSObject
+@interface XLCImage : NSObject
 
-@property (strong, nonatomic) NSArray *paraContent;
+@property NSUInteger pos;
+@property (strong, nonatomic) NSString *ref;
 
 @end

@@ -45,6 +45,8 @@
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B71A96191767CA0002B251 /* XLCPostDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
+		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
+		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
 		95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */; };
 		95C25647191CBD6B00893317 /* ZGNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */; };
 		95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB60E191B555700B261D6 /* NIAttributedLabel.m */; };
@@ -72,8 +74,6 @@
 		95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB642191B561600B261D6 /* NIViewRecycler.m */; };
 		95CCB65A191B561600B261D6 /* UIResponder+NimbusCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */; };
 		95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD1309190635A000CC1F61 /* XLCPostDetail.m */; };
-		95CD130D190636A000CC1F61 /* XLCParagraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD130C190636A000CC1F61 /* XLCParagraph.m */; };
-		95CD1310190636FE00CC1F61 /* XLCParagraphContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD130F190636FE00CC1F61 /* XLCParagraphContent.m */; };
 		95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */; };
 		9634192B981A47F3B48B8A6C /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */; };
 		B7CB102EE63E4C35A85AB53A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C115E71F3CCC422DB3343D8E /* libPods.a */; };
@@ -155,6 +155,10 @@
 		95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostDetailViewCell.xib; sourceTree = "<group>"; };
 		95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewController.h; path = controllers/XLCPostDetailViewController.h; sourceTree = "<group>"; };
 		95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewController.m; path = controllers/XLCPostDetailViewController.m; sourceTree = "<group>"; };
+		95C1D0611923C32A00E38625 /* XLCContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCContent.h; path = model/pojo/XLCContent.h; sourceTree = "<group>"; };
+		95C1D0621923C32A00E38625 /* XLCContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCContent.m; path = model/pojo/XLCContent.m; sourceTree = "<group>"; };
+		95C1D0641923C36400E38625 /* XLCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCImage.h; path = model/pojo/XLCImage.h; sourceTree = "<group>"; };
+		95C1D0651923C36400E38625 /* XLCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCImage.m; path = model/pojo/XLCImage.m; sourceTree = "<group>"; };
 		95C25642191CBD5E00893317 /* ZGNavigationBarTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationBarTitleViewController.h; path = controllers/ZGNavigationBarTitleViewController.h; sourceTree = "<group>"; };
 		95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationBarTitleViewController.m; path = controllers/ZGNavigationBarTitleViewController.m; sourceTree = "<group>"; };
 		95C25645191CBD6B00893317 /* ZGNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationTitleView.h; path = views/ZGNavigationTitleView.h; sourceTree = "<group>"; };
@@ -214,10 +218,6 @@
 		95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+NimbusCore.m"; sourceTree = "<group>"; };
 		95CD1308190635A000CC1F61 /* XLCPostDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetail.h; path = model/pojo/XLCPostDetail.h; sourceTree = "<group>"; };
 		95CD1309190635A000CC1F61 /* XLCPostDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetail.m; path = model/pojo/XLCPostDetail.m; sourceTree = "<group>"; };
-		95CD130B190636A000CC1F61 /* XLCParagraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCParagraph.h; path = model/pojo/XLCParagraph.h; sourceTree = "<group>"; };
-		95CD130C190636A000CC1F61 /* XLCParagraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCParagraph.m; path = model/pojo/XLCParagraph.m; sourceTree = "<group>"; };
-		95CD130E190636FE00CC1F61 /* XLCParagraphContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCParagraphContent.h; path = model/pojo/XLCParagraphContent.h; sourceTree = "<group>"; };
-		95CD130F190636FE00CC1F61 /* XLCParagraphContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCParagraphContent.m; path = model/pojo/XLCParagraphContent.m; sourceTree = "<group>"; };
 		95D78450190BF4F7009779EA /* XLCPostDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewCell.h; path = views/XLCPostDetailViewCell.h; sourceTree = "<group>"; };
 		95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewCell.m; path = views/XLCPostDetailViewCell.m; sourceTree = "<group>"; };
 		C115E71F3CCC422DB3343D8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -412,10 +412,10 @@
 				95AEBE1D18FA67BD00C7E8E4 /* XLCPostSummary.m */,
 				95CD1308190635A000CC1F61 /* XLCPostDetail.h */,
 				95CD1309190635A000CC1F61 /* XLCPostDetail.m */,
-				95CD130B190636A000CC1F61 /* XLCParagraph.h */,
-				95CD130C190636A000CC1F61 /* XLCParagraph.m */,
-				95CD130E190636FE00CC1F61 /* XLCParagraphContent.h */,
-				95CD130F190636FE00CC1F61 /* XLCParagraphContent.m */,
+				95C1D0611923C32A00E38625 /* XLCContent.h */,
+				95C1D0621923C32A00E38625 /* XLCContent.m */,
+				95C1D0641923C36400E38625 /* XLCImage.h */,
+				95C1D0651923C36400E38625 /* XLCImage.m */,
 			);
 			name = POJO;
 			sourceTree = "<group>";
@@ -754,11 +754,13 @@
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
 				95CCB655191B561600B261D6 /* NIRuntimeClassModifications.m in Sources */,
 				95CCB653191B561600B261D6 /* NIOperations.m in Sources */,
+				95C1D0661923C36400E38625 /* XLCImage.m in Sources */,
 				95C25647191CBD6B00893317 /* ZGNavigationTitleView.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
 				95B45FD619161859004CF5AC /* XLCCustomLinkView.m in Sources */,
 				95AEBDD818F98AAF00C7E8E4 /* XLCAppDelegate.m in Sources */,
+				95C1D0631923C32A00E38625 /* XLCContent.m in Sources */,
 				95CCB64A191B561600B261D6 /* NIDeviceOrientation.m in Sources */,
 				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
 				95CCB64F191B561600B261D6 /* NINavigationAppearance.m in Sources */,
@@ -769,7 +771,6 @@
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */,
 				95CCB654191B561600B261D6 /* NIPaths.m in Sources */,
-				95CD1310190636FE00CC1F61 /* XLCParagraphContent.m in Sources */,
 				95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */,
 				95CCB647191B561600B261D6 /* NICommonMetrics.m in Sources */,
 				95CCB64D191B561600B261D6 /* NIImageUtilities.m in Sources */,
@@ -785,7 +786,6 @@
 				95CCB657191B561600B261D6 /* NISnapshotRotation.m in Sources */,
 				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95CCB650191B561600B261D6 /* NINetworkActivity.m in Sources */,
-				95CD130D190636A000CC1F61 /* XLCParagraph.m in Sources */,
 				95CCB656191B561600B261D6 /* NISDKAvailability.m in Sources */,
 				95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */,
 				95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */,

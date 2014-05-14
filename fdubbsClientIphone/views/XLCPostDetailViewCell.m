@@ -7,8 +7,8 @@
 //
 
 #import "XLCPostDetailViewCell.h"
-#import "XLCParagraph.h"
-#import "XLCParagraphContent.h"
+#import "XLCImage.h"
+#import "XLCContent.h"
 
 
 #import "NIAttributedLabel.h"
@@ -167,37 +167,14 @@
 - (void)constructPostContent:(XLCPostDetail *)postDetail
 {
     
-    NSArray *paragraphs = postDetail.body;
+    XLCContent *content = postDetail.body;
     
-    NSMutableArray *iamgeViews = [[NSMutableArray alloc] init];
-    NSString *postContent = [[NSString alloc] init];
-    
-    for (XLCParagraph *paragraph in paragraphs) {
-        NSArray *contents = paragraph.paraContent;
-        for (XLCParagraphContent *content in contents) {
-            if (content.isNewLine) {
-                //postContent = [postContent stringByAppendingString:@"\n"];
-            }
-            else if (content.isImage) {
-                XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
-                [imageLinkView updateWithString:@"图片链接"];
-                imageLinkView.linkRef = content.linkRef;
-                imageLinkView.position = [postContent length];
-                [iamgeViews addObject:imageLinkView];
-            }
-            else if (content.isLink) {
-                postContent = [postContent stringByAppendingString:content.linkRef];
-            }
-            else {
-                postContent = [postContent stringByAppendingString:content.content];
-            }
-        }
-        postContent = [postContent stringByAppendingString:@"\n"];
-    }
+    NSArray *images = content.images;
+    NSString *postContent = content.text;
     
     //postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
-    
+    NSLog(@"postContent : %@", postContent);
     postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
     postContentLabel.numberOfLines = 0;
     postContentLabel.autoDetectLinks = YES;
@@ -205,7 +182,12 @@
     postContentLabel.font = [UIFont systemFontOfSize:15];
     postContentLabel.text = postContent;
     
-    for (XLCCustomLinkView *imageLinkView in iamgeViews) {
+    for (XLCImage *image in images) {
+        XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+        [imageLinkView updateWithString:@"图片链接"];
+        imageLinkView.linkRef = image.ref;
+        imageLinkView.position = image.pos;
+        
         [postContentLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
     
