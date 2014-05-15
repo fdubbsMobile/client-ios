@@ -26,6 +26,7 @@
 
 // Make RestKit globally available
 #import <RestKit/RestKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "XLCUtil.h"
 #import "XLCFlatSettings.h"
 #import "ZGNavigationBarTitleViewController.h"

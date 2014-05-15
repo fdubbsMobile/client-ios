@@ -24,6 +24,9 @@
         UIImageView *_imgView_line = [[UIImageView alloc]initWithFrame:CGRectMake(0, 2, 320, 2)];
         [_imgView_line setImage:[UIImage imageNamed:@"list_divider_line"]];
         [self.contentView addSubview:_imgView_line];
+        
+        [self.replyCountLabel.layer setMasksToBounds:YES];
+        [self.replyCountLabel.layer setCornerRadius:10.0f];
     }
     return self;
 }
