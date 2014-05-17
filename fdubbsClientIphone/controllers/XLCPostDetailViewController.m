@@ -210,7 +210,7 @@
     
     NSString *CellIdentifier = nil;
     if (indexPath.row == 0) {
-        CellIdentifier = @"PostDetailViewCell";
+        CellIdentifier = @"MainPostViewCell";
     } else {
         NSInteger mod = indexPath.row % 20;
         CellIdentifier = [[NSString alloc] initWithFormat:@"PostReplyViewCell_%d", mod];

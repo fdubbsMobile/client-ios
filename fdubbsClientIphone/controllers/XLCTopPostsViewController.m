@@ -162,14 +162,9 @@
         cell=[[XLCPostSummaryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    XLCPostSummary *post = [_top10Posts objectAtIndex:indexPath.row];
+    XLCPostSummary *postSummary = [_top10Posts objectAtIndex:indexPath.row];
     
-    cell.titleLabel.text = post.metaData.title;
-    cell.replyCountLabel.text = [NSString stringWithFormat:@"%@", post.count];
-    cell.onwerLabel.text = [NSString stringWithFormat:@"%@", post.metaData.owner];
-    cell.boardLabel.text = [NSString stringWithFormat:@"%@", post.metaData.board];
-    
-    cell.rowIndex = indexPath.row;
+    [cell setUpWithPostSummary:postSummary AtRow:indexPath.row];
     
     return cell;
 }

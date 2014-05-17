@@ -43,7 +43,7 @@
 		95B59A81191682A3000B069C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B59A80191682A3000B069C /* CoreText.framework */; };
 		95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */; };
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
-		95B71A96191767CA0002B251 /* XLCPostDetailViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */; };
+		95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
 		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
@@ -74,7 +74,12 @@
 		95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB642191B561600B261D6 /* NIViewRecycler.m */; };
 		95CCB65A191B561600B261D6 /* UIResponder+NimbusCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */; };
 		95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD1309190635A000CC1F61 /* XLCPostDetail.m */; };
-		95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */; };
+		95D78452190BF4F7009779EA /* XLCMainPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95D78451190BF4F7009779EA /* XLCMainPostViewCell.m */; };
+		95EA053F19279B0A00B52793 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95EA053A19279B0A00B52793 /* FontAwesome.ttf */; };
+		95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA053C19279B0A00B52793 /* NSString+FontAwesome.m */; };
+		95EA054119279B0A00B52793 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA053E19279B0A00B52793 /* UIButton+Bootstrap.m */; };
+		95EA05471927CA8900B52793 /* XLCPostDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA05461927CA8900B52793 /* XLCPostDetailViewCell.m */; };
+		95EA054A1927CBC800B52793 /* XLCPostReplyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA05491927CBC800B52793 /* XLCPostReplyViewCell.m */; };
 		9634192B981A47F3B48B8A6C /* libPods-test.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */; };
 		B7CB102EE63E4C35A85AB53A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C115E71F3CCC422DB3343D8E /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -152,7 +157,7 @@
 		95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFlatSettings.m; path = views/XLCFlatSettings.m; sourceTree = "<group>"; };
 		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
 		95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
-		95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostDetailViewCell.xib; sourceTree = "<group>"; };
+		95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostReplyViewCell.xib; sourceTree = "<group>"; };
 		95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewController.h; path = controllers/XLCPostDetailViewController.h; sourceTree = "<group>"; };
 		95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewController.m; path = controllers/XLCPostDetailViewController.m; sourceTree = "<group>"; };
 		95C1D0611923C32A00E38625 /* XLCContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCContent.h; path = model/pojo/XLCContent.h; sourceTree = "<group>"; };
@@ -218,8 +223,17 @@
 		95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+NimbusCore.m"; sourceTree = "<group>"; };
 		95CD1308190635A000CC1F61 /* XLCPostDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetail.h; path = model/pojo/XLCPostDetail.h; sourceTree = "<group>"; };
 		95CD1309190635A000CC1F61 /* XLCPostDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetail.m; path = model/pojo/XLCPostDetail.m; sourceTree = "<group>"; };
-		95D78450190BF4F7009779EA /* XLCPostDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewCell.h; path = views/XLCPostDetailViewCell.h; sourceTree = "<group>"; };
-		95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewCell.m; path = views/XLCPostDetailViewCell.m; sourceTree = "<group>"; };
+		95D78450190BF4F7009779EA /* XLCMainPostViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMainPostViewCell.h; path = views/XLCMainPostViewCell.h; sourceTree = "<group>"; };
+		95D78451190BF4F7009779EA /* XLCMainPostViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMainPostViewCell.m; path = views/XLCMainPostViewCell.m; sourceTree = "<group>"; };
+		95EA053A19279B0A00B52793 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		95EA053B19279B0A00B52793 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		95EA053C19279B0A00B52793 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		95EA053D19279B0A00B52793 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Bootstrap.h"; sourceTree = "<group>"; };
+		95EA053E19279B0A00B52793 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Bootstrap.m"; sourceTree = "<group>"; };
+		95EA05451927CA8900B52793 /* XLCPostDetailViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewCell.h; path = views/XLCPostDetailViewCell.h; sourceTree = "<group>"; };
+		95EA05461927CA8900B52793 /* XLCPostDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewCell.m; path = views/XLCPostDetailViewCell.m; sourceTree = "<group>"; };
+		95EA05481927CBC800B52793 /* XLCPostReplyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostReplyViewCell.h; path = views/XLCPostReplyViewCell.h; sourceTree = "<group>"; };
+		95EA05491927CBC800B52793 /* XLCPostReplyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostReplyViewCell.m; path = views/XLCPostReplyViewCell.m; sourceTree = "<group>"; };
 		C115E71F3CCC422DB3343D8E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -444,6 +458,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95EA053919279B0A00B52793 /* StrapButton */,
 				95CCB60B191B555700B261D6 /* Nimbus */,
 				95234C641913AB1000C80BEB /* FRDLivelyButton */,
 				95A2086418FE73A4009CDEA3 /* TableViewRefresh */,
@@ -451,13 +466,16 @@
 				95B605B318FD6FC3009F9A39 /* XLCFlatSettings.m */,
 				95AEBE2B18FA916600C7E8E4 /* XLCPostSummaryViewCell.h */,
 				95AEBE2C18FA916600C7E8E4 /* XLCPostSummaryViewCell.m */,
-				95D78450190BF4F7009779EA /* XLCPostDetailViewCell.h */,
-				95D78451190BF4F7009779EA /* XLCPostDetailViewCell.m */,
-				95B71A95191767CA0002B251 /* XLCPostDetailViewCell.xib */,
+				95D78450190BF4F7009779EA /* XLCMainPostViewCell.h */,
+				95D78451190BF4F7009779EA /* XLCMainPostViewCell.m */,
 				95B45FD419161859004CF5AC /* XLCCustomLinkView.h */,
 				95B45FD519161859004CF5AC /* XLCCustomLinkView.m */,
 				95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */,
 				95C25645191CBD6B00893317 /* ZGNavigationTitleView.h */,
+				95EA05451927CA8900B52793 /* XLCPostDetailViewCell.h */,
+				95EA05461927CA8900B52793 /* XLCPostDetailViewCell.m */,
+				95EA05481927CBC800B52793 /* XLCPostReplyViewCell.h */,
+				95EA05491927CBC800B52793 /* XLCPostReplyViewCell.m */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -487,6 +505,7 @@
 		95B605B118FD6910009F9A39 /* application */ = {
 			isa = PBXGroup;
 			children = (
+				95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */,
 				95AEBDD618F98AAF00C7E8E4 /* XLCAppDelegate.h */,
 				95AEBDD718F98AAF00C7E8E4 /* XLCAppDelegate.m */,
 				95AEBDD918F98AAF00C7E8E4 /* Main.storyboard */,
@@ -569,6 +588,19 @@
 				95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */,
 			);
 			path = core;
+			sourceTree = "<group>";
+		};
+		95EA053919279B0A00B52793 /* StrapButton */ = {
+			isa = PBXGroup;
+			children = (
+				95EA053A19279B0A00B52793 /* FontAwesome.ttf */,
+				95EA053B19279B0A00B52793 /* NSString+FontAwesome.h */,
+				95EA053C19279B0A00B52793 /* NSString+FontAwesome.m */,
+				95EA053D19279B0A00B52793 /* UIButton+Bootstrap.h */,
+				95EA053E19279B0A00B52793 /* UIButton+Bootstrap.m */,
+			);
+			name = StrapButton;
+			path = views/StrapButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -658,12 +690,13 @@
 				95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */,
 				95AEBDD218F98AAF00C7E8E4 /* InfoPlist.strings in Resources */,
 				95A2087818FE73BC009CDEA3 /* whiteArrow@2x.png in Resources */,
-				95B71A96191767CA0002B251 /* XLCPostDetailViewCell.xib in Resources */,
+				95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */,
 				95A2087618FE73BC009CDEA3 /* grayArrow@2x.png in Resources */,
 				95A2087418FE73BC009CDEA3 /* blueArrow@2x.png in Resources */,
 				95A2087318FE73BC009CDEA3 /* blueArrow.png in Resources */,
 				95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */,
 				95A2087718FE73BC009CDEA3 /* whiteArrow.png in Resources */,
+				95EA053F19279B0A00B52793 /* FontAwesome.ttf in Resources */,
 				95951BB3190296C50051B628 /* list_divider_line.png in Resources */,
 				95A2087518FE73BC009CDEA3 /* grayArrow.png in Resources */,
 				95AEBDDB18F98AAF00C7E8E4 /* Main.storyboard in Resources */,
@@ -764,12 +797,15 @@
 				95CCB64A191B561600B261D6 /* NIDeviceOrientation.m in Sources */,
 				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
 				95CCB64F191B561600B261D6 /* NINavigationAppearance.m in Sources */,
+				95EA054119279B0A00B52793 /* UIButton+Bootstrap.m in Sources */,
+				95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */,
 				95CCB64B191B561600B261D6 /* NIError.m in Sources */,
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */,
+				95EA054A1927CBC800B52793 /* XLCPostReplyViewCell.m in Sources */,
 				95CCB654191B561600B261D6 /* NIPaths.m in Sources */,
 				95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */,
 				95CCB647191B561600B261D6 /* NICommonMetrics.m in Sources */,
@@ -787,10 +823,11 @@
 				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95CCB650191B561600B261D6 /* NINetworkActivity.m in Sources */,
 				95CCB656191B561600B261D6 /* NISDKAvailability.m in Sources */,
-				95D78452190BF4F7009779EA /* XLCPostDetailViewCell.m in Sources */,
+				95D78452190BF4F7009779EA /* XLCMainPostViewCell.m in Sources */,
 				95B605B418FD6FC3009F9A39 /* XLCFlatSettings.m in Sources */,
 				95AEBDD418F98AAF00C7E8E4 /* main.m in Sources */,
 				95AEBE2D18FA916600C7E8E4 /* XLCPostSummaryViewCell.m in Sources */,
+				95EA05471927CA8900B52793 /* XLCPostDetailViewCell.m in Sources */,
 				95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
 				95CCB658191B561600B261D6 /* NIState.m in Sources */,
 			);

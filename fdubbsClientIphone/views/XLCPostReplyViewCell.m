@@ -1,14 +1,14 @@
 //
-//  XLCPostDetailViewCell.m
+//  XLCPostReplyViewCell.m
 //  fdubbsClientIphone
 //
 //  Created by dennis on 14-5-18.
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
-#import "XLCPostDetailViewCell.h"
+#import "XLCPostReplyViewCell.h"
 
-@implementation XLCPostDetailViewCell
+@implementation XLCPostReplyViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

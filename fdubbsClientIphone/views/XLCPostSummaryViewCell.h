@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XLCPostSummary.h"
 
 @interface XLCPostSummaryViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *replyCountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *onwerLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ownerLabel;
 @property (strong, nonatomic) IBOutlet UILabel *boardLabel;
+@property (strong, nonatomic) IBOutlet UIButton *replyCountButton;
+@property (strong, nonatomic) IBOutlet UIButton *ownerButton;
+@property (strong, nonatomic) IBOutlet UIButton *boardButton;
 
 @property NSInteger rowIndex;
 
+- (void)setUpWithPostSummary:(XLCPostSummary *)postSummary AtRow:(NSUInteger)rowNum;
 @end
