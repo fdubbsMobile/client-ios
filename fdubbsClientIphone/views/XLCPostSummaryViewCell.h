@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *boardLabel;
 @property (strong, nonatomic) IBOutlet UIButton *replyCountButton;
 @property (strong, nonatomic) IBOutlet UIButton *ownerButton;
-@property (strong, nonatomic) IBOutlet UIButton *boardButton;
+@property (weak, nonatomic) IBOutlet UIImageView *replyCountImage;
 
 @property NSInteger rowIndex;
 

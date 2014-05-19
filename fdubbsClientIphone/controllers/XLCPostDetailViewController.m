@@ -190,7 +190,7 @@
         return 0;
     }
     
-    return 1;
+    return 5;
     //return _postDetail.replies.count + 1;
     
 }
@@ -220,7 +220,7 @@
     
     if (cell == nil) {
         NSLog(@"No reusablecell for %@", CellIdentifier);
-        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"XLCPostDetailViewCell" owner:self options:nil];
+        NSArray *nibArray = [[NSBundle mainBundle] loadNibNamed:@"XLCPostReplyViewCell" owner:self options:nil];
         cell = (XLCPostDetailViewCell *)[nibArray objectAtIndex:0];
         
         cell = [cell initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -235,7 +235,8 @@
         XLCPostDetail *postDetail = nil;
         
         if (indexPath.row > 0) {
-            postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
+            postDetail = _postDetail;//[_postDetail.replies objectAtIndex:(indexPath.row - 1)];
+            [cell setupWithPostDetail:postDetail AtIndexPath:indexPath];
         }
         else {
             postDetail = _postDetail;

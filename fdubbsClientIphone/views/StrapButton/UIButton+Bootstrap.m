@@ -11,7 +11,7 @@
 
 -(void)bootstrapStyle{
     //self.layer.borderWidth = 1;
-    self.layer.cornerRadius = 5.0;
+    self.layer.cornerRadius = 4.0;
     self.layer.masksToBounds = YES;
     [self setAdjustsImageWhenHighlighted:NO];
     [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

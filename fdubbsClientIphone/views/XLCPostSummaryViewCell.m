@@ -7,6 +7,7 @@
 //
 
 #import "XLCPostSummaryViewCell.h"
+#import "UIImage+Overlay.h"
 
 @interface XLCPostSummaryViewCell ()
 
@@ -36,16 +37,41 @@
     self.rowIndex = rowNum;
     
     self.titleLabel.text = postSummary.metaData.title;
+    
+    UIImage *replyButtonBgImage = [[UIImage imageNamed:@"reply"] imageWithOverlayColor:[UIColor colorWithRed:53/255.0 green:126/255.0 blue:189/255.0 alpha:1]];
+    
     [self.replyCountButton setTitle:[NSString stringWithFormat:@"%@", postSummary.count] forState:UIControlStateNormal];
-    [self.replyCountButton primaryStyle];
+    [self.replyCountButton setBackgroundImage:replyButtonBgImage forState:UIControlStateNormal];
+    //[self.replyCountButton primaryStyle];
+    
     
     [self layoutOwnerLabel:[NSString stringWithFormat:@"%@", postSummary.metaData.owner]];
     [self layoutOwnerButton];
     
     [self layoutBoardLabel:[NSString stringWithFormat:@"%@版", postSummary.metaData.board]];
-    [self layoutBoardButton];
     
 }
+
+
+
+- (UIImage *)colorImage:(UIImage *)origImage withColor:(UIColor *)color
+{
+    UIGraphicsBeginImageContextWithOptions(origImage.size, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, (CGRect){ {0,0}, origImage.size} );
+    
+    CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0, -1, 0, origImage.size.height);
+    CGContextConcatCTM(context, flipVertical);
+    CGContextDrawImage(context, (CGRect){ {0,0}, origImage.size }, [origImage CGImage]);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 
 - (void)layoutBoardLabel:(NSString *)board
 {
@@ -61,15 +87,6 @@
     frame.size.width = textRect.size.width;
     self.boardLabel.frame = frame;
     self.boardLabel.text = board;
-}
-
-- (void)layoutBoardButton
-{
-    [self.boardButton infoStyle];
-    CGRect frame = self.boardButton.frame;
-    frame.origin.x = self.boardLabel.frame.origin.x + self.boardLabel.frame.size.width + 5;
-    
-    self.boardButton.frame = frame;
 }
 
 - (void)layoutOwnerLabel:(NSString *)owner
@@ -91,6 +108,9 @@
 
 - (void)layoutOwnerButton
 {
+    self.ownerButton.hidden = YES;
+    return;
+    
     [self.ownerButton successStyle];
     CGRect frame = self.ownerButton.frame;
     frame.origin.x = self.ownerLabel.frame.origin.x + self.ownerLabel.frame.size.width + 5;

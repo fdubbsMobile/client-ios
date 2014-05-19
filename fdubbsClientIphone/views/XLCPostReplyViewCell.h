@@ -10,5 +10,10 @@
 #import "XLCPostDetailViewCell.h"
 
 @interface XLCPostReplyViewCell : XLCPostDetailViewCell
+@property (strong, nonatomic) IBOutlet UIView *postMetadataView;
+@property (strong, nonatomic) IBOutlet UIView *postContentView;
+@property (strong, nonatomic) IBOutlet UILabel *ownerLabel;
+@property (strong, nonatomic) IBOutlet UIButton *ownerButton;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end

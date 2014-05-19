@@ -19,6 +19,8 @@
         [application setStatusBarStyle:UIStatusBarStyleLightContent];
     }
     
+    [NSThread sleepForTimeInterval:3.0]; // Used For Showing Splash Screen for More Time
+    
     [XLCRESTfulClient initClient];
     
     return YES;

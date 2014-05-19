@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -65,15 +65,11 @@
                                             <rect key="frame" x="10" y="78" width="310" height="1"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" id="092-3l-nUI">
-                                            <rect key="frame" x="279" y="5" width="20" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jDx-Kf-TOt">
-                                            <rect key="frame" x="274" y="24" width="30" height="13"/>
+                                            <rect key="frame" x="280" y="5" width="30" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                            <inset key="contentEdgeInsets" minX="0.0" minY="-6" maxX="0.0" maxY="0.0"/>
                                             <state key="normal" title="1111">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -82,27 +78,17 @@
                                             </state>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8V0-T2-7nj">
-                                            <rect key="frame" x="58" y="5" width="28" height="17"/>
+                                            <rect key="frame" x="58" y="8" width="22" height="13"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                             <state key="normal" title="楼主">
                                                 <color key="titleColor" red="0.10579693157144143" green="0.16993668642541926" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sYU-aj-cEP">
-                                            <rect key="frame" x="44" y="26" width="28" height="17"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="版面">
-                                                <color key="titleColor" red="0.1057969316" green="0.16993668640000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="boardButton" destination="sYU-aj-cEP" id="czE-kF-BZ2"/>
                                     <outlet property="boardLabel" destination="MTj-1U-jM1" id="yhK-6g-qXw"/>
                                     <outlet property="ownerButton" destination="8V0-T2-7nj" id="Vn0-zh-gbO"/>
                                     <outlet property="ownerLabel" destination="EhL-lL-Wxe" id="VN5-jb-Df8"/>
@@ -149,32 +135,23 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="owner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qVQ-wV-dKe">
-                                                            <rect key="frame" x="0.0" y="0.0" width="113" height="21"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kbq-Lx-rqY">
-                                                            <rect key="frame" x="46" y="3" width="28" height="17"/>
+                                                            <rect key="frame" x="50" y="4" width="22" height="15"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                             <state key="normal" title="楼主">
                                                                 <color key="titleColor" red="0.1057969316" green="0.16993668640000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vXm-Fk-Mrd">
-                                                            <rect key="frame" x="27" y="25" width="28" height="17"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                            <state key="normal" title="版面">
-                                                                <color key="titleColor" red="0.1057969316" green="0.16993668640000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </state>
-                                                        </button>
                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版面" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cyv-4A-EKk">
-                                                            <rect key="frame" x="0.0" y="23" width="126" height="21"/>
+                                                            <rect key="frame" x="0.0" y="23" width="74" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <nil key="highlightedColor"/>
@@ -207,7 +184,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="boardButton" destination="vXm-Fk-Mrd" id="Fjv-1k-MXz"/>
                                     <outlet property="boardLabel" destination="cyv-4A-EKk" id="PCn-9m-Rx4"/>
                                     <outlet property="dateLabel" destination="9Ap-DH-P0V" id="kpg-6b-dAz"/>
                                     <outlet property="ownerButton" destination="Kbq-Lx-rqY" id="3eN-BI-riX"/>
@@ -377,7 +353,6 @@
         <image name="boards" width="35" height="35"/>
         <image name="favor" width="35" height="35"/>
         <image name="list_divider_line.png" width="480" height="2"/>
-        <image name="reply" width="24" height="22"/>
         <image name="setting" width="35" height="35"/>
         <image name="top10" width="35" height="35"/>
     </resources>

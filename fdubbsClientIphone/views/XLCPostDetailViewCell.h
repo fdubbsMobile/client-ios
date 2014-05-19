@@ -9,11 +9,35 @@
 #import <UIKit/UIKit.h>
 
 #import "XLCPostDetail.h"
+#import "NIAttributedLabel.h"
+#import "XLCImage.h"
+#import "XLCContent.h"
+#import "XLCCustomLinkView.h"
 
+#define INITIAL_HEIGHT 30
 
 @interface XLCPostDetailViewCell : UITableViewCell
+{
+    BOOL hasInitialied;
+    BOOL hasQuote;
+    CGFloat heightOfCell;
+    
+    NSInteger section;
+    NSInteger row;
+    
+    NIAttributedLabel *postContentLabel;
+    NSMutableArray *bottomBorderLayers;
+    
+    
+}
 
+- (void)setup;
 - (void)setupWithInitialization;
+- (void) initCell;
+- (void) removeBottomBorderLayers;
+- (void) addBottomBorderForView:(UIView *)theView;
+- (void) adjustViewHeight;
+
 - (void)setupWithPostDetail:(XLCPostDetail *)postDetail AtIndexPath:(NSIndexPath *)index;
 - (CGFloat)getHeight;
 - (BOOL) isForIndexPath:(NSIndexPath *)index;
