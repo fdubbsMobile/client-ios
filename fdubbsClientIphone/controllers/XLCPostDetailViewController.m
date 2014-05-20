@@ -190,8 +190,7 @@
         return 0;
     }
     
-    return 5;
-    //return _postDetail.replies.count + 1;
+    return _postDetail.replies.count + 1;
     
 }
 
@@ -233,15 +232,16 @@
         
 
         XLCPostDetail *postDetail = nil;
+        NSString *postOwner = _postDetail.metaData.owner;
         
         if (indexPath.row > 0) {
-            postDetail = _postDetail;//[_postDetail.replies objectAtIndex:(indexPath.row - 1)];
-            [cell setupWithPostDetail:postDetail AtIndexPath:indexPath];
+            postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
         }
         else {
             postDetail = _postDetail;
-            [cell setupWithPostDetail:postDetail AtIndexPath:indexPath];
         }
+        
+        [cell setupWithPostDetail:postDetail PostOwner:postOwner AtIndexPath:indexPath];
         
     }
     

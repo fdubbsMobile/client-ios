@@ -16,4 +16,10 @@
 @property (strong, nonatomic) IBOutlet UIButton *ownerButton;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
+
+@property (strong, nonatomic) UIView *qouteView;
+
+@property (strong, nonatomic) UIImageView *qouteBgView;
+
+
 @end

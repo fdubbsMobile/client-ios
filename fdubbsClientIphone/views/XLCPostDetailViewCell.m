@@ -68,22 +68,11 @@
     
     self.backgroundColor = [UIColor whiteColor];
     
-    /*
-     UIImage *stretchableImage = [[UIImage imageNamed:@"quoteBackground"]
-     stretchableImageWithLeftCapWidth:130 topCapHeight:14];
-     self.qouteBgView = [[UIImageView alloc] initWithImage:stretchableImage];
-     self.qouteView = [[UIView alloc] initWithFrame:CGRectInset(bounds, 10.0f, 0)];
-     [self.qouteView addSubview:self.qouteBgView];
-     //[self.qouteView setBackgroundColor:[UIColor redColor]];
-     */
-    //[self addSubview:self.qouteView];
-    
-    
     hasQuote = FALSE;
     hasInitialied = TRUE;
 }
 
-- (void)setupWithPostDetail:(XLCPostDetail *)postDetail
+- (void)setupWithPostDetail:(XLCPostDetail *)postDetail PostOwner:(NSString *)postOwner
                 AtIndexPath:(NSIndexPath *)index
 {
     heightOfCell = INITIAL_HEIGHT;

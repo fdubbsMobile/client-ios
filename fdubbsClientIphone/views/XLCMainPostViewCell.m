@@ -12,20 +12,21 @@
 
 
 
-- (void)setupWithPostDetail:(XLCPostDetail *)postDetail
+- (void)setupWithPostDetail:(XLCPostDetail *)postDetail PostOwner:(NSString *)postOwner
                     AtIndexPath:(NSIndexPath *)index
 {
     heightOfCell = INITIAL_HEIGHT;
     section = index.section;
     row = index.row;
+    hasQuote = (postDetail.qoute != nil);
+    
+    NSLog(@"has qoute : %@", hasQuote ? @"yes" : @"no");
     
     [self constructPostMetadata:postDetail];
     
     [self constructPostContent:postDetail];
     
-    heightOfCell += self.postMetadataView.frame.size.height;
-    heightOfCell += self.postContentView.frame.size.height;
-
+    [self constructPostQoute:postDetail];
     
     [self adjustViewHeight];
     [self addBottomBorderForView:self];
@@ -42,6 +43,9 @@
     CGRect frame = self.postMetadataView.frame;
     frame.size.height = self.postSubMetaView.frame.size.height + self.titleLabel.frame.size.height + 5;
     self.postMetadataView.frame = frame;
+    
+    heightOfCell += self.postMetadataView.frame.size.height;
+    
 }
 
 - (void)layoutPostSubMetaDataView:(XLCPostDetail *)postDetail
@@ -54,9 +58,9 @@
     
     self.dateLabel.text = [NSString stringWithFormat:@"%@", postDetail.metaData.date];
     
-    CGRect frame = self.postSubMetaView.frame;
-    frame.size.height = self.ownerLabel.frame.size.height + self.boardLabel.frame.size.height + 5;
-    self.postSubMetaView.frame = frame;
+    //CGRect frame = self.postSubMetaView.frame;
+    //frame.size.height = self.ownerLabel.frame.size.height + self.boardLabel.frame.size.height + 5;
+    //self.postSubMetaView.frame = frame;
 }
 
 - (void)layoutBoardLabel:(NSString *)board
@@ -131,13 +135,16 @@
     NSArray *images = content.images;
     NSString *postContent = content.text;
     
-    //postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if (hasQuote) {
+        postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    
 
     NSLog(@"postContent : %@", postContent);
     postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
     postContentLabel.numberOfLines = 0;
     postContentLabel.autoDetectLinks = YES;
-    postContentLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    postContentLabel.lineBreakMode = NSLineBreakByClipping;
     postContentLabel.font = [UIFont systemFontOfSize:15];
     postContentLabel.text = postContent;
     
@@ -159,7 +166,32 @@
     contentFrame.origin.y = self.postMetadataView.frame.origin.y + self.postMetadataView.frame.size.height + 15;
     contentFrame.size.height = postContentLabel.frame.size.height;
     self.postContentView.frame = contentFrame;
+    
+    heightOfCell += self.postContentView.frame.size.height;
 
+}
+
+- (void)constructPostQoute:(XLCPostDetail *)postDetail
+{
+    if (!hasQuote) {
+        return;
+    }
+    
+    UIImage *stretchableImage = [[UIImage imageNamed:@"quoteBackground"]
+                                 stretchableImageWithLeftCapWidth:130 topCapHeight:14];
+    self.qouteBgView = [[UIImageView alloc] initWithImage:stretchableImage];
+    
+    CGFloat x = self.postContentView.frame.origin.x;
+    CGFloat y = self.postContentView.frame.origin.y + self.postContentView.frame.size.height + 15;
+    CGFloat width = self.postContentView.frame.size.width;
+    
+    CGRect contentFrame = CGRectMake(x, y, width, 200);
+    self.qouteView = [[UIView alloc] initWithFrame:contentFrame];
+    [self.qouteView addSubview:self.qouteBgView];
+    [self.qouteView setBackgroundColor:[UIColor redColor]];
+    [self addSubview:self.qouteView];
+    
+    heightOfCell += self.qouteView.frame.size.height;
 }
 
 
