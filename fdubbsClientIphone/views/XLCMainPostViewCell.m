@@ -141,12 +141,12 @@
     
 
     NSLog(@"postContent : %@", postContent);
-    postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+    NIAttributedLabel *postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
     postContentLabel.numberOfLines = 0;
     postContentLabel.autoDetectLinks = YES;
     postContentLabel.lineBreakMode = NSLineBreakByClipping;
     postContentLabel.font = [UIFont systemFontOfSize:15];
-    postContentLabel.text = postContent;
+    postContentLabel.text = [postContent copy];
     
     for (XLCImage *image in images) {
         XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
@@ -177,21 +177,85 @@
         return;
     }
     
+    [self layoutPostQouteView];
+    [self layoutPostQouteLabel:postDetail];
+    [self layoutPostQouteBackgroundImage];
+    
+    heightOfCell += self.postQouteView.frame.size.height;
+}
+
+- (void)layoutPostQouteView
+{
+    CGRect contentFrame = self.postContentView.frame;
+    CGFloat x = contentFrame.origin.x;
+    CGFloat y = contentFrame.origin.y + contentFrame.size.height + 15;
+    CGFloat width = contentFrame.size.width;
+    
+    CGRect qouteFrame = CGRectMake(x, y, width, 0);
+    self.postQouteView = [[UIView alloc] initWithFrame:qouteFrame];
+    [self.postQouteView setBackgroundColor:[UIColor redColor]];
+    
+    [self addSubview:self.postQouteView];
+    
+}
+
+- (void)layoutPostQouteLabel:(XLCPostDetail *)postDetail
+{
+    
+    XLCContent *content = postDetail.qoute;
+    
+    NSArray *images = content.images;
+    NSString *postQoute = content.text;
+    
+    
+    
+    NSLog(@"postQoute : %@", postQoute);
+    NIAttributedLabel *postQouteLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+    postQouteLabel.numberOfLines = 0;
+    postQouteLabel.autoDetectLinks = YES;
+    postQouteLabel.lineBreakMode = NSLineBreakByClipping;
+    postQouteLabel.font = [UIFont systemFontOfSize:15];
+    postQouteLabel.text = [postQoute copy];
+    
+    for (XLCImage *image in images) {
+        XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+        [imageLinkView updateWithString:@"图片链接"];
+        imageLinkView.linkRef = image.ref;
+        imageLinkView.position = image.pos;
+        
+        [postQouteLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
+    }
+    
+    
+    
+    CGSize size = [postQouteLabel sizeThatFits:CGSizeMake(self.postContentView.bounds.size.width, CGFLOAT_MAX)];
+    postQouteLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    [self.postQouteView addSubview:postQouteLabel];
+    
+    
+    CGRect qouteFrame = self.postQouteView.frame;
+    qouteFrame.size.height = postQouteLabel.frame.size.height + 10;
+    self.postQouteView.frame = qouteFrame;
+    
+}
+
+- (void)layoutPostQouteBackgroundImage
+{
     UIImage *stretchableImage = [[UIImage imageNamed:@"quoteBackground"]
                                  stretchableImageWithLeftCapWidth:130 topCapHeight:14];
-    self.qouteBgView = [[UIImageView alloc] initWithImage:stretchableImage];
+    UIImageView *qouteBgView = [[UIImageView alloc] initWithImage:stretchableImage];
     
-    CGFloat x = self.postContentView.frame.origin.x;
-    CGFloat y = self.postContentView.frame.origin.y + self.postContentView.frame.size.height + 15;
-    CGFloat width = self.postContentView.frame.size.width;
+    CGRect qouteFrame = self.postQouteView.frame;
+    CGFloat x = qouteFrame.origin.x - 5;
+    CGFloat y = qouteFrame.origin.y - 5;
+    CGFloat width = qouteFrame.size.width + 10;
+    CGFloat height = qouteFrame.size.height + 10;
     
-    CGRect contentFrame = CGRectMake(x, y, width, 200);
-    self.qouteView = [[UIView alloc] initWithFrame:contentFrame];
-    [self.qouteView addSubview:self.qouteBgView];
-    [self.qouteView setBackgroundColor:[UIColor redColor]];
-    [self addSubview:self.qouteView];
+    CGRect qouteBgFrame = CGRectMake(x, y, width, height);
+    qouteBgView.frame = qouteBgFrame;
+    [self.postQouteView addSubview:qouteBgView];
     
-    heightOfCell += self.qouteView.frame.size.height;
 }
 
 

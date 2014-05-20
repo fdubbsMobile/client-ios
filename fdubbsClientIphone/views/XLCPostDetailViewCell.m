@@ -47,7 +47,6 @@
     section = -1;
     row = -1;
     
-    postContentLabel = nil;
     bottomBorderLayers = [[NSMutableArray alloc] init];
 }
 

@@ -25,9 +25,6 @@
 
 @property (nonatomic, strong) IBOutlet UIView *postContentView;
 
-@property (strong, nonatomic) UIView *qouteView;
-
-@property (strong, nonatomic) UIImageView *qouteBgView;
-
+@property (strong, nonatomic) UIView *postQouteView;
 
 @end

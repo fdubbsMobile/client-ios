@@ -42,7 +42,7 @@ static const CGFloat kVMargin = 5.0f;
 
 static const CGFloat kLineSpacing = 8.0f;
 
-static const CGFloat kParagraphSpacing = 8.0f;
+static const CGFloat kParagraphSpacing = 0.5f;
 
 // \u2026 is the Unicode horizontal ellipsis character code
 static NSString* const kEllipsesCharacter = @"\u2026";

@@ -17,9 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 
-@property (strong, nonatomic) UIView *qouteView;
+@property (strong, nonatomic) UIView *postQouteView;
 
-@property (strong, nonatomic) UIImageView *qouteBgView;
 
 
 @end

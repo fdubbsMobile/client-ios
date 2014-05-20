@@ -25,7 +25,6 @@
     NSInteger section;
     NSInteger row;
     
-    NIAttributedLabel *postContentLabel;
     NSMutableArray *bottomBorderLayers;
     
     
