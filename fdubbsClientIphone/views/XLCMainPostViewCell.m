@@ -132,30 +132,9 @@
     
     XLCContent *content = postDetail.body;
     
-    NSArray *images = content.images;
-    NSString *postContent = content.text;
-    
-    if (hasQuote) {
-        postContent = [postContent stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    }
-    
-
-    NSLog(@"postContent : %@", postContent);
-    NIAttributedLabel *postContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
-    postContentLabel.numberOfLines = 0;
-    postContentLabel.autoDetectLinks = YES;
-    postContentLabel.lineBreakMode = NSLineBreakByClipping;
-    postContentLabel.font = [UIFont systemFontOfSize:15];
-    postContentLabel.text = [postContent copy];
-    
-    for (XLCImage *image in images) {
-        XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
-        [imageLinkView updateWithString:@"图片链接"];
-        imageLinkView.linkRef = image.ref;
-        imageLinkView.position = image.pos;
-        
-        [postContentLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
-    }
+    NIAttributedLabel *postContentLabel =
+    [self getRichContentLabelWithContent:content
+                                    Font:[UIFont systemFontOfSize:15] fitsView:self.postContentView];
     
     [self.postContentView addSubview:postContentLabel];
     
@@ -181,7 +160,7 @@
     [self layoutPostQouteLabel:postDetail];
     [self layoutPostQouteBackgroundImage];
     
-    heightOfCell += self.postQouteView.frame.size.height;
+    heightOfCell += self.postQouteView.frame.size.height + 15;
 }
 
 - (void)layoutPostQouteView
@@ -193,7 +172,6 @@
     
     CGRect qouteFrame = CGRectMake(x, y, width, 0);
     self.postQouteView = [[UIView alloc] initWithFrame:qouteFrame];
-    [self.postQouteView setBackgroundColor:[UIColor redColor]];
     
     [self addSubview:self.postQouteView];
     
@@ -204,32 +182,10 @@
     
     XLCContent *content = postDetail.qoute;
     
-    NSArray *images = content.images;
-    NSString *postQoute = content.text;
     
-    
-    
-    NSLog(@"postQoute : %@", postQoute);
-    NIAttributedLabel *postQouteLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
-    postQouteLabel.numberOfLines = 0;
-    postQouteLabel.autoDetectLinks = YES;
-    postQouteLabel.lineBreakMode = NSLineBreakByClipping;
-    postQouteLabel.font = [UIFont systemFontOfSize:15];
-    postQouteLabel.text = [postQoute copy];
-    
-    for (XLCImage *image in images) {
-        XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
-        [imageLinkView updateWithString:@"图片链接"];
-        imageLinkView.linkRef = image.ref;
-        imageLinkView.position = image.pos;
-        
-        [postQouteLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
-    }
-    
-    
-    
-    CGSize size = [postQouteLabel sizeThatFits:CGSizeMake(self.postContentView.bounds.size.width, CGFLOAT_MAX)];
-    postQouteLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    NIAttributedLabel *postQouteLabel =
+    [self getRichContentLabelWithContent:content
+                                    Font:[UIFont systemFontOfSize:13] fitsView:self.postQouteView];
     
     [self.postQouteView addSubview:postQouteLabel];
     
@@ -237,7 +193,6 @@
     CGRect qouteFrame = self.postQouteView.frame;
     qouteFrame.size.height = postQouteLabel.frame.size.height + 10;
     self.postQouteView.frame = qouteFrame;
-    
 }
 
 - (void)layoutPostQouteBackgroundImage
@@ -247,15 +202,52 @@
     UIImageView *qouteBgView = [[UIImageView alloc] initWithImage:stretchableImage];
     
     CGRect qouteFrame = self.postQouteView.frame;
-    CGFloat x = qouteFrame.origin.x - 5;
-    CGFloat y = qouteFrame.origin.y - 5;
-    CGFloat width = qouteFrame.size.width + 10;
-    CGFloat height = qouteFrame.size.height + 10;
+    CGFloat x = qouteFrame.origin.x - 15;
+    CGFloat y = qouteFrame.origin.y - 10;
+    CGFloat width = qouteFrame.size.width + 30;
+    CGFloat height = qouteFrame.size.height + 15;
     
     CGRect qouteBgFrame = CGRectMake(x, y, width, height);
     qouteBgView.frame = qouteBgFrame;
-    [self.postQouteView addSubview:qouteBgView];
+    [self addSubview:qouteBgView];
     
+}
+
+- (NIAttributedLabel *)getRichContentLabelWithContent:(XLCContent *)content
+                                                 Font:(UIFont *)font fitsView:(UIView *)theView
+{
+    NIAttributedLabel *richContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+    
+    
+    NSArray *images = content.images;
+    NSString *contentValue = content.text;
+    
+    if (hasQuote) {
+        contentValue = [contentValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    
+    NSLog(@"content value : %@", contentValue);
+    
+    richContentLabel.numberOfLines = 0;
+    richContentLabel.autoDetectLinks = YES;
+    richContentLabel.lineBreakMode = NSLineBreakByClipping;
+    richContentLabel.font = font;
+    richContentLabel.text = [contentValue copy];
+    
+    for (XLCImage *image in images) {
+        XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+        [imageLinkView updateWithString:@"图片链接"];
+        imageLinkView.linkRef = image.ref;
+        imageLinkView.position = image.pos;
+        
+        [richContentLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
+    }
+    
+    
+    CGSize size = [richContentLabel sizeThatFits:CGSizeMake(theView.bounds.size.width, CGFLOAT_MAX)];
+    richContentLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    
+    return richContentLabel;
 }
 
 
