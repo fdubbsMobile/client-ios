@@ -75,7 +75,7 @@ SINGLETON_GCD(XLCPostManager);
 }
 
 - (void) doLoadPostDetailWithBoard:(NSString *)board postId:(NSString *)postId
-                          SuccessBlock:(void (^)(XLCPostDetail *))success
+                          successBlock:(void (^)(XLCPostDetail *))success
                              failBlock:(void (^)(NSError *))failure
 {
     // Load the object model via RestKit
@@ -94,6 +94,29 @@ SINGLETON_GCD(XLCPostManager);
                                 failure(error);
                             }];
 
+}
+
+- (void) doLoadMorePostRepliesWithBoardId:(NSString *)boardId
+                               mainPostId:(NSString *)mainPostId
+                              lastReplyId:(NSString *)lastReplyId
+                             successBlock:(void (^)(XLCPostReplies *))success
+                                failBlock:(void (^)(NSError *))failure
+{
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSString *path = [NSString stringWithFormat:@"/api/v1/post/reply/bid/%@/%@/%@", boardId, mainPostId, lastReplyId];
+    NSLog(@"path is %@", path);
+    
+    [objectManager getObjectsAtPath:path
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCPostReplies *postReplies = [mappingResult firstObject];
+                                success(postReplies);
+                                NSLog(@"Loaded post replies: %@", postReplies);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
 }
 
 @end

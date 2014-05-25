@@ -49,6 +49,9 @@
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
 		95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */; };
 		95C25647191CBD6B00893317 /* ZGNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */; };
+		95C3CEF71930D7690027D0F3 /* XLCPostReplies.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */; };
+		95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */; };
+		95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */; };
 		95C71EF4192A2A3B006DCC75 /* UIImage+Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C71EF3192A2A3B006DCC75 /* UIImage+Overlay.m */; };
 		95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB60E191B555700B261D6 /* NIAttributedLabel.m */; };
 		95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB610191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m */; };
@@ -169,6 +172,12 @@
 		95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationBarTitleViewController.m; path = controllers/ZGNavigationBarTitleViewController.m; sourceTree = "<group>"; };
 		95C25645191CBD6B00893317 /* ZGNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationTitleView.h; path = views/ZGNavigationTitleView.h; sourceTree = "<group>"; };
 		95C25646191CBD6B00893317 /* ZGNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationTitleView.m; path = views/ZGNavigationTitleView.m; sourceTree = "<group>"; };
+		95C3CEF51930D7690027D0F3 /* XLCPostReplies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostReplies.h; path = model/pojo/XLCPostReplies.h; sourceTree = "<group>"; };
+		95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostReplies.m; path = model/pojo/XLCPostReplies.m; sourceTree = "<group>"; };
+		95C3CEF81930D8090027D0F3 /* XLCPostQoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostQoute.h; path = model/pojo/XLCPostQoute.h; sourceTree = "<group>"; };
+		95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostQoute.m; path = model/pojo/XLCPostQoute.m; sourceTree = "<group>"; };
+		95C3CEFC1930E69C0027D0F3 /* LoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreFooterView.h; sourceTree = "<group>"; };
+		95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
 		95C71EF2192A2A3B006DCC75 /* UIImage+Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Overlay.h"; path = "views/UIImage+Overlay.h"; sourceTree = "<group>"; };
 		95C71EF3192A2A3B006DCC75 /* UIImage+Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Overlay.m"; path = "views/UIImage+Overlay.m"; sourceTree = "<group>"; };
 		95CCB60D191B555700B261D6 /* NIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIAttributedLabel.h; sourceTree = "<group>"; };
@@ -433,6 +442,10 @@
 				95C1D0621923C32A00E38625 /* XLCContent.m */,
 				95C1D0641923C36400E38625 /* XLCImage.h */,
 				95C1D0651923C36400E38625 /* XLCImage.m */,
+				95C3CEF51930D7690027D0F3 /* XLCPostReplies.h */,
+				95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */,
+				95C3CEF81930D8090027D0F3 /* XLCPostQoute.h */,
+				95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */,
 			);
 			name = POJO;
 			sourceTree = "<group>";
@@ -461,6 +474,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95C3CEFB1930E69C0027D0F3 /* LoadMoreFooterView */,
 				95EA053919279B0A00B52793 /* StrapButton */,
 				95CCB60B191B555700B261D6 /* Nimbus */,
 				95234C641913AB1000C80BEB /* FRDLivelyButton */,
@@ -516,6 +530,16 @@
 				95AEBDD918F98AAF00C7E8E4 /* Main.storyboard */,
 			);
 			name = application;
+			sourceTree = "<group>";
+		};
+		95C3CEFB1930E69C0027D0F3 /* LoadMoreFooterView */ = {
+			isa = PBXGroup;
+			children = (
+				95C3CEFC1930E69C0027D0F3 /* LoadMoreFooterView.h */,
+				95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */,
+			);
+			name = LoadMoreFooterView;
+			path = views/LoadMoreFooterView;
 			sourceTree = "<group>";
 		};
 		95CCB60B191B555700B261D6 /* Nimbus */ = {
@@ -805,10 +829,13 @@
 				95EA054119279B0A00B52793 /* UIButton+Bootstrap.m in Sources */,
 				95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */,
 				95CCB64B191B561600B261D6 /* NIError.m in Sources */,
+				95C3CEF71930D7690027D0F3 /* XLCPostReplies.m in Sources */,
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
+				95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */,
+				95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */,
 				95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */,
 				95C71EF4192A2A3B006DCC75 /* UIImage+Overlay.m in Sources */,
 				95EA054A1927CBC800B52793 /* XLCPostReplyViewCell.m in Sources */,

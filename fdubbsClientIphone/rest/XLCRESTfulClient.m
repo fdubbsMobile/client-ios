@@ -15,6 +15,8 @@
 #import "XLCContent.h"
 #import "XLCImage.h"
 #import "XLCPostDetail.h"
+#import "XLCPostQoute.h"
+#import "XLCPostReplies.h"
 
 @implementation XLCRESTfulClient
 
@@ -100,26 +102,49 @@
                                                                                          withMapping:postImageMapping];
     [postContentMapping addPropertyMapping:contentImageRSMapping];
     
+    
+    
     RKObjectMapping *postDetailMapping = [RKObjectMapping mappingForClass:[XLCPostDetail class]];
     
     RKRelationshipMapping* postBodyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"body"
                                                                                               toKeyPath:@"body"
                                                                                             withMapping:postContentMapping];
+    
+    RKObjectMapping *postQouteMapping = [RKObjectMapping mappingForClass:[XLCPostQoute class]];
+    [postQouteMapping addAttributeMappingsFromDictionary:@{
+                                                             @"owner" : @"owner",
+                                                             @"content" : @"content"
+                                                             }];
     RKRelationshipMapping* postQouteRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"qoute"
                                                                                            toKeyPath:@"qoute"
-                                                                                         withMapping:postContentMapping];
+                                                                                         withMapping:postQouteMapping];
+    
     RKRelationshipMapping* postSignRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"sign"
                                                                                             toKeyPath:@"sign"
                                                                                           withMapping:postContentMapping];
-    RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"replies"
-                                                                                           toKeyPath:@"replies"
-                                                                                         withMapping:postDetailMapping];
+    
+    RKObjectMapping *postRepliesMapping = [RKObjectMapping mappingForClass:[XLCPostReplies class]];
+    [postRepliesMapping addAttributeMappingsFromDictionary:@{
+                                                             @"board_id" : @"boardId",
+                                                             @"main_post_id" : @"mainPostId",
+                                                             @"last_reply_id" : @"lastReplyId",
+                                                             @"has_more" : @"hasMore"
+                                                             }];
+    
+    RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_reply_list"
+                                                                                               toKeyPath:@"replies"
+                                                                                             withMapping:postDetailMapping];
+    [postRepliesMapping addPropertyMapping:postReplyRSMapping];
+    
+    RKRelationshipMapping* postRepliesRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"replies"
+                                                                                           toKeyPath:@"reply"
+                                                                                         withMapping:postRepliesMapping];
     [postDetailMapping addPropertyMapping:[postMetaRSMapping copy]];
     
     [postDetailMapping addPropertyMapping:postBodyRSMapping];
     [postDetailMapping addPropertyMapping:postQouteRSMapping];
     [postDetailMapping addPropertyMapping:postSignRSMapping];
-    [postDetailMapping addPropertyMapping:postReplyRSMapping];
+    [postDetailMapping addPropertyMapping:postRepliesRSMapping];
     
     // Register our mappings with the provider using a response descriptor
     RKResponseDescriptor *postDetailRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postDetailMapping
@@ -128,6 +153,16 @@
                                                                                            keyPath:nil
                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:postDetailRespDesc];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *postRepliesRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postRepliesMapping
+                                                                                            method:RKRequestMethodGET
+                                                                                       pathPattern:@"/api/v1/post/reply/bid/:boardId/:mainPostId/:lastReplyId"
+                                                                                           keyPath:nil
+                                                                                       statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:postRepliesRespDesc];
+    
+    
 }
 
 @end

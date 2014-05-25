@@ -14,8 +14,9 @@
 
 #import "XLCPostDetailViewCell.h"
 #import "FRDLivelyButton.h"
+#import "LoadMoreFooterView.h"
 
-@interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate> {
+@interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate> {
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -25,6 +26,12 @@
     NSString *_board;
     
     XLCPostDetail *_postDetail;
+    
+    BOOL _hasMorePost;
+    NSString *_boardId;
+    NSString *_lastReplyId;
+    NSMutableArray *_replies;
+    LoadMoreFooterView *_loadMoreFooterView;
 }
 
 @end
@@ -39,6 +46,11 @@
         _refreshHeaderView = nil;
         _postDetail = nil;
         _reloading = NO;
+        _hasMorePost = NO;
+        _lastReplyId = nil;
+        _boardId = nil;
+        _replies = nil;
+        _loadMoreFooterView = nil;
     }
     return self;
 }
@@ -92,8 +104,16 @@
     self.titleColor = [UIColor whiteColor];
     self.subtitleColor = [UIColor whiteColor];
     
+    if (_loadMoreFooterView ==nil) {
+        _loadMoreFooterView = [[LoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+        _loadMoreFooterView.delegate = self;
+    }
+    
+    [self showOrDismissTableFooterView];
+    
     DebugLog(@"init XLCPostDetailViewController");
     [self performSelector:@selector(initRefreshPostDetail) withObject:nil afterDelay:0.4];
+    
 }
 
 - (void)backAction
@@ -130,6 +150,16 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
 
+- (void) initAndClearReplies
+{
+    if (_replies == nil) {
+        _replies = [[NSMutableArray alloc] init];
+    }
+    else {
+        [_replies removeAllObjects];
+    }
+}
+
 -(void)loadData
 {
     _reloading = YES;
@@ -140,11 +170,20 @@
         DebugLog(@"Success to load post detail!");
         
         _postDetail = postDetail;
+        _boardId = postDetail.reply.boardId;
+        _hasMorePost = postDetail.reply.hasMore;
+        _lastReplyId = postDetail.reply.lastReplyId;
+        
+        [self initAndClearReplies];
+        [_replies addObjectsFromArray:postDetail.reply.replies];
+        
         [self.tableView reloadData];
         
         DebugLog(@"post id : %@", postDetail.metaData.postId);
         DebugLog(@"post owner : %@", postDetail.metaData.owner);
         DebugLog(@"post title : %@", postDetail.metaData.title);
+        
+        [self showOrDismissTableFooterView];
         
         [_refreshHeaderView refreshLastUpdatedDate];
         _reloading = NO;
@@ -166,7 +205,7 @@
         NSLog(@"Hit error: %@", error);
     };
     
-    [[XLCPostManager sharedXLCPostManager] doLoadPostDetailWithBoard:_board postId:_postId SuccessBlock:successBlock failBlock:failBlock];
+    [[XLCPostManager sharedXLCPostManager] doLoadPostDetailWithBoard:_board postId:_postId successBlock:successBlock failBlock:failBlock];
 }
 
 
@@ -190,29 +229,29 @@
         return 0;
     }
     
-    return _postDetail.replies.count + 1;
+    return _replies.count + 1;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DebugLog(@"heightForRowAtIndexPath : section -> %d, row -> %d", indexPath.section, indexPath.row);
+
     XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     CGFloat cellHeight = [cell getHeight];
-    NSLog(@"The height of cell %d is %f", indexPath.row, cellHeight);
+
     return cellHeight;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DebugLog(@"load table view cell : section -> %d, row -> %d", indexPath.section, indexPath.row);
     
     NSString *CellIdentifier = nil;
     if (indexPath.row == 0) {
         CellIdentifier = @"MainPostViewCell";
     } else {
-        NSInteger mod = indexPath.row % 20;
-        CellIdentifier = [[NSString alloc] initWithFormat:@"PostReplyViewCell_%d", mod];
+        //NSInteger mod = indexPath.row % 20;
+        //CellIdentifier = [[NSString alloc] initWithFormat:@"PostReplyViewCell_%ld", (long)mod];
+        CellIdentifier = @"PostReplyViewCell";
     }
     
     XLCPostDetailViewCell *cell = (XLCPostDetailViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -227,7 +266,6 @@
     
     if (![cell isForIndexPath:indexPath]) {
 
-        NSLog(@"not for index.section = %d, row = %d", indexPath.section, indexPath.row);
         [cell setupWithInitialization];
         
 
@@ -235,7 +273,7 @@
         NSString *postOwner = _postDetail.metaData.owner;
         
         if (indexPath.row > 0) {
-            postDetail = [_postDetail.replies objectAtIndex:(indexPath.row - 1)];
+            postDetail = [_replies objectAtIndex:(indexPath.row - 1)];
         }
         else {
             postDetail = _postDetail;
@@ -333,12 +371,28 @@
     
 	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
+    if (_hasMorePost) {
+        
+        if (!_reloading) {
+            NSLog(@"scrollViewDidScroll -- hasMore");
+            [_loadMoreFooterView loadMoreScrollViewDidScroll:scrollView];
+        }
+    }
+    
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+    if (_hasMorePost) {
+        
+        if (!_reloading) {
+            NSLog(@"scrollViewDidEndDragging -- hasMore");
+            [_loadMoreFooterView loadMoreScrollViewDidEndDragging:scrollView];
+        }
+    }
     
 }
 
@@ -357,6 +411,75 @@
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
 {
     return [NSDate date];
+}
+
+- (void)showOrDismissTableFooterView
+{
+    if (_hasMorePost) {
+        self.tableView.tableFooterView = _loadMoreFooterView;
+        self.tableView.tableFooterView.hidden = NO;
+    }
+    else {
+        self.tableView.tableFooterView = nil;
+        self.tableView.tableFooterView.hidden = YES;
+    }
+}
+
+- (void) loadMoreReplies
+{
+    NSLog(@"try to load more replies!");
+    _reloading = YES;
+    
+    
+    void (^successBlock)(XLCPostReplies *) = ^(XLCPostReplies *postReplies)
+    {
+        DebugLog(@"Success to load more replies!");
+        
+        _hasMorePost = postReplies.hasMore;
+        _lastReplyId = postReplies.lastReplyId;
+        
+        [_replies addObjectsFromArray:postReplies.replies];
+        
+        [self.tableView reloadData];
+        
+        [_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        [self showOrDismissTableFooterView];
+        _reloading = NO;
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        _reloading = NO;
+        [_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    [[XLCPostManager sharedXLCPostManager] doLoadMorePostRepliesWithBoardId:_boardId mainPostId:_postId lastReplyId:_lastReplyId successBlock:successBlock failBlock:failBlock];
+}
+
+#pragma mark -
+#pragma mark LoadMoreTableFooterDelegate Methods
+
+- (void)loadMoreTableFooterDidTriggerRefresh:(LoadMoreFooterView *)view {
+    
+    NSLog(@"loadMoreTableFooterDidTriggerRefresh");
+	[self loadMoreReplies];
+	//[self performSelector:@selector(loadMoreReplies) withObject:nil afterDelay:0.4];
+    
+}
+
+- (BOOL)loadMoreTableFooterDataSourceIsLoading:(LoadMoreFooterView *)view {
+    NSLog(@"loadMoreTableFooterDataSourceIsLoading");
+	return _reloading;
 }
 
 

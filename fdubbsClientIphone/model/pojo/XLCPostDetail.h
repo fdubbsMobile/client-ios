@@ -10,15 +10,17 @@
 
 #import "XLCPostMetaData.h"
 #import "XLCContent.h"
+#import "XLCPostReplies.h"
+#import "XLCPostQoute.h"
 
 @interface XLCPostDetail : NSObject
 
 @property (strong, nonatomic) XLCPostMetaData *metaData;
 
 @property (strong, nonatomic) XLCContent *body;
-@property (strong, nonatomic) XLCContent *qoute;
+@property (strong, nonatomic) XLCPostQoute *qoute;
 @property (strong, nonatomic) XLCContent *sign;
 
-@property (strong, nonatomic) NSArray *replies;
+@property (strong, nonatomic) XLCPostReplies *reply;
 
 @end

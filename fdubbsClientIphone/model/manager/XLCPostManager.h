@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class XLCPostDetail;
+@class XLCPostReplies;
 
 @interface XLCPostManager : NSObject
 
@@ -18,6 +19,12 @@
                                 failBlock:(void (^)(NSError *))failure;
 
 - (void) doLoadPostDetailWithBoard:(NSString *)board postId:(NSString *)postId
-                          SuccessBlock:(void (^)(XLCPostDetail *))success
+                          successBlock:(void (^)(XLCPostDetail *))success
                              failBlock:(void (^)(NSError *))failure;
+
+- (void) doLoadMorePostRepliesWithBoardId:(NSString *)boardId
+                               mainPostId:(NSString *)mainPostId
+                              lastReplyId:(NSString *)lastReplyId
+                             successBlock:(void (^)(XLCPostReplies *))success
+                                failBlock:(void (^)(NSError *))failure;
 @end

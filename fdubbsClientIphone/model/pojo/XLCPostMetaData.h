@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSString *nick;
 @property (strong, nonatomic) NSString *date;
 @property (strong, nonatomic) NSString *board;
+@property (strong, nonatomic) NSString *boardId;
 
 - (id) init;
 - (XLCPostMetaData *) withPostId:(NSString *)postId;
@@ -24,5 +25,6 @@
 - (XLCPostMetaData *) withNick:(NSString *)nick;
 - (XLCPostMetaData *) withDate:(NSString *)date;
 - (XLCPostMetaData *) withBoard:(NSString *)board;
+- (XLCPostMetaData *) withBoardId:(NSString *)boardId;
 
 @end

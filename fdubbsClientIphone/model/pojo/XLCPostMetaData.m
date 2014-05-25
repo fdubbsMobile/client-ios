@@ -58,5 +58,11 @@
     return self;
 }
 
+- (XLCPostMetaData *) withBoardId:(NSString *)boardId
+{
+    _boardId = boardId;
+    return self;
+}
+
 
 @end

@@ -156,6 +156,8 @@
         return;
     }
     
+    return;
+    
     [self layoutPostQouteView];
     [self layoutPostQouteLabel:postDetail];
     [self layoutPostQouteBackgroundImage];
