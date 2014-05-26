@@ -71,6 +71,18 @@
     hasInitialied = TRUE;
 }
 
+-  (void)reset
+{
+    hasQuote = FALSE;
+    heightOfCell = INITIAL_HEIGHT;
+    
+    section = -1;
+    row = -1;
+    
+    [self removeBottomBorderLayers];
+    
+}
+
 - (void)setupWithPostDetail:(XLCPostDetail *)postDetail PostOwner:(NSString *)postOwner
                 AtIndexPath:(NSIndexPath *)index
 {

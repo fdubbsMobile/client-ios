@@ -37,6 +37,8 @@
 - (void) addBottomBorderForView:(UIView *)theView;
 - (void) adjustViewHeight;
 
+-  (void)reset;
+
 - (void)setupWithPostDetail:(XLCPostDetail *)postDetail PostOwner:(NSString *)postOwner AtIndexPath:(NSIndexPath *)index;
 - (CGFloat)getHeight;
 - (BOOL) isForIndexPath:(NSIndexPath *)index;

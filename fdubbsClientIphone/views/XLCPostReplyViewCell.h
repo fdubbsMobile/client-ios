@@ -19,6 +19,6 @@
 
 @property (strong, nonatomic) UIView *postQouteView;
 
-
+-  (void)reset;
 
 @end

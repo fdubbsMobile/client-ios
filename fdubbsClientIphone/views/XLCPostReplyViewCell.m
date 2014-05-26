@@ -8,8 +8,16 @@
 
 #import "XLCPostReplyViewCell.h"
 
-@implementation XLCPostReplyViewCell
+@implementation XLCPostReplyViewCell {
+    NIAttributedLabel *_richContentLabel;
+}
 
+-  (void)reset
+{
+    [super reset];
+    
+    [_richContentLabel setAttributedText:[[NSAttributedString alloc]initWithString:@"" ]];
+}
 
 - (void)setupWithPostDetail:(XLCPostDetail *)postDetail PostOwner:(NSString *)postOwner
                 AtIndexPath:(NSIndexPath *)index
@@ -174,7 +182,9 @@
 - (NIAttributedLabel *)getRichContentLabelWithContent:(XLCContent *)content
                                                  Font:(UIFont *)font fitsView:(UIView *)theView
 {
-    NIAttributedLabel *richContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+    if (_richContentLabel == nil) {
+        _richContentLabel = [[NIAttributedLabel alloc] initWithFrame:CGRectZero];
+    }
     
     
     NSArray *images = content.images;
@@ -186,11 +196,11 @@
     
     NSLog(@"content value : %@", contentValue);
     
-    richContentLabel.numberOfLines = 0;
-    richContentLabel.autoDetectLinks = YES;
-    richContentLabel.lineBreakMode = NSLineBreakByClipping;
-    richContentLabel.font = font;
-    richContentLabel.text = [contentValue copy];
+    _richContentLabel.numberOfLines = 0;
+    _richContentLabel.autoDetectLinks = YES;
+    _richContentLabel.lineBreakMode = NSLineBreakByClipping;
+    _richContentLabel.font = font;
+    _richContentLabel.text = [contentValue copy];
     
     for (XLCImage *image in images) {
         XLCCustomLinkView *imageLinkView = [[XLCCustomLinkView alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
@@ -198,14 +208,14 @@
         imageLinkView.linkRef = image.ref;
         imageLinkView.position = image.pos;
         
-        [richContentLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
+        [_richContentLabel insertView:imageLinkView atIndex:imageLinkView.position margins:UIEdgeInsetsMake(5, 5, 5, 5)];
     }
     
     
-    CGSize size = [richContentLabel sizeThatFits:CGSizeMake(theView.bounds.size.width, CGFLOAT_MAX)];
-    richContentLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    CGSize size = [_richContentLabel sizeThatFits:CGSizeMake(theView.bounds.size.width, CGFLOAT_MAX)];
+    _richContentLabel.frame = CGRectMake(0, 0, size.width, size.height);
     
-    return richContentLabel;
+    return _richContentLabel;
 }
 
 

@@ -105,7 +105,7 @@
     self.subtitleColor = [UIColor whiteColor];
     
     if (_loadMoreFooterView ==nil) {
-        _loadMoreFooterView = [[LoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
+        _loadMoreFooterView = [[LoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         _loadMoreFooterView.delegate = self;
     }
     
@@ -266,7 +266,7 @@
     
     if (![cell isForIndexPath:indexPath]) {
 
-        [cell setupWithInitialization];
+        
         
 
         XLCPostDetail *postDetail = nil;
@@ -274,9 +274,11 @@
         
         if (indexPath.row > 0) {
             postDetail = [_replies objectAtIndex:(indexPath.row - 1)];
+            [cell reset];
         }
         else {
             postDetail = _postDetail;
+            [cell setupWithInitialization];
         }
         
         [cell setupWithPostDetail:postDetail PostOwner:postOwner AtIndexPath:indexPath];
