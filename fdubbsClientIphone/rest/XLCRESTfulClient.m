@@ -17,6 +17,7 @@
 #import "XLCPostDetail.h"
 #import "XLCPostQoute.h"
 #import "XLCPostReplies.h"
+#import "XLCSectionMetaData.h"
 
 @implementation XLCRESTfulClient
 
@@ -162,6 +163,22 @@
                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:postRepliesRespDesc];
     
+    
+    
+    // init section related request
+    RKObjectMapping *sectionMetaDataMapping = [RKObjectMapping mappingForClass:[XLCSectionMetaData class]];
+    [sectionMetaDataMapping addAttributeMappingsFromDictionary:@{
+                                                              @"section_id" : @"sectionId",
+                                                              @"section_desc" : @"description"
+                                                              }];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *allSectionsRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:sectionMetaDataMapping
+                                                                                         method:RKRequestMethodGET
+                                                                                    pathPattern:@"/api/v1/section/all"
+                                                                                        keyPath:nil
+                                                                                    statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:allSectionsRespDesc];
     
 }
 

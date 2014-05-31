@@ -10,10 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "ProgressHUD.h"
 
-#import "XLCGCDSingleton.h"
 #import "XLCPostManager.h"
-
-
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
 #import "XLCPostDetail.h"
@@ -32,32 +29,6 @@ SINGLETON_GCD(XLCPostManager);
 - (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure
 {
-    /*
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-        NSMutableArray *topPosts = [[NSMutableArray alloc] init];
-        XLCPostMetaData *metaData = [[XLCPostMetaData alloc] init];
-        metaData.title = @"test";
-        metaData.board = @"test1";
-        metaData.owner = @"fxxk";
-        
-        
-        
-        for (int i = 0; i < 10; i++) {
-            XLCPostSummary *post = [[XLCPostSummary alloc] init];
-            post.metaData = metaData;
-            post.count = @"1";
-            [topPosts addObject:post];
-        }
-        
-        [NSThread sleepForTimeInterval:3.0f];
-        
-        success(topPosts);
-    }];
-    
-    [queue addOperation:op];
-    */
-    
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     

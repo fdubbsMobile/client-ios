@@ -53,6 +53,9 @@
 		95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */; };
 		95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */; };
 		95C71EF4192A2A3B006DCC75 /* UIImage+Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C71EF3192A2A3B006DCC75 /* UIImage+Overlay.m */; };
+		95CB1828193A234A0059FF2A /* XLCAllBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1827193A234A0059FF2A /* XLCAllBoardsViewController.m */; };
+		95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB182A193A238D0059FF2A /* XLCBoardManager.m */; };
+		95CB182E193A2CA70059FF2A /* XLCSectionMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB182D193A2CA70059FF2A /* XLCSectionMetaData.m */; };
 		95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB60E191B555700B261D6 /* NIAttributedLabel.m */; };
 		95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB610191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m */; };
 		95CCB645191B561600B261D6 /* NIActions.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB616191B561600B261D6 /* NIActions.m */; };
@@ -180,6 +183,12 @@
 		95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
 		95C71EF2192A2A3B006DCC75 /* UIImage+Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Overlay.h"; path = "views/UIImage+Overlay.h"; sourceTree = "<group>"; };
 		95C71EF3192A2A3B006DCC75 /* UIImage+Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Overlay.m"; path = "views/UIImage+Overlay.m"; sourceTree = "<group>"; };
+		95CB1826193A234A0059FF2A /* XLCAllBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllBoardsViewController.h; path = controllers/XLCAllBoardsViewController.h; sourceTree = "<group>"; };
+		95CB1827193A234A0059FF2A /* XLCAllBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllBoardsViewController.m; path = controllers/XLCAllBoardsViewController.m; sourceTree = "<group>"; };
+		95CB1829193A238D0059FF2A /* XLCBoardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardManager.h; path = model/manager/XLCBoardManager.h; sourceTree = "<group>"; };
+		95CB182A193A238D0059FF2A /* XLCBoardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardManager.m; path = model/manager/XLCBoardManager.m; sourceTree = "<group>"; };
+		95CB182C193A2CA70059FF2A /* XLCSectionMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionMetaData.h; path = model/pojo/XLCSectionMetaData.h; sourceTree = "<group>"; };
+		95CB182D193A2CA70059FF2A /* XLCSectionMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCSectionMetaData.m; path = model/pojo/XLCSectionMetaData.m; sourceTree = "<group>"; };
 		95CCB60D191B555700B261D6 /* NIAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NIAttributedLabel.h; sourceTree = "<group>"; };
 		95CCB60E191B555700B261D6 /* NIAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NIAttributedLabel.m; sourceTree = "<group>"; };
 		95CCB60F191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+NimbusAttributedLabel.h"; sourceTree = "<group>"; };
@@ -446,6 +455,8 @@
 				95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */,
 				95C3CEF81930D8090027D0F3 /* XLCPostQoute.h */,
 				95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */,
+				95CB182C193A2CA70059FF2A /* XLCSectionMetaData.h */,
+				95CB182D193A2CA70059FF2A /* XLCSectionMetaData.m */,
 			);
 			name = POJO;
 			sourceTree = "<group>";
@@ -456,6 +467,8 @@
 				95AEBE1818FA67A600C7E8E4 /* XLCGCDSingleton.h */,
 				95AEBE1918FA67A600C7E8E4 /* XLCPostManager.h */,
 				95AEBE1A18FA67A600C7E8E4 /* XLCPostManager.m */,
+				95CB1829193A238D0059FF2A /* XLCBoardManager.h */,
+				95CB182A193A238D0059FF2A /* XLCBoardManager.m */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -509,6 +522,8 @@
 				95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */,
 				95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */,
 				95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */,
+				95CB1826193A234A0059FF2A /* XLCAllBoardsViewController.h */,
+				95CB1827193A234A0059FF2A /* XLCAllBoardsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -849,10 +864,13 @@
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
 				95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */,
+				95CB1828193A234A0059FF2A /* XLCAllBoardsViewController.m in Sources */,
+				95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */,
 				95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */,
 				95CCB64C191B561600B261D6 /* NIFoundationMethods.m in Sources */,
 				95CCB645191B561600B261D6 /* NIActions.m in Sources */,
 				95CCB657191B561600B261D6 /* NISnapshotRotation.m in Sources */,
+				95CB182E193A2CA70059FF2A /* XLCSectionMetaData.m in Sources */,
 				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95CCB650191B561600B261D6 /* NINetworkActivity.m in Sources */,
 				95CCB656191B561600B261D6 /* NISDKAvailability.m in Sources */,

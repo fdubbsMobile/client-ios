@@ -29,6 +29,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIButton+Bootstrap.h"
 #import "XLCUtil.h"
+#import "XLCGCDSingleton.h"
 #import "XLCFlatSettings.h"
 #import "ZGNavigationBarTitleViewController.h"
 

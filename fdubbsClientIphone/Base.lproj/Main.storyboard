@@ -16,7 +16,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="c6i-XC-dnY" kind="relationship" relationship="viewControllers" id="Ygy-Dc-N1x"/>
-                        <segue destination="xuV-Oi-XCm" kind="relationship" relationship="viewControllers" id="Lwm-Ge-eB5"/>
+                        <segue destination="ba5-Bu-sHf" kind="relationship" relationship="viewControllers" id="Lwm-Ge-eB5"/>
                         <segue destination="Yxk-HY-NtT" kind="relationship" relationship="viewControllers" id="6tq-c9-duT"/>
                         <segue destination="xJd-WL-H1f" kind="relationship" relationship="viewControllers" id="XqR-EC-5TF"/>
                         <segue destination="h6Y-lx-0m4" kind="relationship" relationship="viewControllers" id="cbV-N0-LfG"/>
@@ -213,17 +213,17 @@
             </objects>
             <point key="canvasLocation" x="1474" y="-1662"/>
         </scene>
-        <!--Table View Controller - 所有版面-->
+        <!--All Boards View Controller - 所有版面-->
         <scene sceneID="fKV-5J-ZCj">
             <objects>
-                <tableViewController title="所有版面" id="xuV-Oi-XCm" sceneMemberID="viewController">
+                <tableViewController title="所有版面" id="xuV-Oi-XCm" customClass="XLCAllBoardsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="zIj-w7-Ss6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="p1l-tN-HDl">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionCell" id="p1l-tN-HDl">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p1l-tN-HDl" id="1SH-zg-Fwb">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -236,11 +236,11 @@
                             <outlet property="delegate" destination="xuV-Oi-XCm" id="L7e-xg-Cd6"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="所有版面" image="boards" id="M9H-mE-TdZ"/>
+                    <navigationItem key="navigationItem" id="LPB-25-R9p"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0I-Xr-hT5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="-973"/>
+            <point key="canvasLocation" x="951" y="-973"/>
         </scene>
         <!--Table View Controller - 我的账号-->
         <scene sceneID="Kh5-Wb-k1I">
@@ -351,6 +351,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ss-1s-q7W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="420" y="-1662"/>
+        </scene>
+        <!--Navigation Bar Title View Controller - 所有版面-->
+        <scene sceneID="TtM-tt-AM5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ba5-Bu-sHf" customClass="ZGNavigationBarTitleViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="所有版面" image="boards" id="M9H-mE-TdZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cxE-CG-Zuh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.21112739959999999" green="0.4278674972" blue="0.875" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xuV-Oi-XCm" kind="relationship" relationship="rootViewController" id="rq9-fp-uFE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D99-PX-xtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="425" y="-973"/>
         </scene>
     </scenes>
     <resources>
