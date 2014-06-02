@@ -9,6 +9,7 @@
 #import "XLCBoardManager.h"
 #import "XLCSectionMetaData.h"
 #import "EGORefreshTableHeaderView.h"
+#import "XLCSectionViewCell.h"
 #import "XLCAllBoardsViewController.h"
 
 @interface XLCAllBoardsViewController () <EGORefreshTableHeaderDelegate>
@@ -145,16 +146,16 @@
 {
     
     static NSString *CellIdentifier = @"SectionCell";
-    UITableViewCell *cell = [tableView
+    XLCSectionViewCell *cell = (XLCSectionViewCell *)[tableView
                                                               dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell=[[XLCSectionViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     XLCSectionMetaData *metaData = [_allSections objectAtIndex:indexPath.row];
     
-    [[cell textLabel] setText:metaData.description];
+    [[cell description] setText:metaData.description];
     
     return cell;
 }
