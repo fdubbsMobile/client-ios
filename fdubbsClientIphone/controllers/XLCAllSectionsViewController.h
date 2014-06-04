@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XLCAllBoardsViewController : UITableViewController
+@interface XLCAllSectionsViewController : UITableViewController
 
 @end

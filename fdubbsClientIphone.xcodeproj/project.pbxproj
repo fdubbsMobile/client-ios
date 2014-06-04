@@ -48,7 +48,7 @@
 		95C3CEF71930D7690027D0F3 /* XLCPostReplies.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */; };
 		95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */; };
 		95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */; };
-		95CB1828193A234A0059FF2A /* XLCAllBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1827193A234A0059FF2A /* XLCAllBoardsViewController.m */; };
+		95CB1828193A234A0059FF2A /* XLCAllSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1827193A234A0059FF2A /* XLCAllSectionsViewController.m */; };
 		95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB182A193A238D0059FF2A /* XLCBoardManager.m */; };
 		95CB182E193A2CA70059FF2A /* XLCSectionMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB182D193A2CA70059FF2A /* XLCSectionMetaData.m */; };
 		95CB1840193B88670059FF2A /* UIImage+Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1831193B88670059FF2A /* UIImage+Overlay.m */; };
@@ -174,8 +174,8 @@
 		95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostQoute.m; path = model/pojo/XLCPostQoute.m; sourceTree = "<group>"; };
 		95C3CEFC1930E69C0027D0F3 /* LoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreFooterView.h; sourceTree = "<group>"; };
 		95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
-		95CB1826193A234A0059FF2A /* XLCAllBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllBoardsViewController.h; path = controllers/XLCAllBoardsViewController.h; sourceTree = "<group>"; };
-		95CB1827193A234A0059FF2A /* XLCAllBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllBoardsViewController.m; path = controllers/XLCAllBoardsViewController.m; sourceTree = "<group>"; };
+		95CB1826193A234A0059FF2A /* XLCAllSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllSectionsViewController.h; path = controllers/XLCAllSectionsViewController.h; sourceTree = "<group>"; };
+		95CB1827193A234A0059FF2A /* XLCAllSectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllSectionsViewController.m; path = controllers/XLCAllSectionsViewController.m; sourceTree = "<group>"; };
 		95CB1829193A238D0059FF2A /* XLCBoardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardManager.h; path = model/manager/XLCBoardManager.h; sourceTree = "<group>"; };
 		95CB182A193A238D0059FF2A /* XLCBoardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardManager.m; path = model/manager/XLCBoardManager.m; sourceTree = "<group>"; };
 		95CB182C193A2CA70059FF2A /* XLCSectionMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionMetaData.h; path = model/pojo/XLCSectionMetaData.h; sourceTree = "<group>"; };
@@ -510,8 +510,8 @@
 				95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */,
 				95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */,
 				95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */,
-				95CB1826193A234A0059FF2A /* XLCAllBoardsViewController.h */,
-				95CB1827193A234A0059FF2A /* XLCAllBoardsViewController.m */,
+				95CB1826193A234A0059FF2A /* XLCAllSectionsViewController.h */,
+				95CB1827193A234A0059FF2A /* XLCAllSectionsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -879,7 +879,7 @@
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
 				95CB1841193B88670059FF2A /* XLCCustomLinkView.m in Sources */,
 				95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */,
-				95CB1828193A234A0059FF2A /* XLCAllBoardsViewController.m in Sources */,
+				95CB1828193A234A0059FF2A /* XLCAllSectionsViewController.m in Sources */,
 				95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */,
 				95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */,
 				95CCB64C191B561600B261D6 /* NIFoundationMethods.m in Sources */,

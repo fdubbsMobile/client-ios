@@ -10,9 +10,9 @@
 #import "XLCSectionMetaData.h"
 #import "EGORefreshTableHeaderView.h"
 #import "XLCSectionViewCell.h"
-#import "XLCAllBoardsViewController.h"
+#import "XLCAllSectionsViewController.h"
 
-@interface XLCAllBoardsViewController () <EGORefreshTableHeaderDelegate>
+@interface XLCAllSectionsViewController () <EGORefreshTableHeaderDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -25,7 +25,7 @@
 
 
 
-@implementation XLCAllBoardsViewController
+@implementation XLCAllSectionsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -197,15 +197,26 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    NSLog(@"prepareForSegue");
+    NSLog(@"The segue id is %@", segue.identifier );
+	
+	UIViewController *destination = segue.destinationViewController;
+    NSLog(@"Send is %@", destination);
+	if([segue.identifier isEqualToString:@"showSectionDetail"])
+    {
+        NSLog(@"showSectionDetail");
+        //NSInteger selectedIdx = [(XLCPostSummaryViewCell *)sender rowIndex];
+        //XLCPostSummary *selectedPost = [_top10Posts objectAtIndex:selectedIdx];
+        //postDetailPassValueDelegte = (NSObject<XLCPostDetailPassValueDelegate> *)destination;
+		//[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title Board:selectedPost.metaData.board postId:selectedPost.metaData.postId];
+	}
 }
-*/
+
 
 @end
