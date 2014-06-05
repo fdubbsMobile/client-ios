@@ -10,6 +10,7 @@
 
 @interface XLCSectionViewCell : UITableViewCell
 
+@property NSUInteger index;
 @property (strong, nonatomic) IBOutlet UILabel *description;
 
 @end

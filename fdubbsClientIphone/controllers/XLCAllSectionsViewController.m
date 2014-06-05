@@ -11,11 +11,14 @@
 #import "EGORefreshTableHeaderView.h"
 #import "XLCSectionViewCell.h"
 #import "XLCAllSectionsViewController.h"
+#import "XLCSectionDetailPassValueDelegate.h"
 
 @interface XLCAllSectionsViewController () <EGORefreshTableHeaderDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    
+    NSObject<XLCSectionDetailPassValueDelegate> *sectionDetailPassValueDelegte ;
 }
 
 
@@ -156,6 +159,7 @@
     XLCSectionMetaData *metaData = [_allSections objectAtIndex:indexPath.row];
     
     [[cell description] setText:metaData.description];
+    cell.index = indexPath.row;
     
     return cell;
 }
@@ -211,10 +215,10 @@
 	if([segue.identifier isEqualToString:@"showSectionDetail"])
     {
         NSLog(@"showSectionDetail");
-        //NSInteger selectedIdx = [(XLCPostSummaryViewCell *)sender rowIndex];
-        //XLCPostSummary *selectedPost = [_top10Posts objectAtIndex:selectedIdx];
-        //postDetailPassValueDelegte = (NSObject<XLCPostDetailPassValueDelegate> *)destination;
-		//[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title Board:selectedPost.metaData.board postId:selectedPost.metaData.postId];
+        NSInteger selectedIdx = [(XLCSectionViewCell *)sender index];
+        XLCSectionMetaData *metaData = [_allSections objectAtIndex:selectedIdx];
+        sectionDetailPassValueDelegte = (NSObject<XLCSectionDetailPassValueDelegate> *)destination;
+		[sectionDetailPassValueDelegte passValueWithSectionDesc:metaData.description sectionId:metaData.sectionId];
 	}
 }
 
