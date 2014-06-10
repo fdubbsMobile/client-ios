@@ -10,6 +10,6 @@
 
 @protocol XLCSectionDetailPassValueDelegate <NSObject>
 
--(void) passValueWithSectionDesc:(NSString *)sectionDesc sectionId:(NSString *)sectionId;
+-(void) passValueWithSectionDesc:(NSString *)sectionDesc category:(NSString *)category sectionId:(NSString *)sectionId;
 
 @end

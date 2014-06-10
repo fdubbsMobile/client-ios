@@ -169,7 +169,8 @@
     RKObjectMapping *sectionMetaDataMapping = [RKObjectMapping mappingForClass:[XLCSectionMetaData class]];
     [sectionMetaDataMapping addAttributeMappingsFromDictionary:@{
                                                               @"section_id" : @"sectionId",
-                                                              @"section_desc" : @"description"
+                                                              @"section_desc" : @"description",
+                                                              @"category" : @"category"
                                                               }];
     
     // Register our mappings with the provider using a response descriptor

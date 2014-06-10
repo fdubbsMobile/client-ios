@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *sectionId;
 @property (strong, nonatomic) NSString *description;
+@property (strong, nonatomic) NSString *category;
 
 @end

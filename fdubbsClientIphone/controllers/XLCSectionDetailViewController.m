@@ -12,6 +12,7 @@
 
 @interface XLCSectionDetailViewController () {
     NSString *_desc;
+    NSString *_category;
     NSString *_sectionId;
 
 }
@@ -26,6 +27,7 @@
     if (self) {
         // Custom initialization
         _desc = nil;
+        _category = nil;
         _sectionId = nil;
     }
     return self;
@@ -53,9 +55,22 @@
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButton];
     [self addLeftBarButtonItem:leftBarButtonItem];
     
+    FRDLivelyButton *rightBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,25,20)];
+    [rightBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
+                                  kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
+                                  kFRDLivelyButtonColor: [UIColor whiteColor]
+                                  }];
+    [rightBarButton setStyle:kFRDLivelyButtonStyleHamburger animated:NO];
+    //[rightBarButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
+    [self addRightBarButtonItem:rightBarButtonItem];
+    
     
     self.title = _desc;
     self.titleColor = [UIColor whiteColor];
+    
+    self.subtitle = _category;
+    self.subtitleColor = [UIColor whiteColor];
 }
 
 - (void)backAction
@@ -75,6 +90,21 @@
         [self.navigationItem setLeftBarButtonItem:leftBarButtonItem];
     }
     [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, leftBarButtonItem, nil]];
+}
+
+- (void)addRightBarButtonItem:(UIBarButtonItem *)rightBarButtonItem
+{
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        
+        negativeSpacer.width = -10;
+        
+    } else {
+        negativeSpacer.width = 0;
+    }
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -157,10 +187,11 @@
 }
 */
 
--(void) passValueWithSectionDesc:(NSString *)sectionDesc sectionId:(NSString *)sectionId
+-(void) passValueWithSectionDesc:(NSString *)sectionDesc category:(NSString *)category sectionId:(NSString *)sectionId
 {
-    NSLog(@"The value is %@, %@", sectionDesc, sectionId);
+    NSLog(@"The value is %@, %@, %@", sectionDesc, category, sectionId);
     _desc = sectionDesc;
+    _category = category;
     _sectionId = sectionId;
 }
 
