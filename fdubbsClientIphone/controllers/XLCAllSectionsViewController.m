@@ -55,10 +55,10 @@
     
     DebugLog(@"init XLCTopPostsViewController");
     
-    [self performSelector:@selector(initRefreshTopPosts) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(initRefreshAllSections) withObject:nil afterDelay:0.4];
 }
 
-- (void)initRefreshTopPosts
+- (void)initRefreshAllSections
 {
     [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
     [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];

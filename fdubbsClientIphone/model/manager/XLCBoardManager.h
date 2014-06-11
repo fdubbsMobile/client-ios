@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#import "XLCSection.h"
+
 @interface XLCBoardManager : NSObject
 
 + (XLCBoardManager *) sharedXLCBoardManager;
 
 - (void) doLoadAllSectionsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure;
+
+- (void) doLoadAllBoardsInSection:(NSString *)sectionId successBlock:(void (^)(XLCSection *))success
+                                 failBlock:(void (^)(NSError *))failure;
 
 @end

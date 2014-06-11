@@ -18,13 +18,16 @@
 #import "XLCPostQoute.h"
 #import "XLCPostReplies.h"
 #import "XLCSectionMetaData.h"
+#import "XLCSection.h"
+#import "XLCBoardMetaData.h"
+#import "XLCBoardDetail.h"
 
 @implementation XLCRESTfulClient
 
 + (void)initClient
 {
-    RKLogConfigureByName("RestKit/Network*", RKLogLevelWarning);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelWarning);
+    RKLogConfigureByName("RestKit/Network*", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     //let AFNetworking manage the activity indicator
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
@@ -180,6 +183,54 @@
                                                                                         keyPath:nil
                                                                                     statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:allSectionsRespDesc];
+    
+    
+    
+    // init board related request
+    RKObjectMapping *boardMetaDataMapping = [RKObjectMapping mappingForClass:[XLCBoardMetaData class]];
+    [boardMetaDataMapping addAttributeMappingsFromDictionary:@{
+                                                                 @"board_id" : @"boardId",
+                                                                 @"title" : @"title",
+                                                                 @"board_desc" : @"boardDesc",
+                                                                 @"post_number" : @"postNumber",
+                                                                 @"managers" : @"managers"
+                                                                 }];
+    
+    // init board related request
+    RKObjectMapping *boardDetailMapping = [RKObjectMapping mappingForClass:[XLCBoardDetail class]];
+    [boardDetailMapping addAttributeMappingsFromDictionary:@{
+                                                               @"category" : @"category",
+                                                               @"is_directory" : @"isDirectory",
+                                                               @"has_unread_post" : @"hasUnreadPost"
+                                                               }];
+    RKRelationshipMapping* boardMetaDataRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"board_meta_data"
+                                                                                            toKeyPath:@"metaData"
+                                                                                          withMapping:boardMetaDataMapping];
+    
+    [boardDetailMapping addPropertyMapping:boardMetaDataRSMapping];
+    
+    
+    
+    
+    RKRelationshipMapping* boardDetailRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"boards"
+                                                                                                  toKeyPath:@"boards"
+                                                                                                withMapping:boardDetailMapping];
+    
+    RKRelationshipMapping* sectionMetaDataRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"section_meta_data"
+                                                                                                toKeyPath:@"metaData"
+                                                                                              withMapping:sectionMetaDataMapping];
+    // init section related request
+    RKObjectMapping *sectionMapping = [RKObjectMapping mappingForClass:[XLCSection class]];
+    [sectionMapping addPropertyMapping:sectionMetaDataRSMapping];
+    [sectionMapping addPropertyMapping:boardDetailRSMapping];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *allBoardsInSectionRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:sectionMapping
+                                                                                             method:RKRequestMethodGET
+                                                                                        pathPattern:@"/api/v1/section/detail/:sectionId"
+                                                                                            keyPath:nil
+                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:allBoardsInSectionRespDesc];
     
 }
 

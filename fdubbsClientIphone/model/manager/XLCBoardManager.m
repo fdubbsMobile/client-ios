@@ -29,9 +29,30 @@ SINGLETON_GCD(XLCBoardManager);
     [objectManager getObjectsAtPath:@"/api/v1/section/all"
                          parameters:nil
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                NSArray *allBoards = [mappingResult array];
-                                success(allBoards);
-                                NSLog(@"Loaded all boards : %@", allBoards);
+                                NSArray *allSections = [mappingResult array];
+                                success(allSections);
+                                NSLog(@"Loaded all sections : %@", allSections);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
+}
+
+- (void) doLoadAllBoardsInSection:(NSString *)sectionId successBlock:(void (^)(XLCSection *))success
+                        failBlock:(void (^)(NSError *))failure
+{
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    NSString *path = [NSString stringWithFormat:@"/api/v1/section/detail/%@", sectionId];
+    NSLog(@"path is %@", path);
+    
+    [objectManager getObjectsAtPath:path
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCSection *section = [mappingResult firstObject];
+                                success(section);
+                                NSLog(@"Loaded section %@ : %@", sectionId, section);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 failure(error);

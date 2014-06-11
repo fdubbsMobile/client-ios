@@ -7,15 +7,25 @@
 //
 
 #import "XLCSectionDetailViewController.h"
+#import "EGORefreshTableHeaderView.h"
 #import "FRDLivelyButton.h"
+#import "XLCSection.h"
+#import "XLCBoardMetaData.h"
+#import "XLCBoardDetail.h"
+#import "XLCBoardManager.h"
 
-
-@interface XLCSectionDetailViewController () {
+@interface XLCSectionDetailViewController () <EGORefreshTableHeaderDelegate>
+{
     NSString *_desc;
     NSString *_category;
     NSString *_sectionId;
+    
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
 
 }
+
+@property  __block XLCSection *section;
 
 @end
 
@@ -29,6 +39,7 @@
         _desc = nil;
         _category = nil;
         _sectionId = nil;
+        
     }
     return self;
 }
@@ -36,6 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self addRefreshViewController];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -71,6 +84,9 @@
     
     self.subtitle = _category;
     self.subtitleColor = [UIColor whiteColor];
+    
+    [self performSelector:@selector(initRefreshAllBoardsInSection) withObject:nil afterDelay:0.4];
+    
 }
 
 - (void)backAction
@@ -107,85 +123,156 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
 
+-(void)addRefreshViewController
+{
+    if (_refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        
+        refreshView.delegate = self;
+        [refreshView showLoadingOnFirstRefresh];
+        
+        [self.tableView addSubview:refreshView];
+        
+        _refreshHeaderView = refreshView;
+    }
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (void)initRefreshAllBoardsInSection
+{
+    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+}
+
+-(void)doPullRefresh
+{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:self.tableView];
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+}
+
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    [self loadData];
+}
+
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+    return _reloading;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{
+    return [NSDate date];
+}
+
+-(void)loadData
+{
+    _reloading = YES;
+    
+    void (^successBlock)(XLCSection *) = ^(XLCSection *section)
+    {
+        _section = section;
+        DebugLog(@"Success to load section!");
+        
+        [self.tableView reloadData];
+        
+        [_refreshHeaderView refreshLastUpdatedDate];
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    [[XLCBoardManager sharedXLCBoardManager] doLoadAllBoardsInSection:_sectionId successBlock:successBlock failBlock:failBlock];
+}
+
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
-    return 0;
+    // Return the number of rows in the section.
+    if (_section == nil) {
+        return 0;
+    }
+    
+    return [_section.boards count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    static NSString *CellIdentifier = @"boardsInSectionCell";
+    UITableViewCell *cell = (UITableViewCell *)[tableView
+                                                      dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    
+    XLCBoardDetail *boardDetail = (XLCBoardDetail *)[_section.boards objectAtIndex:indexPath.row];
+    XLCBoardMetaData *boardMetaData = boardDetail.metaData;
+    [cell.textLabel setText:boardMetaData.boardDesc];
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 -(void) passValueWithSectionDesc:(NSString *)sectionDesc category:(NSString *)category sectionId:(NSString *)sectionId
 {

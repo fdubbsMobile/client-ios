@@ -86,6 +86,9 @@
 		95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB642191B561600B261D6 /* NIViewRecycler.m */; };
 		95CCB65A191B561600B261D6 /* UIResponder+NimbusCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */; };
 		95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CD1309190635A000CC1F61 /* XLCPostDetail.m */; };
+		95E092CF1948AA82004695A7 /* XLCBoardMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E092CE1948AA82004695A7 /* XLCBoardMetaData.m */; };
+		95E092D21948AAFD004695A7 /* XLCBoardDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E092D11948AAFD004695A7 /* XLCBoardDetail.m */; };
+		95E092D51948ABC6004695A7 /* XLCSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E092D41948ABC6004695A7 /* XLCSection.m */; };
 		95EA053F19279B0A00B52793 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 95EA053A19279B0A00B52793 /* FontAwesome.ttf */; };
 		95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA053C19279B0A00B52793 /* NSString+FontAwesome.m */; };
 		95EA054119279B0A00B52793 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EA053E19279B0A00B52793 /* UIButton+Bootstrap.m */; };
@@ -257,6 +260,12 @@
 		95CCB644191B561600B261D6 /* UIResponder+NimbusCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+NimbusCore.m"; sourceTree = "<group>"; };
 		95CD1308190635A000CC1F61 /* XLCPostDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetail.h; path = model/pojo/XLCPostDetail.h; sourceTree = "<group>"; };
 		95CD1309190635A000CC1F61 /* XLCPostDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetail.m; path = model/pojo/XLCPostDetail.m; sourceTree = "<group>"; };
+		95E092CD1948AA82004695A7 /* XLCBoardMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardMetaData.h; path = model/pojo/XLCBoardMetaData.h; sourceTree = "<group>"; };
+		95E092CE1948AA82004695A7 /* XLCBoardMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardMetaData.m; path = model/pojo/XLCBoardMetaData.m; sourceTree = "<group>"; };
+		95E092D01948AAFD004695A7 /* XLCBoardDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetail.h; path = model/pojo/XLCBoardDetail.h; sourceTree = "<group>"; };
+		95E092D11948AAFD004695A7 /* XLCBoardDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardDetail.m; path = model/pojo/XLCBoardDetail.m; sourceTree = "<group>"; };
+		95E092D31948ABC6004695A7 /* XLCSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSection.h; path = model/pojo/XLCSection.h; sourceTree = "<group>"; };
+		95E092D41948ABC6004695A7 /* XLCSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCSection.m; path = model/pojo/XLCSection.m; sourceTree = "<group>"; };
 		95EA053A19279B0A00B52793 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		95EA053B19279B0A00B52793 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FontAwesome.h"; sourceTree = "<group>"; };
 		95EA053C19279B0A00B52793 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FontAwesome.m"; sourceTree = "<group>"; };
@@ -464,6 +473,12 @@
 				95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */,
 				95CB182C193A2CA70059FF2A /* XLCSectionMetaData.h */,
 				95CB182D193A2CA70059FF2A /* XLCSectionMetaData.m */,
+				95E092CD1948AA82004695A7 /* XLCBoardMetaData.h */,
+				95E092CE1948AA82004695A7 /* XLCBoardMetaData.m */,
+				95E092D01948AAFD004695A7 /* XLCBoardDetail.h */,
+				95E092D11948AAFD004695A7 /* XLCBoardDetail.m */,
+				95E092D31948ABC6004695A7 /* XLCSection.h */,
+				95E092D41948ABC6004695A7 /* XLCSection.m */,
 			);
 			name = POJO;
 			sourceTree = "<group>";
@@ -850,6 +865,7 @@
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
 				95CB184A193B888A0059FF2A /* XLCSectionViewCell.m in Sources */,
+				95E092D21948AAFD004695A7 /* XLCBoardDetail.m in Sources */,
 				95CCB655191B561600B261D6 /* NIRuntimeClassModifications.m in Sources */,
 				95CB1842193B88670059FF2A /* XLCFlatSettings.m in Sources */,
 				95CCB653191B561600B261D6 /* NIOperations.m in Sources */,
@@ -900,6 +916,8 @@
 				95CCB656191B561600B261D6 /* NISDKAvailability.m in Sources */,
 				95AEBDD418F98AAF00C7E8E4 /* main.m in Sources */,
 				95CB1843193B88670059FF2A /* XLCMainPostViewCell.m in Sources */,
+				95E092CF1948AA82004695A7 /* XLCBoardMetaData.m in Sources */,
+				95E092D51948ABC6004695A7 /* XLCSection.m in Sources */,
 				95CB1845193B88670059FF2A /* XLCPostReplyViewCell.m in Sources */,
 				95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
 				95CCB658191B561600B261D6 /* NIState.m in Sources */,
