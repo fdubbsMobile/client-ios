@@ -33,7 +33,7 @@
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     // Initialize HTTPClient
-    NSURL *baseURL = [NSURL URLWithString:@"https://rest-fdubbs.rhcloud.com"];
+    NSURL *baseURL = [NSURL URLWithString:@"http://fdubbsrestapi.duapp.com"];
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // HACK: Set User-Agent to Mac OS X so that Twitter will let us access the Timeline
