@@ -38,6 +38,8 @@
 		95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE1D18FA67BD00C7E8E4 /* XLCPostSummary.m */; };
 		95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2218FA7FAD00C7E8E4 /* XLCRESTfulClient.m */; };
 		95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */; };
+		95B44E9E199324EA00BE7BA0 /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */; };
+		95B44EA219935B4900BE7BA0 /* XLCBoardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */; };
 		95B59A81191682A3000B069C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B59A80191682A3000B069C /* CoreText.framework */; };
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */; };
@@ -160,6 +162,10 @@
 		95AEBE2218FA7FAD00C7E8E4 /* XLCRESTfulClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCRESTfulClient.m; path = rest/XLCRESTfulClient.m; sourceTree = "<group>"; };
 		95AEBE2418FA800300C7E8E4 /* XLCRestConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCRestConstants.h; path = rest/XLCRestConstants.h; sourceTree = "<group>"; };
 		95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCRestConstants.m; path = rest/XLCRestConstants.m; sourceTree = "<group>"; };
+		95B44E9C199324EA00BE7BA0 /* MONActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MONActivityIndicatorView.h; path = views/MONActivityIndicatorView/MONActivityIndicatorView.h; sourceTree = "<group>"; };
+		95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MONActivityIndicatorView.m; path = views/MONActivityIndicatorView/MONActivityIndicatorView.m; sourceTree = "<group>"; };
+		95B44EA019935B4900BE7BA0 /* XLCBoardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardViewCell.h; path = views/XLCCustomView/XLCBoardViewCell.h; sourceTree = "<group>"; };
+		95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardViewCell.m; path = views/XLCCustomView/XLCBoardViewCell.m; sourceTree = "<group>"; };
 		95B59A80191682A3000B069C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
 		95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
@@ -509,6 +515,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95B44E9F199324F500BE7BA0 /* MONActivityIndicatorView */,
 				95C3CEFB1930E69C0027D0F3 /* LoadMoreFooterView */,
 				95EA053919279B0A00B52793 /* StrapButton */,
 				95CCB60B191B555700B261D6 /* Nimbus */,
@@ -517,6 +524,15 @@
 				95CB182F193B87DC0059FF2A /* XLCCustomView */,
 			);
 			name = views;
+			sourceTree = "<group>";
+		};
+		95B44E9F199324F500BE7BA0 /* MONActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				95B44E9C199324EA00BE7BA0 /* MONActivityIndicatorView.h */,
+				95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */,
+			);
+			name = MONActivityIndicatorView;
 			sourceTree = "<group>";
 		};
 		95B605AF18FD68C4009F9A39 /* ViewControllers */ = {
@@ -588,6 +604,8 @@
 				95CB183F193B88670059FF2A /* ZGNavigationTitleView.m */,
 				95CB1848193B88890059FF2A /* XLCSectionViewCell.h */,
 				95CB1849193B888A0059FF2A /* XLCSectionViewCell.m */,
+				95B44EA019935B4900BE7BA0 /* XLCBoardViewCell.h */,
+				95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */,
 			);
 			name = XLCCustomView;
 			sourceTree = "<group>";
@@ -864,6 +882,7 @@
 				95CCB646191B561600B261D6 /* NIButtonUtilities.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
+				95B44E9E199324EA00BE7BA0 /* MONActivityIndicatorView.m in Sources */,
 				95CB184A193B888A0059FF2A /* XLCSectionViewCell.m in Sources */,
 				95E092D21948AAFD004695A7 /* XLCBoardDetail.m in Sources */,
 				95CCB655191B561600B261D6 /* NIRuntimeClassModifications.m in Sources */,
@@ -907,6 +926,7 @@
 				95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */,
 				95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */,
 				95CCB64C191B561600B261D6 /* NIFoundationMethods.m in Sources */,
+				95B44EA219935B4900BE7BA0 /* XLCBoardViewCell.m in Sources */,
 				95CCB645191B561600B261D6 /* NIActions.m in Sources */,
 				95CCB657191B561600B261D6 /* NISnapshotRotation.m in Sources */,
 				95CB182E193A2CA70059FF2A /* XLCSectionMetaData.m in Sources */,

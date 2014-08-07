@@ -13,8 +13,10 @@
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetail.h"
 #import "XLCBoardManager.h"
+#import "MONActivityIndicatorView.h"
+#import "XLCBoardViewCell.h"
 
-@interface XLCSectionDetailViewController () <EGORefreshTableHeaderDelegate>
+@interface XLCSectionDetailViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
     NSString *_desc;
     NSString *_category;
@@ -22,6 +24,8 @@
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
+    
+    __block MONActivityIndicatorView *indicatorView;
 
 }
 
@@ -85,6 +89,14 @@
     self.subtitle = _category;
     self.subtitleColor = [UIColor whiteColor];
     
+    indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.delegate = self;
+    indicatorView.numberOfCircles = 6;
+    indicatorView.radius = 15;
+    indicatorView.internalSpacing = 3;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
+    
     [self performSelector:@selector(initRefreshAllBoardsInSection) withObject:nil afterDelay:0.4];
     
 }
@@ -129,7 +141,7 @@
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         
         refreshView.delegate = self;
-        [refreshView showLoadingOnFirstRefresh];
+        //[refreshView showLoadingOnFirstRefresh];
         
         [self.tableView addSubview:refreshView];
         
@@ -146,8 +158,10 @@
 
 - (void)initRefreshAllBoardsInSection
 {
-    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
-    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    //[self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0.4];
+    
 }
 
 -(void)doPullRefresh
@@ -204,6 +218,7 @@
         [_refreshHeaderView refreshLastUpdatedDate];
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
         
     };
     
@@ -211,6 +226,8 @@
     {
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -221,6 +238,7 @@
     };
     
     [[XLCBoardManager sharedXLCBoardManager] doLoadAllBoardsInSection:_sectionId successBlock:successBlock failBlock:failBlock];
+    [indicatorView startAnimating];
 }
 
 
@@ -248,17 +266,18 @@
 {
     
     static NSString *CellIdentifier = @"boardsInSectionCell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView
+    XLCBoardViewCell *cell = (XLCBoardViewCell *)[tableView
                                                       dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell=[[XLCBoardViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     
     XLCBoardDetail *boardDetail = (XLCBoardDetail *)[_section.boards objectAtIndex:indexPath.row];
     XLCBoardMetaData *boardMetaData = boardDetail.metaData;
-    [cell.textLabel setText:boardMetaData.boardDesc];
+    [[cell description] setText:boardMetaData.boardDesc];
+    cell.index = indexPath.row;
     
     return cell;
 }
@@ -280,6 +299,19 @@
     _desc = sectionDesc;
     _category = category;
     _sectionId = sectionId;
+}
+
+
+#pragma mark -
+#pragma mark - MONActivityIndicatorViewDelegate Methods
+
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    CGFloat red   = (arc4random() % 256)/255.0;
+    CGFloat green = (arc4random() % 256)/255.0;
+    CGFloat blue  = (arc4random() % 256)/255.0;
+    CGFloat alpha = 1.0f;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 @end
