@@ -44,6 +44,7 @@
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
+		95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */; };
 		95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */; };
 		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
@@ -172,6 +173,9 @@
 		95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostReplyViewCell.xib; sourceTree = "<group>"; };
 		95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewController.h; path = controllers/XLCPostDetailViewController.h; sourceTree = "<group>"; };
 		95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewController.m; path = controllers/XLCPostDetailViewController.m; sourceTree = "<group>"; };
+		95B85CBA1994ABDF00F7D373 /* XLCBoardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetailViewController.h; path = controllers/XLCBoardDetailViewController.h; sourceTree = "<group>"; };
+		95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardDetailViewController.m; path = controllers/XLCBoardDetailViewController.m; sourceTree = "<group>"; };
+		95B85CBD1994AD7100F7D373 /* XLCBoardDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetailPassValueDelegate.h; path = controllers/XLCBoardDetailPassValueDelegate.h; sourceTree = "<group>"; };
 		95B885BD1940C36200157EE2 /* XLCSectionDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailPassValueDelegate.h; path = controllers/XLCSectionDetailPassValueDelegate.h; sourceTree = "<group>"; };
 		95B885BE1940C4B600157EE2 /* XLCSectionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailViewController.h; path = controllers/XLCSectionDetailViewController.h; sourceTree = "<group>"; };
 		95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCSectionDetailViewController.m; path = controllers/XLCSectionDetailViewController.m; sourceTree = "<group>"; };
@@ -550,6 +554,9 @@
 				95B885BD1940C36200157EE2 /* XLCSectionDetailPassValueDelegate.h */,
 				95B885BE1940C4B600157EE2 /* XLCSectionDetailViewController.h */,
 				95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */,
+				95B85CBA1994ABDF00F7D373 /* XLCBoardDetailViewController.h */,
+				95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */,
+				95B85CBD1994AD7100F7D373 /* XLCBoardDetailPassValueDelegate.h */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -904,6 +911,7 @@
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
+				95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95CB1846193B88670059FF2A /* XLCPostSummaryViewCell.m in Sources */,
 				95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */,

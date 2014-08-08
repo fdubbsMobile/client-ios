@@ -259,10 +259,10 @@
             </objects>
             <point key="canvasLocation" x="951" y="-973"/>
         </scene>
-        <!--Section Detail View Controller -  版面详情-->
+        <!--Section Detail View Controller - 讨论区详情-->
         <scene sceneID="5OS-Ub-nwe">
             <objects>
-                <tableViewController title=" 版面详情" id="dKM-qk-bs3" customClass="XLCSectionDetailViewController" sceneMemberID="viewController">
+                <tableViewController title="讨论区详情" id="dKM-qk-bs3" customClass="XLCSectionDetailViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="qul-fq-Xhh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -275,10 +275,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FAR-r3-ZUt" userLabel="Label - description">
-                                            <rect key="frame" x="34" y="7" width="220" height="40"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FAR-r3-ZUt" userLabel="Label - description">
+                                            <rect key="frame" x="34" y="4" width="220" height="19"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -286,10 +286,19 @@
                                             <rect key="frame" x="10" y="53" width="310" height="1"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="brp-qc-H8n">
+                                            <rect key="frame" x="34" y="21" width="211" height="31"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="description" destination="FAR-r3-ZUt" id="BTm-LK-J46"/>
+                                    <outlet property="description" destination="brp-qc-H8n" id="Snh-ER-8vX"/>
+                                    <outlet property="title" destination="FAR-r3-ZUt" id="NFG-Lb-U2H"/>
+                                    <segue destination="pEw-88-trb" kind="push" identifier="showBoardDetail" id="Dio-5q-PmQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -433,6 +442,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D99-PX-xtP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="425" y="-973"/>
+        </scene>
+        <!--Board Detail View Controller -  版面详情-->
+        <scene sceneID="uzF-DV-P8J">
+            <objects>
+                <tableViewController title=" 版面详情" id="pEw-88-trb" customClass="XLCBoardDetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="wEa-Kj-epJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="boardsInSectionCell" rowHeight="55" id="spY-fV-Bpf">
+                                <rect key="frame" x="0.0" y="86" width="320" height="55"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="spY-fV-Bpf" id="agk-zE-4iL">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="54"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_divider_line.png" id="s2S-O7-eu5">
+                                            <rect key="frame" x="10" y="53" width="310" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pEw-88-trb" id="2bV-gL-dlZ"/>
+                            <outlet property="delegate" destination="pEw-88-trb" id="80L-zn-I2t"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="fxv-2m-oZl"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kav-Sh-BEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1952" y="-973"/>
         </scene>
     </scenes>
     <resources>

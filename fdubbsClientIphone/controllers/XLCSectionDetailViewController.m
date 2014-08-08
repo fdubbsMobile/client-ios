@@ -15,6 +15,7 @@
 #import "XLCBoardManager.h"
 #import "MONActivityIndicatorView.h"
 #import "XLCBoardViewCell.h"
+#import "XLCBoardDetailPassValueDelegate.h"
 
 @interface XLCSectionDetailViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
@@ -26,6 +27,8 @@
     BOOL _reloading;
     
     __block MONActivityIndicatorView *indicatorView;
+    
+    NSObject<XLCBoardDetailPassValueDelegate> *boardDetailPassValueDelegte ;
 
 }
 
@@ -277,6 +280,7 @@
     XLCBoardDetail *boardDetail = (XLCBoardDetail *)[_section.boards objectAtIndex:indexPath.row];
     XLCBoardMetaData *boardMetaData = boardDetail.metaData;
     [[cell description] setText:boardMetaData.boardDesc];
+    [[cell title] setText:boardMetaData.title];
     cell.index = indexPath.row;
     
     return cell;
@@ -312,6 +316,27 @@
     CGFloat blue  = (arc4random() % 256)/255.0;
     CGFloat alpha = 1.0f;
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue");
+    NSLog(@"The segue id is %@", segue.identifier );
+	
+	UIViewController *destination = segue.destinationViewController;
+    NSLog(@"Send is %@", destination);
+	if([segue.identifier isEqualToString:@"showBoardDetail"])
+    {
+        NSLog(@"showBoardDetail");
+        NSInteger selectedIdx = [(XLCBoardViewCell *)sender index];
+        XLCBoardDetail *boardDetail = (XLCBoardDetail *)[_section.boards objectAtIndex:selectedIdx];
+        XLCBoardMetaData *boardMetaData = boardDetail.metaData;
+        boardDetailPassValueDelegte = (NSObject<XLCBoardDetailPassValueDelegate> *)destination;
+		[boardDetailPassValueDelegte passValueWithBoardTitle:boardMetaData.title description:boardMetaData.boardDesc boardId:boardMetaData.boardId];
+	}
 }
 
 @end
