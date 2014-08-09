@@ -1,0 +1,1 @@
+../../AMScrollingNavbar/AMScrollingNavbar/AMScrollingNavbarTableViewController.h
