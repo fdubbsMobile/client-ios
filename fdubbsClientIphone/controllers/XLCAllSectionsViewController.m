@@ -12,13 +12,16 @@
 #import "XLCSectionViewCell.h"
 #import "XLCAllSectionsViewController.h"
 #import "XLCSectionDetailPassValueDelegate.h"
+#import "MONActivityIndicatorView.h"
 
-@interface XLCAllSectionsViewController () <EGORefreshTableHeaderDelegate>
+@interface XLCAllSectionsViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     
     NSObject<XLCSectionDetailPassValueDelegate> *sectionDetailPassValueDelegte ;
+    
+    __block MONActivityIndicatorView *indicatorView;
 }
 
 
@@ -43,6 +46,14 @@
 {
     [super viewDidLoad];
     
+    indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.delegate = self;
+    indicatorView.numberOfCircles = 6;
+    indicatorView.radius = 15;
+    indicatorView.internalSpacing = 3;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
+    
     [self addRefreshViewController];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -55,13 +66,14 @@
     
     DebugLog(@"init XLCTopPostsViewController");
     
-    [self performSelector:@selector(initRefreshAllSections) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(initRefreshAllSections) withObject:nil afterDelay:0.1];
 }
 
 - (void)initRefreshAllSections
 {
-    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
-    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    //[self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0];
 }
 
 -(void)doPullRefresh
@@ -119,12 +131,17 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
+        [indicatorView stopAnimating];
+        
     };
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        [indicatorView stopAnimating];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -135,6 +152,7 @@
     };
     
     [[XLCBoardManager sharedXLCBoardManager] doLoadAllSectionsWithSuccessBlock:successBlock failBlock:failBlock];
+    [indicatorView startAnimating];
 }
 
 
@@ -187,7 +205,7 @@
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         
         refreshView.delegate = self;
-        [refreshView showLoadingOnFirstRefresh];
+        //[refreshView showLoadingOnFirstRefresh];
         
         [self.tableView addSubview:refreshView];
         
@@ -195,6 +213,17 @@
     }
 }
 
+#pragma mark -
+#pragma mark - MONActivityIndicatorViewDelegate Methods
+
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    CGFloat red   = (arc4random() % 256)/255.0;
+    CGFloat green = (arc4random() % 256)/255.0;
+    CGFloat blue  = (arc4random() % 256)/255.0;
+    CGFloat alpha = 1.0f;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
 
 - (void)didReceiveMemoryWarning
 {

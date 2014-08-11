@@ -21,6 +21,7 @@
 #import "XLCSection.h"
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetail.h"
+#import "XLCPostSummaryInBoard.h"
 
 @implementation XLCRESTfulClient
 
@@ -231,6 +232,40 @@
                                                                                             keyPath:nil
                                                                                         statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:allBoardsInSectionRespDesc];
+    
+    
+    // init the post summary in board mapping
+    RKObjectMapping *postSummaryInBoardMapping = [RKObjectMapping mappingForClass:[XLCPostSummaryInBoard class]];
+    [postSummaryInBoardMapping addAttributeMappingsFromDictionary:@{
+                                                             @"start_post_num" : @"startPostNum",
+                                                             @"post_count" : @"postCount"
+                                                             }];
+    
+    RKRelationshipMapping* boardMetaDataRSMapping1 = [RKRelationshipMapping relationshipMappingFromKeyPath:@"board_meta_data"
+                                                                                                toKeyPath:@"boardMetaData"
+                                                                                              withMapping:boardMetaDataMapping];
+    [postSummaryInBoardMapping addPropertyMapping:boardMetaDataRSMapping1];
+    
+    RKRelationshipMapping* postSummaryListRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_summary_list"
+                                                                                               toKeyPath:@"postSummaryList"
+                                                                                             withMapping:postSummaryMapping];
+    [postSummaryInBoardMapping addPropertyMapping:postSummaryListRSMapping];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *postSummaryInBoardRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryInBoardMapping
+                                                                                                    method:RKRequestMethodGET
+                                                                                               pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode"
+                                                                                                   keyPath:nil
+                                                                                               statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:postSummaryInBoardRespDesc];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *postSummaryInBoardWithStartNumberRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryInBoardMapping
+                                                                                                    method:RKRequestMethodGET
+                                                                                               pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNum"
+                                                                                                   keyPath:nil
+                                                                                               statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:postSummaryInBoardWithStartNumberRespDesc];
     
 }
 

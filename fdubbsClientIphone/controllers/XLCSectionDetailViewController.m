@@ -100,7 +100,7 @@
     indicatorView.center = self.view.center;
     [self.view addSubview:indicatorView];
     
-    [self performSelector:@selector(initRefreshAllBoardsInSection) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(initRefreshAllBoardsInSection) withObject:nil afterDelay:0.1];
     
 }
 
@@ -163,7 +163,7 @@
 {
     //[self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
     //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0];
     
 }
 

@@ -8,13 +8,32 @@
 
 #import "XLCBoardDetailViewController.h"
 #import "FRDLivelyButton.h"
+#import "EGORefreshTableHeaderView.h"
+#import "XLCPostManager.h"
+#import "MONActivityIndicatorView.h"
+#import "XLCPostSummaryViewCell.h"
+#import "XLCPostSummaryInBoard.h"
+#import "LoadMoreFooterView.h"
 
-@interface XLCBoardDetailViewController ()
+@interface XLCBoardDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate, MONActivityIndicatorViewDelegate>
 {
     NSUInteger _boardId;
     NSString *_boardTitle;
     NSString *_boardDesc;
+    
+    EGORefreshTableHeaderView *_refreshHeaderView;
+    BOOL _reloading;
+    
+    __block MONActivityIndicatorView *indicatorView;
+    
+    BOOL _hasMorePost;
+    LoadMoreFooterView *_loadMoreFooterView;
+    
+    __block NSMutableArray *_postSummaryList;
+    __block NSUInteger _startPostNum;
 }
+
+
 @end
 
 @implementation XLCBoardDetailViewController
@@ -24,6 +43,10 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        _reloading = NO;
+        _hasMorePost = NO;
+        _loadMoreFooterView = nil;
+        _postSummaryList=nil;
     }
     return self;
 }
@@ -63,8 +86,29 @@
     self.title = _boardDesc;
     self.titleColor = [UIColor whiteColor];
     
-    self.subtitle = _boardTitle;
+    self.subtitle = [[NSString alloc] initWithFormat:@"%@版", _boardTitle];;
     self.subtitleColor = [UIColor whiteColor];
+    
+    indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.delegate = self;
+    indicatorView.numberOfCircles = 6;
+    indicatorView.radius = 15;
+    indicatorView.internalSpacing = 3;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
+    
+    
+    [self addRefreshViewController];
+    
+    if (_loadMoreFooterView ==nil) {
+        _loadMoreFooterView = [[LoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        _loadMoreFooterView.delegate = self;
+    }
+    
+    [self showOrDismissTableFooterView];
+    
+    [self performSelector:@selector(initRefreshPostSummaryInBoard) withObject:nil afterDelay:0.1];
+    
     
 }
 
@@ -102,88 +146,281 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
 
+- (void)initRefreshPostSummaryInBoard
+{
+    //[self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0];
+}
+
+-(void)doPullRefresh
+{
+    [_refreshHeaderView egoRefreshScrollViewDidScroll:self.tableView];
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    
+	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+    
+    if (_hasMorePost) {
+        
+        if (!_reloading) {
+            NSLog(@"scrollViewDidScroll -- hasMore");
+            [_loadMoreFooterView loadMoreScrollViewDidScroll:scrollView];
+        }
+    }
+    
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    
+	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+    
+    if (_hasMorePost) {
+        
+        if (!_reloading) {
+            NSLog(@"scrollViewDidEndDragging -- hasMore");
+            [_loadMoreFooterView loadMoreScrollViewDidEndDragging:scrollView];
+        }
+    }
+    
+}
+
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
+{
+    [self loadData];
+}
+
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view
+{
+    return _reloading;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view
+{
+    return [NSDate date];
+}
+
+- (void) initAndClearPostSummaryList
+{
+    if (_postSummaryList == nil) {
+        _postSummaryList = [[NSMutableArray alloc] init];
+    }
+    else {
+        [_postSummaryList removeAllObjects];
+    }
+}
+
+-(void)loadData
+{
+    _reloading = YES;
+    
+    void (^successBlock)(XLCPostSummaryInBoard *) = ^(XLCPostSummaryInBoard *postSummaryInBoard)
+    {
+        
+        DebugLog(@"Success to load post summary in board!");
+        
+        [self initAndClearPostSummaryList];
+        
+        [_postSummaryList addObjectsFromArray:[postSummaryInBoard postSummaryList]];
+        _startPostNum = [postSummaryInBoard startPostNum];
+        
+        if (_startPostNum > 1)
+        {
+            _hasMorePost = TRUE;
+        }
+        else
+        {
+            _hasMorePost = FALSE;
+        }
+        
+        [self.tableView reloadData];
+        
+        [self showOrDismissTableFooterView];
+        
+        [_refreshHeaderView refreshLastUpdatedDate];
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        _reloading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    [[XLCPostManager sharedXLCPostManager] doLoadPostSummaryInBoardWithBoardName:_boardTitle mode:@"topic" successBlock:successBlock failBlock:failBlock];
+    [indicatorView startAnimating];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"PostSummaryInBoardCell";
+    XLCPostSummaryViewCell *cell = (XLCPostSummaryViewCell *)[tableView
+                                                                    dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell=[[XLCPostSummaryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    XLCPostSummary *postSummary = [_postSummaryList objectAtIndex:indexPath.row];
+    
+    [cell setUpWithPostSummary:postSummary AtRow:indexPath.row];
+    
+    return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [_postSummaryList count];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+
+-(void)addRefreshViewController
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    if (_refreshHeaderView == nil) {
+        EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        
+        refreshView.delegate = self;
+        //[refreshView showLoadingOnFirstRefresh];
+        
+        [self.tableView addSubview:refreshView];
+        
+        _refreshHeaderView = refreshView;
+        
+        _reloading = FALSE;
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)showOrDismissTableFooterView
 {
+    if (_hasMorePost) {
+        self.tableView.tableFooterView = _loadMoreFooterView;
+        self.tableView.tableFooterView.hidden = NO;
+    }
+    else {
+        self.tableView.tableFooterView = nil;
+        self.tableView.tableFooterView.hidden = YES;
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) loadMorePostSummary
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    NSLog(@"try to load more post summary!");
+    _reloading = YES;
+    
+    
+    void (^successBlock)(XLCPostSummaryInBoard *) = ^(XLCPostSummaryInBoard *postSummaryInBoard)
+    {
+        DebugLog(@"Success to load more post summary!");
+        
+        [_postSummaryList addObjectsFromArray:[postSummaryInBoard postSummaryList]];
+        _startPostNum = [postSummaryInBoard startPostNum];
+        
+        if (_startPostNum > 1)
+        {
+            _hasMorePost = TRUE;
+        }
+        else
+        {
+            _hasMorePost = FALSE;
+        }
+        
+        [self.tableView reloadData];
+        
+        [_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        [self showOrDismissTableFooterView];
+        _reloading = NO;
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        _reloading = NO;
+        [_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    NSUInteger startNum = _startPostNum - 20;
+    if (startNum < 1) {
+        startNum = 1;
+    }
+    
+    [[XLCPostManager sharedXLCPostManager] doLoadPostSummaryInBoardWithBoardName:_boardTitle mode:@"topic" startPostNumber:startNum successBlock:successBlock failBlock:failBlock];
 }
-*/
 
-/*
-#pragma mark - Navigation
+#pragma mark -
+#pragma mark LoadMoreTableFooterDelegate Methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)loadMoreTableFooterDidTriggerRefresh:(LoadMoreFooterView *)view {
+    
+    NSLog(@"loadMoreTableFooterDidTriggerRefresh");
+	[self loadMorePostSummary];
+    
 }
-*/
 
+- (BOOL)loadMoreTableFooterDataSourceIsLoading:(LoadMoreFooterView *)view {
+    NSLog(@"loadMoreTableFooterDataSourceIsLoading");
+	return _reloading;
+}
+
+
+#pragma mark -
+#pragma mark - MONActivityIndicatorViewDelegate Methods
+
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    CGFloat red   = (arc4random() % 256)/255.0;
+    CGFloat green = (arc4random() % 256)/255.0;
+    CGFloat blue  = (arc4random() % 256)/255.0;
+    CGFloat alpha = 1.0f;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
 
 -(void) passValueWithBoardTitle:(NSString *)title description:(NSString *)description boardId:(NSUInteger)boardId
 {

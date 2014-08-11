@@ -2,14 +2,20 @@
 //  XLCPostSummaryViewCell.m
 //  fdubbsClientIphone
 //
-//  Created by dennis on 14-8-11.
+//  Created by 许铝才 on 14-4-12.
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
-#import "XLCPostSummaryViewCell.h"
+#import "XLCTopPostSummaryViewCell.h"
 #import "UIImage+Overlay.h"
 
-@implementation XLCPostSummaryViewCell
+@interface XLCTopPostSummaryViewCell ()
+
+
+
+@end
+
+@implementation XLCTopPostSummaryViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -32,8 +38,17 @@
     
     self.titleLabel.text = postSummary.metaData.title;
     
+    UIImage *replyButtonBgImage = [[UIImage imageNamed:@"reply"] imageWithOverlayColor:[UIColor colorWithRed:53/255.0 green:126/255.0 blue:189/255.0 alpha:1]];
+    
+    [self.replyCountButton setTitle:[NSString stringWithFormat:@"%@", postSummary.count] forState:UIControlStateNormal];
+    [self.replyCountButton setBackgroundImage:replyButtonBgImage forState:UIControlStateNormal];
+    //[self.replyCountButton primaryStyle];
+    
+    
     [self layoutOwnerLabel:[NSString stringWithFormat:@"%@", postSummary.metaData.owner]];
     [self layoutOwnerButton];
+    
+    [self layoutBoardLabel:[NSString stringWithFormat:@"%@版", postSummary.metaData.board]];
     
 }
 
@@ -58,6 +73,22 @@
 }
 
 
+- (void)layoutBoardLabel:(NSString *)board
+{
+    self.boardLabel.numberOfLines = 0;
+    CGRect frame = self.boardLabel.frame;
+    
+    CGSize textSize = CGSizeMake(MAXFLOAT, frame.size.height);
+    CGRect textRect = [board boundingRectWithSize:textSize
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{NSFontAttributeName:self.boardLabel.font}
+                                          context:nil];
+    
+    frame.size.width = textRect.size.width;
+    self.boardLabel.frame = frame;
+    self.boardLabel.text = board;
+}
+
 - (void)layoutOwnerLabel:(NSString *)owner
 {
     self.ownerLabel.numberOfLines = 0;
@@ -65,9 +96,9 @@
     
     CGSize textSize = CGSizeMake(MAXFLOAT, frame.size.height);
     CGRect textRect = [owner boundingRectWithSize:textSize
-                                          options:NSStringDrawingUsesLineFragmentOrigin
-                                       attributes:@{NSFontAttributeName:self.ownerLabel.font}
-                                          context:nil];
+                       options:NSStringDrawingUsesLineFragmentOrigin
+                    attributes:@{NSFontAttributeName:self.ownerLabel.font}
+                       context:nil];
     
     frame.size.width = textRect.size.width;
     self.ownerLabel.frame = frame;
@@ -90,9 +121,9 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    
+
     // Configure the view for the selected state
 }
 
-
 @end
+

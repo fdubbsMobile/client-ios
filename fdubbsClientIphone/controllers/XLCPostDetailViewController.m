@@ -15,8 +15,9 @@
 #import "XLCPostDetailViewCell.h"
 #import "FRDLivelyButton.h"
 #import "LoadMoreFooterView.h"
+#import "MONActivityIndicatorView.h"
 
-@interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate> {
+@interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate, MONActivityIndicatorViewDelegate> {
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
@@ -32,6 +33,8 @@
     NSString *_lastReplyId;
     NSMutableArray *_replies;
     LoadMoreFooterView *_loadMoreFooterView;
+    
+    __block MONActivityIndicatorView *indicatorView;
 }
 
 @end
@@ -58,6 +61,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.delegate = self;
+    indicatorView.numberOfCircles = 6;
+    indicatorView.radius = 15;
+    indicatorView.internalSpacing = 3;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
     
     [self addRefreshViewController];
     
@@ -106,7 +117,7 @@
     [self showOrDismissTableFooterView];
     
     DebugLog(@"init XLCPostDetailViewController");
-    [self performSelector:@selector(initRefreshPostDetail) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(initRefreshPostDetail) withObject:nil afterDelay:0.1];
     
 }
 
@@ -183,12 +194,15 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
+        [indicatorView stopAnimating];
+        
     };
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
@@ -200,6 +214,7 @@
     };
     
     [[XLCPostManager sharedXLCPostManager] doLoadPostDetailWithBoard:_board postId:_postId successBlock:successBlock failBlock:failBlock];
+    [indicatorView startAnimating];
 }
 
 
@@ -339,7 +354,7 @@
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         
         refreshView.delegate = self;
-        [refreshView showLoadingOnFirstRefresh];
+        //[refreshView showLoadingOnFirstRefresh];
         
         [self.tableView addSubview:refreshView];
         
@@ -349,8 +364,9 @@
 
 - (void)initRefreshPostDetail
 {
-    [self.tableView setContentOffset:CGPointMake(0, -150) animated:YES];
-    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    //[self.tableView setContentOffset:CGPointMake(0, -150) animated:YES];
+    //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0];
 }
 
 -(void)doPullRefresh
@@ -478,6 +494,17 @@
 	return _reloading;
 }
 
+#pragma mark -
+#pragma mark - MONActivityIndicatorViewDelegate Methods
+
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    CGFloat red   = (arc4random() % 256)/255.0;
+    CGFloat green = (arc4random() % 256)/255.0;
+    CGFloat blue  = (arc4random() % 256)/255.0;
+    CGFloat alpha = 1.0f;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
 
 -(void) passValueWithTitle:(NSString *)title Board:(NSString *)board postId:(NSString *)postId
 {

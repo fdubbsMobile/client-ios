@@ -10,6 +10,7 @@
 
 @class XLCPostDetail;
 @class XLCPostReplies;
+@class XLCPostSummaryInBoard;
 
 @interface XLCPostManager : NSObject
 
@@ -27,4 +28,15 @@
                               lastReplyId:(NSString *)lastReplyId
                              successBlock:(void (^)(XLCPostReplies *))success
                                 failBlock:(void (^)(NSError *))failure;
+
+- (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
+                                          mode:(NSString *)mode
+                                  successBlock:(void (^)(XLCPostSummaryInBoard *))success
+                                     failBlock:(void (^)(NSError *))failure;
+
+- (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
+                                          mode:(NSString *)mode
+                                  startPostNumber:(NSUInteger)startPostNumber
+                                  successBlock:(void (^)(XLCPostSummaryInBoard *))success
+                                     failBlock:(void (^)(NSError *))failure;
 @end

@@ -41,6 +41,8 @@
 		95B44E9E199324EA00BE7BA0 /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */; };
 		95B44EA219935B4900BE7BA0 /* XLCBoardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */; };
 		95B59A81191682A3000B069C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B59A80191682A3000B069C /* CoreText.framework */; };
+		95B6131D199867A200FE4F00 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */; };
+		95B613201998803100FE4F00 /* XLCPostSummaryInBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6131F1998803100FE4F00 /* XLCPostSummaryInBoard.m */; };
 		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
 		95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */; };
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
@@ -61,7 +63,7 @@
 		95CB1843193B88670059FF2A /* XLCMainPostViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1837193B88670059FF2A /* XLCMainPostViewCell.m */; };
 		95CB1844193B88670059FF2A /* XLCPostDetailViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1839193B88670059FF2A /* XLCPostDetailViewCell.m */; };
 		95CB1845193B88670059FF2A /* XLCPostReplyViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB183B193B88670059FF2A /* XLCPostReplyViewCell.m */; };
-		95CB1846193B88670059FF2A /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB183D193B88670059FF2A /* XLCPostSummaryViewCell.m */; };
+		95CB1846193B88670059FF2A /* XLCTopPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB183D193B88670059FF2A /* XLCTopPostSummaryViewCell.m */; };
 		95CB1847193B88670059FF2A /* ZGNavigationTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB183F193B88670059FF2A /* ZGNavigationTitleView.m */; };
 		95CB184A193B888A0059FF2A /* XLCSectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1849193B888A0059FF2A /* XLCSectionViewCell.m */; };
 		95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CCB60E191B555700B261D6 /* NIAttributedLabel.m */; };
@@ -168,6 +170,10 @@
 		95B44EA019935B4900BE7BA0 /* XLCBoardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardViewCell.h; path = views/XLCCustomView/XLCBoardViewCell.h; sourceTree = "<group>"; };
 		95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardViewCell.m; path = views/XLCCustomView/XLCBoardViewCell.m; sourceTree = "<group>"; };
 		95B59A80191682A3000B069C /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		95B6131B199867A200FE4F00 /* XLCPostSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostSummaryViewCell.h; path = views/XLCCustomView/XLCPostSummaryViewCell.h; sourceTree = "<group>"; };
+		95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCCustomView/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
+		95B6131E1998803100FE4F00 /* XLCPostSummaryInBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostSummaryInBoard.h; path = model/pojo/XLCPostSummaryInBoard.h; sourceTree = "<group>"; };
+		95B6131F1998803100FE4F00 /* XLCPostSummaryInBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryInBoard.m; path = model/pojo/XLCPostSummaryInBoard.m; sourceTree = "<group>"; };
 		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
 		95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
 		95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostReplyViewCell.xib; sourceTree = "<group>"; };
@@ -209,8 +215,8 @@
 		95CB1839193B88670059FF2A /* XLCPostDetailViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewCell.m; path = views/XLCCustomView/XLCPostDetailViewCell.m; sourceTree = "<group>"; };
 		95CB183A193B88670059FF2A /* XLCPostReplyViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostReplyViewCell.h; path = views/XLCCustomView/XLCPostReplyViewCell.h; sourceTree = "<group>"; };
 		95CB183B193B88670059FF2A /* XLCPostReplyViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostReplyViewCell.m; path = views/XLCCustomView/XLCPostReplyViewCell.m; sourceTree = "<group>"; };
-		95CB183C193B88670059FF2A /* XLCPostSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostSummaryViewCell.h; path = views/XLCCustomView/XLCPostSummaryViewCell.h; sourceTree = "<group>"; };
-		95CB183D193B88670059FF2A /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCCustomView/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
+		95CB183C193B88670059FF2A /* XLCTopPostSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostSummaryViewCell.h; path = views/XLCCustomView/XLCTopPostSummaryViewCell.h; sourceTree = "<group>"; };
+		95CB183D193B88670059FF2A /* XLCTopPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostSummaryViewCell.m; path = views/XLCCustomView/XLCTopPostSummaryViewCell.m; sourceTree = "<group>"; };
 		95CB183E193B88670059FF2A /* ZGNavigationTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationTitleView.h; path = views/XLCCustomView/ZGNavigationTitleView.h; sourceTree = "<group>"; };
 		95CB183F193B88670059FF2A /* ZGNavigationTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationTitleView.m; path = views/XLCCustomView/ZGNavigationTitleView.m; sourceTree = "<group>"; };
 		95CB1848193B88890059FF2A /* XLCSectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionViewCell.h; path = views/XLCCustomView/XLCSectionViewCell.h; sourceTree = "<group>"; };
@@ -489,6 +495,8 @@
 				95E092D11948AAFD004695A7 /* XLCBoardDetail.m */,
 				95E092D31948ABC6004695A7 /* XLCSection.h */,
 				95E092D41948ABC6004695A7 /* XLCSection.m */,
+				95B6131E1998803100FE4F00 /* XLCPostSummaryInBoard.h */,
+				95B6131F1998803100FE4F00 /* XLCPostSummaryInBoard.m */,
 			);
 			name = POJO;
 			sourceTree = "<group>";
@@ -605,14 +613,16 @@
 				95CB1839193B88670059FF2A /* XLCPostDetailViewCell.m */,
 				95CB183A193B88670059FF2A /* XLCPostReplyViewCell.h */,
 				95CB183B193B88670059FF2A /* XLCPostReplyViewCell.m */,
-				95CB183C193B88670059FF2A /* XLCPostSummaryViewCell.h */,
-				95CB183D193B88670059FF2A /* XLCPostSummaryViewCell.m */,
+				95CB183C193B88670059FF2A /* XLCTopPostSummaryViewCell.h */,
+				95CB183D193B88670059FF2A /* XLCTopPostSummaryViewCell.m */,
 				95CB183E193B88670059FF2A /* ZGNavigationTitleView.h */,
 				95CB183F193B88670059FF2A /* ZGNavigationTitleView.m */,
 				95CB1848193B88890059FF2A /* XLCSectionViewCell.h */,
 				95CB1849193B888A0059FF2A /* XLCSectionViewCell.m */,
 				95B44EA019935B4900BE7BA0 /* XLCBoardViewCell.h */,
 				95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */,
+				95B6131B199867A200FE4F00 /* XLCPostSummaryViewCell.h */,
+				95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */,
 			);
 			name = XLCCustomView;
 			sourceTree = "<group>";
@@ -895,10 +905,12 @@
 				95CCB655191B561600B261D6 /* NIRuntimeClassModifications.m in Sources */,
 				95CB1842193B88670059FF2A /* XLCFlatSettings.m in Sources */,
 				95CCB653191B561600B261D6 /* NIOperations.m in Sources */,
+				95B613201998803100FE4F00 /* XLCPostSummaryInBoard.m in Sources */,
 				95C1D0661923C36400E38625 /* XLCImage.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
 				95AEBDD818F98AAF00C7E8E4 /* XLCAppDelegate.m in Sources */,
+				95B6131D199867A200FE4F00 /* XLCPostSummaryViewCell.m in Sources */,
 				95C1D0631923C32A00E38625 /* XLCContent.m in Sources */,
 				95CCB64A191B561600B261D6 /* NIDeviceOrientation.m in Sources */,
 				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
@@ -913,7 +925,7 @@
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
-				95CB1846193B88670059FF2A /* XLCPostSummaryViewCell.m in Sources */,
+				95CB1846193B88670059FF2A /* XLCTopPostSummaryViewCell.m in Sources */,
 				95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */,
 				95CB1844193B88670059FF2A /* XLCPostDetailViewCell.m in Sources */,
 				95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */,

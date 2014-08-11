@@ -13,16 +13,19 @@
 #import "XLCPostManager.h"
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
-#import "XLCPostSummaryViewCell.h"
+#import "XLCTopPostSummaryViewCell.h"
+#import "MONActivityIndicatorView.h"
 
 #import "XLCPostDetailPassValueDelegate.h"
 
-@interface XLCTopPostsViewController () <EGORefreshTableHeaderDelegate>
+@interface XLCTopPostsViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
     
     NSObject<XLCPostDetailPassValueDelegate> *postDetailPassValueDelegte ;
+    
+    __block MONActivityIndicatorView *indicatorView;
 }
 
 @property  __block NSArray *top10Posts;
@@ -46,6 +49,13 @@
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    indicatorView = [[MONActivityIndicatorView alloc] init];
+    indicatorView.delegate = self;
+    indicatorView.numberOfCircles = 6;
+    indicatorView.radius = 15;
+    indicatorView.internalSpacing = 3;
+    indicatorView.center = self.view.center;
+    [self.view addSubview:indicatorView];
     
     [self addRefreshViewController];
     
@@ -62,13 +72,14 @@
     
     DebugLog(@"init XLCTopPostsViewController");
     
-    [self performSelector:@selector(initRefreshTopPosts) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(initRefreshTopPosts) withObject:nil afterDelay:0.1];
 }
 
 - (void)initRefreshTopPosts
 {
-    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
-    [self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    //[self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0];
 }
 
 -(void)doPullRefresh
@@ -125,6 +136,7 @@
         [_refreshHeaderView refreshLastUpdatedDate];
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
         
     };
     
@@ -132,6 +144,8 @@
     {
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+        [indicatorView stopAnimating];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -142,6 +156,7 @@
     };
     
     [[XLCPostManager sharedXLCPostManager] doLoadTop10PostsWithSuccessBlock:successBlock failBlock:failBlock];
+    [indicatorView startAnimating];
 }
 
 
@@ -155,11 +170,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Top10PostCell";
-    XLCPostSummaryViewCell *cell = (XLCPostSummaryViewCell *)[tableView
+    XLCTopPostSummaryViewCell *cell = (XLCTopPostSummaryViewCell *)[tableView
                                                               dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell=[[XLCPostSummaryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell=[[XLCTopPostSummaryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     XLCPostSummary *postSummary = [_top10Posts objectAtIndex:indexPath.row];
@@ -187,7 +202,7 @@
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
         
         refreshView.delegate = self;
-        [refreshView showLoadingOnFirstRefresh];
+        //[refreshView showLoadingOnFirstRefresh];
         
         [self.tableView addSubview:refreshView];
         
@@ -195,6 +210,17 @@
     }
 }
 
+#pragma mark -
+#pragma mark - MONActivityIndicatorViewDelegate Methods
+
+- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
+      circleBackgroundColorAtIndex:(NSUInteger)index {
+    CGFloat red   = (arc4random() % 256)/255.0;
+    CGFloat green = (arc4random() % 256)/255.0;
+    CGFloat blue  = (arc4random() % 256)/255.0;
+    CGFloat alpha = 1.0f;
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
 
 #pragma mark - Navigation
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -207,7 +233,7 @@
 	if([segue.identifier isEqualToString:@"showPostDetail"])
     {
         NSLog(@"showPostDetail");
-        NSInteger selectedIdx = [(XLCPostSummaryViewCell *)sender rowIndex];
+        NSInteger selectedIdx = [(XLCTopPostSummaryViewCell *)sender rowIndex];
         XLCPostSummary *selectedPost = [_top10Posts objectAtIndex:selectedIdx];
         postDetailPassValueDelegte = (NSObject<XLCPostDetailPassValueDelegate> *)destination;
 		[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title Board:selectedPost.metaData.board postId:selectedPost.metaData.postId];

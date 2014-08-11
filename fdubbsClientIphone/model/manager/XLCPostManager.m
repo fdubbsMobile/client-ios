@@ -14,6 +14,7 @@
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
 #import "XLCPostDetail.h"
+#import "XLCPostSummaryInBoard.h"
 
 @implementation XLCPostManager
 
@@ -84,6 +85,51 @@ SINGLETON_GCD(XLCPostManager);
                                 XLCPostReplies *postReplies = [mappingResult firstObject];
                                 success(postReplies);
                                 NSLog(@"Loaded post replies: %@", postReplies);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
+}
+
+- (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
+                                          mode:(NSString *)mode
+                                  successBlock:(void (^)(XLCPostSummaryInBoard *))success
+                                     failBlock:(void (^)(NSError *))failure
+{
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSString *path = [NSString stringWithFormat:@"/api/v1/post/summary/board/%@/%@", boardName, mode];
+    NSLog(@"path is %@", path);
+    
+    [objectManager getObjectsAtPath:path
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCPostSummaryInBoard *postSummaryInBoard = [mappingResult firstObject];
+                                success(postSummaryInBoard);
+                                NSLog(@"Loaded post summaris: %@", postSummaryInBoard);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
+}
+
+- (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
+                                          mode:(NSString *)mode
+                                  startPostNumber:(NSUInteger)startPostNumber
+                                  successBlock:(void (^)(XLCPostSummaryInBoard *))success
+                                     failBlock:(void (^)(NSError *))failure
+{
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSString *path = [NSString stringWithFormat:@"/api/v1/post/summary/board/%@/%@/%lu", boardName, mode, (unsigned long)startPostNumber];
+    NSLog(@"path is %@", path);
+    
+    [objectManager getObjectsAtPath:path
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCPostSummaryInBoard *postSummaryInBoard = [mappingResult firstObject];
+                                success(postSummaryInBoard);
+                                NSLog(@"Loaded post summaris: %@", postSummaryInBoard);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 failure(error);
