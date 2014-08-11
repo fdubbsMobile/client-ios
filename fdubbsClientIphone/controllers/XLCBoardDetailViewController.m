@@ -14,6 +14,7 @@
 #import "XLCPostSummaryViewCell.h"
 #import "XLCPostSummaryInBoard.h"
 #import "LoadMoreFooterView.h"
+#import "XLCPostDetailPassValueDelegate.h"
 
 @interface XLCBoardDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate, MONActivityIndicatorViewDelegate>
 {
@@ -31,6 +32,8 @@
     
     __block NSMutableArray *_postSummaryList;
     __block NSUInteger _startPostNum;
+    
+    NSObject<XLCPostDetailPassValueDelegate> *postDetailPassValueDelegte ;
 }
 
 
@@ -425,11 +428,29 @@
 -(void) passValueWithBoardTitle:(NSString *)title description:(NSString *)description boardId:(NSUInteger)boardId
 {
     NSLog(@"passValueWithBoardTitle");
-    NSLog(@"The value is %@, %@, %d", title, description, boardId);
+    NSLog(@"The value is %@, %@, %lu", title, description, (unsigned long)boardId);
     _boardId = boardId;
     _boardTitle = title;
     _boardDesc = description;
     
+}
+
+#pragma mark - Navigation
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue");
+    NSLog(@"The segue id is %@", segue.identifier );
+	
+	UIViewController *destination = segue.destinationViewController;
+    NSLog(@"Send is %@", destination);
+	if([segue.identifier isEqualToString:@"showPostDetail"])
+    {
+        NSLog(@"showPostDetail");
+        NSInteger selectedIdx = [(XLCPostSummaryViewCell *)sender rowIndex];
+        XLCPostSummary *selectedPost = [_postSummaryList objectAtIndex:selectedIdx];
+        postDetailPassValueDelegte = (NSObject<XLCPostDetailPassValueDelegate> *)destination;
+		[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title board:_boardTitle postId:selectedPost.metaData.postId];
+	}
 }
 
 @end

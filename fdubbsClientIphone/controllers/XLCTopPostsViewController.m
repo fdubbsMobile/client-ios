@@ -236,7 +236,7 @@
         NSInteger selectedIdx = [(XLCTopPostSummaryViewCell *)sender rowIndex];
         XLCPostSummary *selectedPost = [_top10Posts objectAtIndex:selectedIdx];
         postDetailPassValueDelegte = (NSObject<XLCPostDetailPassValueDelegate> *)destination;
-		[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title Board:selectedPost.metaData.board postId:selectedPost.metaData.postId];
+		[postDetailPassValueDelegte passValueWithTitle:selectedPost.metaData.title board:selectedPost.metaData.board postId:selectedPost.metaData.postId];
 	}
 }
 

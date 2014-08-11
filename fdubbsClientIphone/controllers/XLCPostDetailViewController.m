@@ -506,7 +506,7 @@
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
--(void) passValueWithTitle:(NSString *)title Board:(NSString *)board postId:(NSString *)postId
+-(void) passValueWithTitle:(NSString *)title board:(NSString *)board postId:(NSString *)postId
 {
     NSLog(@"The value is %@, %@ , %@", title, board, postId);
     _title = title;

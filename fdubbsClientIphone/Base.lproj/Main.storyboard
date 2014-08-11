@@ -211,7 +211,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeV-dQ-QZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1474" y="-1662"/>
+            <point key="canvasLocation" x="2373" y="-1662"/>
         </scene>
         <!--All Sections View Controller - 所有版面-->
         <scene sceneID="fKV-5J-ZCj">
@@ -491,6 +491,7 @@
                                     <outlet property="ownerButton" destination="C7R-Gd-Tsm" id="Ls4-m1-nUd"/>
                                     <outlet property="ownerLabel" destination="J9W-5k-KTq" id="Wr2-ap-PuY"/>
                                     <outlet property="titleLabel" destination="LPB-J7-0Ut" id="qRy-Oe-bKl"/>
+                                    <segue destination="JiJ-sD-lJk" kind="push" identifier="showPostDetail" id="FYG-Vq-lgd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -519,4 +520,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="FYG-Vq-lgd"/>
+    </inferredMetricsTieBreakers>
 </document>
