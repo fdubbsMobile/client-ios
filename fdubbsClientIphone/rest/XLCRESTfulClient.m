@@ -38,7 +38,10 @@
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     // HACK: Set User-Agent to Mac OS X so that Twitter will let us access the Timeline
+    /*
     [client setDefaultHeader:@"User-Agent" value:[NSString stringWithFormat:@"%@/%@ (Mac OS X %@)", [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleIdentifierKey], [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] ?: [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey], [[NSProcessInfo processInfo] operatingSystemVersionString]]];
+     */
+    [client setDefaultHeader:@"User-Agent" value:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"];
     
     //we want to work with JSON-Data
     [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
@@ -266,6 +269,16 @@
                                                                                                    keyPath:nil
                                                                                                statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:postSummaryInBoardWithStartNumberRespDesc];
+    
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *favorBoardsRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:boardDetailMapping
+                                                                                                                   method:RKRequestMethodGET
+                                                                                                              pathPattern:@"/api/v1/board/favor"
+                                                                                                                  keyPath:nil
+                                                                                                              statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:favorBoardsRespDesc];
+    
+    
     
 }
 

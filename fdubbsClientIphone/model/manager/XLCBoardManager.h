@@ -20,4 +20,6 @@
 - (void) doLoadAllBoardsInSection:(NSString *)sectionId successBlock:(void (^)(XLCSection *))success
                                  failBlock:(void (^)(NSError *))failure;
 
+- (void) doLoadFavorBoardsWithAuthCode:(NSString *)authCode successBlock:(void (^)(NSArray *))success
+                             failBlock:(void (^)(NSError *))failure;
 @end

@@ -59,4 +59,27 @@ SINGLETON_GCD(XLCBoardManager);
                             }];
 }
 
+- (void) doLoadFavorBoardsWithAuthCode:(NSString *)authCode successBlock:(void (^)(NSArray *))success
+                             failBlock:(void (^)(NSError *))failure
+{
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    //RKClient *client = objectManager.client;
+    //[client setValue:[NSString stringWithFormat:@"auth_code=%@", authCode] forHTTPHeaderField:@"Cookie"];
+    
+    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    
+    [objectManager getObjectsAtPath:@"/api/v1/board/favor"
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                NSArray *favorBoards = [mappingResult array];
+                                success(favorBoards);
+                                NSLog(@"Loaded favor boards : %@", favorBoards);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
+}
+
 @end
