@@ -60,6 +60,8 @@
 		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
 		95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */; };
 		95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */; };
+		95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89911199AE4D3009EABEB /* XLCUserManager.m */; };
+		95B89915199AEB13009EABEB /* XLCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89914199AEB13009EABEB /* XLCLoginViewController.m */; };
 		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
 		95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */; };
@@ -211,6 +213,10 @@
 		95B885BD1940C36200157EE2 /* XLCSectionDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailPassValueDelegate.h; path = controllers/XLCSectionDetailPassValueDelegate.h; sourceTree = "<group>"; };
 		95B885BE1940C4B600157EE2 /* XLCSectionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailViewController.h; path = controllers/XLCSectionDetailViewController.h; sourceTree = "<group>"; };
 		95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCSectionDetailViewController.m; path = controllers/XLCSectionDetailViewController.m; sourceTree = "<group>"; };
+		95B89910199AE4D3009EABEB /* XLCUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCUserManager.h; path = model/manager/XLCUserManager.h; sourceTree = "<group>"; };
+		95B89911199AE4D3009EABEB /* XLCUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCUserManager.m; path = model/manager/XLCUserManager.m; sourceTree = "<group>"; };
+		95B89913199AEB13009EABEB /* XLCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginViewController.h; path = controllers/XLCLoginViewController.h; sourceTree = "<group>"; };
+		95B89914199AEB13009EABEB /* XLCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginViewController.m; path = controllers/XLCLoginViewController.m; sourceTree = "<group>"; };
 		95C1D0611923C32A00E38625 /* XLCContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCContent.h; path = model/pojo/XLCContent.h; sourceTree = "<group>"; };
 		95C1D0621923C32A00E38625 /* XLCContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCContent.m; path = model/pojo/XLCContent.m; sourceTree = "<group>"; };
 		95C1D0641923C36400E38625 /* XLCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCImage.h; path = model/pojo/XLCImage.h; sourceTree = "<group>"; };
@@ -535,6 +541,8 @@
 				95AEBE1A18FA67A600C7E8E4 /* XLCPostManager.m */,
 				95CB1829193A238D0059FF2A /* XLCBoardManager.h */,
 				95CB182A193A238D0059FF2A /* XLCBoardManager.m */,
+				95B89910199AE4D3009EABEB /* XLCUserManager.h */,
+				95B89911199AE4D3009EABEB /* XLCUserManager.m */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -638,6 +646,8 @@
 				95B85CBD1994AD7100F7D373 /* XLCBoardDetailPassValueDelegate.h */,
 				954CD1C61999B531004004C6 /* XLCFavorBoardsViewController.h */,
 				954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */,
+				95B89913199AEB13009EABEB /* XLCLoginViewController.h */,
+				95B89914199AEB13009EABEB /* XLCLoginViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1002,6 +1012,7 @@
 				95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */,
 				95CCB64B191B561600B261D6 /* NIError.m in Sources */,
 				95C3CEF71930D7690027D0F3 /* XLCPostReplies.m in Sources */,
+				95B89915199AEB13009EABEB /* XLCLoginViewController.m in Sources */,
 				95CB1840193B88670059FF2A /* UIImage+Overlay.m in Sources */,
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
@@ -1022,6 +1033,7 @@
 				95CCB649191B561600B261D6 /* NIDebuggingTools.m in Sources */,
 				95CCB651191B561600B261D6 /* NINonEmptyCollectionTesting.m in Sources */,
 				95B46D2C1999B0A4005B4F06 /* ASTextField.m in Sources */,
+				95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */,
 				95CCB65A191B561600B261D6 /* UIResponder+NimbusCore.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,

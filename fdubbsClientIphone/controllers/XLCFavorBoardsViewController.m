@@ -14,6 +14,7 @@
 #import "XLCBoardDetail.h"
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetailPassValueDelegate.h"
+#import "XLCUserManager.h"
 
 @interface XLCFavorBoardsViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
@@ -42,6 +43,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    NSLog(@"hasUserLogin : %d", hasUserLogin);
+    if (!hasUserLogin) {
+        [self performSegueWithIdentifier:@"doLogin" sender:self];
+        return;
+    }
+    
     
     indicatorView = [[MONActivityIndicatorView alloc] init];
     indicatorView.delegate = self;

@@ -211,7 +211,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeV-dQ-QZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2373" y="-1662"/>
+            <point key="canvasLocation" x="2905" y="-1690"/>
         </scene>
         <!--All Sections View Controller - 所有版面-->
         <scene sceneID="fKV-5J-ZCj">
@@ -342,6 +342,51 @@
             </objects>
             <point key="canvasLocation" x="425" y="-248"/>
         </scene>
+        <!--Login View Controller - 用户登录-->
+        <scene sceneID="dfA-Xb-QW2">
+            <objects>
+                <viewController title="用户登录" id="WXB-x9-uUb" customClass="XLCLoginViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RsL-OB-Key">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="zfb-ea-eog" customClass="ASTextField">
+                                <rect key="frame" x="51" y="82" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="a17-aR-917" customClass="ASTextField">
+                                <rect key="frame" x="51" y="126" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tzp-IX-zzU">
+                                <rect key="frame" x="51" y="189" width="218" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login" backgroundImage="login_button.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doUserLogin:" destination="WXB-x9-uUb" eventType="touchUpInside" id="uKI-82-rTh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fl0-sz-ZIE"/>
+                    <connections>
+                        <outlet property="loginButton" destination="Tzp-IX-zzU" id="Es7-eR-DUc"/>
+                        <outlet property="passwdTextField" destination="a17-aR-917" id="fRR-gk-Vct"/>
+                        <outlet property="userIdTextField" destination="zfb-ea-eog" id="fIo-PU-L3X"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNr-Rr-zUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977" y="377"/>
+        </scene>
         <!--Favor Boards View Controller - 我的收藏-->
         <scene sceneID="CAA-JL-Ary">
             <objects>
@@ -391,10 +436,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="3HI-jQ-XQD"/>
+                    <connections>
+                        <segue destination="WXB-x9-uUb" kind="push" identifier="doLogin" id="y1L-iJ-ujh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P86-yL-nwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="54"/>
+            <point key="canvasLocation" x="1033" y="1056"/>
         </scene>
         <!--Table View Controller - 应用设置-->
         <scene sceneID="Ndu-a1-Kgv">
@@ -423,7 +471,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fon-It-vTR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="425" y="1140"/>
+            <point key="canvasLocation" x="425" y="1764"/>
         </scene>
         <!--Navigation Bar Title View Controller - 今日十大-->
         <scene sceneID="MmF-1w-SBT">
@@ -529,7 +577,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kav-Sh-BEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1952" y="-973"/>
+            <point key="canvasLocation" x="2460" y="-1001"/>
         </scene>
         <!--Navigation Bar Title View Controller - 我的收藏-->
         <scene sceneID="tA1-vd-cln">
@@ -549,7 +597,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ik9-oN-7LZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="432"/>
+            <point key="canvasLocation" x="425" y="1066"/>
         </scene>
     </scenes>
     <resources>
@@ -557,6 +605,7 @@
         <image name="boards" width="35" height="35"/>
         <image name="favor" width="35" height="35"/>
         <image name="list_divider_line.png" width="480" height="2"/>
+        <image name="login_button.png" width="250" height="36"/>
         <image name="setting" width="35" height="35"/>
         <image name="top10" width="35" height="35"/>
     </resources>
@@ -566,7 +615,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="U30-GU-pVA"/>
         <segue reference="mJG-cC-Yrt"/>
+        <segue reference="FYG-Vq-lgd"/>
     </inferredMetricsTieBreakers>
 </document>
