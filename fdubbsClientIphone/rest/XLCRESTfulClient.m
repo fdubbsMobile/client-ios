@@ -22,6 +22,7 @@
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetail.h"
 #import "XLCPostSummaryInBoard.h"
+#import "XLCLoginResponse.h"
 
 @implementation XLCRESTfulClient
 
@@ -277,6 +278,21 @@
                                                                                                                   keyPath:nil
                                                                                                               statusCodes:[NSIndexSet indexSetWithIndex:200]];
     [objectManager addResponseDescriptor:favorBoardsRespDesc];
+    
+    
+    RKObjectMapping *loginResponseMapping = [RKObjectMapping mappingForClass:[XLCLoginResponse class]];
+    [loginResponseMapping addAttributeMappingsFromDictionary:@{
+                                                               @"result_code" : @"resultCode",
+                                                               @"error_message" : @"errorMessage",
+                                                               @"auth_code" : @"authCode"
+                                                               }];
+    // Register our mappings with the provider using a response descriptor
+    RKResponseDescriptor *loginRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:loginResponseMapping
+                                                                                             method:RKRequestMethodPOST
+                                                                                        pathPattern:@"/api/v1/user/login"
+                                                                                            keyPath:nil
+                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:loginRespDesc];
     
     
     

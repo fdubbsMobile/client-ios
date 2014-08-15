@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLCLoginResponse.h"
 
 @interface XLCUserManager : NSObject
 
@@ -14,7 +15,7 @@
 
 - (void)doUserLoginWithUserName:(NSString *)userName
                        passWord:(NSString *)passwd
-                   successBlock:(void (^)(void))success
+                   successBlock:(void (^)(XLCLoginResponse *))success
                       failBlock:(void (^)(NSError *))failure;
 
 - (BOOL) hasUserAlreadyLogin;

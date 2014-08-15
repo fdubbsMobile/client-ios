@@ -10,12 +10,16 @@
 #import "ASTextField.h"
 #import "XLCUserManager.h"
 #import "FRDLivelyButton.h"
+#import "XLCLoginResponse.h"
 
-@interface XLCLoginViewController ()
+@interface XLCLoginViewController () <UITextFieldDelegate>
+
 @property (strong, nonatomic) IBOutlet ASTextField *userIdTextField;
 @property (strong, nonatomic) IBOutlet ASTextField *passwdTextField;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 
+@property (strong, nonatomic) UITextField *activeField;
+@property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 @end
 
@@ -61,13 +65,35 @@
     self.title = @"用户登录";
     self.titleColor = [UIColor whiteColor];
     
+    [_userIdTextField setupTextFieldWithIconName:@"user_name_icon"];
+    [_passwdTextField setupTextFieldWithIconName:@"password_icon"];
+    
+    [_passwdTextField setSecureTextEntry:YES];
+    _passwdTextField.delegate = self;
+    _passwdTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    
+    _userIdTextField.delegate = self;
+    _userIdTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    
+    
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+    
+    [nc addObserver:self selector:@selector(keyboardWillShow:) name:
+     UIKeyboardWillShowNotification object:nil];
+    
+    [nc addObserver:self selector:@selector(keyboardWillHide:) name:
+     UIKeyboardWillHideNotification object:nil];
+    
+    _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                 action:@selector(didTapAnywhere:)];
+    
     DebugLog(@"init XLCLoginViewController");
     
 }
 
 - (void)backAction
 {
-    //[self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)addLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem
@@ -105,6 +131,42 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    NSLog(@"Inside  textFieldShouldBeginEditing ... %@", textField.text);
+    self.activeField = textField;
+    
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSLog(@"Inside  textFieldDidEndEditing ... %@", textField.text);
+
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+
+-(void) keyboardWillShow:(NSNotification *) note {
+    [self.view addGestureRecognizer:self.tapRecognizer];
+}
+
+-(void) keyboardWillHide:(NSNotification *) note
+{
+    [self.view removeGestureRecognizer:self.tapRecognizer];
+}
+
+-(void)didTapAnywhere: (UITapGestureRecognizer*) recognizer {
+    [self.activeField resignFirstResponder];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -118,7 +180,55 @@
 
 -(IBAction)doUserLogin:(id)sender
 {
+    NSLog(@"do user login!");
     
+    void (^successBlock)(XLCLoginResponse *) = ^(XLCLoginResponse *loginResponse)
+    {
+        
+        DebugLog(@"Success to login!");
+        [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.1];
+
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    NSString *userName = [_userIdTextField text];
+    NSString *passWord = [_passwdTextField text];
+    
+    if ([userName isEmpty] || [passWord isEmpty]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"User name or pass word cannot be empty!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", @"User name or pass word cannot be empty!");
+        return;
+    }
+    
+    [[XLCUserManager sharedXLCUserManager]doUserLoginWithUserName:userName
+                                                         passWord:passWord
+                                                     successBlock:successBlock
+                                                        failBlock:failBlock ];
+}
+
+- (void) didLoginSuccess:(XLCLoginResponse *)response
+{
+    NSLog(@"didLoginSuccess, result code is %@", [response resultCode]);
+    if ([[response resultCode] isEqualToString:SUCCESS]) {
+        NSLog(@"Back to previous view!");
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

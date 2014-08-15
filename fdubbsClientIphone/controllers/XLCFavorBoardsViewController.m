@@ -25,6 +25,8 @@
     __block NSArray *_favorBoards;
     
     NSObject<XLCBoardDetailPassValueDelegate> *boardDetailPassValueDelegte ;
+    
+    BOOL hasInitialized;
 }
 @end
 
@@ -36,6 +38,7 @@
     if (self) {
         // Custom initialization
         _favorBoards = nil;
+        hasInitialized = FALSE;
     }
     return self;
 }
@@ -51,6 +54,21 @@
         return;
     }
     
+    [self initialize];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self initialize];
+}
+
+- (void) initialize
+{
+    if (hasInitialized) {
+        NSLog(@"XLCFavorBoardsViewController has been initialized!");
+        return;
+    }
     
     indicatorView = [[MONActivityIndicatorView alloc] init];
     indicatorView.delegate = self;
@@ -70,9 +88,12 @@
     self.title = @"我的收藏";
     self.titleColor = [UIColor whiteColor];
     
+    hasInitialized = TRUE;
+    
     DebugLog(@"init XLCFavorBoardsViewController");
     
     [self performSelector:@selector(initRefreshFavorBoards) withObject:nil afterDelay:0.1];
+    
 }
 
 
@@ -109,6 +130,13 @@
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
+    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    NSLog(@"hasUserLogin : %d", hasUserLogin);
+    if (!hasUserLogin) {
+        [self performSegueWithIdentifier:@"doLogin" sender:self];
+        return;
+    }
+    
     [self loadData];
 }
 
@@ -160,7 +188,8 @@
         NSLog(@"Hit error: %@", error);
     };
     
-    [[XLCBoardManager sharedXLCBoardManager] doLoadFavorBoardsWithAuthCode:@"b8SPFBafZkWjaRli3Ieopj8YEdk8KdU1" successBlock:successBlock failBlock:failBlock];
+    NSString *authCode = [[XLCUserManager sharedXLCUserManager] getUserAuthCode];
+    [[XLCBoardManager sharedXLCBoardManager] doLoadFavorBoardsWithAuthCode:authCode successBlock:successBlock failBlock:failBlock];
     [indicatorView startAnimating];
     
 }
