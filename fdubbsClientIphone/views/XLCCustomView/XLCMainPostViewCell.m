@@ -26,7 +26,7 @@
     
     [self constructPostContent:postDetail];
     
-    [self constructPostQoute:postDetail];
+    //[self constructPostQoute:postDetail];
     
     [self adjustViewHeight];
     [self addBottomBorderForView:self];
@@ -182,7 +182,10 @@
 - (void)layoutPostQouteLabel:(XLCPostDetail *)postDetail
 {
     
-    XLCContent *content = postDetail.qoute;
+    XLCPostQoute *qoute = postDetail.qoute;
+    XLCContent *content = [[XLCContent alloc] init];
+    content.images = nil;
+    content.text = qoute.content;
     
     
     NIAttributedLabel *postQouteLabel =

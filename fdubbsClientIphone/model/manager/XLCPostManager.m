@@ -59,8 +59,9 @@ SINGLETON_GCD(XLCPostManager);
                          parameters:nil
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 XLCPostDetail *postDetail = [mappingResult firstObject];
-                                success(postDetail);
                                 NSLog(@"Loaded post detail: %@", postDetail);
+                                success(postDetail);
+                                
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 failure(error);

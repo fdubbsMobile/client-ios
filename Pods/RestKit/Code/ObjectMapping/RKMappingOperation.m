@@ -573,6 +573,7 @@ static NSString * const RKRootKeyPathPrefix = @"@root.";
         
         if (attributeMapping.destinationKeyPath) {
             [self.destinationObject setValue:value forKeyPath:attributeMapping.destinationKeyPath];
+            RKLogTrace(@"XLCPrint : the value of %@ is %@", attributeMapping.destinationKeyPath, [self.destinationObject valueForKeyPath:attributeMapping.destinationKeyPath]);
         } else {
             RKSetValueForObject(value, self.destinationObject);
         }

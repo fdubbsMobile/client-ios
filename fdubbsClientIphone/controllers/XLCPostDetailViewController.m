@@ -28,13 +28,16 @@
     
     XLCPostDetail *_postDetail;
     
-    BOOL _hasMorePost;
-    NSString *_boardId;
-    NSString *_lastReplyId;
-    NSMutableArray *_replies;
-    LoadMoreFooterView *_loadMoreFooterView;
+    __block BOOL _hasMorePost;
+    __block NSString *_boardId;
+    __block NSString *_lastReplyId;
+    __block NSMutableArray *_replies;
     
     __block MONActivityIndicatorView *indicatorView;
+    
+    LoadMoreFooterView *_loadMoreFooterView;
+    
+    
 }
 
 @end

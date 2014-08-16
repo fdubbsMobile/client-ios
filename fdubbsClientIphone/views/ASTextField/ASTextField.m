@@ -7,9 +7,9 @@
 //
 
 #import "ASTextField.h"
-#define kLeftPadding 10
-#define kVerticalPadding 12
-#define kHorizontalPadding 10
+#define kLeftPadding 6
+#define kVerticalPadding 8
+#define kHorizontalPadding 6
 
 @interface ASTextField (){
     ASTextFieldType _type;

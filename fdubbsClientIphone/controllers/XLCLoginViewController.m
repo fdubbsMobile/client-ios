@@ -65,6 +65,9 @@
     self.title = @"用户登录";
     self.titleColor = [UIColor whiteColor];
     
+    UIImage *bgImage = [[_loginButton backgroundImageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor colorWithRed:53/255.0 green:126/255.0 blue:189/255.0 alpha:1]];
+    [_loginButton setBackgroundImage:bgImage forState:UIControlStateNormal];
+    
     [_userIdTextField setupTextFieldWithIconName:@"user_name_icon"];
     [_passwdTextField setupTextFieldWithIconName:@"password_icon"];
     
