@@ -8,6 +8,7 @@
 
 #import "XLCMyAccountViewController.h"
 #import "PAImageView.h"
+#import "XLCUserManager.h"
 
 @interface XLCMyAccountViewController ()
 
@@ -31,6 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    NSLog(@"hasUserLogin : %d", hasUserLogin);
+    if (!hasUserLogin) {
+        [self performSegueWithIdentifier:@"doLogin" sender:self];
+        return;
+    }
+    
     
     // Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
