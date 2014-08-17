@@ -50,8 +50,8 @@
     [leftBarButton setStyle:kFRDLivelyButtonStyleCaretLeft animated:NO];
     [leftBarButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButton];
-    [self addLeftBarButtonItem:leftBarButtonItem];
-    
+    [self addLeftBarButtonItem:nil];
+
     FRDLivelyButton *rightBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,25,20)];
     [rightBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
                                   kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
@@ -64,10 +64,17 @@
     */
     
     
+    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+    self.navigationItem.backBarButtonItem = nil;
+    
+    [self.navigationItem setHidesBackButton:YES animated:NO];
+    
     self.title = @"用户登录";
     self.titleColor = [UIColor whiteColor];
     
-    UIImage *bgImage = [[_loginButton backgroundImageForState:UIControlStateNormal] imageWithOverlayColor:[UIColor colorWithRed:53/255.0 green:126/255.0 blue:189/255.0 alpha:1]];
+    UIImage *bgImage = [[_loginButton backgroundImageForState:UIControlStateNormal]
+                        imageWithOverlayColor:[UIColor colorWithRed:66/255.0 green:139/255.0 blue:202/255.0 alpha:1]];
     [_loginButton setBackgroundImage:bgImage forState:UIControlStateNormal];
     
     [_userIdTextField setupTextFieldWithIconName:@"user_name_icon"];

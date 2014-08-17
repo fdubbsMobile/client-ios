@@ -38,7 +38,8 @@
     
     self.titleLabel.text = postSummary.metaData.title;
     
-    UIImage *replyButtonBgImage = [[UIImage imageNamed:@"reply"] imageWithOverlayColor:[UIColor colorWithRed:53/255.0 green:126/255.0 blue:189/255.0 alpha:1]];
+    UIImage *replyButtonBgImage = [[UIImage imageNamed:@"reply"]
+                                   imageWithOverlayColor:[UIColor colorWithRed:91/255.0 green:192/255.0 blue:222/255.0 alpha:1]];
     
     [self.replyCountButton setTitle:[NSString stringWithFormat:@"%@", postSummary.count] forState:UIControlStateNormal];
     [self.replyCountButton setBackgroundImage:replyButtonBgImage forState:UIControlStateNormal];
