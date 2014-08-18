@@ -41,32 +41,6 @@
     
     // Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
-    /*
-    FRDLivelyButton *leftBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,30,25)];
-    [leftBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
-                                 kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
-                                 kFRDLivelyButtonColor: [UIColor whiteColor]
-                                 }];
-    [leftBarButton setStyle:kFRDLivelyButtonStyleCaretLeft animated:NO];
-    [leftBarButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBarButton];
-    [self addLeftBarButtonItem:nil];
-
-    FRDLivelyButton *rightBarButton = [[FRDLivelyButton alloc] initWithFrame:CGRectMake(0,0,25,20)];
-    [rightBarButton setOptions:@{ kFRDLivelyButtonLineWidth: @(2.0f),
-                                  kFRDLivelyButtonHighlightedColor: [UIColor colorWithRed:0.5 green:0.8 blue:1.0 alpha:1.0],
-                                  kFRDLivelyButtonColor: [UIColor whiteColor]
-                                  }];
-    [rightBarButton setStyle:kFRDLivelyButtonStyleHamburger animated:NO];
-    //[rightBarButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
-    [self addRightBarButtonItem:rightBarButtonItem];
-    */
-    
-    
-    self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem.customView.hidden = YES;
-    self.navigationItem.backBarButtonItem = nil;
     
     [self.navigationItem setHidesBackButton:YES animated:NO];
     
@@ -103,39 +77,6 @@
     
 }
 
-- (void)backAction
-{
-    
-}
-
-- (void)addLeftBarButtonItem:(UIBarButtonItem *)leftBarButtonItem
-{
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        // Add a negative spacer on iOS >= 7.0
-        negativeSpacer.width = -10;
-    } else {
-        // Just set the UIBarButtonItem as you would normally
-        negativeSpacer.width = 0;
-        [self.navigationItem setLeftBarButtonItem:leftBarButtonItem];
-    }
-    [self.navigationItem setLeftBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, leftBarButtonItem, nil]];
-}
-
-- (void)addRightBarButtonItem:(UIBarButtonItem *)rightBarButtonItem
-{
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil action:nil];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        
-        negativeSpacer.width = -10;
-        
-    } else {
-        negativeSpacer.width = 0;
-    }
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
-}
 
 - (void)didReceiveMemoryWarning
 {

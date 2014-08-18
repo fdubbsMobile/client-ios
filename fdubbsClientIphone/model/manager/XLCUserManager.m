@@ -15,6 +15,8 @@ static NSTimeInterval const authKeepAliveRange = 3600 * 1000;
 
 @interface XLCUserManager()
 {
+    __block NSString *_userName;
+    __block NSString *_password;
     
     __block BOOL _isLoginSuccess;
     __block NSString *_authCode;
@@ -84,6 +86,9 @@ SINGLETON_GCD(XLCUserManager);
                                     _authCode = loginResponse.authCode;
                                     _isLoginSuccess = TRUE;
                                     _loginExpiredTime = TIME_NOW_IN_SECOND + authKeepAliveRange;
+                                    
+                                    _userName = userName;
+                                    _password = passwd;
                                 }
                                 success(loginResponse);
                                 NSLog(@"Success to login for user : %@", userName);
@@ -91,6 +96,12 @@ SINGLETON_GCD(XLCUserManager);
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 failure(error);
                             }];
+}
+
+- (void)doUserLogoutWithSuccessBlock:(void (^)(void))success
+                      failBlock:(void (^)(NSError *))failure
+{
+    
 }
 
 @end

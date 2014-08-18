@@ -18,6 +18,9 @@
                    successBlock:(void (^)(XLCLoginResponse *))success
                       failBlock:(void (^)(NSError *))failure;
 
+- (void)doUserLogoutWithSuccessBlock:(void (^)(void))success
+                           failBlock:(void (^)(NSError *))failure;
+
 - (BOOL) hasUserAlreadyLogin;
 - (NSString *)getUserAuthCode;
 
