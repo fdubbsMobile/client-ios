@@ -11,6 +11,9 @@
 #import "XLCUserManager.h"
 
 @interface XLCMyAccountViewController ()
+{
+    BOOL hasInitialized;
+}
 
 @property (strong, nonatomic) IBOutlet UIView *avatarView;
 @property (strong, nonatomic) IBOutlet PAImageView *avatarImgView;
@@ -25,6 +28,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        hasInitialized = FALSE;
     }
     return self;
 }
@@ -40,6 +44,21 @@
         return;
     }
     
+    [self initialize];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self initialize];
+}
+
+- (void) initialize
+{
+    if (hasInitialized) {
+        NSLog(@"XLCMyAccountViewController has been initialized!");
+        return;
+    }
     
     // Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
@@ -58,9 +77,11 @@
                         imageWithOverlayColor:[UIColor colorWithRed:212/255.0 green:63/255.0 blue:58/255.0 alpha:1]];
     [_logoutButton setBackgroundImage:bgImage forState:UIControlStateNormal];
     
+    hasInitialized = TRUE;
     
     DebugLog(@"init XLCMyAccountViewController");
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -68,5 +89,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)doLogout:(id)sender {
+}
 
 @end

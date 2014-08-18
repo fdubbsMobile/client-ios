@@ -97,7 +97,7 @@ NSString * const spm_identifier = @"spm.imagecache.tg";
 }
 
 - (void)setImage:(UIImage *)avatarImg {
-    [self updateWithImage:avatarImg animated:TRUE];
+    [self updateWithImage:avatarImg animated:FALSE];
 }
 
 - (void)updateWithImage:(UIImage *)image animated:(BOOL)animated {
