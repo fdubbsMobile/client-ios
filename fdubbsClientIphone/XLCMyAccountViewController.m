@@ -35,6 +35,8 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"viewDidLoad");
+    
     [super viewDidLoad];
     
     BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
@@ -50,11 +52,19 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"viewWillAppear");
     [self initialize];
 }
 
 - (void) initialize
 {
+    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    NSLog(@"hasUserLogin : %d", hasUserLogin);
+    if (!hasUserLogin) {
+        [self performSegueWithIdentifier:@"doLogin" sender:self];
+        return;
+    }
+    
     if (hasInitialized) {
         NSLog(@"XLCMyAccountViewController has been initialized!");
         return;

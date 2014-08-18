@@ -21,6 +21,8 @@ static NSTimeInterval const authKeepAliveRange = 3600 * 1000;
     __block BOOL _isLoginSuccess;
     __block NSString *_authCode;
     __block NSTimeInterval _loginExpiredTime;
+    
+    BOOL _persistLogin;
 }
 @end
 
@@ -35,6 +37,7 @@ SINGLETON_GCD(XLCUserManager);
         _isLoginSuccess = FALSE;
         _authCode = nil;
         _loginExpiredTime = TIME_NOW_IN_SECOND;
+        _persistLogin = TRUE;
     }
     return self;
 }
@@ -46,14 +49,16 @@ SINGLETON_GCD(XLCUserManager);
         NSLog(@"No login!");
         return FALSE;
     }
-    
-    if (_loginExpiredTime < TIME_NOW_IN_SECOND) {
+
+    if (!_persistLogin &&
+        _loginExpiredTime < TIME_NOW_IN_SECOND) {
         NSLog(@"Time expired");
         return FALSE;
     }
     
     return TRUE;
 }
+
 
 
 - (NSString *)getUserAuthCode
