@@ -100,6 +100,30 @@
 }
 
 - (IBAction)doLogout:(id)sender {
+    NSLog(@"do user login!");
+    
+    void (^successBlock)(void) = ^(void)
+    {
+        
+        DebugLog(@"Success to login!");
+        
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    
+    [[XLCUserManager sharedXLCUserManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
 }
 
 @end

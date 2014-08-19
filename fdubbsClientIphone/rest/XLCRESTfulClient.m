@@ -23,6 +23,7 @@
 #import "XLCBoardDetail.h"
 #import "XLCPostSummaryInBoard.h"
 #import "XLCLoginResponse.h"
+#import "XLCLogoutResponse.h"
 
 @implementation XLCRESTfulClient
 
@@ -60,242 +61,53 @@
 
 + (void) initPostResources:(RKObjectManager *)objectManager
 {
-    RKObjectMapping *postMetaDataMapping = [RKObjectMapping mappingForClass:[XLCPostMetaData class]];
-    [postMetaDataMapping addAttributeMappingsFromDictionary:@{
-                                                      @"post_id" : @"postId",
-                                                      @"title" : @"title",
-                                                      @"owner" : @"owner",
-                                                      @"nick" : @"nick",
-                                                      @"date" : @"date",
-                                                      @"board" : @"board"
-                                                      }];
+    [self addObjectMappingForClass:[XLCPostSummary class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/post/top10" toObjectManager:objectManager];
+    
+    [self addObjectMappingForClass:[XLCPostDetail class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/post/detail/board/:boardName/:postId" toObjectManager:objectManager];
+    
+    [self addObjectMappingForClass:[XLCPostReplies class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/post/reply/bid/:boardId/:mainPostId/:lastReplyId" toObjectManager:objectManager];
+    
+    [self addObjectMappingForClass:[XLCSectionMetaData class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/section/all" toObjectManager:objectManager];
+    
+    [self addObjectMappingForClass:[XLCSection class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/section/detail/:sectionId" toObjectManager:objectManager];
+    
+    [self addObjectMappingForClass:[XLCPostSummaryInBoard class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode" toObjectManager:objectManager];
+    
+    [self addObjectMappingForClass:[XLCPostSummaryInBoard class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNum" toObjectManager:objectManager];
     
     
-    RKObjectMapping *postSummaryMapping = [RKObjectMapping mappingForClass:[XLCPostSummary class]];
-    [postSummaryMapping addAttributeMappingsFromDictionary:@{
-                                                              @"count" : @"count",
-                                                              @"mark_sign" : @"markSign",
-                                                              @"is_sticky" : @"sticky",
-                                                              @"is_no_reply" : @"nonReply"
-                                                              }];
+    [self addObjectMappingForClass:[XLCBoardDetail class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/board/favor" toObjectManager:objectManager];
     
+    [self addObjectMappingForClass:[XLCLoginResponse class] method:RKRequestMethodPOST
+                       pathPattern:@"/api/v1/user/login" toObjectManager:objectManager];
     
-    RKRelationshipMapping* postMetaRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_meta_data"
-                                                                                             toKeyPath:@"metaData"
-                                                                                           withMapping:postMetaDataMapping];
-    [postSummaryMapping addPropertyMapping:postMetaRSMapping];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *topPostRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryMapping
-                                                                                            method:RKRequestMethodGET
-                                                                                       pathPattern:@"/api/v1/post/top10"
-                                                                                           keyPath:nil
-                                                                                       statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:topPostRespDesc];
-    
-    
-    
-    
-    RKObjectMapping *postImageMapping = [RKObjectMapping mappingForClass:[XLCImage class]];
-    [postImageMapping addAttributeMappingsFromDictionary:@{
-                                                             @"pos" : @"pos",
-                                                             @"ref" : @"ref"
-                                                             }];
-    
-    RKObjectMapping *postContentMapping = [RKObjectMapping mappingForClass:[XLCContent class]];
-    [postContentMapping addAttributeMappingsFromDictionary:@{
-                                                           @"text" : @"text"
-                                                           }];
-    RKRelationshipMapping* contentImageRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"images"
-                                                                                           toKeyPath:@"images"
-                                                                                         withMapping:postImageMapping];
-    [postContentMapping addPropertyMapping:contentImageRSMapping];
-    
-    
-    
-    RKObjectMapping *postDetailMapping = [RKObjectMapping mappingForClass:[XLCPostDetail class]];
-    
-    RKRelationshipMapping* postBodyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"body"
-                                                                                              toKeyPath:@"body"
-                                                                                            withMapping:postContentMapping];
-    
-    RKObjectMapping *postQouteMapping = [RKObjectMapping mappingForClass:[XLCPostQoute class]];
-    [postQouteMapping addAttributeMappingsFromDictionary:@{
-                                                             @"owner" : @"owner",
-                                                             @"content" : @"content"
-                                                             }];
-    RKRelationshipMapping* postQouteRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"qoute"
-                                                                                           toKeyPath:@"qoute"
-                                                                                         withMapping:postQouteMapping];
-    
-    RKRelationshipMapping* postSignRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"sign"
-                                                                                            toKeyPath:@"sign"
-                                                                                          withMapping:postContentMapping];
-    
-    RKObjectMapping *postRepliesMapping = [RKObjectMapping mappingForClass:[XLCPostReplies class]];
-    [postRepliesMapping addAttributeMappingsFromDictionary:@{
-                                                             @"board_id" : @"boardId",
-                                                             @"main_post_id" : @"mainPostId",
-                                                             @"last_reply_id" : @"lastReplyId",
-                                                             @"has_more" : @"hasMore"
-                                                             }];
-    
-    RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_reply_list"
-                                                                                               toKeyPath:@"replies"
-                                                                                             withMapping:postDetailMapping];
-    [postRepliesMapping addPropertyMapping:postReplyRSMapping];
-    
-    RKRelationshipMapping* postRepliesRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"replies"
-                                                                                           toKeyPath:@"reply"
-                                                                                         withMapping:postRepliesMapping];
-    [postDetailMapping addPropertyMapping:[postMetaRSMapping copy]];
-    
-    [postDetailMapping addPropertyMapping:postBodyRSMapping];
-    [postDetailMapping addPropertyMapping:postQouteRSMapping];
-    [postDetailMapping addPropertyMapping:postSignRSMapping];
-    [postDetailMapping addPropertyMapping:postRepliesRSMapping];
+    [self addObjectMappingForClass:[XLCLogoutResponse class] method:RKRequestMethodGET
+                       pathPattern:@"/api/v1/user/logout" toObjectManager:objectManager];
+}
+
+
++ (void) addObjectMappingForClass:(Class)objectClass
+                           method:(RKRequestMethod)method
+                      pathPattern:(NSString *)pathPattern
+                  toObjectManager:(RKObjectManager *)objectManager
+{
+    RKObjectMapping *responseMapping = [objectClass performSelector:@selector(objectMapping)];
     
     // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *postDetailRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postDetailMapping
-                                                                                            method:RKRequestMethodGET
-                                                                                       pathPattern:@"/api/v1/post/detail/board/:boardName/:postId"
-                                                                                           keyPath:nil
-                                                                                       statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:postDetailRespDesc];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *postRepliesRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postRepliesMapping
-                                                                                            method:RKRequestMethodGET
-                                                                                       pathPattern:@"/api/v1/post/reply/bid/:boardId/:mainPostId/:lastReplyId"
-                                                                                           keyPath:nil
-                                                                                       statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:postRepliesRespDesc];
-    
-    
-    
-    // init section related request
-    RKObjectMapping *sectionMetaDataMapping = [RKObjectMapping mappingForClass:[XLCSectionMetaData class]];
-    [sectionMetaDataMapping addAttributeMappingsFromDictionary:@{
-                                                              @"section_id" : @"sectionId",
-                                                              @"section_desc" : @"description",
-                                                              @"category" : @"category"
-                                                              }];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *allSectionsRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:sectionMetaDataMapping
-                                                                                         method:RKRequestMethodGET
-                                                                                    pathPattern:@"/api/v1/section/all"
-                                                                                        keyPath:nil
-                                                                                    statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:allSectionsRespDesc];
-    
-    
-    
-    // init board related request
-    RKObjectMapping *boardMetaDataMapping = [RKObjectMapping mappingForClass:[XLCBoardMetaData class]];
-    [boardMetaDataMapping addAttributeMappingsFromDictionary:@{
-                                                                 @"board_id" : @"boardId",
-                                                                 @"title" : @"title",
-                                                                 @"board_desc" : @"boardDesc",
-                                                                 @"post_number" : @"postNumber",
-                                                                 @"managers" : @"managers"
-                                                                 }];
-    
-    // init board related request
-    RKObjectMapping *boardDetailMapping = [RKObjectMapping mappingForClass:[XLCBoardDetail class]];
-    [boardDetailMapping addAttributeMappingsFromDictionary:@{
-                                                               @"category" : @"category",
-                                                               @"is_directory" : @"isDirectory",
-                                                               @"has_unread_post" : @"hasUnreadPost"
-                                                               }];
-    RKRelationshipMapping* boardMetaDataRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"board_meta_data"
-                                                                                            toKeyPath:@"metaData"
-                                                                                          withMapping:boardMetaDataMapping];
-    
-    [boardDetailMapping addPropertyMapping:boardMetaDataRSMapping];
-    
-    
-    
-    
-    RKRelationshipMapping* boardDetailRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"boards"
-                                                                                                  toKeyPath:@"boards"
-                                                                                                withMapping:boardDetailMapping];
-    
-    RKRelationshipMapping* sectionMetaDataRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"section_meta_data"
-                                                                                                toKeyPath:@"metaData"
-                                                                                              withMapping:sectionMetaDataMapping];
-    // init section related request
-    RKObjectMapping *sectionMapping = [RKObjectMapping mappingForClass:[XLCSection class]];
-    [sectionMapping addPropertyMapping:sectionMetaDataRSMapping];
-    [sectionMapping addPropertyMapping:boardDetailRSMapping];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *allBoardsInSectionRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:sectionMapping
-                                                                                             method:RKRequestMethodGET
-                                                                                        pathPattern:@"/api/v1/section/detail/:sectionId"
-                                                                                            keyPath:nil
-                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:allBoardsInSectionRespDesc];
-    
-    
-    // init the post summary in board mapping
-    RKObjectMapping *postSummaryInBoardMapping = [RKObjectMapping mappingForClass:[XLCPostSummaryInBoard class]];
-    [postSummaryInBoardMapping addAttributeMappingsFromDictionary:@{
-                                                             @"start_post_num" : @"startPostNum",
-                                                             @"post_count" : @"postCount"
-                                                             }];
-    
-    RKRelationshipMapping* boardMetaDataRSMapping1 = [RKRelationshipMapping relationshipMappingFromKeyPath:@"board_meta_data"
-                                                                                                toKeyPath:@"boardMetaData"
-                                                                                              withMapping:boardMetaDataMapping];
-    [postSummaryInBoardMapping addPropertyMapping:boardMetaDataRSMapping1];
-    
-    RKRelationshipMapping* postSummaryListRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_summary_list"
-                                                                                               toKeyPath:@"postSummaryList"
-                                                                                             withMapping:postSummaryMapping];
-    [postSummaryInBoardMapping addPropertyMapping:postSummaryListRSMapping];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *postSummaryInBoardRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryInBoardMapping
-                                                                                                    method:RKRequestMethodGET
-                                                                                               pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode"
-                                                                                                   keyPath:nil
-                                                                                               statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:postSummaryInBoardRespDesc];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *postSummaryInBoardWithStartNumberRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:postSummaryInBoardMapping
-                                                                                                    method:RKRequestMethodGET
-                                                                                               pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNum"
-                                                                                                   keyPath:nil
-                                                                                               statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:postSummaryInBoardWithStartNumberRespDesc];
-    
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *favorBoardsRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:boardDetailMapping
-                                                                                                                   method:RKRequestMethodGET
-                                                                                                              pathPattern:@"/api/v1/board/favor"
-                                                                                                                  keyPath:nil
-                                                                                                              statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:favorBoardsRespDesc];
-    
-    
-    RKObjectMapping *loginResponseMapping = [RKObjectMapping mappingForClass:[XLCLoginResponse class]];
-    [loginResponseMapping addAttributeMappingsFromDictionary:@{
-                                                               @"result_code" : @"resultCode",
-                                                               @"error_message" : @"errorMessage",
-                                                               @"auth_code" : @"authCode"
-                                                               }];
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *loginRespDesc = [RKResponseDescriptor responseDescriptorWithMapping:loginResponseMapping
-                                                                                             method:RKRequestMethodPOST
-                                                                                        pathPattern:@"/api/v1/user/login"
-                                                                                            keyPath:nil
-                                                                                        statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:loginRespDesc];
-    
-    
-    
+    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping
+                                                                                        method:method
+                                                                                   pathPattern:pathPattern
+                                                                                       keyPath:nil
+                                                                                   statusCodes:[NSIndexSet indexSetWithIndex:200]];
+    [objectManager addResponseDescriptor:responseDescriptor];
 }
 
 @end

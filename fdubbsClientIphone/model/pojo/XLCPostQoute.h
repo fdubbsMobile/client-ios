@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCPostQoute : NSObject
+@interface XLCPostQoute : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) NSString *owner;
 @property (strong, nonatomic) NSString *content;

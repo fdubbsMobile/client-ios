@@ -12,8 +12,9 @@
 #import "XLCContent.h"
 #import "XLCPostReplies.h"
 #import "XLCPostQoute.h"
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCPostDetail : NSObject
+@interface XLCPostDetail : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) XLCPostMetaData *metaData;
 

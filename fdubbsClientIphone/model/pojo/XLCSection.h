@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 #import "XLCSectionMetaData.h"
+#import "XLCBoardDetail.h"
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCSection : NSObject
+@interface XLCSection : NSObject <XLCObjectMappingProtocol>
 
 @property XLCSectionMetaData *metaData;
 @property NSArray *boards;

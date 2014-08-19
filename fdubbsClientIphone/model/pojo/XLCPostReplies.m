@@ -7,7 +7,32 @@
 //
 
 #import "XLCPostReplies.h"
+#import "XLCPostDetail.h"
+
+static RKObjectMapping *objectMapping = nil;
 
 @implementation XLCPostReplies
+
++ (RKObjectMapping *) objectMapping
+{
+    if (objectMapping != nil) {
+        return objectMapping;
+    }
+    
+    objectMapping = [RKObjectMapping mappingForClass:[XLCPostReplies class]];
+    [objectMapping addAttributeMappingsFromDictionary:@{
+                                                             @"board_id" : @"boardId",
+                                                             @"main_post_id" : @"mainPostId",
+                                                             @"last_reply_id" : @"lastReplyId",
+                                                             @"has_more" : @"hasMore"
+                                                             }];
+    
+    RKRelationshipMapping* postReplyRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_reply_list"
+                                                                                            toKeyPath:@"replies"
+                                                                                          withMapping:[XLCPostDetail objectMapping]];
+    [objectMapping addPropertyMapping:postReplyRSMapping];
+    
+    return objectMapping;
+}
 
 @end

@@ -17,8 +17,8 @@
                     <connections>
                         <segue destination="c6i-XC-dnY" kind="relationship" relationship="viewControllers" id="Ygy-Dc-N1x"/>
                         <segue destination="ba5-Bu-sHf" kind="relationship" relationship="viewControllers" id="Lwm-Ge-eB5"/>
-                        <segue destination="FoO-4d-oUa" kind="relationship" relationship="viewControllers" id="6tq-c9-duT"/>
                         <segue destination="k5i-PJ-1oQ" kind="relationship" relationship="viewControllers" id="XqR-EC-5TF"/>
+                        <segue destination="FoO-4d-oUa" kind="relationship" relationship="viewControllers" id="6tq-c9-duT"/>
                         <segue destination="XIR-TS-egW" kind="relationship" relationship="viewControllers" id="cbV-N0-LfG"/>
                     </connections>
                 </tabBarController>

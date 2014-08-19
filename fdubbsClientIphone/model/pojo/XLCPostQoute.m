@@ -8,6 +8,23 @@
 
 #import "XLCPostQoute.h"
 
+static RKObjectMapping *objectMapping = nil;
+
 @implementation XLCPostQoute
+
++ (RKObjectMapping *) objectMapping
+{
+    if (objectMapping != nil) {
+        return objectMapping;
+    }
+    
+    objectMapping = [RKObjectMapping mappingForClass:[XLCPostQoute class]];
+    [objectMapping addAttributeMappingsFromDictionary:@{
+                                                           @"owner" : @"owner",
+                                                           @"content" : @"content"
+                                                           }];
+    
+    return objectMapping;
+}
 
 @end

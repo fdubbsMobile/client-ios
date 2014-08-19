@@ -1,16 +1,16 @@
 //
-//  XLCLoginResponse.m
+//  XLCLogoutResponse.m
 //  fdubbsClientIphone
 //
-//  Created by dennis on 14-8-15.
+//  Created by dennis on 14-8-19.
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
-#import "XLCLoginResponse.h"
+#import "XLCLogoutResponse.h"
 
 static RKObjectMapping *objectMapping = nil;
 
-@implementation XLCLoginResponse
+@implementation XLCLogoutResponse
 
 + (RKObjectMapping *) objectMapping
 {
@@ -18,11 +18,10 @@ static RKObjectMapping *objectMapping = nil;
         return objectMapping;
     }
     
-    objectMapping = [RKObjectMapping mappingForClass:[XLCLoginResponse class]];
+    objectMapping = [RKObjectMapping mappingForClass:[XLCLogoutResponse class]];
     [objectMapping addAttributeMappingsFromDictionary:@{
                                                           @"result_code" : @"resultCode",
-                                                          @"error_message" : @"errorMessage",
-                                                          @"auth_code" : @"authCode"
+                                                          @"error_message" : @"errorMessage"
                                                           }];
     
     return objectMapping;

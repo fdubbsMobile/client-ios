@@ -66,6 +66,7 @@
 		95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA248E19A0525700FBEF98 /* PAImageView.m */; };
 		95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */; };
 		95BA249519A05BE200FBEF98 /* XLCMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */; };
+		95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */; };
 		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
 		95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */; };
@@ -229,6 +230,9 @@
 		95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAppSettingViewController.m; path = controllers/XLCAppSettingViewController.m; sourceTree = "<group>"; };
 		95BA249319A05BE200FBEF98 /* XLCMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCMyAccountViewController.h; sourceTree = "<group>"; };
 		95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCMyAccountViewController.m; sourceTree = "<group>"; };
+		95BBC46519A31B7E0041CCE2 /* XLCLogoutResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLogoutResponse.h; path = model/pojo/XLCLogoutResponse.h; sourceTree = "<group>"; };
+		95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLogoutResponse.m; path = model/pojo/XLCLogoutResponse.m; sourceTree = "<group>"; };
+		95BBC46919A323B40041CCE2 /* XLCObjectMappingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCObjectMappingProtocol.h; path = model/pojo/XLCObjectMappingProtocol.h; sourceTree = "<group>"; };
 		95C1D0611923C32A00E38625 /* XLCContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCContent.h; path = model/pojo/XLCContent.h; sourceTree = "<group>"; };
 		95C1D0621923C32A00E38625 /* XLCContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCContent.m; path = model/pojo/XLCContent.m; sourceTree = "<group>"; };
 		95C1D0641923C36400E38625 /* XLCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCImage.h; path = model/pojo/XLCImage.h; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 		95AEBE1318FA672300C7E8E4 /* POJO */ = {
 			isa = PBXGroup;
 			children = (
+				95BBC46919A323B40041CCE2 /* XLCObjectMappingProtocol.h */,
 				95AEBE1418FA678D00C7E8E4 /* XLCPostMetaData.h */,
 				95AEBE1518FA678D00C7E8E4 /* XLCPostMetaData.m */,
 				95AEBE1C18FA67BD00C7E8E4 /* XLCPostSummary.h */,
@@ -543,6 +548,8 @@
 				95B6131F1998803100FE4F00 /* XLCPostSummaryInBoard.m */,
 				95B90A87199E428700EF5A6D /* XLCLoginResponse.h */,
 				95B90A88199E428700EF5A6D /* XLCLoginResponse.m */,
+				95BBC46519A31B7E0041CCE2 /* XLCLogoutResponse.h */,
+				95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */,
 			);
 			name = POJO;
 			sourceTree = "<group>";
@@ -1050,6 +1057,7 @@
 				95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95CB1846193B88670059FF2A /* XLCTopPostSummaryViewCell.m in Sources */,
+				95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */,
 				95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */,
 				95CB1844193B88670059FF2A /* XLCPostDetailViewCell.m in Sources */,
 				95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */,

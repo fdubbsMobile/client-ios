@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLCObjectMappingProtocol.H"
 
-@interface XLCSectionMetaData : NSObject
+@interface XLCSectionMetaData : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) NSString *sectionId;
 @property (strong, nonatomic) NSString *description;

@@ -8,6 +8,23 @@
 
 #import "XLCImage.h"
 
+static RKObjectMapping *objectMapping = nil;
+
 @implementation XLCImage
+
++ (RKObjectMapping *) objectMapping
+{
+    if (objectMapping != nil) {
+        return objectMapping;
+    }
+    
+    objectMapping = [RKObjectMapping mappingForClass:[XLCImage class]];
+    [objectMapping addAttributeMappingsFromDictionary:@{
+                                                           @"pos" : @"pos",
+                                                           @"ref" : @"ref"
+                                                           }];
+    
+    return objectMapping;
+}
 
 @end

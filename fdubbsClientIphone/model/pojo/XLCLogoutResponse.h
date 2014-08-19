@@ -1,8 +1,8 @@
 //
-//  XLCLoginResponse.h
+//  XLCLogoutResponse.h
 //  fdubbsClientIphone
 //
-//  Created by dennis on 14-8-15.
+//  Created by dennis on 14-8-19.
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
@@ -10,18 +10,12 @@
 #import "XLCObjectMappingProtocol.h"
 
 #define     SUCCESS             @"SUCCESS"
-#define     USER_NOT_EXIST      @"USER_NOT_EXIST"
-#define     PASSWD_INCORRECT    @"PASSWD_INCORRECT"
-#define     USER_ID_EMPTY       @"USER_ID_EMPTY"
-#define     PASSWD_EMPTY        @"PASSWD_EMPTY"
+#define     ALREADY_LOGOUT      @"ALREADY_LOGOUT"
 #define     INTERNAL_ERROR      @"INTERNAL_ERROR"
 
-@interface XLCLoginResponse : NSObject <XLCObjectMappingProtocol>
+@interface XLCLogoutResponse : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) NSString *resultCode;
 @property (strong, nonatomic) NSString *errorMessage;
-@property (strong, nonatomic) NSString *authCode;
-
-
 
 @end

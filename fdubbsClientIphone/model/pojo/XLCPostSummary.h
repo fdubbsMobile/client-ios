@@ -10,9 +10,9 @@
 
 
 #import "XLCPostMetaData.h"
+#import "XLCObjectMappingProtocol.h"
 
-
-@interface XLCPostSummary : NSObject
+@interface XLCPostSummary : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) XLCPostMetaData *metaData;
 

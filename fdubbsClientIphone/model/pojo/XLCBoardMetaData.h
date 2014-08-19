@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCBoardMetaData : NSObject
+@interface XLCBoardMetaData : NSObject <XLCObjectMappingProtocol>
 
 @property NSUInteger boardId;
 @property NSString *title;

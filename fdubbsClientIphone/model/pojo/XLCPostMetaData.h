@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCPostMetaData : NSObject
+@interface XLCPostMetaData : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) NSString *postId;
 @property (strong, nonatomic) NSString *title;

@@ -8,6 +8,7 @@
 
 #import "XLCUserManager.h"
 #import "XLCLoginResponse.h"
+#import "XLCLogoutResponse.h"
 
 static NSTimeInterval const authKeepAliveRange = 3600 * 1000;
 
@@ -34,12 +35,17 @@ SINGLETON_GCD(XLCUserManager);
 - (id) init {
     if ( (self = [super init]) ) {
         // Initialization code here.
-        _isLoginSuccess = FALSE;
-        _authCode = nil;
-        _loginExpiredTime = TIME_NOW_IN_SECOND;
-        _persistLogin = TRUE;
+        [self reset];
     }
     return self;
+}
+
+- (void) reset
+{
+    _isLoginSuccess = FALSE;
+    _authCode = nil;
+    _loginExpiredTime = TIME_NOW_IN_SECOND;
+    _persistLogin = TRUE;
 }
 
 
@@ -106,7 +112,23 @@ SINGLETON_GCD(XLCUserManager);
 - (void)doUserLogoutWithSuccessBlock:(void (^)(void))success
                       failBlock:(void (^)(NSError *))failure
 {
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", _authCode]];
     
+    [objectManager getObjectsAtPath:@"/api/v1/user/logout"
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCLogoutResponse *logoutResponse = [mappingResult firstObject];
+                                NSLog(@"Login response : {resultCode : %@}", [logoutResponse resultCode]);
+                                
+                                [self reset];
+                                success();
+                                NSLog(@"Success to logout for user : %@", _userName);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
 }
 
 @end

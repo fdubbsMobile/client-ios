@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "XLCBoardMetaData.h"
+#import "XLCPostSummary.h"
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCPostSummaryInBoard : NSObject
+@interface XLCPostSummaryInBoard : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) XLCBoardMetaData *boardMetaData;
 @property (strong, nonatomic) NSArray *postSummaryList;

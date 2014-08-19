@@ -8,6 +8,23 @@
 
 #import "XLCSectionMetaData.h"
 
+static RKObjectMapping *objectMapping = nil;
+
 @implementation XLCSectionMetaData
 
++ (RKObjectMapping *) objectMapping
+{
+    if (objectMapping != nil) {
+        return objectMapping;
+    }
+    
+    objectMapping = [RKObjectMapping mappingForClass:[XLCSectionMetaData class]];
+    [objectMapping addAttributeMappingsFromDictionary:@{
+                                                                 @"section_id" : @"sectionId",
+                                                                 @"section_desc" : @"description",
+                                                                 @"category" : @"category"
+                                                                 }];
+    
+    return objectMapping;
+}
 @end

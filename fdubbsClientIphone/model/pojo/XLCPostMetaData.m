@@ -8,7 +8,28 @@
 
 #import "XLCPostMetaData.h"
 
+static RKObjectMapping *objectMapping = nil;
+
 @implementation XLCPostMetaData
+
++ (RKObjectMapping *) objectMapping
+{
+    if (objectMapping != nil) {
+        return objectMapping;
+    }
+    
+    objectMapping = [RKObjectMapping mappingForClass:[XLCPostMetaData class]];
+    [objectMapping addAttributeMappingsFromDictionary:@{
+                                                              @"post_id" : @"postId",
+                                                              @"title" : @"title",
+                                                              @"owner" : @"owner",
+                                                              @"nick" : @"nick",
+                                                              @"date" : @"date",
+                                                              @"board" : @"board"
+                                                              }];
+    
+    return objectMapping;
+}
 
 
 - (id) init;

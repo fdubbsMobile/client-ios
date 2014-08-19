@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "XLCImage.h"
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCContent : NSObject
+@interface XLCContent : NSObject <XLCObjectMappingProtocol>
 
 @property (strong, nonatomic) NSString *text;
 @property (strong, nonatomic) NSArray *images;

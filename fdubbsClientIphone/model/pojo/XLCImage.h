@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "XLCObjectMappingProtocol.h"
 
-@interface XLCImage : NSObject
+@interface XLCImage : NSObject <XLCObjectMappingProtocol>
 
 @property NSUInteger pos;
 @property (strong, nonatomic) NSString *ref;

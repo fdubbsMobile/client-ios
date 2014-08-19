@@ -8,6 +8,31 @@
 
 #import "XLCPostSummary.h"
 
+static RKObjectMapping *objectMapping = nil;
+
 @implementation XLCPostSummary
+
++ (RKObjectMapping *) objectMapping
+{
+    if (objectMapping != nil) {
+        return objectMapping;
+    }
+    
+    objectMapping = [RKObjectMapping mappingForClass:[XLCPostSummary class]];
+    [objectMapping addAttributeMappingsFromDictionary:@{
+                                                             @"count" : @"count",
+                                                             @"mark_sign" : @"markSign",
+                                                             @"is_sticky" : @"sticky",
+                                                             @"is_no_reply" : @"nonReply"
+                                                             }];
+    
+    
+    RKRelationshipMapping* postMetaRSMapping = [RKRelationshipMapping relationshipMappingFromKeyPath:@"post_meta_data"
+                                                                                           toKeyPath:@"metaData"
+                                                                                         withMapping:[XLCPostMetaData objectMapping]];
+    [objectMapping addPropertyMapping:postMetaRSMapping];
+    
+    return objectMapping;
+}
 
 @end
