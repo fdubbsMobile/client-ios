@@ -9,6 +9,7 @@
 #import "XLCMyAccountViewController.h"
 #import "PAImageView.h"
 #import "XLCUserManager.h"
+#import "FRDLivelyButton.h"
 
 @interface XLCMyAccountViewController ()
 {
@@ -92,7 +93,6 @@
     DebugLog(@"init XLCMyAccountViewController");
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -124,6 +124,22 @@
     
     
     [[XLCUserManager sharedXLCUserManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"prepareForSegue");
+    NSLog(@"The segue id is %@", segue.identifier );
+	
+	UIViewController *destination = segue.destinationViewController;
+    NSLog(@"Send is %@", destination);
+	if([segue.identifier isEqualToString:@"showFavorBoard"])
+    {
+        NSLog(@"showFavorBoard");
+	}
 }
 
 @end
