@@ -24,6 +24,7 @@
 #import "XLCPostSummaryInBoard.h"
 #import "XLCLoginResponse.h"
 #import "XLCLogoutResponse.h"
+#import "RKObjectManager+XLC.h"
 
 @implementation XLCRESTfulClient
 
@@ -61,53 +62,35 @@
 
 + (void) initPostResources:(RKObjectManager *)objectManager
 {
-    [self addObjectMappingForClass:[XLCPostSummary class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/post/top10" toObjectManager:objectManager];
+    [objectManager addRequestWithPathPattern:@"/api/v1/post/top10"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCPostSummary class]];
     
-    [self addObjectMappingForClass:[XLCPostDetail class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/post/detail/board/:boardName/:postId" toObjectManager:objectManager];
+    [objectManager addRequestWithPathPattern:@"/api/v1/post/detail/board/:boardName/:postId"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCPostDetail class]];
     
-    [self addObjectMappingForClass:[XLCPostReplies class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/post/reply/bid/:boardId/:mainPostId/:lastReplyId" toObjectManager:objectManager];
+    [objectManager addRequestWithPathPattern:@"/api/v1/post/reply/bid/:boardId/:mainPostId/:lastReplyId"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCPostReplies class]];
     
-    [self addObjectMappingForClass:[XLCSectionMetaData class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/section/all" toObjectManager:objectManager];
-    
-    [self addObjectMappingForClass:[XLCSection class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/section/detail/:sectionId" toObjectManager:objectManager];
-    
-    [self addObjectMappingForClass:[XLCPostSummaryInBoard class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode" toObjectManager:objectManager];
-    
-    [self addObjectMappingForClass:[XLCPostSummaryInBoard class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNum" toObjectManager:objectManager];
-    
-    
-    [self addObjectMappingForClass:[XLCBoardDetail class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/board/favor" toObjectManager:objectManager];
-    
-    [self addObjectMappingForClass:[XLCLoginResponse class] method:RKRequestMethodPOST
-                       pathPattern:@"/api/v1/user/login" toObjectManager:objectManager];
-    
-    [self addObjectMappingForClass:[XLCLogoutResponse class] method:RKRequestMethodGET
-                       pathPattern:@"/api/v1/user/logout" toObjectManager:objectManager];
-}
+    [objectManager addRequestWithPathPattern:@"/api/v1/section/all"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCSectionMetaData class]];
 
-
-+ (void) addObjectMappingForClass:(Class)objectClass
-                           method:(RKRequestMethod)method
-                      pathPattern:(NSString *)pathPattern
-                  toObjectManager:(RKObjectManager *)objectManager
-{
-    RKObjectMapping *responseMapping = [objectClass performSelector:@selector(objectMapping)];
+    [objectManager addRequestWithPathPattern:@"/api/v1/section/detail/:sectionId"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCSection class]];
     
-    // Register our mappings with the provider using a response descriptor
-    RKResponseDescriptor *responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:responseMapping
-                                                                                        method:method
-                                                                                   pathPattern:pathPattern
-                                                                                       keyPath:nil
-                                                                                   statusCodes:[NSIndexSet indexSetWithIndex:200]];
-    [objectManager addResponseDescriptor:responseDescriptor];
+    [objectManager addRequestWithPathPattern:@"/api/v1/post/summary/board/:boardName/:listMode"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCPostSummaryInBoard class]];
+
+    [objectManager addRequestWithPathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNum"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCPostSummaryInBoard class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/board/favor"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCBoardDetail class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/user/login"
+                                    onMethod:RKRequestMethodPOST forResponseClaass:[XLCLoginResponse class]];
+
+    [objectManager addRequestWithPathPattern:@"/api/v1/user/logout"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCLogoutResponse class]];
 }
 
 @end
