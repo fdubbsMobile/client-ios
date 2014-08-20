@@ -24,6 +24,14 @@
 #import "XLCPostSummaryInBoard.h"
 #import "XLCLoginResponse.h"
 #import "XLCLogoutResponse.h"
+#import "XLCMailSummaryInBox.h"
+#import "XLCMailSummary.h"
+#import "XLCMailDetail.h"
+#import "XLCUserIntrodution.h"
+#import "XLCUserSignature.h"
+#import "XLCUserBaiscProfile.h"
+#import "XLCUserInfo.h"
+#import "XLCFriend.h"
 #import "RKObjectManager+XLC.h"
 
 @implementation XLCRESTfulClient
@@ -80,7 +88,7 @@
     [objectManager addRequestWithPathPattern:@"/api/v1/post/summary/board/:boardName/:listMode"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCPostSummaryInBoard class]];
 
-    [objectManager addRequestWithPathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNum"
+    [objectManager addRequestWithPathPattern:@"/api/v1/post/summary/board/:boardName/:listMode/:startNumber"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCPostSummaryInBoard class]];
     
     [objectManager addRequestWithPathPattern:@"/api/v1/board/favor"
@@ -91,6 +99,36 @@
 
     [objectManager addRequestWithPathPattern:@"/api/v1/user/logout"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCLogoutResponse class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/mail/all"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCMailSummaryInBox class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/mail/all/:startNumber"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCMailSummaryInBox class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/mail/new"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCMailSummary class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/mail/detail/:mailNumber/:mailLink"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCMailDetail class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/profile/basic"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCUserBaiscProfile class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/profile/introdution"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCUserIntrodution class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/profile/signature"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCUserSignature class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1/user/info/:userId"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCUserInfo class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1//profile/friend/all"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCFriend class]];
+    
+    [objectManager addRequestWithPathPattern:@"/api/v1//profile/friend/online"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCFriend class]];
 }
 
 @end
