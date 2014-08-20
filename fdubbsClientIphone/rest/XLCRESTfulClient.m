@@ -124,10 +124,10 @@
     [objectManager addRequestWithPathPattern:@"/api/v1/user/info/:userId"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCUserInfo class]];
     
-    [objectManager addRequestWithPathPattern:@"/api/v1//profile/friend/all"
+    [objectManager addRequestWithPathPattern:@"/api/v1/profile/friend/all"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCFriend class]];
     
-    [objectManager addRequestWithPathPattern:@"/api/v1//profile/friend/online"
+    [objectManager addRequestWithPathPattern:@"/api/v1/profile/friend/online"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCFriend class]];
 }
 

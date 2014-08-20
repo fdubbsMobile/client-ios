@@ -8,10 +8,16 @@
 
 #import "XLCMailViewController.h"
 #import "FRDLivelyButton.h"
+#import "XLCMailManager.h"
+#
 
-@interface XLCMailViewController ()
+@interface XLCMailViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    __block NSArray *_mailList;
+}
+
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchControl;
-@property (strong, nonatomic) IBOutlet UITableView *tableview;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,6 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _mailList = nil;
     }
     return self;
 }
@@ -62,6 +69,13 @@
     self.subtitle = @"我的账号";
     self.subtitleColor = [UIColor whiteColor];
     
+    [_segSwitchControl addTarget: self action: @selector(onSegmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
+    [_tableView setDataSource:self];
+    [_tableView setDelegate:self];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0.1];
+    
 }
 
 - (void)backAction
@@ -98,11 +112,97 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
 
+-(void)loadData
+{
+    
+    void (^successBlock)(NSArray *) = ^(NSArray *mails)
+    {
+        
+        DebugLog(@"Success to load friends!");
+        _mailList = mails;
+        
+        [self.tableView reloadData];
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        // load online friends
+        
+    } else if (_segSwitchControl.selectedSegmentIndex == 1){
+        // load all friends
+        
+    }
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"mailViewCell";
+    UITableViewCell *cell = (UITableViewCell *)[tableView
+                                                dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [_mailList count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+- (void) onSegmentedControlChanged:(UISegmentedControl *) sender {
+    NSLog(@"Select %ld", (long)_segSwitchControl.selectedSegmentIndex);
+    [self loadData];
+    
+    if ([self tableView:self.tableView numberOfRowsInSection:0] > 0) {
+        NSIndexPath *topIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:topIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

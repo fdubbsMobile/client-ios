@@ -8,10 +8,16 @@
 
 #import "XLCFriendViewController.h"
 #import "FRDLivelyButton.h"
+#import "XLCFriendManager.h"
+#import "XLCFriend.h"
 
-@interface XLCFriendViewController ()
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchContrl;
-@property (strong, nonatomic) IBOutlet UITableView *tableview;
+@interface XLCFriendViewController () <UITableViewDelegate, UITableViewDataSource>
+{
+    __block NSArray *_friendList;
+}
+
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchControl;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,6 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _friendList = nil;
     }
     return self;
 }
@@ -62,6 +69,13 @@
     self.subtitle = @"我的账号";
     self.subtitleColor = [UIColor whiteColor];
     
+    [_segSwitchControl addTarget: self action: @selector(onSegmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
+    [_tableView setDataSource:self];
+    [_tableView setDelegate:self];
+    [_tableView setBackgroundColor:[UIColor whiteColor]];
+    
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:0.1];
+    
 }
 
 - (void)backAction
@@ -97,6 +111,94 @@
     }
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
+
+-(void)loadData
+{
+    
+    void (^successBlock)(NSArray *) = ^(NSArray *friends)
+    {
+        
+        DebugLog(@"Success to load friends!");
+        _friendList = friends;
+        
+        [self.tableView reloadData];
+        
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        // load online friends
+        [[XLCFriendManager sharedXLCFriendManager] doLoadOnlineFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+    } else if (_segSwitchControl.selectedSegmentIndex == 1){
+        // load all friends
+        [[XLCFriendManager sharedXLCFriendManager] doLoadAllFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+    }
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"friendViewCell";
+    UITableViewCell *cell = (UITableViewCell *)[tableView
+                                                              dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    XLCFriend *friend = [_friendList objectAtIndex:indexPath.row];
+    
+    [[cell textLabel] setText:[friend userId]];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [_friendList count];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 0.1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1;
+}
+
+- (void) onSegmentedControlChanged:(UISegmentedControl *) sender {
+    NSLog(@"Select %ld", (long)_segSwitchControl.selectedSegmentIndex);
+    [self loadData];
+    
+    if ([self tableView:self.tableView numberOfRowsInSection:0] > 0) {
+        NSIndexPath *topIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView scrollToRowAtIndexPath:topIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
