@@ -13,7 +13,8 @@
 
 @interface XLCFriendViewController () <UITableViewDelegate, UITableViewDataSource>
 {
-    __block NSArray *_friendList;
+    __block NSArray *_allFriendList;
+    __block NSArray *_onlineFriendList;
 }
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchControl;
@@ -28,7 +29,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _friendList = nil;
+        _allFriendList = nil;
+        _onlineFriendList = nil;
     }
     return self;
 }
@@ -115,15 +117,7 @@
 -(void)loadData
 {
     
-    void (^successBlock)(NSArray *) = ^(NSArray *friends)
-    {
-        
-        DebugLog(@"Success to load friends!");
-        _friendList = friends;
-        
-        [self.tableView reloadData];
-        
-    };
+    
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
@@ -138,10 +132,38 @@
     
     if (_segSwitchControl.selectedSegmentIndex == 0) {
         // load online friends
-        [[XLCFriendManager sharedXLCFriendManager] doLoadOnlineFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+        if (_onlineFriendList == nil) {
+            
+        
+            void (^successBlock)(NSArray *) = ^(NSArray *friends)
+            {
+            
+                DebugLog(@"Success to load online friends!");
+                _onlineFriendList = friends;
+            
+                [self.tableView reloadData];
+            
+            };
+            [[XLCFriendManager sharedXLCFriendManager] doLoadOnlineFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+        } else {
+            [self.tableView reloadData];
+        }
     } else if (_segSwitchControl.selectedSegmentIndex == 1){
         // load all friends
-        [[XLCFriendManager sharedXLCFriendManager] doLoadAllFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+        if (_allFriendList == nil) {
+            void (^successBlock)(NSArray *) = ^(NSArray *friends)
+            {
+            
+                DebugLog(@"Success to load all friends!");
+                _allFriendList = friends;
+            
+                [self.tableView reloadData];
+            
+            };
+            [[XLCFriendManager sharedXLCFriendManager] doLoadAllFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+        } else {
+            [self.tableView reloadData];
+        }
     }
     
 }
@@ -163,7 +185,12 @@
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    XLCFriend *friend = [_friendList objectAtIndex:indexPath.row];
+    XLCFriend *friend;
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        friend = [_onlineFriendList objectAtIndex:indexPath.row];
+    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
+        friend = [_allFriendList objectAtIndex:indexPath.row];
+    }
     
     [[cell textLabel] setText:[friend userId]];
     
@@ -173,7 +200,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_friendList count];
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        return [_onlineFriendList count];
+    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
+        return [_allFriendList count];
+    }
+    
+    return 0;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

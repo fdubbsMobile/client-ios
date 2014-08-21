@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet ASTextField *userIdTextField;
 @property (strong, nonatomic) IBOutlet ASTextField *passwdTextField;
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *visitorMode;
 
 @property (strong, nonatomic) UITextField *activeField;
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
@@ -130,6 +131,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)doVisitorBrowse:(id)sender {
+    
+}
 
 -(IBAction)doUserLogin:(id)sender
 {

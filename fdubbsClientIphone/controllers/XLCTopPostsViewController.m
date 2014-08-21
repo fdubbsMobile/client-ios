@@ -39,6 +39,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        _top10Posts = nil;
     }
     return self;
 }
@@ -124,6 +125,10 @@
 
 -(void)loadData
 {
+    if (_top10Posts != nil) {
+        return;
+    }
+    
     _reloading = YES;
     
     void (^successBlock)(NSArray *) = ^(NSArray *topPosts)

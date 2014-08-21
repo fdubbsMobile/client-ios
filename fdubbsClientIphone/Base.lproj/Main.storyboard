@@ -632,7 +632,7 @@
         <!--Login View Controller - 用户登录-->
         <scene sceneID="dfA-Xb-QW2">
             <objects>
-                <viewController title="用户登录" hidesBottomBarWhenPushed="YES" id="WXB-x9-uUb" customClass="XLCLoginViewController" sceneMemberID="viewController">
+                <viewController title="用户登录" id="WXB-x9-uUb" customClass="XLCLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RsL-OB-Key">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -650,7 +650,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tzp-IX-zzU">
-                                <rect key="frame" x="35" y="129" width="250" height="38"/>
+                                <rect key="frame" x="170" y="129" width="115" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="登      录" backgroundImage="login_button.png">
@@ -659,6 +659,18 @@
                                 </state>
                                 <connections>
                                     <action selector="doUserLogin:" destination="WXB-x9-uUb" eventType="touchUpInside" id="uKI-82-rTh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UMG-vV-8QE">
+                                <rect key="frame" x="35" y="129" width="107" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="游客浏览" backgroundImage="login_button.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="doVisitorBrowse:" destination="WXB-x9-uUb" eventType="touchUpInside" id="eRv-cs-za8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -670,6 +682,7 @@
                         <outlet property="loginButton" destination="Tzp-IX-zzU" id="Es7-eR-DUc"/>
                         <outlet property="passwdTextField" destination="a17-aR-917" id="fRR-gk-Vct"/>
                         <outlet property="userIdTextField" destination="zfb-ea-eog" id="fIo-PU-L3X"/>
+                        <outlet property="visitorMode" destination="UMG-vV-8QE" id="lLn-pd-sfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNr-Rr-zUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1053,8 +1066,8 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="iM2-80-pwI"/>
-        <segue reference="mJG-cC-Yrt"/>
         <segue reference="y1L-iJ-ujh"/>
+        <segue reference="mJG-cC-Yrt"/>
         <segue reference="FYG-Vq-lgd"/>
     </inferredMetricsTieBreakers>
 </document>

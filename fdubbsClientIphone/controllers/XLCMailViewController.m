@@ -9,11 +9,15 @@
 #import "XLCMailViewController.h"
 #import "FRDLivelyButton.h"
 #import "XLCMailManager.h"
-#
+#import "XLCMailSummary.h"
+#import "XLCMailSummaryInBox.h"
 
 @interface XLCMailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
     __block NSArray *_mailList;
+    
+    __block NSUInteger _startNumber;
+    __block XLCMailSummaryInBox *_mailSummaryInbox;
 }
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchControl;
@@ -29,6 +33,8 @@
     if (self) {
         // Custom initialization
         _mailList = nil;
+        _startNumber = 0;
+        _mailSummaryInbox = nil;
     }
     return self;
 }
@@ -115,15 +121,7 @@
 -(void)loadData
 {
     
-    void (^successBlock)(NSArray *) = ^(NSArray *mails)
-    {
-        
-        DebugLog(@"Success to load friends!");
-        _mailList = mails;
-        
-        [self.tableView reloadData];
-        
-    };
+    
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
@@ -137,11 +135,40 @@
     };
     
     if (_segSwitchControl.selectedSegmentIndex == 0) {
-        // load online friends
+        // load new mails
+        if (_mailList == nil) {
+            void (^successBlock)(NSArray *) = ^(NSArray *mails)
+            {
+            
+                DebugLog(@"Success to load new mails!");
+                _mailList = mails;
+            
+                [self.tableView reloadData];
+            
+            };
+            [[XLCMailManager sharedXLCMailManager] doLoadNewMailsWithSuccessBlock:successBlock failBlock:failBlock];
+        } else {
+            [self.tableView reloadData];
+        }
         
     } else if (_segSwitchControl.selectedSegmentIndex == 1){
-        // load all friends
+        // load all mails
+        if (_mailSummaryInbox == nil) {
+            void (^successBlock)(XLCMailSummaryInBox *) = ^(XLCMailSummaryInBox *mailSummaryInbox)
+            {
+            
+                DebugLog(@"Success to load all mails!");
+                _mailSummaryInbox = mailSummaryInbox;
+                _startNumber = mailSummaryInbox.startMailNum;
+            
+                [self.tableView reloadData];
+            
+            };
         
+            [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:_startNumber successBlock:successBlock failBlock:failBlock];
+        } else {
+            [self.tableView reloadData];
+        }
     }
     
 }
@@ -163,7 +190,14 @@
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    XLCMailSummary *mailSummary;
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        mailSummary = [_mailList objectAtIndex:indexPath.row];
+    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
+        mailSummary = [_mailSummaryInbox.mailSummaryList objectAtIndex:indexPath.row];
+    }
     
+    [[cell textLabel] setText:[[mailSummary mailMetaData] title]];
     
     return cell;
 }
@@ -171,7 +205,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_mailList count];
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        return [_mailList count];
+    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
+        return [_mailSummaryInbox.mailSummaryList count];
+    }
+    
+    return 0;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
