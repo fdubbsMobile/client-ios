@@ -650,10 +650,10 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tzp-IX-zzU">
-                                <rect key="frame" x="170" y="129" width="115" height="36"/>
+                                <rect key="frame" x="170" y="129" width="115" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="登      录" backgroundImage="login_button.png">
+                                <state key="normal" title="登      录">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -662,10 +662,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UMG-vV-8QE">
-                                <rect key="frame" x="35" y="129" width="107" height="36"/>
+                                <rect key="frame" x="35" y="129" width="115" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="游客浏览" backgroundImage="login_button.png">
+                                <state key="normal" title="游客浏览">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1065,7 +1065,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iM2-80-pwI"/>
+        <segue reference="8YO-uh-epP"/>
         <segue reference="y1L-iJ-ujh"/>
         <segue reference="mJG-cC-Yrt"/>
         <segue reference="FYG-Vq-lgd"/>
