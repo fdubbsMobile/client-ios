@@ -632,7 +632,7 @@
         <!--Login View Controller - 用户登录-->
         <scene sceneID="dfA-Xb-QW2">
             <objects>
-                <viewController title="用户登录" id="WXB-x9-uUb" customClass="XLCLoginViewController" sceneMemberID="viewController">
+                <viewController title="用户登录" hidesBottomBarWhenPushed="YES" id="WXB-x9-uUb" customClass="XLCLoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RsL-OB-Key">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

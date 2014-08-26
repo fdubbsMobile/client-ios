@@ -46,25 +46,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
-    NSLog(@"hasUserLogin : %d", hasUserLogin);
-    if (!hasUserLogin) {
-        [self performSegueWithIdentifier:@"doLogin" sender:self];
-        return;
-    }
-    
-    [self initialize];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self initialize];
 }
 
 - (void) initialize
 {
+    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    NSLog(@"hasUserLogin : %d", hasUserLogin);
+    if (!hasUserLogin) {
+        NSLog(@"performSegueWithIdentifier:doLogin");
+        [self performSegueWithIdentifier:@"doLogin" sender:self];
+        
+        return;
+    }
+    
+    
     if (hasInitialized) {
         NSLog(@"XLCFavorBoardsViewController has been initialized!");
         return;
