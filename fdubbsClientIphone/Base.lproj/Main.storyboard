@@ -576,10 +576,10 @@
             </objects>
             <point key="canvasLocation" x="2204" y="535"/>
         </scene>
-        <!--Mail View Controller-->
+        <!--Mail View Controller - 信件列表-->
         <scene sceneID="XaY-qb-qSs">
             <objects>
-                <viewController id="YSO-af-6EY" customClass="XLCMailViewController" sceneMemberID="viewController">
+                <viewController title="信件列表" id="YSO-af-6EY" customClass="XLCMailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hv1-Lo-WXs">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -611,6 +611,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Sih-6x-03y" kind="push" identifier="showMailDetail" id="beC-KH-BBW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -628,6 +631,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZv-F5-KAA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2204" y="1252"/>
+        </scene>
+        <!--Mail Detail View Controller - 信件详情-->
+        <scene sceneID="Cwr-ef-7c2">
+            <objects>
+                <viewController title="信件详情" id="Sih-6x-03y" customClass="XLCMailDetailViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cMj-vL-fZZ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="7vg-k1-wZ0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来    自 :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Flp-ja-2XY">
+                                        <rect key="frame" x="20" y="7" width="74" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aPN-Uo-kyN">
+                                        <rect key="frame" x="93" y="7" width="83" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时    间 :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WzJ-6R-f9Z">
+                                        <rect key="frame" x="20" y="29" width="66" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oG0-9u-EZX">
+                                        <rect key="frame" x="93" y="29" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标    题 :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xvv-z5-wle">
+                                        <rect key="frame" x="20" y="53" width="66" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHu-ft-DdF">
+                                        <rect key="frame" x="93" y="53" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="KGi-PT-Cx1">
+                                <rect key="frame" x="0.0" y="80" width="320" height="375"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" id="B1P-EH-y5A">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="4XZ-Z3-thh"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="oG0-9u-EZX" id="ZY1-GC-32F"/>
+                        <outlet property="mailContentView" destination="B1P-EH-y5A" id="uTS-J2-oYi"/>
+                        <outlet property="mailSenderLabel" destination="aPN-Uo-kyN" id="ESR-q6-LsM"/>
+                        <outlet property="titleLabel" destination="QHu-ft-DdF" id="Wqu-kW-YC6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I5J-5F-zqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628" y="1254"/>
         </scene>
         <!--Login View Controller - 用户登录-->
         <scene sceneID="dfA-Xb-QW2">
@@ -995,10 +1078,10 @@
             </objects>
             <point key="canvasLocation" x="420" y="1252"/>
         </scene>
-        <!--Friend View Controller-->
+        <!--Friend View Controller - 好友列表-->
         <scene sceneID="zWn-v2-C7S">
             <objects>
-                <viewController id="Xwf-Z9-W2T" customClass="XLCFriendViewController" sceneMemberID="viewController">
+                <viewController title="好友列表" id="Xwf-Z9-W2T" customClass="XLCFriendViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mJb-bK-T2E">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
