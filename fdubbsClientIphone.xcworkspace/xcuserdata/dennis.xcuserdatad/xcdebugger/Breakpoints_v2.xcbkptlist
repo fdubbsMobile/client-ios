@@ -6,17 +6,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "fdubbsClientIphone/controllers/XLCMailDetailViewController.m"
-            timestampString = "430930445.121775"
+            timestampString = "430932033.646425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "@implementation XLCMailDetailViewController"
-            landmarkType = "3">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "mailContentView"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[XLCMailDetailViewController mailContentView]"
+                  moduleName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs"
+                  urlString = "file:///Users/dennis/workspace/xcode/fdubbsClientIphone/fdubbsClientIphone/controllers/XLCMailDetailViewController.m"
+                  timestampString = "430930998.160037"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[XLCMailDetailViewController setMailContentView:]"
+                  moduleName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs"
+                  urlString = "file:///Users/dennis/workspace/xcode/fdubbsClientIphone/fdubbsClientIphone/controllers/XLCMailDetailViewController.m"
+                  timestampString = "430930998.161476"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

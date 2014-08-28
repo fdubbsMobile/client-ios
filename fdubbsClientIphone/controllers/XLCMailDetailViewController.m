@@ -8,12 +8,15 @@
 
 #import "XLCMailDetailViewController.h"
 #import "FRDLivelyButton.h"
+#import "XLCMailManager.h"
 
 
 @interface XLCMailDetailViewController ()
 {
     NSUInteger _mailNumber;
     NSString *_mailLink;
+    
+    XLCMailDetail *_mailDetail;
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *mailSenderLabel;
@@ -109,7 +112,34 @@
 
 -(void)loadData
 {
-    NSLog(@"try to load data with mail number %lu and link %@", (unsigned long)_mailNumber, _mailLink);
+    NSLog(@"try to load data with mail number %lu and link %@",
+          (unsigned long)_mailNumber, _mailLink);
+    
+    void (^successBlock)(XLCMailDetail *) = ^(XLCMailDetail *mailDetail)
+    {
+        _mailDetail = mailDetail;
+        [self refreshViewContent];
+    };
+    
+    void (^failBlock)(NSError *) = ^(NSError * error)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    [[XLCMailManager sharedXLCMailManager] doLoadMailDetailWithMailNumber:_mailNumber mailLink:_mailLink successBlock:successBlock failBlock:failBlock];
+}
+
+- (void) refreshViewContent
+{
+    [_mailSenderLabel setText:[[_mailDetail mailMetaData] sender]];
+    [_dateLabel setText:[[_mailDetail mailMetaData] date]];
+    [_titleLabel setText:[[_mailDetail mailMetaData] title]];
 }
 
 - (void)didReceiveMemoryWarning

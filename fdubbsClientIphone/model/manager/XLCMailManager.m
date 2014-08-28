@@ -76,14 +76,14 @@ SINGLETON_GCD(XLCMailManager);
                             }];
 }
 
-- (void) doLoadMailDetailWithMailNumber:(NSString *)mailNumber
+- (void) doLoadMailDetailWithMailNumber:(NSUInteger)mailNumber
                                mailLink:(NSString *)mailLink
                            successBlock:(void (^)(XLCMailDetail *))success
                               failBlock:(void (^)(NSError *))failure
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
-    NSString *path = [NSString stringWithFormat:@"/api/v1/mail/detail/%@/%@", mailNumber, mailLink];
+    NSString *path = [NSString stringWithFormat:@"/api/v1/mail/detail/%lu/%@", mailNumber, mailLink];
     
     NSLog(@"path is %@", path);
     

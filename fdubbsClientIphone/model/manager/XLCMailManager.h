@@ -22,7 +22,7 @@
 - (void) doLoadNewMailsWithSuccessBlock:(void (^)(NSArray *))success
                                    failBlock:(void (^)(NSError *))failure;
 
-- (void) doLoadMailDetailWithMailNumber:(NSString *)mailNumber
+- (void) doLoadMailDetailWithMailNumber:(NSUInteger)mailNumber
                                mailLink:(NSString *)mailLink
                            successBlock:(void (^)(XLCMailDetail *))success
                               failBlock:(void (^)(NSError *))failure;
