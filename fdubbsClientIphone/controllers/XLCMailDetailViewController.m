@@ -9,7 +9,13 @@
 #import "XLCMailDetailViewController.h"
 #import "FRDLivelyButton.h"
 
+
 @interface XLCMailDetailViewController ()
+{
+    NSUInteger _mailNumber;
+    NSString *_mailLink;
+}
+
 @property (strong, nonatomic) IBOutlet UILabel *mailSenderLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
@@ -103,6 +109,7 @@
 
 -(void)loadData
 {
+    NSLog(@"try to load data with mail number %lu and link %@", (unsigned long)_mailNumber, _mailLink);
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,5 +128,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void) passValueWithMailNumber:(NSUInteger)mailNumber
+                       mailLink:(NSString *)mailLink
+{
+    _mailNumber = mailNumber;
+    _mailLink = mailLink;
+}
 
 @end

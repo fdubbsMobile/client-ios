@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C661913AB1000C80BEB /* FRDLivelyButton.m */; };
 		954CD1C81999B531004004C6 /* XLCFavorBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */; };
+		9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */; };
 		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
 		95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */; };
@@ -158,6 +159,8 @@
 		95234C661913AB1000C80BEB /* FRDLivelyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDLivelyButton.m; sourceTree = "<group>"; };
 		954CD1C61999B531004004C6 /* XLCFavorBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFavorBoardsViewController.h; path = controllers/XLCFavorBoardsViewController.h; sourceTree = "<group>"; };
 		954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFavorBoardsViewController.m; path = controllers/XLCFavorBoardsViewController.m; sourceTree = "<group>"; };
+		9550CD0119AF74AC001D1478 /* XLCMailSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailSummaryViewCell.h; path = views/XLCCustomView/XLCMailSummaryViewCell.h; sourceTree = "<group>"; };
+		9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailSummaryViewCell.m; path = views/XLCCustomView/XLCMailSummaryViewCell.m; sourceTree = "<group>"; };
 		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
 		95A2086618FE73BC009CDEA3 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
@@ -844,6 +847,8 @@
 				95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */,
 				95B6131B199867A200FE4F00 /* XLCPostSummaryViewCell.h */,
 				95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */,
+				9550CD0119AF74AC001D1478 /* XLCMailSummaryViewCell.h */,
+				9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */,
 			);
 			name = XLCCustomView;
 			sourceTree = "<group>";
@@ -1164,6 +1169,7 @@
 				95C5D7F119A49FDD00D8C754 /* XLCUserInfo.m in Sources */,
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
 				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
+				9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */,
 				95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95CB1846193B88670059FF2A /* XLCTopPostSummaryViewCell.m in Sources */,

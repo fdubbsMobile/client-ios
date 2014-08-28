@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XLCMailDetailPassValueDelegate.h"
 
-@interface XLCMailDetailViewController : UIViewController
+@interface XLCMailDetailViewController : UIViewController <XLCMailDetailPassValueDelegate>
 
 @end

@@ -11,6 +11,8 @@
 #import "XLCMailManager.h"
 #import "XLCMailSummary.h"
 #import "XLCMailSummaryInBox.h"
+#import "XLCMailSummaryViewCell.h"
+#import "XLCMailDetailPassValueDelegate.h"
 
 @interface XLCMailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -18,6 +20,8 @@
     
     __block NSUInteger _startNumber;
     __block XLCMailSummaryInBox *_mailSummaryInbox;
+    
+    NSObject<XLCMailDetailPassValueDelegate> *mailDetailPassValueDelegte ;
 }
 
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchControl;
@@ -173,6 +177,18 @@
     
 }
 
+- (XLCMailSummary *)getMailSummaryByIndex:(NSUInteger)index
+{
+    XLCMailSummary *mailSummary;
+    if (_segSwitchControl.selectedSegmentIndex == 0) {
+        mailSummary = [_mailList objectAtIndex:index];
+    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
+        mailSummary = [_mailSummaryInbox.mailSummaryList objectAtIndex:index];
+    }
+    
+    return mailSummary;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -183,21 +199,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"mailViewCell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView
+    XLCMailSummaryViewCell *cell = (XLCMailSummaryViewCell *)[tableView
                                                 dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if (cell == nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell=[[XLCMailSummaryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    XLCMailSummary *mailSummary;
-    if (_segSwitchControl.selectedSegmentIndex == 0) {
-        mailSummary = [_mailList objectAtIndex:indexPath.row];
-    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
-        mailSummary = [_mailSummaryInbox.mailSummaryList objectAtIndex:indexPath.row];
-    }
+    XLCMailSummary *mailSummary = [self getMailSummaryByIndex:indexPath.row];
     
-    [[cell textLabel] setText:[[mailSummary mailMetaData] title]];
+    XLCMailMetaData *metaData = mailSummary.mailMetaData;
+    //[[cell textLabel] setText:[[mailSummary mailMetaData] title]];
+    [[cell senderLabel] setText:[metaData sender]];
+    [[cell dateLabel] setText:[metaData date]];
+    [[cell titleLabel] setText:[metaData title]];
+    cell.index = indexPath.row;
     
     return cell;
 }
@@ -252,6 +268,20 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    NSLog(@"prepareForSegue");
+    NSLog(@"The segue id is %@", segue.identifier );
+	
+	UIViewController *destination = segue.destinationViewController;
+    NSLog(@"Send is %@", destination);
+	if([segue.identifier isEqualToString:@"showMailDetail"])
+    {
+        NSLog(@"showMailDetail");
+        NSInteger selectedIdx = [(XLCMailSummaryViewCell *)sender index];
+        XLCMailSummary *mailSummary = [self getMailSummaryByIndex:selectedIdx];
+        XLCMailMetaData *metaData = mailSummary.mailMetaData;
+        mailDetailPassValueDelegte = (NSObject<XLCMailDetailPassValueDelegate> *)destination;
+        [mailDetailPassValueDelegte passValueWithMailNumber:metaData.mailNumber mailLink:metaData.mailLink];
+    }
 }
 
 

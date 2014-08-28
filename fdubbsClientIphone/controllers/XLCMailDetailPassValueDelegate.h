@@ -10,7 +10,7 @@
 
 @protocol XLCMailDetailPassValueDelegate <NSObject>
 
--(void) passValueWithMailNumber:(NSString *)mailNumber
+-(void) passValueWithMailNumber:(NSUInteger)mailNumber
                        mailLink:(NSString *)mailLink;
 
 @end
