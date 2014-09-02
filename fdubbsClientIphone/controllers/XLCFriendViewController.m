@@ -10,6 +10,7 @@
 #import "FRDLivelyButton.h"
 #import "XLCFriendManager.h"
 #import "XLCFriend.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCFriendViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -121,6 +122,7 @@
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
+        [XLCActivityIndicator hideOnView:self.view];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -142,9 +144,11 @@
                 _onlineFriendList = friends;
             
                 [self.tableView reloadData];
+                [XLCActivityIndicator hideOnView:self.view];
             
             };
             [[XLCFriendManager sharedXLCFriendManager] doLoadOnlineFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+            [XLCActivityIndicator showLoadingOnView:self.view];
         } else {
             [self.tableView reloadData];
         }
@@ -158,9 +162,11 @@
                 _allFriendList = friends;
             
                 [self.tableView reloadData];
+                [XLCActivityIndicator hideOnView:self.view];
             
             };
             [[XLCFriendManager sharedXLCFriendManager] doLoadAllFriendsWithSuccessBlock:successBlock failBlock:failBlock];
+            [XLCActivityIndicator showLoadingOnView:self.view];
         } else {
             [self.tableView reloadData];
         }

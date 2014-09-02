@@ -13,6 +13,7 @@
 #import "XLCMailSummaryInBox.h"
 #import "XLCMailSummaryViewCell.h"
 #import "XLCMailDetailPassValueDelegate.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCMailViewController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -129,6 +130,7 @@
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
+        [XLCActivityIndicator hideOnView:self.view];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -148,9 +150,12 @@
                 _mailList = mails;
             
                 [self.tableView reloadData];
+                
+                [XLCActivityIndicator hideOnView:self.view];
             
             };
             [[XLCMailManager sharedXLCMailManager] doLoadNewMailsWithSuccessBlock:successBlock failBlock:failBlock];
+            [XLCActivityIndicator showLoadingOnView:self.view];
         } else {
             [self.tableView reloadData];
         }
@@ -166,10 +171,13 @@
                 _startNumber = mailSummaryInbox.startMailNum;
             
                 [self.tableView reloadData];
+                
+                [XLCActivityIndicator hideOnView:self.view];
             
             };
         
             [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:_startNumber successBlock:successBlock failBlock:failBlock];
+            [XLCActivityIndicator showLoadingOnView:self.view];
         } else {
             [self.tableView reloadData];
         }

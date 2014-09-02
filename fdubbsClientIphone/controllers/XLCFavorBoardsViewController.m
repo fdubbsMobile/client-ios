@@ -15,6 +15,7 @@
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetailPassValueDelegate.h"
 #import "XLCUserManager.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCFavorBoardsViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
@@ -170,7 +171,8 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
-        [indicatorView stopAnimating];
+        //[indicatorView stopAnimating];
+        [XLCActivityIndicator hideOnView:self.view];
         
     };
     
@@ -179,7 +181,8 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
-        [indicatorView stopAnimating];
+        //[indicatorView stopAnimating];
+        [XLCActivityIndicator hideOnView:self.view];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
@@ -192,7 +195,8 @@
     
     NSString *authCode = [[XLCUserManager sharedXLCUserManager] getUserAuthCode];
     [[XLCBoardManager sharedXLCBoardManager] doLoadFavorBoardsWithAuthCode:authCode successBlock:successBlock failBlock:failBlock];
-    [indicatorView startAnimating];
+    //[indicatorView startAnimating];
+    [XLCActivityIndicator showLoadingOnView:self.view];
     
 }
 

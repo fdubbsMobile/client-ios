@@ -16,6 +16,7 @@
 #import "FRDLivelyButton.h"
 #import "LoadMoreFooterView.h"
 #import "MONActivityIndicatorView.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCPostDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate, MONActivityIndicatorViewDelegate> {
     
@@ -197,7 +198,8 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
-        [indicatorView stopAnimating];
+        //[indicatorView stopAnimating];
+        [XLCActivityIndicator hideOnView:self.view];
         
     };
     
@@ -205,7 +207,8 @@
     {
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-        [indicatorView stopAnimating];
+        //[indicatorView stopAnimating];
+        [XLCActivityIndicator hideOnView:self.view];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
@@ -217,7 +220,8 @@
     };
     
     [[XLCPostManager sharedXLCPostManager] doLoadPostDetailWithBoard:_board postId:_postId successBlock:successBlock failBlock:failBlock];
-    [indicatorView startAnimating];
+    //[indicatorView startAnimating];
+    [XLCActivityIndicator showLoadingOnView:self.view];
 }
 
 

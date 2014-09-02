@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95005FD619B5BC2F0092DE9C /* XLCActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 95005FD519B5BC2F0092DE9C /* XLCActivityIndicator.m */; };
+		95005FDF19B5BCE10092DE9C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 95005FDA19B5BCE10092DE9C /* LICENSE */; };
+		95005FE019B5BCE10092DE9C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 95005FDC19B5BCE10092DE9C /* MBProgressHUD.m */; };
 		95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C661913AB1000C80BEB /* FRDLivelyButton.m */; };
 		954CD1C81999B531004004C6 /* XLCFavorBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */; };
 		9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */; };
@@ -155,6 +158,11 @@
 		6DB5298A63CE46F0BBEFAB1E /* libPods-test.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-test.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71D23146EEBF44C4BA649739 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		7C84AD7A515B4332B1E544A5 /* Pods-test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-test.xcconfig"; path = "Pods/Pods-test.xcconfig"; sourceTree = "<group>"; };
+		95005FD419B5BC2F0092DE9C /* XLCActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCActivityIndicator.h; path = views/XLCCustomView/XLCActivityIndicator.h; sourceTree = "<group>"; };
+		95005FD519B5BC2F0092DE9C /* XLCActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCActivityIndicator.m; path = views/XLCCustomView/XLCActivityIndicator.m; sourceTree = "<group>"; };
+		95005FDA19B5BCE10092DE9C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		95005FDB19B5BCE10092DE9C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		95005FDC19B5BCE10092DE9C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		95234C651913AB1000C80BEB /* FRDLivelyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDLivelyButton.h; sourceTree = "<group>"; };
 		95234C661913AB1000C80BEB /* FRDLivelyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDLivelyButton.m; sourceTree = "<group>"; };
 		954CD1C61999B531004004C6 /* XLCFavorBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFavorBoardsViewController.h; path = controllers/XLCFavorBoardsViewController.h; sourceTree = "<group>"; };
@@ -429,6 +437,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95005FD719B5BCE10092DE9C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				95005FDA19B5BCE10092DE9C /* LICENSE */,
+				95005FDB19B5BCE10092DE9C /* MBProgressHUD.h */,
+				95005FDC19B5BCE10092DE9C /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = views/MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		95234C641913AB1000C80BEB /* FRDLivelyButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +697,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95005FD719B5BCE10092DE9C /* MBProgressHUD */,
 				95BA248C19A0525700FBEF98 /* PAImageView */,
 				95B46D371999B0B0005B4F06 /* ASTextField */,
 				95B44E9F199324F500BE7BA0 /* MONActivityIndicatorView */,
@@ -849,6 +869,8 @@
 				95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */,
 				9550CD0119AF74AC001D1478 /* XLCMailSummaryViewCell.h */,
 				9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */,
+				95005FD419B5BC2F0092DE9C /* XLCActivityIndicator.h */,
+				95005FD519B5BC2F0092DE9C /* XLCActivityIndicator.m */,
 			);
 			name = XLCCustomView;
 			sourceTree = "<group>";
@@ -1035,6 +1057,7 @@
 				95B46D351999B0A4005B4F06 /* login_button.png in Resources */,
 				95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */,
 				95B46D341999B0A4005B4F06 /* user_name_icon@2x.png in Resources */,
+				95005FDF19B5BCE10092DE9C /* LICENSE in Resources */,
 				95B46D2D1999B0A4005B4F06 /* round_textfield.png in Resources */,
 				95A2087618FE73BC009CDEA3 /* grayArrow@2x.png in Resources */,
 				95A2087418FE73BC009CDEA3 /* blueArrow@2x.png in Resources */,
@@ -1136,6 +1159,7 @@
 				95C5D7F419A4A00C00D8C754 /* XLCUserPerformance.m in Sources */,
 				95CCB646191B561600B261D6 /* NIButtonUtilities.m in Sources */,
 				95C5D7D619A4587F00D8C754 /* XLCBasicProfileViewController.m in Sources */,
+				95005FD619B5BC2F0092DE9C /* XLCActivityIndicator.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
 				95B44E9E199324EA00BE7BA0 /* MONActivityIndicatorView.m in Sources */,
@@ -1185,6 +1209,7 @@
 				95CCB654191B561600B261D6 /* NIPaths.m in Sources */,
 				95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */,
 				95C5D80619A4B8E500D8C754 /* XLCFriendManager.m in Sources */,
+				95005FE019B5BCE10092DE9C /* MBProgressHUD.m in Sources */,
 				95CCB647191B561600B261D6 /* NICommonMetrics.m in Sources */,
 				95BA249519A05BE200FBEF98 /* XLCMyAccountViewController.m in Sources */,
 				95CCB64D191B561600B261D6 /* NIImageUtilities.m in Sources */,

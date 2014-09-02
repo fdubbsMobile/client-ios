@@ -9,7 +9,7 @@
 #import "XLCMailDetailViewController.h"
 #import "FRDLivelyButton.h"
 #import "XLCMailManager.h"
-
+#import "XLCActivityIndicator.h"
 
 @interface XLCMailDetailViewController ()
 {
@@ -119,10 +119,12 @@
     {
         _mailDetail = mailDetail;
         [self refreshViewContent];
+        [XLCActivityIndicator hideOnView:self.view];
     };
     
     void (^failBlock)(NSError *) = ^(NSError * error)
     {
+        [XLCActivityIndicator hideOnView:self.view];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -133,6 +135,7 @@
     };
     
     [[XLCMailManager sharedXLCMailManager] doLoadMailDetailWithMailNumber:_mailNumber mailLink:_mailLink successBlock:successBlock failBlock:failBlock];
+    [XLCActivityIndicator showLoadingOnView:self.view];
 }
 
 - (void) refreshViewContent

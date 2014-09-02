@@ -10,6 +10,7 @@
 #import "PAImageView.h"
 #import "XLCUserManager.h"
 #import "FRDLivelyButton.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCMyAccountViewController ()
 {

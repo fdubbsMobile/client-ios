@@ -13,6 +13,7 @@
 #import "XLCAllSectionsViewController.h"
 #import "XLCSectionDetailPassValueDelegate.h"
 #import "MONActivityIndicatorView.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCAllSectionsViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
 {
@@ -131,7 +132,8 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
-        [indicatorView stopAnimating];
+        //[indicatorView stopAnimating];
+        [XLCActivityIndicator hideOnView:self.view];
         
     };
     
@@ -140,7 +142,8 @@
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
         
-        [indicatorView stopAnimating];
+        //[indicatorView stopAnimating];
+        [XLCActivityIndicator hideOnView:self.view];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
@@ -152,7 +155,8 @@
     };
     
     [[XLCBoardManager sharedXLCBoardManager] doLoadAllSectionsWithSuccessBlock:successBlock failBlock:failBlock];
-    [indicatorView startAnimating];
+    //[indicatorView startAnimating];
+    [XLCActivityIndicator showLoadingOnView:self.view];
 }
 
 
