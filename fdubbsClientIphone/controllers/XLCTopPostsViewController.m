@@ -14,19 +14,16 @@
 #import "XLCPostMetaData.h"
 #import "XLCPostSummary.h"
 #import "XLCTopPostSummaryViewCell.h"
-#import "MONActivityIndicatorView.h"
 #import "XLCActivityIndicator.h"
 
 #import "XLCPostDetailPassValueDelegate.h"
 
-@interface XLCTopPostsViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
+@interface XLCTopPostsViewController () <EGORefreshTableHeaderDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
-    BOOL _reloading;
+    __block BOOL _reloading;
     
     NSObject<XLCPostDetailPassValueDelegate> *postDetailPassValueDelegte ;
-    
-    __block MONActivityIndicatorView *indicatorView;
 }
 
 @property  __block NSArray *top10Posts;
@@ -41,6 +38,7 @@
     if (self) {
         // Custom initialization
         _top10Posts = nil;
+        _reloading = NO;
     }
     return self;
 }
@@ -50,14 +48,6 @@
     [super viewDidLoad];
     
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    
-    indicatorView = [[MONActivityIndicatorView alloc] init];
-    indicatorView.delegate = self;
-    indicatorView.numberOfCircles = 6;
-    indicatorView.radius = 15;
-    indicatorView.internalSpacing = 3;
-    indicatorView.center = self.view.center;
-    [self.view addSubview:indicatorView];
     
     [self addRefreshViewController];
     
@@ -79,15 +69,7 @@
 
 - (void)initRefreshTopPosts
 {
-    //[self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
-    //[self performSelector:@selector(doPullRefresh) withObject:nil afterDelay:0.4];
     [self performSelector:@selector(loadData) withObject:nil afterDelay:0];
-}
-
--(void)doPullRefresh
-{
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:self.tableView];
-    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:self.tableView];
 }
 
 #pragma mark -
@@ -126,9 +108,6 @@
 
 -(void)loadData
 {
-    if (_top10Posts != nil) {
-        return;
-    }
     
     _reloading = YES;
     
@@ -142,7 +121,6 @@
         [_refreshHeaderView refreshLastUpdatedDate];
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-        //[indicatorView stopAnimating];
         [XLCActivityIndicator hideOnView:self.view];
         
     };
@@ -151,7 +129,6 @@
     {
         _reloading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-        //[indicatorView stopAnimating];
         [XLCActivityIndicator hideOnView:self.view];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -217,18 +194,6 @@
         
         _refreshHeaderView = refreshView;
     }
-}
-
-#pragma mark -
-#pragma mark - MONActivityIndicatorViewDelegate Methods
-
-- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
-      circleBackgroundColorAtIndex:(NSUInteger)index {
-    CGFloat red   = (arc4random() % 256)/255.0;
-    CGFloat green = (arc4random() % 256)/255.0;
-    CGFloat blue  = (arc4random() % 256)/255.0;
-    CGFloat alpha = 1.0f;
-    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
 }
 
 #pragma mark - Navigation
