@@ -10,14 +10,13 @@
 #import "FRDLivelyButton.h"
 #import "EGORefreshTableHeaderView.h"
 #import "XLCPostManager.h"
-#import "MONActivityIndicatorView.h"
 #import "XLCPostSummaryViewCell.h"
 #import "XLCPostSummaryInBoard.h"
 #import "LoadMoreFooterView.h"
 #import "XLCPostDetailPassValueDelegate.h"
 #import "XLCActivityIndicator.h"
 
-@interface XLCBoardDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate, MONActivityIndicatorViewDelegate>
+@interface XLCBoardDetailViewController () <EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate>
 {
     NSUInteger _boardId;
     NSString *_boardTitle;
@@ -25,8 +24,6 @@
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
-    
-    __block MONActivityIndicatorView *indicatorView;
     
     BOOL _hasMorePost;
     LoadMoreFooterView *_loadMoreFooterView;
@@ -92,14 +89,6 @@
     
     self.subtitle = [[NSString alloc] initWithFormat:@"%@版", _boardTitle];;
     self.subtitleColor = [UIColor whiteColor];
-    
-    indicatorView = [[MONActivityIndicatorView alloc] init];
-    indicatorView.delegate = self;
-    indicatorView.numberOfCircles = 6;
-    indicatorView.radius = 15;
-    indicatorView.internalSpacing = 3;
-    indicatorView.center = self.view.center;
-    [self.view addSubview:indicatorView];
     
     
     [self addRefreshViewController];
@@ -416,18 +405,6 @@
 	return _reloading;
 }
 
-
-#pragma mark -
-#pragma mark - MONActivityIndicatorViewDelegate Methods
-
-- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
-      circleBackgroundColorAtIndex:(NSUInteger)index {
-    CGFloat red   = (arc4random() % 256)/255.0;
-    CGFloat green = (arc4random() % 256)/255.0;
-    CGFloat blue  = (arc4random() % 256)/255.0;
-    CGFloat alpha = 1.0f;
-    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-}
 
 -(void) passValueWithBoardTitle:(NSString *)title description:(NSString *)description boardId:(NSUInteger)boardId
 {

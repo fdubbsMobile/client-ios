@@ -11,12 +11,26 @@
 
 @implementation XLCActivityIndicator
 
-
-+ (void) showLoadingOnView:(UIView *)view;
++ (void) showMessag:(NSString *)message onView:(UIView *)view
 {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"加载中...";
+    hud.labelText = message;
+}
+
++ (void) showLoadingOnView:(UIView *)view
+{
+    [self showMessag:@"加载中..." onView:view];
+}
+
++ (void) showLoginOnView:(UIView *)view
+{
+    [self showMessag:@"登录中..." onView:view];
+}
+
++ (void) showLogoutOnView:(UIView *)view
+{
+    [self showMessag:@"注销中..." onView:view];
 }
 
 + (void) hideOnView:(UIView *)view

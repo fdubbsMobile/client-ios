@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XLCMailViewController : UIViewController
+@interface XLCNewMailViewController : UIViewController
 
 @end

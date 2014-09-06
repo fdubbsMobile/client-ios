@@ -12,6 +12,7 @@
 #import "FRDLivelyButton.h"
 #import "XLCLoginResponse.h"
 #import "UIButton+Bootstrap.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCLoginViewController () <UITextFieldDelegate>
 
@@ -193,13 +194,14 @@
     {
         
         DebugLog(@"Success to login!");
+        [XLCActivityIndicator hideOnView:self.view];
         [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.1];
 
     };
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
-        
+        [XLCActivityIndicator hideOnView:self.view];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -227,6 +229,7 @@
                                                          passWord:passWord
                                                      successBlock:successBlock
                                                         failBlock:failBlock ];
+    [XLCActivityIndicator showLoginOnView:self.view];
 }
 
 - (void) didLoginSuccess:(XLCLoginResponse *)response

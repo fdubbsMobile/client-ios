@@ -11,6 +11,7 @@
 #import "XLCUserManager.h"
 #import "FRDLivelyButton.h"
 #import "XLCActivityIndicator.h"
+#import "XLCActivityIndicator.h"
 
 @interface XLCMyAccountViewController ()
 {
@@ -96,19 +97,20 @@
 }
 
 - (IBAction)doLogout:(id)sender {
-    NSLog(@"do user login!");
+    NSLog(@"do user logout!");
     
     void (^successBlock)(void) = ^(void)
     {
         
-        DebugLog(@"Success to login!");
-        
+        DebugLog(@"Success to logout!");
+        [XLCActivityIndicator hideOnView:self.view];
+        [self doVisitorBrowse];
         
     };
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
-        
+        [XLCActivityIndicator hideOnView:self.view];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]
                                                        delegate:nil
@@ -120,6 +122,7 @@
     
     
     [[XLCUserManager sharedXLCUserManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
+    [XLCActivityIndicator showLogoutOnView:self.view];
 }
 
 #pragma mark - Navigation
@@ -136,6 +139,20 @@
     {
         NSLog(@"showFavorBoard");
 	}
+}
+
+- (void) doVisitorBrowse
+{
+    for (UIViewController *parent = self.parentViewController; parent != nil;
+         parent = parent.parentViewController) {
+        NSLog(@"the class is %@", [[parent class] description]);
+        if ([parent isKindOfClass:[UITabBarController class]]) {
+            // jump to the tabbar
+            //[self presentModalViewController:parent animated:YES];
+            [(UITabBarController *)parent setSelectedIndex:0];
+            break;
+        }
+    }
 }
 
 @end

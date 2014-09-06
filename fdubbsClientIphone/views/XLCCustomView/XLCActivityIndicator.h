@@ -11,7 +11,10 @@
 
 @interface XLCActivityIndicator : NSObject
 
++ (void) showMessag:(NSString *)message onView:(UIView *)view;
 + (void) showLoadingOnView:(UIView *)view;
++ (void) showLoginOnView:(UIView *)view;
++ (void) showLogoutOnView:(UIView *)view;
 + (void) hideOnView:(UIView *)view;
 
 @end

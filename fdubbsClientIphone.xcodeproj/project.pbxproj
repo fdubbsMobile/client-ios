@@ -13,6 +13,7 @@
 		95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C661913AB1000C80BEB /* FRDLivelyButton.m */; };
 		954CD1C81999B531004004C6 /* XLCFavorBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */; };
 		9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */; };
+		955204A519BB494F00A1B6FB /* XLCAllMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */; };
 		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
 		95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */; };
@@ -43,7 +44,6 @@
 		95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE1D18FA67BD00C7E8E4 /* XLCPostSummary.m */; };
 		95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2218FA7FAD00C7E8E4 /* XLCRESTfulClient.m */; };
 		95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */; };
-		95B44E9E199324EA00BE7BA0 /* MONActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */; };
 		95B44EA219935B4900BE7BA0 /* XLCBoardViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */; };
 		95B46D2C1999B0A4005B4F06 /* ASTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B46D1E1999B0A4005B4F06 /* ASTextField.m */; };
 		95B46D2D1999B0A4005B4F06 /* round_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 95B46D211999B0A4005B4F06 /* round_textfield.png */; };
@@ -67,6 +67,7 @@
 		95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89911199AE4D3009EABEB /* XLCUserManager.m */; };
 		95B89915199AEB13009EABEB /* XLCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89914199AEB13009EABEB /* XLCLoginViewController.m */; };
 		95B90A89199E428700EF5A6D /* XLCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B90A88199E428700EF5A6D /* XLCLoginResponse.m */; };
+		95B9DDE519B9EE6C001B6573 /* XLCMailBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */; };
 		95B9E1E919AE1B9E00B8EAC8 /* XLCMailDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */; };
 		95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA248E19A0525700FBEF98 /* PAImageView.m */; };
 		95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */; };
@@ -79,7 +80,7 @@
 		95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */; };
 		95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */; };
 		95C5D7D619A4587F00D8C754 /* XLCBasicProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7D519A4587F00D8C754 /* XLCBasicProfileViewController.m */; };
-		95C5D7D919A47D2500D8C754 /* XLCMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7D819A47D2500D8C754 /* XLCMailViewController.m */; };
+		95C5D7D919A47D2500D8C754 /* XLCNewMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7D819A47D2500D8C754 /* XLCNewMailViewController.m */; };
 		95C5D7DC19A47D3800D8C754 /* XLCFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7DB19A47D3800D8C754 /* XLCFriendViewController.m */; };
 		95C5D7DF19A4924100D8C754 /* XLCFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7DE19A4924100D8C754 /* XLCFriend.m */; };
 		95C5D7E219A49A7200D8C754 /* XLCMailMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7E119A49A7200D8C754 /* XLCMailMetaData.m */; };
@@ -169,6 +170,8 @@
 		954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFavorBoardsViewController.m; path = controllers/XLCFavorBoardsViewController.m; sourceTree = "<group>"; };
 		9550CD0119AF74AC001D1478 /* XLCMailSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailSummaryViewCell.h; path = views/XLCCustomView/XLCMailSummaryViewCell.h; sourceTree = "<group>"; };
 		9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailSummaryViewCell.m; path = views/XLCCustomView/XLCMailSummaryViewCell.m; sourceTree = "<group>"; };
+		955204A319BB494F00A1B6FB /* XLCAllMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllMailViewController.h; path = controllers/XLCAllMailViewController.h; sourceTree = "<group>"; };
+		955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllMailViewController.m; path = controllers/XLCAllMailViewController.m; sourceTree = "<group>"; };
 		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
 		95A2086618FE73BC009CDEA3 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
@@ -217,8 +220,6 @@
 		95AEBE2218FA7FAD00C7E8E4 /* XLCRESTfulClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCRESTfulClient.m; path = rest/XLCRESTfulClient.m; sourceTree = "<group>"; };
 		95AEBE2418FA800300C7E8E4 /* XLCRestConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCRestConstants.h; path = rest/XLCRestConstants.h; sourceTree = "<group>"; };
 		95AEBE2518FA800300C7E8E4 /* XLCRestConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCRestConstants.m; path = rest/XLCRestConstants.m; sourceTree = "<group>"; };
-		95B44E9C199324EA00BE7BA0 /* MONActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MONActivityIndicatorView.h; path = views/MONActivityIndicatorView/MONActivityIndicatorView.h; sourceTree = "<group>"; };
-		95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MONActivityIndicatorView.m; path = views/MONActivityIndicatorView/MONActivityIndicatorView.m; sourceTree = "<group>"; };
 		95B44EA019935B4900BE7BA0 /* XLCBoardViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardViewCell.h; path = views/XLCCustomView/XLCBoardViewCell.h; sourceTree = "<group>"; };
 		95B44EA119935B4900BE7BA0 /* XLCBoardViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardViewCell.m; path = views/XLCCustomView/XLCBoardViewCell.m; sourceTree = "<group>"; };
 		95B46D1D1999B0A4005B4F06 /* ASTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASTextField.h; path = views/ASTextField/ASTextField.h; sourceTree = "<group>"; };
@@ -255,6 +256,8 @@
 		95B89914199AEB13009EABEB /* XLCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginViewController.m; path = controllers/XLCLoginViewController.m; sourceTree = "<group>"; };
 		95B90A87199E428700EF5A6D /* XLCLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginResponse.h; path = model/pojo/XLCLoginResponse.h; sourceTree = "<group>"; };
 		95B90A88199E428700EF5A6D /* XLCLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginResponse.m; path = model/pojo/XLCLoginResponse.m; sourceTree = "<group>"; };
+		95B9DDE319B9EE6C001B6573 /* XLCMailBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailBoxViewController.h; path = controllers/XLCMailBoxViewController.h; sourceTree = "<group>"; };
+		95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailBoxViewController.m; path = controllers/XLCMailBoxViewController.m; sourceTree = "<group>"; };
 		95B9E1E719AE1B9E00B8EAC8 /* XLCMailDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailViewController.h; path = controllers/XLCMailDetailViewController.h; sourceTree = "<group>"; };
 		95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailDetailViewController.m; path = controllers/XLCMailDetailViewController.m; sourceTree = "<group>"; };
 		95B9E1EA19AE23E200B8EAC8 /* XLCMailDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailPassValueDelegate.h; path = controllers/XLCMailDetailPassValueDelegate.h; sourceTree = "<group>"; };
@@ -281,8 +284,8 @@
 		95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
 		95C5D7D419A4587F00D8C754 /* XLCBasicProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBasicProfileViewController.h; path = controllers/XLCBasicProfileViewController.h; sourceTree = "<group>"; };
 		95C5D7D519A4587F00D8C754 /* XLCBasicProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBasicProfileViewController.m; path = controllers/XLCBasicProfileViewController.m; sourceTree = "<group>"; };
-		95C5D7D719A47D2500D8C754 /* XLCMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailViewController.h; path = controllers/XLCMailViewController.h; sourceTree = "<group>"; };
-		95C5D7D819A47D2500D8C754 /* XLCMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailViewController.m; path = controllers/XLCMailViewController.m; sourceTree = "<group>"; };
+		95C5D7D719A47D2500D8C754 /* XLCNewMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCNewMailViewController.h; path = controllers/XLCNewMailViewController.h; sourceTree = "<group>"; };
+		95C5D7D819A47D2500D8C754 /* XLCNewMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCNewMailViewController.m; path = controllers/XLCNewMailViewController.m; sourceTree = "<group>"; };
 		95C5D7DA19A47D3800D8C754 /* XLCFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFriendViewController.h; path = controllers/XLCFriendViewController.h; sourceTree = "<group>"; };
 		95C5D7DB19A47D3800D8C754 /* XLCFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFriendViewController.m; path = controllers/XLCFriendViewController.m; sourceTree = "<group>"; };
 		95C5D7DD19A4924100D8C754 /* XLCFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFriend.h; path = model/pojo/XLCFriend.h; sourceTree = "<group>"; };
@@ -700,7 +703,6 @@
 				95005FD719B5BCE10092DE9C /* MBProgressHUD */,
 				95BA248C19A0525700FBEF98 /* PAImageView */,
 				95B46D371999B0B0005B4F06 /* ASTextField */,
-				95B44E9F199324F500BE7BA0 /* MONActivityIndicatorView */,
 				95C3CEFB1930E69C0027D0F3 /* LoadMoreFooterView */,
 				95EA053919279B0A00B52793 /* StrapButton */,
 				95CCB60B191B555700B261D6 /* Nimbus */,
@@ -709,15 +711,6 @@
 				95CB182F193B87DC0059FF2A /* XLCCustomView */,
 			);
 			name = views;
-			sourceTree = "<group>";
-		};
-		95B44E9F199324F500BE7BA0 /* MONActivityIndicatorView */ = {
-			isa = PBXGroup;
-			children = (
-				95B44E9C199324EA00BE7BA0 /* MONActivityIndicatorView.h */,
-				95B44E9D199324EA00BE7BA0 /* MONActivityIndicatorView.m */,
-			);
-			name = MONActivityIndicatorView;
 			sourceTree = "<group>";
 		};
 		95B46D1F1999B0A4005B4F06 /* Resources */ = {
@@ -792,13 +785,17 @@
 				95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */,
 				95C5D7D419A4587F00D8C754 /* XLCBasicProfileViewController.h */,
 				95C5D7D519A4587F00D8C754 /* XLCBasicProfileViewController.m */,
-				95C5D7D719A47D2500D8C754 /* XLCMailViewController.h */,
-				95C5D7D819A47D2500D8C754 /* XLCMailViewController.m */,
+				95C5D7D719A47D2500D8C754 /* XLCNewMailViewController.h */,
+				95C5D7D819A47D2500D8C754 /* XLCNewMailViewController.m */,
 				95C5D7DA19A47D3800D8C754 /* XLCFriendViewController.h */,
 				95C5D7DB19A47D3800D8C754 /* XLCFriendViewController.m */,
 				95B9E1E719AE1B9E00B8EAC8 /* XLCMailDetailViewController.h */,
 				95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */,
 				95B9E1EA19AE23E200B8EAC8 /* XLCMailDetailPassValueDelegate.h */,
+				95B9DDE319B9EE6C001B6573 /* XLCMailBoxViewController.h */,
+				95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */,
+				955204A319BB494F00A1B6FB /* XLCAllMailViewController.h */,
+				955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1162,7 +1159,6 @@
 				95005FD619B5BC2F0092DE9C /* XLCActivityIndicator.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
-				95B44E9E199324EA00BE7BA0 /* MONActivityIndicatorView.m in Sources */,
 				95CB184A193B888A0059FF2A /* XLCSectionViewCell.m in Sources */,
 				95C5D7DC19A47D3800D8C754 /* XLCFriendViewController.m in Sources */,
 				95E092D21948AAFD004695A7 /* XLCBoardDetail.m in Sources */,
@@ -1224,7 +1220,7 @@
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95C5D7E519A49B3F00D8C754 /* XLCMailSummary.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
-				95C5D7D919A47D2500D8C754 /* XLCMailViewController.m in Sources */,
+				95C5D7D919A47D2500D8C754 /* XLCNewMailViewController.m in Sources */,
 				95CB1841193B88670059FF2A /* XLCCustomLinkView.m in Sources */,
 				95C5D7E819A49C5200D8C754 /* XLCMailSummaryInBox.m in Sources */,
 				95C5D7E219A49A7200D8C754 /* XLCMailMetaData.m in Sources */,
@@ -1248,9 +1244,11 @@
 				95CB1843193B88670059FF2A /* XLCMainPostViewCell.m in Sources */,
 				95E092CF1948AA82004695A7 /* XLCBoardMetaData.m in Sources */,
 				95E092D51948ABC6004695A7 /* XLCSection.m in Sources */,
+				95B9DDE519B9EE6C001B6573 /* XLCMailBoxViewController.m in Sources */,
 				95CB1845193B88670059FF2A /* XLCPostReplyViewCell.m in Sources */,
 				95C6EB2519A39984001D3BC2 /* RKObjectManager+XLC.m in Sources */,
 				95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
+				955204A519BB494F00A1B6FB /* XLCAllMailViewController.m in Sources */,
 				95CCB658191B561600B261D6 /* NIState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

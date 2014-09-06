@@ -13,12 +13,11 @@
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetail.h"
 #import "XLCBoardManager.h"
-#import "MONActivityIndicatorView.h"
 #import "XLCBoardViewCell.h"
 #import "XLCBoardDetailPassValueDelegate.h"
 #import "XLCActivityIndicator.h"
 
-@interface XLCSectionDetailViewController () <EGORefreshTableHeaderDelegate, MONActivityIndicatorViewDelegate>
+@interface XLCSectionDetailViewController () <EGORefreshTableHeaderDelegate>
 {
     NSString *_desc;
     NSString *_category;
@@ -26,8 +25,6 @@
     
     EGORefreshTableHeaderView *_refreshHeaderView;
     BOOL _reloading;
-    
-    __block MONActivityIndicatorView *indicatorView;
     
     NSObject<XLCBoardDetailPassValueDelegate> *boardDetailPassValueDelegte ;
 
@@ -93,13 +90,6 @@
     self.subtitle = _category;
     self.subtitleColor = [UIColor whiteColor];
     
-    indicatorView = [[MONActivityIndicatorView alloc] init];
-    indicatorView.delegate = self;
-    indicatorView.numberOfCircles = 6;
-    indicatorView.radius = 15;
-    indicatorView.internalSpacing = 3;
-    indicatorView.center = self.view.center;
-    [self.view addSubview:indicatorView];
     
     [self performSelector:@selector(initRefreshAllBoardsInSection) withObject:nil afterDelay:0.1];
     
@@ -309,18 +299,6 @@
     _sectionId = sectionId;
 }
 
-
-#pragma mark -
-#pragma mark - MONActivityIndicatorViewDelegate Methods
-
-- (UIColor *)activityIndicatorView:(MONActivityIndicatorView *)activityIndicatorView
-      circleBackgroundColorAtIndex:(NSUInteger)index {
-    CGFloat red   = (arc4random() % 256)/255.0;
-    CGFloat green = (arc4random() % 256)/255.0;
-    CGFloat blue  = (arc4random() % 256)/255.0;
-    CGFloat alpha = 1.0f;
-    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-}
 
 #pragma mark - Navigation
 
