@@ -12,8 +12,9 @@
 #import "FRDLivelyButton.h"
 #import "XLCActivityIndicator.h"
 #import "XLCActivityIndicator.h"
+#import "IBActionSheet.h"
 
-@interface XLCMyAccountViewController ()
+@interface XLCMyAccountViewController () <IBActionSheetDelegate>
 {
     BOOL hasInitialized;
 }
@@ -97,6 +98,23 @@
 }
 
 - (IBAction)doLogout:(id)sender {
+    IBActionSheet *ibaActionSheet = [[IBActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"注销登录" otherButtonTitles:nil];
+    [ibaActionSheet showInView:self.tabBarController.view];
+}
+
+#pragma mark - IBActionSheet/UIActionSheet Delegate Method
+
+// the delegate method to receive notifications is exactly the same as the one for UIActionSheet
+- (void)actionSheet:(IBActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"Button at index: %ld clicked\nIt's title is '%@'", (long)buttonIndex, [actionSheet buttonTitleAtIndex:buttonIndex]);
+    
+    if (buttonIndex == 0) {
+        [self doLogoutUser];
+    }
+}
+
+- (void) doLogoutUser
+{
     NSLog(@"do user logout!");
     
     void (^successBlock)(void) = ^(void)

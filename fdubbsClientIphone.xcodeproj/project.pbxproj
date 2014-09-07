@@ -15,6 +15,7 @@
 		9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */; };
 		955204A519BB494F00A1B6FB /* XLCAllMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */; };
 		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
+		95A1C8F919BCA520007B6336 /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A1C8F819BCA520007B6336 /* IBActionSheet.m */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
 		95A2087218FE73BC009CDEA3 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */; };
 		95A2087318FE73BC009CDEA3 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086818FE73BC009CDEA3 /* blueArrow.png */; };
@@ -175,6 +176,8 @@
 		955204A319BB494F00A1B6FB /* XLCAllMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllMailViewController.h; path = controllers/XLCAllMailViewController.h; sourceTree = "<group>"; };
 		955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllMailViewController.m; path = controllers/XLCAllMailViewController.m; sourceTree = "<group>"; };
 		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
+		95A1C8F719BCA520007B6336 /* IBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBActionSheet.h; sourceTree = "<group>"; };
+		95A1C8F819BCA520007B6336 /* IBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBActionSheet.m; sourceTree = "<group>"; };
 		95A2086618FE73BC009CDEA3 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		95A2086718FE73BC009CDEA3 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		95A2086818FE73BC009CDEA3 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -476,6 +479,16 @@
 			path = fdubbsClientIphone/views/image;
 			sourceTree = SOURCE_ROOT;
 		};
+		95A1C8F619BCA520007B6336 /* IBActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				95A1C8F719BCA520007B6336 /* IBActionSheet.h */,
+				95A1C8F819BCA520007B6336 /* IBActionSheet.m */,
+			);
+			name = IBActionSheet;
+			path = views/IBActionSheet;
+			sourceTree = "<group>";
+		};
 		95A2086418FE73A4009CDEA3 /* TableViewRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,6 +719,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95A1C8F619BCA520007B6336 /* IBActionSheet */,
 				95005FD719B5BCE10092DE9C /* MBProgressHUD */,
 				95BA248C19A0525700FBEF98 /* PAImageView */,
 				95B46D371999B0B0005B4F06 /* ASTextField */,
@@ -1165,6 +1179,7 @@
 				95B90A89199E428700EF5A6D /* XLCLoginResponse.m in Sources */,
 				95C5D7F419A4A00C00D8C754 /* XLCUserPerformance.m in Sources */,
 				95CCB646191B561600B261D6 /* NIButtonUtilities.m in Sources */,
+				95A1C8F919BCA520007B6336 /* IBActionSheet.m in Sources */,
 				95C5D7D619A4587F00D8C754 /* XLCBasicProfileViewController.m in Sources */,
 				95005FD619B5BC2F0092DE9C /* XLCActivityIndicator.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
