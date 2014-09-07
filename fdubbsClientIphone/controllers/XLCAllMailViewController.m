@@ -260,7 +260,7 @@
     if (_startNumber > 20) {
         [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:(_startNumber - 20) successBlock:successBlock failBlock:failBlock];
     } else {
-        [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:1 mailCountInPage:(_startNumber - 19) successBlock:successBlock failBlock:failBlock];
+        [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:1 mailCountInPage:(_startNumber - 1) successBlock:successBlock failBlock:failBlock];
     }
     
 }
