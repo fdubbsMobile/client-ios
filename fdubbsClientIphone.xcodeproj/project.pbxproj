@@ -67,6 +67,8 @@
 		95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89911199AE4D3009EABEB /* XLCUserManager.m */; };
 		95B89915199AEB13009EABEB /* XLCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89914199AEB13009EABEB /* XLCLoginViewController.m */; };
 		95B90A89199E428700EF5A6D /* XLCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B90A88199E428700EF5A6D /* XLCLoginResponse.m */; };
+		95B9514619BC904700477B32 /* XLCOnlineFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9514519BC904700477B32 /* XLCOnlineFriendViewController.m */; };
+		95B9514919BC905F00477B32 /* XLCAllFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9514819BC905F00477B32 /* XLCAllFriendViewController.m */; };
 		95B9DDE519B9EE6C001B6573 /* XLCMailBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */; };
 		95B9E1E919AE1B9E00B8EAC8 /* XLCMailDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */; };
 		95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA248E19A0525700FBEF98 /* PAImageView.m */; };
@@ -256,6 +258,10 @@
 		95B89914199AEB13009EABEB /* XLCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginViewController.m; path = controllers/XLCLoginViewController.m; sourceTree = "<group>"; };
 		95B90A87199E428700EF5A6D /* XLCLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginResponse.h; path = model/pojo/XLCLoginResponse.h; sourceTree = "<group>"; };
 		95B90A88199E428700EF5A6D /* XLCLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginResponse.m; path = model/pojo/XLCLoginResponse.m; sourceTree = "<group>"; };
+		95B9514419BC904700477B32 /* XLCOnlineFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCOnlineFriendViewController.h; path = controllers/XLCOnlineFriendViewController.h; sourceTree = "<group>"; };
+		95B9514519BC904700477B32 /* XLCOnlineFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCOnlineFriendViewController.m; path = controllers/XLCOnlineFriendViewController.m; sourceTree = "<group>"; };
+		95B9514719BC905F00477B32 /* XLCAllFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllFriendViewController.h; path = controllers/XLCAllFriendViewController.h; sourceTree = "<group>"; };
+		95B9514819BC905F00477B32 /* XLCAllFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllFriendViewController.m; path = controllers/XLCAllFriendViewController.m; sourceTree = "<group>"; };
 		95B9DDE319B9EE6C001B6573 /* XLCMailBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailBoxViewController.h; path = controllers/XLCMailBoxViewController.h; sourceTree = "<group>"; };
 		95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailBoxViewController.m; path = controllers/XLCMailBoxViewController.m; sourceTree = "<group>"; };
 		95B9E1E719AE1B9E00B8EAC8 /* XLCMailDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailViewController.h; path = controllers/XLCMailDetailViewController.h; sourceTree = "<group>"; };
@@ -796,6 +802,10 @@
 				95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */,
 				955204A319BB494F00A1B6FB /* XLCAllMailViewController.h */,
 				955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */,
+				95B9514419BC904700477B32 /* XLCOnlineFriendViewController.h */,
+				95B9514519BC904700477B32 /* XLCOnlineFriendViewController.m */,
+				95B9514719BC905F00477B32 /* XLCAllFriendViewController.h */,
+				95B9514819BC905F00477B32 /* XLCAllFriendViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1176,6 +1186,7 @@
 				95CCB64A191B561600B261D6 /* NIDeviceOrientation.m in Sources */,
 				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
 				95CCB64F191B561600B261D6 /* NINavigationAppearance.m in Sources */,
+				95B9514619BC904700477B32 /* XLCOnlineFriendViewController.m in Sources */,
 				95EA054119279B0A00B52793 /* UIButton+Bootstrap.m in Sources */,
 				95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */,
 				95CCB64B191B561600B261D6 /* NIError.m in Sources */,
@@ -1193,6 +1204,7 @@
 				95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95CB1846193B88670059FF2A /* XLCTopPostSummaryViewCell.m in Sources */,
+				95B9514919BC905F00477B32 /* XLCAllFriendViewController.m in Sources */,
 				95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */,
 				95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */,
 				95CB1844193B88670059FF2A /* XLCPostDetailViewCell.m in Sources */,

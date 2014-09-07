@@ -63,7 +63,7 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
     [self addRightBarButtonItem:rightBarButtonItem];
     
-    self.title = @"我的信件";
+    //self.title = @"我的信件";
     self.titleColor = [UIColor whiteColor];
     
     [_selectController addTarget: self action: @selector(onSegmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
@@ -71,11 +71,6 @@
     [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"allMailViewController"]];
     [_selectController setSelectedSegmentIndex:0];
 	self.selectedViewControllerIndex = 0;
-    /*
-    if (!_viewContainer) {
-        [self setViewContainer:self.view];
-    }
-     */
     
 }
 
@@ -125,23 +120,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setViewContainer:(UIView *)viewContainer
-{
-    _viewContainer = viewContainer;
-    containerFrame = _viewContainer.frame;
-}
-
-/*
-- (void)viewDidLayoutSubviews
-{
-	[super viewDidLayoutSubviews];
-    
-	containerFrame = _viewContainer.frame;
-	for (UIViewController *childViewController in self.childViewControllers) {
-		childViewController.view.frame = (CGRect){0,0,containerFrame.size};
-	}
-}
- */
 
 - (void) onSegmentedControlChanged:(UISegmentedControl *) sender {
     NSLog(@"Select %ld", (long)_selectController.selectedSegmentIndex);
@@ -156,8 +134,6 @@
         _selectedViewController = self.childViewControllers[index];
         [_viewContainer addSubview:[_selectedViewController view]];
         [_selectedViewController didMoveToParentViewController:self];
-        //[self.view addSubview:[_selectedViewController view]];
-        //[_selectedViewController didMoveToParentViewController:self];
     } else if (index != _selectedViewControllerIndex) {
         NSLog(@"Has selected view");
         [self transitionFromViewController:_selectedViewController toViewController:self.childViewControllers[index] duration:0.0f options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {
