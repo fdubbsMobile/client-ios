@@ -8,18 +8,16 @@
 
 #import "XLCFriendViewController.h"
 #import "FRDLivelyButton.h"
-#import "XLCFriendManager.h"
-#import "XLCFriend.h"
-#import "XLCActivityIndicator.h"
 
-@interface XLCFriendViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface XLCFriendViewController ()
 {
-    __block NSArray *_allFriendList;
-    __block NSArray *_onlineFriendList;
+    CGRect containerFrame;
 }
 
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segSwitchControl;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic, assign) NSInteger selectedViewControllerIndex;
+@property(nonatomic, assign) UIViewController *selectedViewController;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *selectController;
+@property (strong, nonatomic) IBOutlet UIView *viewContainer;
 
 @end
 
@@ -30,8 +28,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _allFriendList = nil;
-        _onlineFriendList = nil;
     }
     return self;
 }
@@ -39,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
     // Remember to set the navigation bar to be NOT translucent
 	[self.navigationController.navigationBar setTranslucent:NO];
@@ -66,18 +63,19 @@
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBarButton];
     [self addRightBarButtonItem:rightBarButtonItem];
     
-    self.title = @"好友列表";
+    self.title = @"我的信件";
     self.titleColor = [UIColor whiteColor];
     
-    self.subtitle = @"我的账号";
-    self.subtitleColor = [UIColor whiteColor];
-    
-    [_segSwitchControl addTarget: self action: @selector(onSegmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
-    [_tableView setDataSource:self];
-    [_tableView setDelegate:self];
-    [_tableView setBackgroundColor:[UIColor whiteColor]];
-    
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:0.1];
+    [_selectController addTarget: self action: @selector(onSegmentedControlChanged:) forControlEvents: UIControlEventValueChanged];
+    [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"onlineFriendViewController"]];
+    [self addChildViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"allFriendViewController"]];
+    [_selectController setSelectedSegmentIndex:0];
+	self.selectedViewControllerIndex = 0;
+    /*
+     if (!_viewContainer) {
+     [self setViewContainer:self.view];
+     }
+     */
     
 }
 
@@ -115,129 +113,11 @@
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:negativeSpacer, rightBarButtonItem, nil]];
 }
 
--(void)loadData
+- (void)viewDidAppear:(BOOL)animated
 {
-    
-    
-    
-    void (^failBlock)(NSError *) = ^(NSError *error)
-    {
-        [XLCActivityIndicator hideOnView:self.view];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:[error localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        NSLog(@"Hit error: %@", error);
-    };
-    
-    if (_segSwitchControl.selectedSegmentIndex == 0) {
-        // load online friends
-        if (_onlineFriendList == nil) {
-            
-        
-            void (^successBlock)(NSArray *) = ^(NSArray *friends)
-            {
-            
-                DebugLog(@"Success to load online friends!");
-                _onlineFriendList = friends;
-            
-                [self.tableView reloadData];
-                [XLCActivityIndicator hideOnView:self.view];
-            
-            };
-            [[XLCFriendManager sharedXLCFriendManager] doLoadOnlineFriendsWithSuccessBlock:successBlock failBlock:failBlock];
-            [XLCActivityIndicator showLoadingOnView:self.view];
-        } else {
-            [self.tableView reloadData];
-        }
-    } else if (_segSwitchControl.selectedSegmentIndex == 1){
-        // load all friends
-        if (_allFriendList == nil) {
-            void (^successBlock)(NSArray *) = ^(NSArray *friends)
-            {
-            
-                DebugLog(@"Success to load all friends!");
-                _allFriendList = friends;
-            
-                [self.tableView reloadData];
-                [XLCActivityIndicator hideOnView:self.view];
-            
-            };
-            [[XLCFriendManager sharedXLCFriendManager] doLoadAllFriendsWithSuccessBlock:successBlock failBlock:failBlock];
-            [XLCActivityIndicator showLoadingOnView:self.view];
-        } else {
-            [self.tableView reloadData];
-        }
-    }
-    
+    [super viewDidAppear:animated];
+    NSLog(@"%@", @"viewDidAppear here.");
 }
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"friendViewCell";
-    UITableViewCell *cell = (UITableViewCell *)[tableView
-                                                              dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
-    XLCFriend *friend;
-    if (_segSwitchControl.selectedSegmentIndex == 0) {
-        friend = [_onlineFriendList objectAtIndex:indexPath.row];
-    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
-        friend = [_allFriendList objectAtIndex:indexPath.row];
-    }
-    
-    [[cell textLabel] setText:[friend userId]];
-    
-    return cell;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    if (_segSwitchControl.selectedSegmentIndex == 0) {
-        return [_onlineFriendList count];
-    } else if (_segSwitchControl.selectedSegmentIndex == 1) {
-        return [_allFriendList count];
-    }
-    
-    return 0;
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 0.1;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1;
-}
-
-- (void) onSegmentedControlChanged:(UISegmentedControl *) sender {
-    NSLog(@"Select %ld", (long)_segSwitchControl.selectedSegmentIndex);
-    [self loadData];
-    
-    if ([self tableView:self.tableView numberOfRowsInSection:0] > 0) {
-        NSIndexPath *topIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView scrollToRowAtIndexPath:topIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
-    }
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -245,15 +125,59 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)setViewContainer:(UIView *)viewContainer
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    _viewContainer = viewContainer;
+    containerFrame = _viewContainer.frame;
 }
-*/
+
+/*
+ - (void)viewDidLayoutSubviews
+ {
+ [super viewDidLayoutSubviews];
+ 
+ containerFrame = _viewContainer.frame;
+ for (UIViewController *childViewController in self.childViewControllers) {
+ childViewController.view.frame = (CGRect){0,0,containerFrame.size};
+ }
+ }
+ */
+
+- (void) onSegmentedControlChanged:(UISegmentedControl *) sender {
+    NSLog(@"Select %ld", (long)_selectController.selectedSegmentIndex);
+    self.selectedViewControllerIndex = _selectController.selectedSegmentIndex;
+}
+
+- (void)setSelectedViewControllerIndex:(NSInteger)index
+{
+    NSLog(@"show the view : %lu", index);
+    if (!_selectedViewController) {
+        NSLog(@"No selected view");
+        _selectedViewController = self.childViewControllers[index];
+        [_viewContainer addSubview:[_selectedViewController view]];
+        [_selectedViewController didMoveToParentViewController:self];
+        //[self.view addSubview:[_selectedViewController view]];
+        //[_selectedViewController didMoveToParentViewController:self];
+    } else if (index != _selectedViewControllerIndex) {
+        NSLog(@"Has selected view");
+        [self transitionFromViewController:_selectedViewController toViewController:self.childViewControllers[index] duration:0.0f options:UIViewAnimationOptionTransitionNone animations:nil completion:^(BOOL finished) {
+            _selectedViewController = self.childViewControllers[index];
+            _selectedViewControllerIndex = index;
+        }];
+    }
+	
+	[_selectController setSelectedSegmentIndex:index];
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
