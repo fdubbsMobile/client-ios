@@ -15,8 +15,9 @@
 #import "XLCMailDetailPassValueDelegate.h"
 #import "XLCActivityIndicator.h"
 #import "EGORefreshTableHeaderView.h"
+#import "LoadMoreFooterView.h"
 
-@interface XLCAllMailViewController () <UITableViewDelegate, UITableViewDataSource, EGORefreshTableHeaderDelegate>
+@interface XLCAllMailViewController () <UITableViewDelegate, UITableViewDataSource, EGORefreshTableHeaderDelegate, LoadMoreFooterDelegate>
 {
     EGORefreshTableHeaderView *_refreshHeaderView;
     __block BOOL _reloading;
@@ -25,6 +26,9 @@
     
     __block NSUInteger _startNumber;
     __block XLCMailSummaryInBox *_mailSummaryInbox;
+    
+    __block BOOL _hasMoreMail;
+    LoadMoreFooterView *_loadMoreFooterView;
     
     NSObject<XLCMailDetailPassValueDelegate> *mailDetailPassValueDelegte ;
 }
@@ -44,6 +48,7 @@
         _startNumber = 0;
         _mailSummaryInbox = nil;
         _reloading = NO;
+        _hasMoreMail = NO;
     }
     return self;
 }
@@ -57,6 +62,9 @@
     [_tableView setBackgroundColor:[UIColor whiteColor]];
     
     [self addRefreshViewController];
+    [self addLoadMoreViewController];
+    
+    [self showOrDismissTableFooterView];
     
     [self performSelector:@selector(loadData) withObject:nil afterDelay:0.1];
     
@@ -84,6 +92,14 @@
     
 	[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
     
+    if (_hasMoreMail) {
+        
+        if (!_reloading) {
+            NSLog(@"scrollViewDidScroll -- hasMore");
+            [_loadMoreFooterView loadMoreScrollViewDidScroll:scrollView];
+        }
+    }
+    
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -91,6 +107,13 @@
     
 	[_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
     
+    if (_hasMoreMail) {
+        
+        if (!_reloading) {
+            NSLog(@"scrollViewDidEndDragging -- hasMore");
+            [_loadMoreFooterView loadMoreScrollViewDidEndDragging:scrollView];
+        }
+    }
 }
 
 
@@ -109,6 +132,7 @@
 {
     return [NSDate date];
 }
+
 
 -(void)loadData
 {
@@ -144,7 +168,15 @@
         
         _mailList = [[NSMutableArray alloc] initWithArray:mailSummaryInbox.mailSummaryList];
         
+        if (mailSummaryInbox.startMailNum > 1) {
+            _hasMoreMail = YES;
+        } else {
+            _hasMoreMail = NO;
+        }
+        
         [self.tableView reloadData];
+        
+        [self showOrDismissTableFooterView];
         
         [_refreshHeaderView refreshLastUpdatedDate];
         _reloading = NO;
@@ -153,11 +185,100 @@
         [XLCActivityIndicator hideOnView:self.view];
         
     };
-    [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:_startNumber successBlock:successBlock failBlock:failBlock];
+    [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:0 successBlock:successBlock failBlock:failBlock];
     [XLCActivityIndicator showLoadingOnView:self.view];
     
     
     
+}
+
+- (void) addLoadMoreViewController
+{
+    if (_loadMoreFooterView ==nil) {
+        _loadMoreFooterView = [[LoadMoreFooterView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+        _loadMoreFooterView.delegate = self;
+    }
+    
+}
+
+- (void)showOrDismissTableFooterView
+{
+    if (_hasMoreMail) {
+        self.tableView.tableFooterView = _loadMoreFooterView;
+        self.tableView.tableFooterView.hidden = NO;
+    }
+    else {
+        self.tableView.tableFooterView = nil;
+        self.tableView.tableFooterView.hidden = YES;
+    }
+}
+
+- (void) loadMoreMails
+{
+    NSLog(@"try to load more mails!");
+    _reloading = YES;
+    
+    void (^failBlock)(NSError *) = ^(NSError *error)
+    {
+        _reloading = NO;
+        [_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", error);
+    };
+    
+    
+    
+    void (^successBlock)(XLCMailSummaryInBox *) = ^(XLCMailSummaryInBox *mailSummaryInbox)
+    {
+        
+        DebugLog(@"Success to load all mails!");
+        _mailSummaryInbox = mailSummaryInbox;
+        _startNumber = mailSummaryInbox.startMailNum;
+        
+        [_mailList addObjectsFromArray:mailSummaryInbox.mailSummaryList];
+        
+        if (mailSummaryInbox.startMailNum > 1) {
+            _hasMoreMail = YES;
+        } else {
+            _hasMoreMail = NO;
+        }
+        
+        [self.tableView reloadData];
+        
+        [_loadMoreFooterView loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+        
+        [self showOrDismissTableFooterView];
+        _reloading = NO;
+    };
+    
+    if (_startNumber > 20) {
+        [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:(_startNumber - 20) successBlock:successBlock failBlock:failBlock];
+    } else {
+        [[XLCMailManager sharedXLCMailManager] doLoadAllMailsInBoxWithStartNumber:1 mailCountInPage:(_startNumber - 19) successBlock:successBlock failBlock:failBlock];
+    }
+    
+}
+
+#pragma mark -
+#pragma mark LoadMoreTableFooterDelegate Methods
+
+- (void)loadMoreTableFooterDidTriggerRefresh:(LoadMoreFooterView *)view {
+    
+    NSLog(@"loadMoreTableFooterDidTriggerRefresh");
+	[self loadMoreMails];
+	//[self performSelector:@selector(loadMoreReplies) withObject:nil afterDelay:0.4];
+    
+}
+
+- (BOOL)loadMoreTableFooterDataSourceIsLoading:(LoadMoreFooterView *)view {
+    NSLog(@"loadMoreTableFooterDataSourceIsLoading");
+	return _reloading;
 }
 
 - (XLCMailSummary *)getMailSummaryByIndex:(NSUInteger)index

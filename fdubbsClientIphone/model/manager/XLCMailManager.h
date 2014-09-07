@@ -19,6 +19,11 @@
                                successBlock:(void (^)(XLCMailSummaryInBox *))success
                                   failBlock:(void (^)(NSError *))failure;
 
+- (void) doLoadAllMailsInBoxWithStartNumber:(NSUInteger)startNumber
+                            mailCountInPage:(NSUInteger)mailCountInPage
+                               successBlock:(void (^)(XLCMailSummaryInBox *))success
+                                  failBlock:(void (^)(NSError *))failure;
+
 - (void) doLoadNewMailsWithSuccessBlock:(void (^)(NSArray *))success
                                    failBlock:(void (^)(NSError *))failure;
 

@@ -106,6 +106,9 @@
     [objectManager addRequestWithPathPattern:@"/api/v1/mail/all/:startNumber"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCMailSummaryInBox class]];
     
+    [objectManager addRequestWithPathPattern:@"/api/v1/mail/all/:startNumber/:mailCountInPage"
+                                    onMethod:RKRequestMethodGET forResponseClaass:[XLCMailSummaryInBox class]];
+    
     [objectManager addRequestWithPathPattern:@"/api/v1/mail/new"
                                     onMethod:RKRequestMethodGET forResponseClaass:[XLCMailSummary class]];
     

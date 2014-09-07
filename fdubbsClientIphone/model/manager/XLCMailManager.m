@@ -52,6 +52,33 @@ SINGLETON_GCD(XLCMailManager);
                             }];
 }
 
+- (void) doLoadAllMailsInBoxWithStartNumber:(NSUInteger)startNumber
+                            mailCountInPage:(NSUInteger)mailCountInPage
+                               successBlock:(void (^)(XLCMailSummaryInBox *))success
+                                  failBlock:(void (^)(NSError *))failure
+{
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    NSString *path = [NSString stringWithFormat:@"/api/v1/mail/all/%lu/%lu",
+                (unsigned long)startNumber, (unsigned long)mailCountInPage];
+    
+    NSLog(@"path is %@", path);
+    
+    NSString *authCode = [[XLCUserManager sharedXLCUserManager] getUserAuthCode];
+    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    
+    [objectManager getObjectsAtPath:path
+                         parameters:nil
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                XLCMailSummaryInBox *mailSummaryInBox = [mappingResult firstObject];
+                                success(mailSummaryInBox);
+                                NSLog(@"Loaded mail summaris: %@", mailSummaryInBox);
+                            }
+                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                failure(error);
+                            }];
+}
+
 - (void) doLoadNewMailsWithSuccessBlock:(void (^)(NSArray *))success
                               failBlock:(void (^)(NSError *))failure
 {
