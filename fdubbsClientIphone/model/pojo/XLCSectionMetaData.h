@@ -11,8 +11,8 @@
 
 @interface XLCSectionMetaData : NSObject <XLCObjectMappingProtocol>
 
-@property (strong, nonatomic) NSString *sectionId;
-@property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) NSString *category;
+@property  NSString *sectionId;
+@property  NSString *desc;
+@property  NSString *category;
 
 @end

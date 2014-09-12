@@ -194,7 +194,7 @@
 		95A2088218FE887D009CDEA3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		95A2088418FE88B7009CDEA3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95A2088518FE88BA009CDEA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		95AEBDC418F98AAF00C7E8E4 /* 日月光华bbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "日月光华bbs.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95AEBDC418F98AAF00C7E8E4 /* fdubbsclient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fdubbsclient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AEBDC718F98AAF00C7E8E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95AEBDC918F98AAF00C7E8E4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		95AEBDCB18F98AAF00C7E8E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -540,7 +540,7 @@
 		95AEBDC518F98AAF00C7E8E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				95AEBDC418F98AAF00C7E8E4 /* 日月光华bbs.app */,
+				95AEBDC418F98AAF00C7E8E4 /* fdubbsclient.app */,
 				95AEBDE818F98AAF00C7E8E4 /* fdubbsClientIphoneTests.xctest */,
 			);
 			name = Products;
@@ -989,9 +989,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		95AEBDC318F98AAF00C7E8E4 /* 日月光华bbs */ = {
+		95AEBDC318F98AAF00C7E8E4 /* fdubbsclient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "日月光华bbs" */;
+			buildConfigurationList = 95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "fdubbsclient" */;
 			buildPhases = (
 				7298D10E96854DC695EBA262 /* Check Pods Manifest.lock */,
 				95AEBDC018F98AAF00C7E8E4 /* Sources */,
@@ -1003,9 +1003,9 @@
 			);
 			dependencies = (
 			);
-			name = "日月光华bbs";
+			name = fdubbsclient;
 			productName = fdubbsClientIphone;
-			productReference = 95AEBDC418F98AAF00C7E8E4 /* 日月光华bbs.app */;
+			productReference = 95AEBDC418F98AAF00C7E8E4 /* fdubbsclient.app */;
 			productType = "com.apple.product-type.application";
 		};
 		95AEBDE718F98AAF00C7E8E4 /* fdubbsClientIphoneTests */ = {
@@ -1060,7 +1060,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95AEBDC318F98AAF00C7E8E4 /* 日月光华bbs */,
+				95AEBDC318F98AAF00C7E8E4 /* fdubbsclient */,
 				95AEBDE718F98AAF00C7E8E4 /* fdubbsClientIphoneTests */,
 			);
 		};
@@ -1296,7 +1296,7 @@
 /* Begin PBXTargetDependency section */
 		95AEBDEE18F98AAF00C7E8E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 95AEBDC318F98AAF00C7E8E4 /* 日月光华bbs */;
+			target = 95AEBDC318F98AAF00C7E8E4 /* fdubbsclient */;
 			targetProxy = 95AEBDED18F98AAF00C7E8E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1501,7 +1501,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "日月光华bbs" */ = {
+		95AEBDF918F98AAF00C7E8E4 /* Build configuration list for PBXNativeTarget "fdubbsclient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95AEBDFA18F98AAF00C7E8E4 /* Debug */,

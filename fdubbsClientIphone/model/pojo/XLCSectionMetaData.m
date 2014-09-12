@@ -21,7 +21,7 @@ static RKObjectMapping *objectMapping = nil;
     objectMapping = [RKObjectMapping mappingForClass:[XLCSectionMetaData class]];
     [objectMapping addAttributeMappingsFromDictionary:@{
                                                                  @"section_id" : @"sectionId",
-                                                                 @"section_desc" : @"description",
+                                                                 @"section_desc" : @"desc",
                                                                  @"category" : @"category"
                                                                  }];
     

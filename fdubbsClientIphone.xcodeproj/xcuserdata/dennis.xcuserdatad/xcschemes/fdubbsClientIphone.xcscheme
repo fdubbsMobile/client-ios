@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "95AEBDC318F98AAF00C7E8E4"
-               BuildableName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs.app"
-               BlueprintName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs"
+               BuildableName = "fdubbsclient.app"
+               BlueprintName = "fdubbsclient"
                ReferencedContainer = "container:fdubbsClientIphone.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95AEBDC318F98AAF00C7E8E4"
-            BuildableName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs.app"
-            BlueprintName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs"
+            BuildableName = "fdubbsclient.app"
+            BlueprintName = "fdubbsclient"
             ReferencedContainer = "container:fdubbsClientIphone.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95AEBDC318F98AAF00C7E8E4"
-            BuildableName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs.app"
-            BlueprintName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs"
+            BuildableName = "fdubbsclient.app"
+            BlueprintName = "fdubbsclient"
             ReferencedContainer = "container:fdubbsClientIphone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "95AEBDC318F98AAF00C7E8E4"
-            BuildableName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs.app"
-            BlueprintName = "&#x65e5;&#x6708;&#x5149;&#x534e;bbs"
+            BuildableName = "fdubbsclient.app"
+            BlueprintName = "fdubbsclient"
             ReferencedContainer = "container:fdubbsClientIphone.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

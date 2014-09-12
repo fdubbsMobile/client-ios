@@ -170,8 +170,8 @@
     
     XLCSectionMetaData *metaData = [_allSections objectAtIndex:indexPath.row];
     
-    NSString *description = [[NSString alloc] initWithFormat:@"%@  [%@]", metaData.description, metaData.category];
-    [[cell description] setText:description];
+    NSString *description = [[NSString alloc] initWithFormat:@"%@  [%@]", metaData.desc, metaData.category];
+    [[cell descLabel] setText:description];
     cell.index = indexPath.row;
     
     return cell;
@@ -230,7 +230,7 @@
         NSInteger selectedIdx = [(XLCSectionViewCell *)sender index];
         XLCSectionMetaData *metaData = [_allSections objectAtIndex:selectedIdx];
         sectionDetailPassValueDelegte = (NSObject<XLCSectionDetailPassValueDelegate> *)destination;
-		[sectionDetailPassValueDelegte passValueWithSectionDesc:metaData.description category:metaData.category sectionId:metaData.sectionId];
+		[sectionDetailPassValueDelegte passValueWithSectionDesc:metaData.desc category:metaData.category sectionId:metaData.sectionId];
 	}
 }
 

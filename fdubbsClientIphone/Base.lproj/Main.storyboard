@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller - 主界面-->
+        <!--主界面-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
                 <tabBarController title="主界面" id="8YX-ce-x5E" sceneMemberID="viewController">
@@ -26,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-272" y="-248"/>
         </scene>
-        <!--Top Posts View Controller - 今日十大-->
+        <!--今日十大-->
         <scene sceneID="maq-uf-xAf">
             <objects>
                 <tableViewController title="今日十大" id="se5-jH-xkf" customClass="XLCTopPostsViewController" sceneMemberID="viewController">
@@ -110,7 +111,7 @@
             </objects>
             <point key="canvasLocation" x="946" y="-1662"/>
         </scene>
-        <!--Post Detail View Controller - 帖子详情-->
+        <!--帖子详情-->
         <scene sceneID="pKj-Af-pxO">
             <objects>
                 <tableViewController title="帖子详情" id="JiJ-sD-lJk" customClass="XLCPostDetailViewController" sceneMemberID="viewController">
@@ -213,7 +214,7 @@
             </objects>
             <point key="canvasLocation" x="2905" y="-1690"/>
         </scene>
-        <!--All Sections View Controller - 所有版面-->
+        <!--所有版面-->
         <scene sceneID="fKV-5J-ZCj">
             <objects>
                 <tableViewController title="所有版面" id="xuV-Oi-XCm" customClass="XLCAllSectionsViewController" sceneMemberID="viewController">
@@ -229,6 +230,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="54"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_divider_line.png" id="ap0-dQ-v3k">
+                                            <rect key="frame" x="10" y="53" width="310" height="1"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3V2-1t-qb1" userLabel="Label - description">
                                             <rect key="frame" x="33" y="7" width="220" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -236,14 +241,10 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list_divider_line.png" id="ap0-dQ-v3k">
-                                            <rect key="frame" x="10" y="53" width="310" height="1"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="description" destination="3V2-1t-qb1" id="JKZ-lC-43a"/>
+                                    <outlet property="descLabel" destination="3V2-1t-qb1" id="9hR-Tf-OOt"/>
                                     <segue destination="dKM-qk-bs3" kind="push" identifier="showSectionDetail" id="lda-dv-0gQ"/>
                                 </connections>
                             </tableViewCell>
@@ -259,7 +260,7 @@
             </objects>
             <point key="canvasLocation" x="951" y="-973"/>
         </scene>
-        <!--Section Detail View Controller - 讨论区详情-->
+        <!--讨论区详情-->
         <scene sceneID="5OS-Ub-nwe">
             <objects>
                 <tableViewController title="讨论区详情" id="dKM-qk-bs3" customClass="XLCSectionDetailViewController" sceneMemberID="viewController">
@@ -287,7 +288,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="brp-qc-H8n">
-                                            <rect key="frame" x="34" y="20" width="211" height="31"/>
+                                            <rect key="frame" x="34" y="23" width="211" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -296,7 +297,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="description" destination="brp-qc-H8n" id="Snh-ER-8vX"/>
+                                    <outlet property="descLabel" destination="brp-qc-H8n" id="vnp-Ke-bnC"/>
                                     <outlet property="title" destination="FAR-r3-ZUt" id="NFG-Lb-U2H"/>
                                     <segue destination="pEw-88-trb" kind="push" identifier="showBoardDetail" id="Dio-5q-PmQ"/>
                                 </connections>
@@ -313,7 +314,7 @@
             </objects>
             <point key="canvasLocation" x="1474" y="-973"/>
         </scene>
-        <!--My Account View Controller - 我的账号-->
+        <!--我的账号-->
         <scene sceneID="Kh5-Wb-k1I">
             <objects>
                 <tableViewController title="我的账号" automaticallyAdjustsScrollViewInsets="NO" id="Yxk-HY-NtT" customClass="XLCMyAccountViewController" sceneMemberID="viewController">
@@ -502,7 +503,7 @@
             </objects>
             <point key="canvasLocation" x="939" y="1252"/>
         </scene>
-        <!--Basic Profile View Controller - 个人资料-->
+        <!--个人资料-->
         <scene sceneID="xyf-tJ-VvG">
             <objects>
                 <tableViewController title="个人资料" id="xOQ-wE-Fgw" customClass="XLCBasicProfileViewController" sceneMemberID="viewController">
@@ -576,7 +577,7 @@
             </objects>
             <point key="canvasLocation" x="2172" y="591"/>
         </scene>
-        <!--Mail Box View Controller - 信件列表-->
+        <!--信件列表-->
         <scene sceneID="kUD-T5-xrk">
             <objects>
                 <viewController title="信件列表" id="9e9-Xr-75z" customClass="XLCMailBoxViewController" sceneMemberID="viewController">
@@ -643,7 +644,7 @@
             </objects>
             <point key="canvasLocation" x="2164" y="1949"/>
         </scene>
-        <!--Online Friend View Controller - 在线好友-->
+        <!--在线好友-->
         <scene sceneID="2HW-cG-5Sf">
             <objects>
                 <viewController storyboardIdentifier="onlineFriendViewController" title="在线好友" id="fSw-uu-HXR" customClass="XLCOnlineFriendViewController" sceneMemberID="viewController">
@@ -678,7 +679,7 @@
             </objects>
             <point key="canvasLocation" x="2721" y="1840"/>
         </scene>
-        <!--All Friend View Controller - 所有好友-->
+        <!--所有好友-->
         <scene sceneID="bc9-g1-5Na">
             <objects>
                 <viewController storyboardIdentifier="allFriendViewController" title="所有好友" id="atz-lm-YOm" customClass="XLCAllFriendViewController" sceneMemberID="viewController">
@@ -713,7 +714,7 @@
             </objects>
             <point key="canvasLocation" x="2713" y="2581"/>
         </scene>
-        <!--Table View Controller - 用户信息-->
+        <!--用户信息-->
         <scene sceneID="C9U-nA-q1h">
             <objects>
                 <tableViewController title="用户信息" id="xBK-4O-20c" sceneMemberID="viewController">
@@ -794,7 +795,7 @@
             </objects>
             <point key="canvasLocation" x="3093" y="2581"/>
         </scene>
-        <!--New Mail View Controller - 新信件-->
+        <!--新信件-->
         <scene sceneID="XaY-qb-qSs">
             <objects>
                 <viewController storyboardIdentifier="newMailViewController" title="新信件" modalTransitionStyle="partialCurl" id="YSO-af-6EY" customClass="XLCNewMailViewController" sceneMemberID="viewController">
@@ -858,7 +859,7 @@
             </objects>
             <point key="canvasLocation" x="2780" y="374"/>
         </scene>
-        <!--Mail Detail View Controller - 信件详情-->
+        <!--信件详情-->
         <scene sceneID="Cwr-ef-7c2">
             <objects>
                 <viewController title="信件详情" id="Sih-6x-03y" customClass="XLCMailDetailViewController" sceneMemberID="viewController">
@@ -919,7 +920,7 @@
             </objects>
             <point key="canvasLocation" x="3468" y="736"/>
         </scene>
-        <!--Login View Controller - 用户登录-->
+        <!--用户登录-->
         <scene sceneID="dfA-Xb-QW2">
             <objects>
                 <viewController title="用户登录" hidesBottomBarWhenPushed="YES" id="WXB-x9-uUb" customClass="XLCLoginViewController" sceneMemberID="viewController">
@@ -979,7 +980,7 @@
             </objects>
             <point key="canvasLocation" x="1474" y="206"/>
         </scene>
-        <!--Favor Boards View Controller - 我的收藏-->
+        <!--我的收藏-->
         <scene sceneID="CAA-JL-Ary">
             <objects>
                 <tableViewController title="我的收藏" id="xJd-WL-H1f" customClass="XLCFavorBoardsViewController" sceneMemberID="viewController">
@@ -1007,7 +1008,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="desc" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rIV-Od-iVy">
-                                            <rect key="frame" x="34" y="20" width="211" height="31"/>
+                                            <rect key="frame" x="34" y="23" width="211" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1016,7 +1017,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="description" destination="rIV-Od-iVy" id="VQF-FT-6wF"/>
+                                    <outlet property="descLabel" destination="rIV-Od-iVy" id="peG-y8-lfQ"/>
                                     <outlet property="title" destination="cme-dv-omQ" id="3oF-yM-tg4"/>
                                     <segue destination="pEw-88-trb" kind="push" identifier="showBoardDetail" id="mJG-cC-Yrt"/>
                                 </connections>
@@ -1036,7 +1037,7 @@
             </objects>
             <point key="canvasLocation" x="951" y="-248"/>
         </scene>
-        <!--App Setting View Controller - 应用设置-->
+        <!--应用设置-->
         <scene sceneID="Ndu-a1-Kgv">
             <objects>
                 <tableViewController title="应用设置" id="h6Y-lx-0m4" customClass="XLCAppSettingViewController" sceneMemberID="viewController">
@@ -1116,7 +1117,7 @@
             </objects>
             <point key="canvasLocation" x="959" y="2356"/>
         </scene>
-        <!--Navigation Bar Title View Controller - 今日十大-->
+        <!--今日十大-->
         <scene sceneID="MmF-1w-SBT">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="c6i-XC-dnY" customClass="ZGNavigationBarTitleViewController" sceneMemberID="viewController">
@@ -1139,7 +1140,7 @@
             </objects>
             <point key="canvasLocation" x="420" y="-1662"/>
         </scene>
-        <!--Navigation Bar Title View Controller - 所有版面-->
+        <!--所有版面-->
         <scene sceneID="TtM-tt-AM5">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ba5-Bu-sHf" customClass="ZGNavigationBarTitleViewController" sceneMemberID="viewController">
@@ -1159,7 +1160,7 @@
             </objects>
             <point key="canvasLocation" x="425" y="-973"/>
         </scene>
-        <!--Board Detail View Controller -  版面详情-->
+        <!-- 版面详情-->
         <scene sceneID="uzF-DV-P8J">
             <objects>
                 <tableViewController title=" 版面详情" id="pEw-88-trb" customClass="XLCBoardDetailViewController" sceneMemberID="viewController">
@@ -1222,7 +1223,7 @@
             </objects>
             <point key="canvasLocation" x="2452" y="-973"/>
         </scene>
-        <!--Navigation Bar Title View Controller - 我的收藏-->
+        <!--我的收藏-->
         <scene sceneID="tA1-vd-cln">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="k5i-PJ-1oQ" customClass="ZGNavigationBarTitleViewController" sceneMemberID="viewController">
@@ -1242,7 +1243,7 @@
             </objects>
             <point key="canvasLocation" x="425" y="-248"/>
         </scene>
-        <!--Navigation Bar Title View Controller - 应用设置-->
+        <!--应用设置-->
         <scene sceneID="0gm-8d-9fJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XIR-TS-egW" customClass="ZGNavigationBarTitleViewController" sceneMemberID="viewController">
@@ -1265,7 +1266,7 @@
             </objects>
             <point key="canvasLocation" x="425" y="2356"/>
         </scene>
-        <!--Navigation Bar Title View Controller - 我的账号-->
+        <!--我的账号-->
         <scene sceneID="ewD-kn-UWB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FoO-4d-oUa" customClass="ZGNavigationBarTitleViewController" sceneMemberID="viewController">
@@ -1285,7 +1286,7 @@
             </objects>
             <point key="canvasLocation" x="420" y="1252"/>
         </scene>
-        <!--All Mail View Controller - 新信件-->
+        <!--新信件-->
         <scene sceneID="6oi-VA-447">
             <objects>
                 <viewController storyboardIdentifier="allMailViewController" title="新信件" modalTransitionStyle="partialCurl" id="kj7-rS-66F" customClass="XLCAllMailViewController" sceneMemberID="viewController">
@@ -1366,10 +1367,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="U30-GU-pVA"/>
-        <segue reference="iM2-80-pwI"/>
-        <segue reference="rvL-97-DFX"/>
-        <segue reference="mJG-cC-Yrt"/>
         <segue reference="145-hS-xLH"/>
+        <segue reference="iM2-80-pwI"/>
+        <segue reference="U30-GU-pVA"/>
+        <segue reference="mJG-cC-Yrt"/>
+        <segue reference="y1L-iJ-ujh"/>
     </inferredMetricsTieBreakers>
 </document>

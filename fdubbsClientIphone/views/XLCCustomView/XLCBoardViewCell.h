@@ -12,6 +12,6 @@
 
 @property NSUInteger index;
 @property (strong, nonatomic) IBOutlet UILabel *title;
-@property (strong, nonatomic) IBOutlet UILabel *description;
+@property (strong, nonatomic) IBOutlet UILabel *descLabel;
 
 @end

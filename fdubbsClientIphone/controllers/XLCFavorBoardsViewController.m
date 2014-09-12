@@ -231,7 +231,7 @@
     
     XLCBoardDetail *boardDetail = (XLCBoardDetail *)[_favorBoards objectAtIndex:indexPath.row];
     XLCBoardMetaData *boardMetaData = boardDetail.metaData;
-    [[cell description] setText:boardMetaData.boardDesc];
+    [[cell descLabel] setText:boardMetaData.boardDesc];
     [[cell title] setText:boardMetaData.title];
     cell.index = indexPath.row;
     

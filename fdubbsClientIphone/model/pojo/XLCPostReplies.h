@@ -12,11 +12,11 @@
 
 @interface XLCPostReplies : NSObject <XLCObjectMappingProtocol>
 
-@property (strong, nonatomic) NSString *boardId;
-@property (strong, nonatomic) NSString *mainPostId;
-@property (strong, nonatomic) NSString *lastReplyId;
+@property  NSString *boardId;
+@property  NSString *mainPostId;
+@property  NSString *lastReplyId;
 @property BOOL hasMore;
 
-@property (strong, nonatomic) NSArray *replies;
+@property  NSArray *replies;
 
 @end
