@@ -22,7 +22,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>40068E1629E845BE89B998B0FCA4BDDB8A421948</key>
-		<string>../fdubbsClientIphone/views/TableViewRefresh/</string>
+		<string>../fdubbsClientIphone/views/TableViewRefresh</string>
 		<key>44327FD8-6480-4D9B-85F9-5A532B30A427</key>
 		<string>../fdubbsClientIphone/views/MBProgressHUD</string>
 		<key>6C22DDE65F0F3C76C7F707C377145B75A5EDB280</key>
