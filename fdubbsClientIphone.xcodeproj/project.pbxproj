@@ -75,6 +75,8 @@
 		95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA248E19A0525700FBEF98 /* PAImageView.m */; };
 		95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */; };
 		95BA249519A05BE200FBEF98 /* XLCMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */; };
+		95BB271919C6D76B00E4BB87 /* XLCKeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */; };
+		95BB271B19C6D87900E4BB87 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BB271A19C6D87900E4BB87 /* Security.framework */; };
 		95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */; };
 		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
@@ -276,6 +278,9 @@
 		95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAppSettingViewController.m; path = controllers/XLCAppSettingViewController.m; sourceTree = "<group>"; };
 		95BA249319A05BE200FBEF98 /* XLCMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCMyAccountViewController.h; sourceTree = "<group>"; };
 		95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCMyAccountViewController.m; sourceTree = "<group>"; };
+		95BB271719C6D76B00E4BB87 /* XLCKeyChainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCKeyChainService.h; path = utils/XLCKeyChainService.h; sourceTree = "<group>"; };
+		95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCKeyChainService.m; path = utils/XLCKeyChainService.m; sourceTree = "<group>"; };
+		95BB271A19C6D87900E4BB87 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		95BBC46519A31B7E0041CCE2 /* XLCLogoutResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLogoutResponse.h; path = model/pojo/XLCLogoutResponse.h; sourceTree = "<group>"; };
 		95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLogoutResponse.m; path = model/pojo/XLCLogoutResponse.m; sourceTree = "<group>"; };
 		95BBC46919A323B40041CCE2 /* XLCObjectMappingProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCObjectMappingProtocol.h; path = model/pojo/XLCObjectMappingProtocol.h; sourceTree = "<group>"; };
@@ -427,6 +432,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95BB271B19C6D87900E4BB87 /* Security.framework in Frameworks */,
 				95B59A81191682A3000B069C /* CoreText.framework in Frameworks */,
 				95AEBDCA18F98AAF00C7E8E4 /* CoreGraphics.framework in Frameworks */,
 				95AEBDCC18F98AAF00C7E8E4 /* UIKit.framework in Frameworks */,
@@ -549,6 +555,7 @@
 		95AEBDC618F98AAF00C7E8E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95BB271A19C6D87900E4BB87 /* Security.framework */,
 				95B59A80191682A3000B069C /* CoreText.framework */,
 				95AEBDC718F98AAF00C7E8E4 /* Foundation.framework */,
 				95AEBDC918F98AAF00C7E8E4 /* CoreGraphics.framework */,
@@ -619,6 +626,8 @@
 			children = (
 				95AEBE0A18FA61E600C7E8E4 /* XLCUtil.h */,
 				95AEBE0B18FA61E600C7E8E4 /* XLCUtil.m */,
+				95BB271719C6D76B00E4BB87 /* XLCKeyChainService.h */,
+				95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -1258,6 +1267,7 @@
 				95CB1828193A234A0059FF2A /* XLCAllSectionsViewController.m in Sources */,
 				95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */,
 				95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */,
+				95BB271919C6D76B00E4BB87 /* XLCKeyChainService.m in Sources */,
 				95CCB64C191B561600B261D6 /* NIFoundationMethods.m in Sources */,
 				95C5D7FA19A4A14700D8C754 /* XLCUserIntrodution.m in Sources */,
 				95B44EA219935B4900BE7BA0 /* XLCBoardViewCell.m in Sources */,
