@@ -75,6 +75,8 @@
 		95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA248E19A0525700FBEF98 /* PAImageView.m */; };
 		95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */; };
 		95BA249519A05BE200FBEF98 /* XLCMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */; };
+		95BB0EF719C726530018D50E /* XLCPasswordPersistService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB0EF619C726530018D50E /* XLCPasswordPersistService.m */; };
+		95BB0EFB19C72C460018D50E /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB0EFA19C72C460018D50E /* CTCheckbox.m */; };
 		95BB271919C6D76B00E4BB87 /* XLCKeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */; };
 		95BB271B19C6D87900E4BB87 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BB271A19C6D87900E4BB87 /* Security.framework */; };
 		95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */; };
@@ -278,6 +280,10 @@
 		95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAppSettingViewController.m; path = controllers/XLCAppSettingViewController.m; sourceTree = "<group>"; };
 		95BA249319A05BE200FBEF98 /* XLCMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCMyAccountViewController.h; sourceTree = "<group>"; };
 		95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCMyAccountViewController.m; sourceTree = "<group>"; };
+		95BB0EF519C726530018D50E /* XLCPasswordPersistService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPasswordPersistService.h; path = utils/XLCPasswordPersistService.h; sourceTree = "<group>"; };
+		95BB0EF619C726530018D50E /* XLCPasswordPersistService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPasswordPersistService.m; path = utils/XLCPasswordPersistService.m; sourceTree = "<group>"; };
+		95BB0EF919C72C460018D50E /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
+		95BB0EFA19C72C460018D50E /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
 		95BB271719C6D76B00E4BB87 /* XLCKeyChainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCKeyChainService.h; path = utils/XLCKeyChainService.h; sourceTree = "<group>"; };
 		95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCKeyChainService.m; path = utils/XLCKeyChainService.m; sourceTree = "<group>"; };
 		95BB271A19C6D87900E4BB87 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -628,6 +634,8 @@
 				95AEBE0B18FA61E600C7E8E4 /* XLCUtil.m */,
 				95BB271719C6D76B00E4BB87 /* XLCKeyChainService.h */,
 				95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */,
+				95BB0EF519C726530018D50E /* XLCPasswordPersistService.h */,
+				95BB0EF619C726530018D50E /* XLCPasswordPersistService.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -728,6 +736,7 @@
 		95AEBE2A18FA915900C7E8E4 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				95BB0EF819C72C460018D50E /* CTCheckbox */,
 				95A1C8F619BCA520007B6336 /* IBActionSheet */,
 				95005FD719B5BCE10092DE9C /* MBProgressHUD */,
 				95BA248C19A0525700FBEF98 /* PAImageView */,
@@ -860,6 +869,16 @@
 			);
 			name = PAImageView;
 			path = views/PAImageView;
+			sourceTree = "<group>";
+		};
+		95BB0EF819C72C460018D50E /* CTCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				95BB0EF919C72C460018D50E /* CTCheckbox.h */,
+				95BB0EFA19C72C460018D50E /* CTCheckbox.m */,
+			);
+			name = CTCheckbox;
+			path = views/CTCheckbox;
 			sourceTree = "<group>";
 		};
 		95C3CEFB1930E69C0027D0F3 /* LoadMoreFooterView */ = {
@@ -1254,10 +1273,12 @@
 				95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */,
 				95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */,
 				95C5D80019A4B36F00D8C754 /* XLCUserBirthDate.m in Sources */,
+				95BB0EF719C726530018D50E /* XLCPasswordPersistService.m in Sources */,
 				95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */,
 				95CCB65A191B561600B261D6 /* UIResponder+NimbusCore.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95C5D7E519A49B3F00D8C754 /* XLCMailSummary.m in Sources */,
+				95BB0EFB19C72C460018D50E /* CTCheckbox.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
 				95C5D7D919A47D2500D8C754 /* XLCNewMailViewController.m in Sources */,
 				95CB1841193B88670059FF2A /* XLCCustomLinkView.m in Sources */,

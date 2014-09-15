@@ -13,6 +13,7 @@
 #import "XLCLoginResponse.h"
 #import "UIButton+Bootstrap.h"
 #import "XLCActivityIndicator.h"
+#import "CTCheckbox.h"
 
 @interface XLCLoginViewController () <UITextFieldDelegate>
 
@@ -23,6 +24,9 @@
 
 @property (strong, nonatomic) UITextField *activeField;
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer;
+
+@property (strong, nonatomic) IBOutlet CTCheckbox *autoLoginView;
+@property (strong, nonatomic) IBOutlet CTCheckbox *rememberPasswdView;
 
 @end
 
@@ -76,6 +80,11 @@
     _userIdTextField.delegate = self;
     _userIdTextField.keyboardType = UIKeyboardTypeASCIICapable;
     
+    self.rememberPasswdView.enabled = YES;
+    self.rememberPasswdView.textLabel.text = @"记住密码";
+    
+    self.autoLoginView.enabled = YES;
+    self.autoLoginView.textLabel.text = @"自动登录";
     
     NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     
@@ -91,6 +100,7 @@
     DebugLog(@"init XLCLoginViewController");
     
 }
+
 
 - (void)backAction
 {
@@ -194,6 +204,15 @@
     {
         
         DebugLog(@"Success to login!");
+        
+        if (self.rememberPasswdView.checked) {
+            NSLog(@"Remember me Check!");
+        }
+        
+        if (self.autoLoginView.checked) {
+            NSLog(@"Auto Login  Check!");
+        }
+        
         [XLCActivityIndicator hideOnView:self.view];
         [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.1];
 
@@ -201,6 +220,20 @@
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
+        
+        if (self.rememberPasswdView.checked) {
+            NSLog(@"Remember me Check!");
+        } else {
+            NSLog(@"Remember me Un-Check!");
+        }
+        
+        if (self.autoLoginView.checked) {
+            NSLog(@"Auto Login  Check!");
+        } else {
+            NSLog(@"Auto Login  Un-Check!");
+        }
+        
+        
         [XLCActivityIndicator hideOnView:self.view];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:[error localizedDescription]

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8YX-ce-x5E">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -941,7 +940,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tzp-IX-zzU">
-                                <rect key="frame" x="170" y="129" width="115" height="34"/>
+                                <rect key="frame" x="170" y="170" width="115" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="登      录">
@@ -953,7 +952,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UMG-vV-8QE">
-                                <rect key="frame" x="35" y="129" width="115" height="34"/>
+                                <rect key="frame" x="35" y="170" width="115" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="游客浏览">
@@ -964,14 +963,26 @@
                                     <action selector="doVisitorBrowse:" destination="WXB-x9-uUb" eventType="touchUpInside" id="eRv-cs-za8"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="B1h-27-zVW" customClass="CTCheckbox">
+                                <rect key="frame" x="43" y="121" width="100" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="hde-Ff-1ow" customClass="CTCheckbox">
+                                <rect key="frame" x="177" y="121" width="100" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="fl0-sz-ZIE"/>
                     <connections>
+                        <outlet property="autoLoginView" destination="hde-Ff-1ow" id="BCx-x0-MwC"/>
                         <outlet property="loginButton" destination="Tzp-IX-zzU" id="Es7-eR-DUc"/>
                         <outlet property="passwdTextField" destination="a17-aR-917" id="fRR-gk-Vct"/>
+                        <outlet property="rememberPasswdView" destination="B1h-27-zVW" id="PLx-m3-k7z"/>
                         <outlet property="userIdTextField" destination="zfb-ea-eog" id="fIo-PU-L3X"/>
                         <outlet property="visitorMode" destination="UMG-vV-8QE" id="lLn-pd-sfk"/>
                     </connections>
