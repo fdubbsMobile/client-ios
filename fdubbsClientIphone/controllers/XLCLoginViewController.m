@@ -14,6 +14,10 @@
 #import "UIButton+Bootstrap.h"
 #import "XLCActivityIndicator.h"
 #import "CTCheckbox.h"
+#import "XLCPasswordPersistService.h"
+#import "XLCLoginSetting.h"
+#import "XLCLoginSettingService.h"
+#import "XLCUtil.h"
 
 @interface XLCLoginViewController () <UITextFieldDelegate>
 
@@ -96,6 +100,27 @@
     
     _tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                  action:@selector(didTapAnywhere:)];
+    
+    NSString *lastLoginUser = [[XLCLoginSettingService sharedXLCLoginSettingService] getLastLoginUser];
+    if (lastLoginUser != nil) {
+        XLCLoginSetting *loginSetting = [[XLCLoginSettingService sharedXLCLoginSettingService] getLoginSettingByUserName:lastLoginUser];
+        if (loginSetting == nil) {
+            NSLog(@"No loginSetting found for user : %@", lastLoginUser);
+        }
+        
+        [_userIdTextField setText:lastLoginUser];
+        
+        if (loginSetting.rememberPasswd) {
+            self.rememberPasswdView.checked = YES;
+            NSString *passwd = [[XLCPasswordPersistService sharedXLCPasswordPersistService] getPersistPasswordForUser:lastLoginUser];
+            
+            [_passwdTextField setText:passwd];
+        }
+        
+        if (loginSetting.autoLogin) {
+            self.autoLoginView.checked = YES;
+        }
+    }
     
     DebugLog(@"init XLCLoginViewController");
     
@@ -200,17 +225,35 @@
 {
     NSLog(@"do user login!");
     
+    __block NSString *userName = [_userIdTextField text];
+    __block NSString *passWord = [_passwdTextField text];
+    
+    if ([userName isEmpty] || [passWord isEmpty]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"User name or pass word cannot be empty!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"Hit error: %@", @"User name or pass word cannot be empty!");
+        return;
+    }
+    
+    
     void (^successBlock)(XLCLoginResponse *) = ^(XLCLoginResponse *loginResponse)
     {
         
         DebugLog(@"Success to login!");
         
-        if (self.rememberPasswdView.checked) {
-            NSLog(@"Remember me Check!");
-        }
+        BOOL rememberPasswd = self.rememberPasswdView.checked;
+        BOOL autoLogin = self.autoLoginView.checked;
         
-        if (self.autoLoginView.checked) {
-            NSLog(@"Auto Login  Check!");
+        [[XLCLoginSettingService sharedXLCLoginSettingService] insertOrUpdateLoginSettingForUser:userName withRememberPasswd:rememberPasswd autoLogin:autoLogin];
+        [[XLCLoginSettingService sharedXLCLoginSettingService] setLastLoginUser:userName];
+        
+        if (rememberPasswd) {
+            NSLog(@"Remember me Check!");
+            [[XLCPasswordPersistService sharedXLCPasswordPersistService] addOrUpdatePersistPassword:passWord forUser:userName];
         }
         
         [XLCActivityIndicator hideOnView:self.view];
@@ -220,6 +263,7 @@
     
     void (^failBlock)(NSError *) = ^(NSError *error)
     {
+        
         
         if (self.rememberPasswdView.checked) {
             NSLog(@"Remember me Check!");
@@ -244,25 +288,16 @@
         NSLog(@"Hit error: %@", error);
     };
     
-    NSString *userName = [_userIdTextField text];
-    NSString *passWord = [_passwdTextField text];
     
-    if ([userName isEmpty] || [passWord isEmpty]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"User name or pass word cannot be empty!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        NSLog(@"Hit error: %@", @"User name or pass word cannot be empty!");
-        return;
-    }
+    
+    
     
     [[XLCUserManager sharedXLCUserManager]doUserLoginWithUserName:userName
                                                          passWord:passWord
                                                      successBlock:successBlock
                                                         failBlock:failBlock ];
     [XLCActivityIndicator showLoginOnView:self.view];
+
 }
 
 - (void) didLoginSuccess:(XLCLoginResponse *)response

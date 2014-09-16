@@ -11,9 +11,31 @@
 		95005FDF19B5BCE10092DE9C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 95005FDA19B5BCE10092DE9C /* LICENSE */; };
 		95005FE019B5BCE10092DE9C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 95005FDC19B5BCE10092DE9C /* MBProgressHUD.m */; };
 		95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 95234C661913AB1000C80BEB /* FRDLivelyButton.m */; };
-		954CD1C81999B531004004C6 /* XLCFavorBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */; };
 		9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */; };
-		955204A519BB494F00A1B6FB /* XLCAllMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */; };
+		957B27FC19C87161006D26E0 /* XLCKeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B27F319C87161006D26E0 /* XLCKeyChainService.m */; };
+		957B27FD19C87161006D26E0 /* XLCLoginSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B27F519C87161006D26E0 /* XLCLoginSetting.m */; };
+		957B27FE19C87161006D26E0 /* XLCLoginSettingService.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B27F719C87161006D26E0 /* XLCLoginSettingService.m */; };
+		957B27FF19C87161006D26E0 /* XLCPasswordPersistService.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B27F919C87161006D26E0 /* XLCPasswordPersistService.m */; };
+		957B280019C87161006D26E0 /* XLCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B27FB19C87161006D26E0 /* XLCUtil.m */; };
+		957B282A19C879A7006D26E0 /* XLCAllFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B280319C879A7006D26E0 /* XLCAllFriendViewController.m */; };
+		957B282B19C879A7006D26E0 /* XLCAllMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B280519C879A7006D26E0 /* XLCAllMailViewController.m */; };
+		957B282C19C879A7006D26E0 /* XLCAllSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B280719C879A7006D26E0 /* XLCAllSectionsViewController.m */; };
+		957B282D19C879A7006D26E0 /* XLCAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B280919C879A7006D26E0 /* XLCAppSettingViewController.m */; };
+		957B282E19C879A7006D26E0 /* XLCBasicProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B280B19C879A7006D26E0 /* XLCBasicProfileViewController.m */; };
+		957B282F19C879A7006D26E0 /* XLCBoardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B280E19C879A7006D26E0 /* XLCBoardDetailViewController.m */; };
+		957B283019C879A7006D26E0 /* XLCFavorBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281019C879A7006D26E0 /* XLCFavorBoardsViewController.m */; };
+		957B283119C879A7006D26E0 /* XLCFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281219C879A7006D26E0 /* XLCFriendViewController.m */; };
+		957B283219C879A7006D26E0 /* XLCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281419C879A7006D26E0 /* XLCLoginViewController.m */; };
+		957B283319C879A7006D26E0 /* XLCMailBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281619C879A7006D26E0 /* XLCMailBoxViewController.m */; };
+		957B283419C879A7006D26E0 /* XLCMailDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281919C879A7006D26E0 /* XLCMailDetailViewController.m */; };
+		957B283519C879A7006D26E0 /* XLCMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281B19C879A7006D26E0 /* XLCMyAccountViewController.m */; };
+		957B283619C879A7006D26E0 /* XLCNewMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281D19C879A7006D26E0 /* XLCNewMailViewController.m */; };
+		957B283719C879A7006D26E0 /* XLCOnlineFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B281F19C879A7006D26E0 /* XLCOnlineFriendViewController.m */; };
+		957B283819C879A7006D26E0 /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B282219C879A7006D26E0 /* XLCPostDetailViewController.m */; };
+		957B283919C879A7006D26E0 /* XLCSectionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B282519C879A7006D26E0 /* XLCSectionDetailViewController.m */; };
+		957B283A19C879A7006D26E0 /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B282719C879A7006D26E0 /* XLCTopPostsViewController.m */; };
+		957B283B19C879A7006D26E0 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957B282919C879A7006D26E0 /* ZGNavigationBarTitleViewController.m */; };
+		957B283D19C87A55006D26E0 /* XLCPostReplyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957B283C19C87A55006D26E0 /* XLCPostReplyViewCell.xib */; };
 		95951BB3190296C50051B628 /* list_divider_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 95951BB2190296C50051B628 /* list_divider_line.png */; };
 		95A1C8F919BCA520007B6336 /* IBActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A1C8F819BCA520007B6336 /* IBActionSheet.m */; };
 		95A2087118FE73BC009CDEA3 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A2086618FE73BC009CDEA3 /* blackArrow.png */; };
@@ -39,7 +61,6 @@
 		95AEBDEC18F98AAF00C7E8E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95AEBDCB18F98AAF00C7E8E4 /* UIKit.framework */; };
 		95AEBDF418F98AAF00C7E8E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95AEBDF218F98AAF00C7E8E4 /* InfoPlist.strings */; };
 		95AEBDF618F98AAF00C7E8E4 /* fdubbsClientIphoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBDF518F98AAF00C7E8E4 /* fdubbsClientIphoneTests.m */; };
-		95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE0B18FA61E600C7E8E4 /* XLCUtil.m */; };
 		95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE1518FA678D00C7E8E4 /* XLCPostMetaData.m */; };
 		95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE1A18FA67A600C7E8E4 /* XLCPostManager.m */; };
 		95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AEBE1D18FA67BD00C7E8E4 /* XLCPostSummary.m */; };
@@ -60,35 +81,17 @@
 		95B59A81191682A3000B069C /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B59A80191682A3000B069C /* CoreText.framework */; };
 		95B6131D199867A200FE4F00 /* XLCPostSummaryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */; };
 		95B613201998803100FE4F00 /* XLCPostSummaryInBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6131F1998803100FE4F00 /* XLCPostSummaryInBoard.m */; };
-		95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */; };
-		95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */; };
-		95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */; };
-		95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */; };
-		95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */; };
 		95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89911199AE4D3009EABEB /* XLCUserManager.m */; };
-		95B89915199AEB13009EABEB /* XLCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B89914199AEB13009EABEB /* XLCLoginViewController.m */; };
 		95B90A89199E428700EF5A6D /* XLCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B90A88199E428700EF5A6D /* XLCLoginResponse.m */; };
-		95B9514619BC904700477B32 /* XLCOnlineFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9514519BC904700477B32 /* XLCOnlineFriendViewController.m */; };
-		95B9514919BC905F00477B32 /* XLCAllFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9514819BC905F00477B32 /* XLCAllFriendViewController.m */; };
-		95B9DDE519B9EE6C001B6573 /* XLCMailBoxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */; };
-		95B9E1E919AE1B9E00B8EAC8 /* XLCMailDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */; };
 		95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA248E19A0525700FBEF98 /* PAImageView.m */; };
-		95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */; };
-		95BA249519A05BE200FBEF98 /* XLCMyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */; };
-		95BB0EF719C726530018D50E /* XLCPasswordPersistService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB0EF619C726530018D50E /* XLCPasswordPersistService.m */; };
 		95BB0EFB19C72C460018D50E /* CTCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB0EFA19C72C460018D50E /* CTCheckbox.m */; };
-		95BB271919C6D76B00E4BB87 /* XLCKeyChainService.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */; };
 		95BB271B19C6D87900E4BB87 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95BB271A19C6D87900E4BB87 /* Security.framework */; };
 		95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */; };
 		95C1D0631923C32A00E38625 /* XLCContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0621923C32A00E38625 /* XLCContent.m */; };
 		95C1D0661923C36400E38625 /* XLCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1D0651923C36400E38625 /* XLCImage.m */; };
-		95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */; };
 		95C3CEF71930D7690027D0F3 /* XLCPostReplies.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */; };
 		95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */; };
 		95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */; };
-		95C5D7D619A4587F00D8C754 /* XLCBasicProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7D519A4587F00D8C754 /* XLCBasicProfileViewController.m */; };
-		95C5D7D919A47D2500D8C754 /* XLCNewMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7D819A47D2500D8C754 /* XLCNewMailViewController.m */; };
-		95C5D7DC19A47D3800D8C754 /* XLCFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7DB19A47D3800D8C754 /* XLCFriendViewController.m */; };
 		95C5D7DF19A4924100D8C754 /* XLCFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7DE19A4924100D8C754 /* XLCFriend.m */; };
 		95C5D7E219A49A7200D8C754 /* XLCMailMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7E119A49A7200D8C754 /* XLCMailMetaData.m */; };
 		95C5D7E519A49B3F00D8C754 /* XLCMailSummary.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D7E419A49B3F00D8C754 /* XLCMailSummary.m */; };
@@ -105,7 +108,6 @@
 		95C5D80619A4B8E500D8C754 /* XLCFriendManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D80519A4B8E500D8C754 /* XLCFriendManager.m */; };
 		95C5D80919A4BA5000D8C754 /* XLCProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C5D80819A4BA5000D8C754 /* XLCProfileManager.m */; };
 		95C6EB2519A39984001D3BC2 /* RKObjectManager+XLC.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C6EB2419A39984001D3BC2 /* RKObjectManager+XLC.m */; };
-		95CB1828193A234A0059FF2A /* XLCAllSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1827193A234A0059FF2A /* XLCAllSectionsViewController.m */; };
 		95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB182A193A238D0059FF2A /* XLCBoardManager.m */; };
 		95CB182E193A2CA70059FF2A /* XLCSectionMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB182D193A2CA70059FF2A /* XLCSectionMetaData.m */; };
 		95CB1840193B88670059FF2A /* UIImage+Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB1831193B88670059FF2A /* UIImage+Overlay.m */; };
@@ -173,12 +175,59 @@
 		95005FDC19B5BCE10092DE9C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		95234C651913AB1000C80BEB /* FRDLivelyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FRDLivelyButton.h; sourceTree = "<group>"; };
 		95234C661913AB1000C80BEB /* FRDLivelyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FRDLivelyButton.m; sourceTree = "<group>"; };
-		954CD1C61999B531004004C6 /* XLCFavorBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFavorBoardsViewController.h; path = controllers/XLCFavorBoardsViewController.h; sourceTree = "<group>"; };
-		954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFavorBoardsViewController.m; path = controllers/XLCFavorBoardsViewController.m; sourceTree = "<group>"; };
 		9550CD0119AF74AC001D1478 /* XLCMailSummaryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailSummaryViewCell.h; path = views/XLCCustomView/XLCMailSummaryViewCell.h; sourceTree = "<group>"; };
 		9550CD0219AF74AC001D1478 /* XLCMailSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailSummaryViewCell.m; path = views/XLCCustomView/XLCMailSummaryViewCell.m; sourceTree = "<group>"; };
-		955204A319BB494F00A1B6FB /* XLCAllMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllMailViewController.h; path = controllers/XLCAllMailViewController.h; sourceTree = "<group>"; };
-		955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllMailViewController.m; path = controllers/XLCAllMailViewController.m; sourceTree = "<group>"; };
+		957B27F219C87161006D26E0 /* XLCKeyChainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCKeyChainService.h; path = services/XLCKeyChainService.h; sourceTree = "<group>"; };
+		957B27F319C87161006D26E0 /* XLCKeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCKeyChainService.m; path = services/XLCKeyChainService.m; sourceTree = "<group>"; };
+		957B27F419C87161006D26E0 /* XLCLoginSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginSetting.h; path = services/XLCLoginSetting.h; sourceTree = "<group>"; };
+		957B27F519C87161006D26E0 /* XLCLoginSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginSetting.m; path = services/XLCLoginSetting.m; sourceTree = "<group>"; };
+		957B27F619C87161006D26E0 /* XLCLoginSettingService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginSettingService.h; path = services/XLCLoginSettingService.h; sourceTree = "<group>"; };
+		957B27F719C87161006D26E0 /* XLCLoginSettingService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginSettingService.m; path = services/XLCLoginSettingService.m; sourceTree = "<group>"; };
+		957B27F819C87161006D26E0 /* XLCPasswordPersistService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPasswordPersistService.h; path = services/XLCPasswordPersistService.h; sourceTree = "<group>"; };
+		957B27F919C87161006D26E0 /* XLCPasswordPersistService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPasswordPersistService.m; path = services/XLCPasswordPersistService.m; sourceTree = "<group>"; };
+		957B27FA19C87161006D26E0 /* XLCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCUtil.h; path = services/XLCUtil.h; sourceTree = "<group>"; };
+		957B27FB19C87161006D26E0 /* XLCUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCUtil.m; path = services/XLCUtil.m; sourceTree = "<group>"; };
+		957B280219C879A7006D26E0 /* XLCAllFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllFriendViewController.h; path = controllers/XLCAllFriendViewController.h; sourceTree = "<group>"; };
+		957B280319C879A7006D26E0 /* XLCAllFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllFriendViewController.m; path = controllers/XLCAllFriendViewController.m; sourceTree = "<group>"; };
+		957B280419C879A7006D26E0 /* XLCAllMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllMailViewController.h; path = controllers/XLCAllMailViewController.h; sourceTree = "<group>"; };
+		957B280519C879A7006D26E0 /* XLCAllMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllMailViewController.m; path = controllers/XLCAllMailViewController.m; sourceTree = "<group>"; };
+		957B280619C879A7006D26E0 /* XLCAllSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllSectionsViewController.h; path = controllers/XLCAllSectionsViewController.h; sourceTree = "<group>"; };
+		957B280719C879A7006D26E0 /* XLCAllSectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllSectionsViewController.m; path = controllers/XLCAllSectionsViewController.m; sourceTree = "<group>"; };
+		957B280819C879A7006D26E0 /* XLCAppSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAppSettingViewController.h; path = controllers/XLCAppSettingViewController.h; sourceTree = "<group>"; };
+		957B280919C879A7006D26E0 /* XLCAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAppSettingViewController.m; path = controllers/XLCAppSettingViewController.m; sourceTree = "<group>"; };
+		957B280A19C879A7006D26E0 /* XLCBasicProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBasicProfileViewController.h; path = controllers/XLCBasicProfileViewController.h; sourceTree = "<group>"; };
+		957B280B19C879A7006D26E0 /* XLCBasicProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBasicProfileViewController.m; path = controllers/XLCBasicProfileViewController.m; sourceTree = "<group>"; };
+		957B280C19C879A7006D26E0 /* XLCBoardDetailPassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetailPassValueDelegate.h; path = controllers/XLCBoardDetailPassValueDelegate.h; sourceTree = "<group>"; };
+		957B280D19C879A7006D26E0 /* XLCBoardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetailViewController.h; path = controllers/XLCBoardDetailViewController.h; sourceTree = "<group>"; };
+		957B280E19C879A7006D26E0 /* XLCBoardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardDetailViewController.m; path = controllers/XLCBoardDetailViewController.m; sourceTree = "<group>"; };
+		957B280F19C879A7006D26E0 /* XLCFavorBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFavorBoardsViewController.h; path = controllers/XLCFavorBoardsViewController.h; sourceTree = "<group>"; };
+		957B281019C879A7006D26E0 /* XLCFavorBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFavorBoardsViewController.m; path = controllers/XLCFavorBoardsViewController.m; sourceTree = "<group>"; };
+		957B281119C879A7006D26E0 /* XLCFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFriendViewController.h; path = controllers/XLCFriendViewController.h; sourceTree = "<group>"; };
+		957B281219C879A7006D26E0 /* XLCFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFriendViewController.m; path = controllers/XLCFriendViewController.m; sourceTree = "<group>"; };
+		957B281319C879A7006D26E0 /* XLCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginViewController.h; path = controllers/XLCLoginViewController.h; sourceTree = "<group>"; };
+		957B281419C879A7006D26E0 /* XLCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginViewController.m; path = controllers/XLCLoginViewController.m; sourceTree = "<group>"; };
+		957B281519C879A7006D26E0 /* XLCMailBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailBoxViewController.h; path = controllers/XLCMailBoxViewController.h; sourceTree = "<group>"; };
+		957B281619C879A7006D26E0 /* XLCMailBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailBoxViewController.m; path = controllers/XLCMailBoxViewController.m; sourceTree = "<group>"; };
+		957B281719C879A7006D26E0 /* XLCMailDetailPassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailPassValueDelegate.h; path = controllers/XLCMailDetailPassValueDelegate.h; sourceTree = "<group>"; };
+		957B281819C879A7006D26E0 /* XLCMailDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailViewController.h; path = controllers/XLCMailDetailViewController.h; sourceTree = "<group>"; };
+		957B281919C879A7006D26E0 /* XLCMailDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailDetailViewController.m; path = controllers/XLCMailDetailViewController.m; sourceTree = "<group>"; };
+		957B281A19C879A7006D26E0 /* XLCMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMyAccountViewController.h; path = controllers/XLCMyAccountViewController.h; sourceTree = "<group>"; };
+		957B281B19C879A7006D26E0 /* XLCMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMyAccountViewController.m; path = controllers/XLCMyAccountViewController.m; sourceTree = "<group>"; };
+		957B281C19C879A7006D26E0 /* XLCNewMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCNewMailViewController.h; path = controllers/XLCNewMailViewController.h; sourceTree = "<group>"; };
+		957B281D19C879A7006D26E0 /* XLCNewMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCNewMailViewController.m; path = controllers/XLCNewMailViewController.m; sourceTree = "<group>"; };
+		957B281E19C879A7006D26E0 /* XLCOnlineFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCOnlineFriendViewController.h; path = controllers/XLCOnlineFriendViewController.h; sourceTree = "<group>"; };
+		957B281F19C879A7006D26E0 /* XLCOnlineFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCOnlineFriendViewController.m; path = controllers/XLCOnlineFriendViewController.m; sourceTree = "<group>"; };
+		957B282019C879A7006D26E0 /* XLCPostDetailPassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailPassValueDelegate.h; path = controllers/XLCPostDetailPassValueDelegate.h; sourceTree = "<group>"; };
+		957B282119C879A7006D26E0 /* XLCPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewController.h; path = controllers/XLCPostDetailViewController.h; sourceTree = "<group>"; };
+		957B282219C879A7006D26E0 /* XLCPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewController.m; path = controllers/XLCPostDetailViewController.m; sourceTree = "<group>"; };
+		957B282319C879A7006D26E0 /* XLCSectionDetailPassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailPassValueDelegate.h; path = controllers/XLCSectionDetailPassValueDelegate.h; sourceTree = "<group>"; };
+		957B282419C879A7006D26E0 /* XLCSectionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailViewController.h; path = controllers/XLCSectionDetailViewController.h; sourceTree = "<group>"; };
+		957B282519C879A7006D26E0 /* XLCSectionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCSectionDetailViewController.m; path = controllers/XLCSectionDetailViewController.m; sourceTree = "<group>"; };
+		957B282619C879A7006D26E0 /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
+		957B282719C879A7006D26E0 /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
+		957B282819C879A7006D26E0 /* ZGNavigationBarTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationBarTitleViewController.h; path = controllers/ZGNavigationBarTitleViewController.h; sourceTree = "<group>"; };
+		957B282919C879A7006D26E0 /* ZGNavigationBarTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationBarTitleViewController.m; path = controllers/ZGNavigationBarTitleViewController.m; sourceTree = "<group>"; };
+		957B283C19C87A55006D26E0 /* XLCPostReplyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XLCPostReplyViewCell.xib; path = views/XLCCustomView/XLCPostReplyViewCell.xib; sourceTree = "<group>"; };
 		95951BB2190296C50051B628 /* list_divider_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_divider_line.png; sourceTree = "<group>"; };
 		95A1C8F719BCA520007B6336 /* IBActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBActionSheet.h; sourceTree = "<group>"; };
 		95A1C8F819BCA520007B6336 /* IBActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBActionSheet.m; sourceTree = "<group>"; };
@@ -215,9 +264,6 @@
 		95AEBDF118F98AAF00C7E8E4 /* fdubbsClientIphoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "fdubbsClientIphoneTests-Info.plist"; sourceTree = "<group>"; };
 		95AEBDF318F98AAF00C7E8E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95AEBDF518F98AAF00C7E8E4 /* fdubbsClientIphoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fdubbsClientIphoneTests.m; sourceTree = "<group>"; };
-		95AEBE0318FA5C6400C7E8E4 /* XLCPostDetailPassValueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailPassValueDelegate.h; path = controllers/XLCPostDetailPassValueDelegate.h; sourceTree = "<group>"; };
-		95AEBE0A18FA61E600C7E8E4 /* XLCUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCUtil.h; path = utils/XLCUtil.h; sourceTree = "<group>"; };
-		95AEBE0B18FA61E600C7E8E4 /* XLCUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCUtil.m; path = utils/XLCUtil.m; sourceTree = "<group>"; };
 		95AEBE1418FA678D00C7E8E4 /* XLCPostMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostMetaData.h; path = model/pojo/XLCPostMetaData.h; sourceTree = "<group>"; };
 		95AEBE1518FA678D00C7E8E4 /* XLCPostMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostMetaData.m; path = model/pojo/XLCPostMetaData.m; sourceTree = "<group>"; };
 		95AEBE1818FA67A600C7E8E4 /* XLCGCDSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCGCDSingleton.h; path = model/manager/XLCGCDSingleton.h; sourceTree = "<group>"; };
@@ -248,44 +294,14 @@
 		95B6131C199867A200FE4F00 /* XLCPostSummaryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryViewCell.m; path = views/XLCCustomView/XLCPostSummaryViewCell.m; sourceTree = "<group>"; };
 		95B6131E1998803100FE4F00 /* XLCPostSummaryInBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostSummaryInBoard.h; path = model/pojo/XLCPostSummaryInBoard.h; sourceTree = "<group>"; };
 		95B6131F1998803100FE4F00 /* XLCPostSummaryInBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostSummaryInBoard.m; path = model/pojo/XLCPostSummaryInBoard.m; sourceTree = "<group>"; };
-		95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCTopPostsViewController.h; path = controllers/XLCTopPostsViewController.h; sourceTree = "<group>"; };
-		95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCTopPostsViewController.m; path = controllers/XLCTopPostsViewController.m; sourceTree = "<group>"; };
-		95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLCPostReplyViewCell.xib; sourceTree = "<group>"; };
-		95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostDetailViewController.h; path = controllers/XLCPostDetailViewController.h; sourceTree = "<group>"; };
-		95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostDetailViewController.m; path = controllers/XLCPostDetailViewController.m; sourceTree = "<group>"; };
-		95B85CBA1994ABDF00F7D373 /* XLCBoardDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetailViewController.h; path = controllers/XLCBoardDetailViewController.h; sourceTree = "<group>"; };
-		95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardDetailViewController.m; path = controllers/XLCBoardDetailViewController.m; sourceTree = "<group>"; };
-		95B85CBD1994AD7100F7D373 /* XLCBoardDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCBoardDetailPassValueDelegate.h; path = controllers/XLCBoardDetailPassValueDelegate.h; sourceTree = "<group>"; };
-		95B885BD1940C36200157EE2 /* XLCSectionDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailPassValueDelegate.h; path = controllers/XLCSectionDetailPassValueDelegate.h; sourceTree = "<group>"; };
-		95B885BE1940C4B600157EE2 /* XLCSectionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionDetailViewController.h; path = controllers/XLCSectionDetailViewController.h; sourceTree = "<group>"; };
-		95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCSectionDetailViewController.m; path = controllers/XLCSectionDetailViewController.m; sourceTree = "<group>"; };
 		95B89910199AE4D3009EABEB /* XLCUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCUserManager.h; path = model/manager/XLCUserManager.h; sourceTree = "<group>"; };
 		95B89911199AE4D3009EABEB /* XLCUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCUserManager.m; path = model/manager/XLCUserManager.m; sourceTree = "<group>"; };
-		95B89913199AEB13009EABEB /* XLCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginViewController.h; path = controllers/XLCLoginViewController.h; sourceTree = "<group>"; };
-		95B89914199AEB13009EABEB /* XLCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginViewController.m; path = controllers/XLCLoginViewController.m; sourceTree = "<group>"; };
 		95B90A87199E428700EF5A6D /* XLCLoginResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLoginResponse.h; path = model/pojo/XLCLoginResponse.h; sourceTree = "<group>"; };
 		95B90A88199E428700EF5A6D /* XLCLoginResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLoginResponse.m; path = model/pojo/XLCLoginResponse.m; sourceTree = "<group>"; };
-		95B9514419BC904700477B32 /* XLCOnlineFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCOnlineFriendViewController.h; path = controllers/XLCOnlineFriendViewController.h; sourceTree = "<group>"; };
-		95B9514519BC904700477B32 /* XLCOnlineFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCOnlineFriendViewController.m; path = controllers/XLCOnlineFriendViewController.m; sourceTree = "<group>"; };
-		95B9514719BC905F00477B32 /* XLCAllFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllFriendViewController.h; path = controllers/XLCAllFriendViewController.h; sourceTree = "<group>"; };
-		95B9514819BC905F00477B32 /* XLCAllFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllFriendViewController.m; path = controllers/XLCAllFriendViewController.m; sourceTree = "<group>"; };
-		95B9DDE319B9EE6C001B6573 /* XLCMailBoxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailBoxViewController.h; path = controllers/XLCMailBoxViewController.h; sourceTree = "<group>"; };
-		95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailBoxViewController.m; path = controllers/XLCMailBoxViewController.m; sourceTree = "<group>"; };
-		95B9E1E719AE1B9E00B8EAC8 /* XLCMailDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailViewController.h; path = controllers/XLCMailDetailViewController.h; sourceTree = "<group>"; };
-		95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCMailDetailViewController.m; path = controllers/XLCMailDetailViewController.m; sourceTree = "<group>"; };
-		95B9E1EA19AE23E200B8EAC8 /* XLCMailDetailPassValueDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = XLCMailDetailPassValueDelegate.h; path = controllers/XLCMailDetailPassValueDelegate.h; sourceTree = "<group>"; };
 		95BA248D19A0525700FBEF98 /* PAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAImageView.h; sourceTree = "<group>"; };
 		95BA248E19A0525700FBEF98 /* PAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAImageView.m; sourceTree = "<group>"; };
-		95BA249019A0566D00FBEF98 /* XLCAppSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAppSettingViewController.h; path = controllers/XLCAppSettingViewController.h; sourceTree = "<group>"; };
-		95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAppSettingViewController.m; path = controllers/XLCAppSettingViewController.m; sourceTree = "<group>"; };
-		95BA249319A05BE200FBEF98 /* XLCMyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLCMyAccountViewController.h; sourceTree = "<group>"; };
-		95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLCMyAccountViewController.m; sourceTree = "<group>"; };
-		95BB0EF519C726530018D50E /* XLCPasswordPersistService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPasswordPersistService.h; path = utils/XLCPasswordPersistService.h; sourceTree = "<group>"; };
-		95BB0EF619C726530018D50E /* XLCPasswordPersistService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPasswordPersistService.m; path = utils/XLCPasswordPersistService.m; sourceTree = "<group>"; };
 		95BB0EF919C72C460018D50E /* CTCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCheckbox.h; sourceTree = "<group>"; };
 		95BB0EFA19C72C460018D50E /* CTCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCheckbox.m; sourceTree = "<group>"; };
-		95BB271719C6D76B00E4BB87 /* XLCKeyChainService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCKeyChainService.h; path = utils/XLCKeyChainService.h; sourceTree = "<group>"; };
-		95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCKeyChainService.m; path = utils/XLCKeyChainService.m; sourceTree = "<group>"; };
 		95BB271A19C6D87900E4BB87 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		95BBC46519A31B7E0041CCE2 /* XLCLogoutResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCLogoutResponse.h; path = model/pojo/XLCLogoutResponse.h; sourceTree = "<group>"; };
 		95BBC46619A31B7E0041CCE2 /* XLCLogoutResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCLogoutResponse.m; path = model/pojo/XLCLogoutResponse.m; sourceTree = "<group>"; };
@@ -294,20 +310,12 @@
 		95C1D0621923C32A00E38625 /* XLCContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCContent.m; path = model/pojo/XLCContent.m; sourceTree = "<group>"; };
 		95C1D0641923C36400E38625 /* XLCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCImage.h; path = model/pojo/XLCImage.h; sourceTree = "<group>"; };
 		95C1D0651923C36400E38625 /* XLCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCImage.m; path = model/pojo/XLCImage.m; sourceTree = "<group>"; };
-		95C25642191CBD5E00893317 /* ZGNavigationBarTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZGNavigationBarTitleViewController.h; path = controllers/ZGNavigationBarTitleViewController.h; sourceTree = "<group>"; };
-		95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZGNavigationBarTitleViewController.m; path = controllers/ZGNavigationBarTitleViewController.m; sourceTree = "<group>"; };
 		95C3CEF51930D7690027D0F3 /* XLCPostReplies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostReplies.h; path = model/pojo/XLCPostReplies.h; sourceTree = "<group>"; };
 		95C3CEF61930D7690027D0F3 /* XLCPostReplies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostReplies.m; path = model/pojo/XLCPostReplies.m; sourceTree = "<group>"; };
 		95C3CEF81930D8090027D0F3 /* XLCPostQoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCPostQoute.h; path = model/pojo/XLCPostQoute.h; sourceTree = "<group>"; };
 		95C3CEF91930D8090027D0F3 /* XLCPostQoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCPostQoute.m; path = model/pojo/XLCPostQoute.m; sourceTree = "<group>"; };
 		95C3CEFC1930E69C0027D0F3 /* LoadMoreFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreFooterView.h; sourceTree = "<group>"; };
 		95C3CEFD1930E69C0027D0F3 /* LoadMoreFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreFooterView.m; sourceTree = "<group>"; };
-		95C5D7D419A4587F00D8C754 /* XLCBasicProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBasicProfileViewController.h; path = controllers/XLCBasicProfileViewController.h; sourceTree = "<group>"; };
-		95C5D7D519A4587F00D8C754 /* XLCBasicProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBasicProfileViewController.m; path = controllers/XLCBasicProfileViewController.m; sourceTree = "<group>"; };
-		95C5D7D719A47D2500D8C754 /* XLCNewMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCNewMailViewController.h; path = controllers/XLCNewMailViewController.h; sourceTree = "<group>"; };
-		95C5D7D819A47D2500D8C754 /* XLCNewMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCNewMailViewController.m; path = controllers/XLCNewMailViewController.m; sourceTree = "<group>"; };
-		95C5D7DA19A47D3800D8C754 /* XLCFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFriendViewController.h; path = controllers/XLCFriendViewController.h; sourceTree = "<group>"; };
-		95C5D7DB19A47D3800D8C754 /* XLCFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFriendViewController.m; path = controllers/XLCFriendViewController.m; sourceTree = "<group>"; };
 		95C5D7DD19A4924100D8C754 /* XLCFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCFriend.h; path = model/pojo/XLCFriend.h; sourceTree = "<group>"; };
 		95C5D7DE19A4924100D8C754 /* XLCFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCFriend.m; path = model/pojo/XLCFriend.m; sourceTree = "<group>"; };
 		95C5D7E019A49A7200D8C754 /* XLCMailMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCMailMetaData.h; path = model/pojo/XLCMailMetaData.h; sourceTree = "<group>"; };
@@ -340,8 +348,6 @@
 		95C5D80819A4BA5000D8C754 /* XLCProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCProfileManager.m; path = model/manager/XLCProfileManager.m; sourceTree = "<group>"; };
 		95C6EB2319A39984001D3BC2 /* RKObjectManager+XLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "RKObjectManager+XLC.h"; path = "rest/RKObjectManager+XLC.h"; sourceTree = "<group>"; };
 		95C6EB2419A39984001D3BC2 /* RKObjectManager+XLC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RKObjectManager+XLC.m"; path = "rest/RKObjectManager+XLC.m"; sourceTree = "<group>"; };
-		95CB1826193A234A0059FF2A /* XLCAllSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCAllSectionsViewController.h; path = controllers/XLCAllSectionsViewController.h; sourceTree = "<group>"; };
-		95CB1827193A234A0059FF2A /* XLCAllSectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCAllSectionsViewController.m; path = controllers/XLCAllSectionsViewController.m; sourceTree = "<group>"; };
 		95CB1829193A238D0059FF2A /* XLCBoardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCBoardManager.h; path = model/manager/XLCBoardManager.h; sourceTree = "<group>"; };
 		95CB182A193A238D0059FF2A /* XLCBoardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XLCBoardManager.m; path = model/manager/XLCBoardManager.m; sourceTree = "<group>"; };
 		95CB182C193A2CA70059FF2A /* XLCSectionMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XLCSectionMetaData.h; path = model/pojo/XLCSectionMetaData.h; sourceTree = "<group>"; };
@@ -482,6 +488,70 @@
 			path = views/FRDLivelyButton;
 			sourceTree = "<group>";
 		};
+		957B27F119C8714D006D26E0 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				957B27F219C87161006D26E0 /* XLCKeyChainService.h */,
+				957B27F319C87161006D26E0 /* XLCKeyChainService.m */,
+				957B27F419C87161006D26E0 /* XLCLoginSetting.h */,
+				957B27F519C87161006D26E0 /* XLCLoginSetting.m */,
+				957B27F619C87161006D26E0 /* XLCLoginSettingService.h */,
+				957B27F719C87161006D26E0 /* XLCLoginSettingService.m */,
+				957B27F819C87161006D26E0 /* XLCPasswordPersistService.h */,
+				957B27F919C87161006D26E0 /* XLCPasswordPersistService.m */,
+				957B27FA19C87161006D26E0 /* XLCUtil.h */,
+				957B27FB19C87161006D26E0 /* XLCUtil.m */,
+			);
+			name = services;
+			sourceTree = "<group>";
+		};
+		957B280119C87988006D26E0 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				957B280219C879A7006D26E0 /* XLCAllFriendViewController.h */,
+				957B280319C879A7006D26E0 /* XLCAllFriendViewController.m */,
+				957B280419C879A7006D26E0 /* XLCAllMailViewController.h */,
+				957B280519C879A7006D26E0 /* XLCAllMailViewController.m */,
+				957B280619C879A7006D26E0 /* XLCAllSectionsViewController.h */,
+				957B280719C879A7006D26E0 /* XLCAllSectionsViewController.m */,
+				957B280819C879A7006D26E0 /* XLCAppSettingViewController.h */,
+				957B280919C879A7006D26E0 /* XLCAppSettingViewController.m */,
+				957B280A19C879A7006D26E0 /* XLCBasicProfileViewController.h */,
+				957B280B19C879A7006D26E0 /* XLCBasicProfileViewController.m */,
+				957B280C19C879A7006D26E0 /* XLCBoardDetailPassValueDelegate.h */,
+				957B280D19C879A7006D26E0 /* XLCBoardDetailViewController.h */,
+				957B280E19C879A7006D26E0 /* XLCBoardDetailViewController.m */,
+				957B280F19C879A7006D26E0 /* XLCFavorBoardsViewController.h */,
+				957B281019C879A7006D26E0 /* XLCFavorBoardsViewController.m */,
+				957B281119C879A7006D26E0 /* XLCFriendViewController.h */,
+				957B281219C879A7006D26E0 /* XLCFriendViewController.m */,
+				957B281319C879A7006D26E0 /* XLCLoginViewController.h */,
+				957B281419C879A7006D26E0 /* XLCLoginViewController.m */,
+				957B281519C879A7006D26E0 /* XLCMailBoxViewController.h */,
+				957B281619C879A7006D26E0 /* XLCMailBoxViewController.m */,
+				957B281719C879A7006D26E0 /* XLCMailDetailPassValueDelegate.h */,
+				957B281819C879A7006D26E0 /* XLCMailDetailViewController.h */,
+				957B281919C879A7006D26E0 /* XLCMailDetailViewController.m */,
+				957B281A19C879A7006D26E0 /* XLCMyAccountViewController.h */,
+				957B281B19C879A7006D26E0 /* XLCMyAccountViewController.m */,
+				957B281C19C879A7006D26E0 /* XLCNewMailViewController.h */,
+				957B281D19C879A7006D26E0 /* XLCNewMailViewController.m */,
+				957B281E19C879A7006D26E0 /* XLCOnlineFriendViewController.h */,
+				957B281F19C879A7006D26E0 /* XLCOnlineFriendViewController.m */,
+				957B282019C879A7006D26E0 /* XLCPostDetailPassValueDelegate.h */,
+				957B282119C879A7006D26E0 /* XLCPostDetailViewController.h */,
+				957B282219C879A7006D26E0 /* XLCPostDetailViewController.m */,
+				957B282319C879A7006D26E0 /* XLCSectionDetailPassValueDelegate.h */,
+				957B282419C879A7006D26E0 /* XLCSectionDetailViewController.h */,
+				957B282519C879A7006D26E0 /* XLCSectionDetailViewController.m */,
+				957B282619C879A7006D26E0 /* XLCTopPostsViewController.h */,
+				957B282719C879A7006D26E0 /* XLCTopPostsViewController.m */,
+				957B282819C879A7006D26E0 /* ZGNavigationBarTitleViewController.h */,
+				957B282919C879A7006D26E0 /* ZGNavigationBarTitleViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
 		95951BB1190296C50051B628 /* image */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,10 +646,10 @@
 		95AEBDCD18F98AAF00C7E8E4 /* fdubbsClientIphone */ = {
 			isa = PBXGroup;
 			children = (
+				957B280119C87988006D26E0 /* controllers */,
+				957B27F119C8714D006D26E0 /* services */,
 				95B605B118FD6910009F9A39 /* application */,
 				95B605B018FD68FA009F9A39 /* resources */,
-				95B605AF18FD68C4009F9A39 /* ViewControllers */,
-				95AEBE0918FA60C200C7E8E4 /* utils */,
 				95AEBE2A18FA915900C7E8E4 /* views */,
 				95AEBE2018FA7F5800C7E8E4 /* RESTfulClient */,
 				95AEBE0418FA5CF500C7E8E4 /* model */,
@@ -625,19 +695,6 @@
 				95AEBE1318FA672300C7E8E4 /* POJO */,
 			);
 			name = model;
-			sourceTree = "<group>";
-		};
-		95AEBE0918FA60C200C7E8E4 /* utils */ = {
-			isa = PBXGroup;
-			children = (
-				95AEBE0A18FA61E600C7E8E4 /* XLCUtil.h */,
-				95AEBE0B18FA61E600C7E8E4 /* XLCUtil.m */,
-				95BB271719C6D76B00E4BB87 /* XLCKeyChainService.h */,
-				95BB271819C6D76B00E4BB87 /* XLCKeyChainService.m */,
-				95BB0EF519C726530018D50E /* XLCPasswordPersistService.h */,
-				95BB0EF619C726530018D50E /* XLCPasswordPersistService.m */,
-			);
-			name = utils;
 			sourceTree = "<group>";
 		};
 		95AEBE1318FA672300C7E8E4 /* POJO */ = {
@@ -795,53 +852,6 @@
 			name = ASTextField;
 			sourceTree = "<group>";
 		};
-		95B605AF18FD68C4009F9A39 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				95C25642191CBD5E00893317 /* ZGNavigationBarTitleViewController.h */,
-				95C25643191CBD5E00893317 /* ZGNavigationBarTitleViewController.m */,
-				95AEBE0318FA5C6400C7E8E4 /* XLCPostDetailPassValueDelegate.h */,
-				95B6E9FC1900246200824D6F /* XLCTopPostsViewController.h */,
-				95B6E9FD1900246200824D6F /* XLCTopPostsViewController.m */,
-				95B7C35A190941CC005C1A4D /* XLCPostDetailViewController.h */,
-				95B7C35B190941CC005C1A4D /* XLCPostDetailViewController.m */,
-				95CB1826193A234A0059FF2A /* XLCAllSectionsViewController.h */,
-				95CB1827193A234A0059FF2A /* XLCAllSectionsViewController.m */,
-				95B885BD1940C36200157EE2 /* XLCSectionDetailPassValueDelegate.h */,
-				95B885BE1940C4B600157EE2 /* XLCSectionDetailViewController.h */,
-				95B885BF1940C4B600157EE2 /* XLCSectionDetailViewController.m */,
-				95B85CBA1994ABDF00F7D373 /* XLCBoardDetailViewController.h */,
-				95B85CBB1994ABDF00F7D373 /* XLCBoardDetailViewController.m */,
-				95B85CBD1994AD7100F7D373 /* XLCBoardDetailPassValueDelegate.h */,
-				954CD1C61999B531004004C6 /* XLCFavorBoardsViewController.h */,
-				954CD1C71999B531004004C6 /* XLCFavorBoardsViewController.m */,
-				95B89913199AEB13009EABEB /* XLCLoginViewController.h */,
-				95B89914199AEB13009EABEB /* XLCLoginViewController.m */,
-				95BA249019A0566D00FBEF98 /* XLCAppSettingViewController.h */,
-				95BA249119A0566D00FBEF98 /* XLCAppSettingViewController.m */,
-				95BA249319A05BE200FBEF98 /* XLCMyAccountViewController.h */,
-				95BA249419A05BE200FBEF98 /* XLCMyAccountViewController.m */,
-				95C5D7D419A4587F00D8C754 /* XLCBasicProfileViewController.h */,
-				95C5D7D519A4587F00D8C754 /* XLCBasicProfileViewController.m */,
-				95C5D7D719A47D2500D8C754 /* XLCNewMailViewController.h */,
-				95C5D7D819A47D2500D8C754 /* XLCNewMailViewController.m */,
-				95C5D7DA19A47D3800D8C754 /* XLCFriendViewController.h */,
-				95C5D7DB19A47D3800D8C754 /* XLCFriendViewController.m */,
-				95B9E1E719AE1B9E00B8EAC8 /* XLCMailDetailViewController.h */,
-				95B9E1E819AE1B9E00B8EAC8 /* XLCMailDetailViewController.m */,
-				95B9E1EA19AE23E200B8EAC8 /* XLCMailDetailPassValueDelegate.h */,
-				95B9DDE319B9EE6C001B6573 /* XLCMailBoxViewController.h */,
-				95B9DDE419B9EE6C001B6573 /* XLCMailBoxViewController.m */,
-				955204A319BB494F00A1B6FB /* XLCAllMailViewController.h */,
-				955204A419BB494F00A1B6FB /* XLCAllMailViewController.m */,
-				95B9514419BC904700477B32 /* XLCOnlineFriendViewController.h */,
-				95B9514519BC904700477B32 /* XLCOnlineFriendViewController.m */,
-				95B9514719BC905F00477B32 /* XLCAllFriendViewController.h */,
-				95B9514819BC905F00477B32 /* XLCAllFriendViewController.m */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
 		95B605B018FD68FA009F9A39 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,7 +863,6 @@
 		95B605B118FD6910009F9A39 /* application */ = {
 			isa = PBXGroup;
 			children = (
-				95B71A95191767CA0002B251 /* XLCPostReplyViewCell.xib */,
 				95AEBDD618F98AAF00C7E8E4 /* XLCAppDelegate.h */,
 				95AEBDD718F98AAF00C7E8E4 /* XLCAppDelegate.m */,
 				95AEBDD918F98AAF00C7E8E4 /* Main.storyboard */,
@@ -894,6 +903,7 @@
 		95CB182F193B87DC0059FF2A /* XLCCustomView */ = {
 			isa = PBXGroup;
 			children = (
+				957B283C19C87A55006D26E0 /* XLCPostReplyViewCell.xib */,
 				95CB1830193B88670059FF2A /* UIImage+Overlay.h */,
 				95CB1831193B88670059FF2A /* UIImage+Overlay.m */,
 				95CB1832193B88670059FF2A /* XLCCustomLinkView.h */,
@@ -1107,8 +1117,8 @@
 				95A2087818FE73BC009CDEA3 /* whiteArrow@2x.png in Resources */,
 				95B46D301999B0A4005B4F06 /* text_field@2x.png in Resources */,
 				95B46D351999B0A4005B4F06 /* login_button.png in Resources */,
-				95B71A96191767CA0002B251 /* XLCPostReplyViewCell.xib in Resources */,
 				95B46D341999B0A4005B4F06 /* user_name_icon@2x.png in Resources */,
+				957B283D19C87A55006D26E0 /* XLCPostReplyViewCell.xib in Resources */,
 				95005FDF19B5BCE10092DE9C /* LICENSE in Resources */,
 				95B46D2D1999B0A4005B4F06 /* round_textfield.png in Resources */,
 				95A2087618FE73BC009CDEA3 /* grayArrow@2x.png in Resources */,
@@ -1211,12 +1221,10 @@
 				95C5D7F419A4A00C00D8C754 /* XLCUserPerformance.m in Sources */,
 				95CCB646191B561600B261D6 /* NIButtonUtilities.m in Sources */,
 				95A1C8F919BCA520007B6336 /* IBActionSheet.m in Sources */,
-				95C5D7D619A4587F00D8C754 /* XLCBasicProfileViewController.m in Sources */,
 				95005FD619B5BC2F0092DE9C /* XLCActivityIndicator.m in Sources */,
 				95AEBE2318FA7FAD00C7E8E4 /* XLCRESTfulClient.m in Sources */,
 				95CCB64E191B561600B261D6 /* NIInMemoryCache.m in Sources */,
 				95CB184A193B888A0059FF2A /* XLCSectionViewCell.m in Sources */,
-				95C5D7DC19A47D3800D8C754 /* XLCFriendViewController.m in Sources */,
 				95E092D21948AAFD004695A7 /* XLCBoardDetail.m in Sources */,
 				95C5D7EE19A49E4B00D8C754 /* XLCUserMetaData.m in Sources */,
 				95CCB655191B561600B261D6 /* NIRuntimeClassModifications.m in Sources */,
@@ -1224,15 +1232,15 @@
 				95CCB653191B561600B261D6 /* NIOperations.m in Sources */,
 				95B613201998803100FE4F00 /* XLCPostSummaryInBoard.m in Sources */,
 				95C1D0661923C36400E38625 /* XLCImage.m in Sources */,
+				957B282A19C879A7006D26E0 /* XLCAllFriendViewController.m in Sources */,
 				95CD130A190635A000CC1F61 /* XLCPostDetail.m in Sources */,
 				95AEBE2618FA800300C7E8E4 /* XLCRestConstants.m in Sources */,
 				95AEBDD818F98AAF00C7E8E4 /* XLCAppDelegate.m in Sources */,
 				95B6131D199867A200FE4F00 /* XLCPostSummaryViewCell.m in Sources */,
+				957B282F19C879A7006D26E0 /* XLCBoardDetailViewController.m in Sources */,
 				95C1D0631923C32A00E38625 /* XLCContent.m in Sources */,
 				95CCB64A191B561600B261D6 /* NIDeviceOrientation.m in Sources */,
-				95AEBE0C18FA61E600C7E8E4 /* XLCUtil.m in Sources */,
 				95CCB64F191B561600B261D6 /* NINavigationAppearance.m in Sources */,
-				95B9514619BC904700477B32 /* XLCOnlineFriendViewController.m in Sources */,
 				95EA054119279B0A00B52793 /* UIButton+Bootstrap.m in Sources */,
 				95EA054019279B0A00B52793 /* NSString+FontAwesome.m in Sources */,
 				95CCB64B191B561600B261D6 /* NIError.m in Sources */,
@@ -1240,76 +1248,80 @@
 				95C5D80319A4B49000D8C754 /* XLCUserBaiscProfile.m in Sources */,
 				95C5D7F719A4A0C000D8C754 /* XLCUserSignature.m in Sources */,
 				95C5D7EB19A49D5900D8C754 /* XLCMailDetail.m in Sources */,
-				95B89915199AEB13009EABEB /* XLCLoginViewController.m in Sources */,
+				957B283919C879A7006D26E0 /* XLCSectionDetailViewController.m in Sources */,
 				95CB1840193B88670059FF2A /* UIImage+Overlay.m in Sources */,
 				95AEBE1E18FA67BD00C7E8E4 /* XLCPostSummary.m in Sources */,
 				95C5D7F119A49FDD00D8C754 /* XLCUserInfo.m in Sources */,
 				95CCB652191B561600B261D6 /* NINonRetainingCollections.m in Sources */,
-				95B7C35C190941CC005C1A4D /* XLCPostDetailViewController.m in Sources */,
 				9550CD0319AF74AC001D1478 /* XLCMailSummaryViewCell.m in Sources */,
-				95B85CBC1994ABDF00F7D373 /* XLCBoardDetailViewController.m in Sources */,
 				95CCB648191B561600B261D6 /* NIDataStructures.m in Sources */,
 				95CB1846193B88670059FF2A /* XLCTopPostSummaryViewCell.m in Sources */,
-				95B9514919BC905F00477B32 /* XLCAllFriendViewController.m in Sources */,
+				957B280019C87161006D26E0 /* XLCUtil.m in Sources */,
 				95BBC46719A31B7E0041CCE2 /* XLCLogoutResponse.m in Sources */,
-				95B885C01940C4B600157EE2 /* XLCSectionDetailViewController.m in Sources */,
 				95CB1844193B88670059FF2A /* XLCPostDetailViewCell.m in Sources */,
 				95C3CEFA1930D8090027D0F3 /* XLCPostQoute.m in Sources */,
-				95B9E1E919AE1B9E00B8EAC8 /* XLCMailDetailViewController.m in Sources */,
 				95C3CEFE1930E69C0027D0F3 /* LoadMoreFooterView.m in Sources */,
-				95C25644191CBD5E00893317 /* ZGNavigationBarTitleViewController.m in Sources */,
+				957B27FF19C87161006D26E0 /* XLCPasswordPersistService.m in Sources */,
+				957B282B19C879A7006D26E0 /* XLCAllMailViewController.m in Sources */,
 				95C5D80919A4BA5000D8C754 /* XLCProfileManager.m in Sources */,
-				954CD1C81999B531004004C6 /* XLCFavorBoardsViewController.m in Sources */,
 				95CCB654191B561600B261D6 /* NIPaths.m in Sources */,
 				95CCB659191B561600B261D6 /* NIViewRecycler.m in Sources */,
 				95C5D80619A4B8E500D8C754 /* XLCFriendManager.m in Sources */,
 				95005FE019B5BCE10092DE9C /* MBProgressHUD.m in Sources */,
 				95CCB647191B561600B261D6 /* NICommonMetrics.m in Sources */,
-				95BA249519A05BE200FBEF98 /* XLCMyAccountViewController.m in Sources */,
+				957B283219C879A7006D26E0 /* XLCLoginViewController.m in Sources */,
+				957B283A19C879A7006D26E0 /* XLCTopPostsViewController.m in Sources */,
 				95CCB64D191B561600B261D6 /* NIImageUtilities.m in Sources */,
 				95CCB649191B561600B261D6 /* NIDebuggingTools.m in Sources */,
+				957B283819C879A7006D26E0 /* XLCPostDetailViewController.m in Sources */,
 				95CCB651191B561600B261D6 /* NINonEmptyCollectionTesting.m in Sources */,
 				95B46D2C1999B0A4005B4F06 /* ASTextField.m in Sources */,
 				95B89912199AE4D3009EABEB /* XLCUserManager.m in Sources */,
-				95BA249219A0566D00FBEF98 /* XLCAppSettingViewController.m in Sources */,
 				95C5D80019A4B36F00D8C754 /* XLCUserBirthDate.m in Sources */,
-				95BB0EF719C726530018D50E /* XLCPasswordPersistService.m in Sources */,
 				95BA248F19A0525700FBEF98 /* PAImageView.m in Sources */,
 				95CCB65A191B561600B261D6 /* UIResponder+NimbusCore.m in Sources */,
 				95AEBE1B18FA67A600C7E8E4 /* XLCPostManager.m in Sources */,
 				95C5D7E519A49B3F00D8C754 /* XLCMailSummary.m in Sources */,
 				95BB0EFB19C72C460018D50E /* CTCheckbox.m in Sources */,
+				957B282D19C879A7006D26E0 /* XLCAppSettingViewController.m in Sources */,
 				95AEBE1618FA678D00C7E8E4 /* XLCPostMetaData.m in Sources */,
-				95C5D7D919A47D2500D8C754 /* XLCNewMailViewController.m in Sources */,
 				95CB1841193B88670059FF2A /* XLCCustomLinkView.m in Sources */,
+				957B282E19C879A7006D26E0 /* XLCBasicProfileViewController.m in Sources */,
 				95C5D7E819A49C5200D8C754 /* XLCMailSummaryInBox.m in Sources */,
 				95C5D7E219A49A7200D8C754 /* XLCMailMetaData.m in Sources */,
+				957B283619C879A7006D26E0 /* XLCNewMailViewController.m in Sources */,
 				95234C671913AB1000C80BEB /* FRDLivelyButton.m in Sources */,
-				95CB1828193A234A0059FF2A /* XLCAllSectionsViewController.m in Sources */,
 				95CB182B193A238D0059FF2A /* XLCBoardManager.m in Sources */,
+				957B282C19C879A7006D26E0 /* XLCAllSectionsViewController.m in Sources */,
 				95CCB611191B555700B261D6 /* NIAttributedLabel.m in Sources */,
-				95BB271919C6D76B00E4BB87 /* XLCKeyChainService.m in Sources */,
+				957B27FC19C87161006D26E0 /* XLCKeyChainService.m in Sources */,
 				95CCB64C191B561600B261D6 /* NIFoundationMethods.m in Sources */,
+				957B27FD19C87161006D26E0 /* XLCLoginSetting.m in Sources */,
+				957B283519C879A7006D26E0 /* XLCMyAccountViewController.m in Sources */,
 				95C5D7FA19A4A14700D8C754 /* XLCUserIntrodution.m in Sources */,
 				95B44EA219935B4900BE7BA0 /* XLCBoardViewCell.m in Sources */,
 				95CCB645191B561600B261D6 /* NIActions.m in Sources */,
+				957B283419C879A7006D26E0 /* XLCMailDetailViewController.m in Sources */,
+				957B283719C879A7006D26E0 /* XLCOnlineFriendViewController.m in Sources */,
 				95CCB657191B561600B261D6 /* NISnapshotRotation.m in Sources */,
 				95CB182E193A2CA70059FF2A /* XLCSectionMetaData.m in Sources */,
-				95B6E9FE1900246200824D6F /* XLCTopPostsViewController.m in Sources */,
 				95CB1847193B88670059FF2A /* ZGNavigationTitleView.m in Sources */,
 				95C5D7DF19A4924100D8C754 /* XLCFriend.m in Sources */,
 				95CCB650191B561600B261D6 /* NINetworkActivity.m in Sources */,
 				95CCB656191B561600B261D6 /* NISDKAvailability.m in Sources */,
 				95AEBDD418F98AAF00C7E8E4 /* main.m in Sources */,
 				95C5D7FD19A4A60800D8C754 /* XLCMailManager.m in Sources */,
+				957B283B19C879A7006D26E0 /* ZGNavigationBarTitleViewController.m in Sources */,
 				95CB1843193B88670059FF2A /* XLCMainPostViewCell.m in Sources */,
+				957B283019C879A7006D26E0 /* XLCFavorBoardsViewController.m in Sources */,
 				95E092CF1948AA82004695A7 /* XLCBoardMetaData.m in Sources */,
 				95E092D51948ABC6004695A7 /* XLCSection.m in Sources */,
-				95B9DDE519B9EE6C001B6573 /* XLCMailBoxViewController.m in Sources */,
+				957B283319C879A7006D26E0 /* XLCMailBoxViewController.m in Sources */,
+				957B27FE19C87161006D26E0 /* XLCLoginSettingService.m in Sources */,
 				95CB1845193B88670059FF2A /* XLCPostReplyViewCell.m in Sources */,
+				957B283119C879A7006D26E0 /* XLCFriendViewController.m in Sources */,
 				95C6EB2519A39984001D3BC2 /* RKObjectManager+XLC.m in Sources */,
 				95CCB612191B555700B261D6 /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
-				955204A519BB494F00A1B6FB /* XLCAllMailViewController.m in Sources */,
 				95CCB658191B561600B261D6 /* NIState.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
