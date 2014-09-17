@@ -251,10 +251,7 @@
         [[XLCLoginSettingService sharedXLCLoginSettingService] insertOrUpdateLoginSettingForUser:userName withRememberPasswd:rememberPasswd autoLogin:autoLogin];
         [[XLCLoginSettingService sharedXLCLoginSettingService] setLastLoginUser:userName];
         
-        if (rememberPasswd) {
-            NSLog(@"Remember me Check!");
-            [[XLCPasswordPersistService sharedXLCPasswordPersistService] addOrUpdatePersistPassword:passWord forUser:userName];
-        }
+        [[XLCPasswordPersistService sharedXLCPasswordPersistService] addOrUpdatePersistPassword:passWord forUser:userName];
         
         [XLCActivityIndicator hideOnView:self.view];
         [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.1];

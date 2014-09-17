@@ -63,7 +63,7 @@ SINGLETON_GCD(XLCLoginSettingService);
     NSLog(@"insertOrUpdateLoginSettingForUser");
     NSUserDefaults *mySettingData = [NSUserDefaults standardUserDefaults];
     
-    NSMutableDictionary *loginSettingDict = [mySettingData objectForKey:LOGIN_SETTING_DICT_KEY];
+    NSMutableDictionary *loginSettingDict = [[mySettingData objectForKey:LOGIN_SETTING_DICT_KEY] mutableCopy];
     if (loginSettingDict == nil) {
         loginSettingDict = [[NSMutableDictionary alloc] init];
     }
