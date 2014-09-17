@@ -31,7 +31,7 @@ SINGLETON_GCD(XLCPasswordPersistService);
     if (success) {
         NSLog(@"Success to insert/update persist password");
     } else {
-        NSLog(@"fAIL to insert/update persist password");
+        NSLog(@"Fail to insert/update persist password");
     }
 }
 

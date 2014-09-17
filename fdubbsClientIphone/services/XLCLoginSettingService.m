@@ -82,7 +82,6 @@ SINGLETON_GCD(XLCLoginSettingService);
     loginSetting.rememberPasswd = rememberMe;
     loginSetting.autoLogin = autoLogin;
     [loginSettingDict setObject:[loginSetting getPropertyListDescriptionDict] forKey:userName];
-    NSLog(@"add login setting dict : %d, %@", loginSettingDict.count, loginSettingDict);
     
     [mySettingData setObject:loginSettingDict forKey:LOGIN_SETTING_DICT_KEY];
     

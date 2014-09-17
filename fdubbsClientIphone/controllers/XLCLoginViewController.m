@@ -254,7 +254,7 @@
         [[XLCPasswordPersistService sharedXLCPasswordPersistService] addOrUpdatePersistPassword:passWord forUser:userName];
         
         [XLCActivityIndicator hideOnView:self.view];
-        [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.1];
+        [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.2];
 
     };
     

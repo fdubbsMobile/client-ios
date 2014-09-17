@@ -77,12 +77,14 @@ SINGLETON_GCD(XLCKeyChainService);
     OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)searchDictionary, NULL);
     
     if (status == errSecSuccess) {
+        searchDictionary = [self newSearchDictionary:identifier];
         NSMutableDictionary *updateDictionary = [[NSMutableDictionary alloc] init];
         NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
         [updateDictionary setObject:valueData forKey:(__bridge id)kSecValueData];
         
         status = SecItemUpdate((__bridge CFDictionaryRef)searchDictionary,
                                         (__bridge CFDictionaryRef)updateDictionary);
+        NSLog(@"update state : %d", status);
 
     } else if (status == errSecItemNotFound) {
         NSLog(@"No data found");

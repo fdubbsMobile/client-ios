@@ -13,15 +13,21 @@
 #import "XLCActivityIndicator.h"
 #import "XLCActivityIndicator.h"
 #import "IBActionSheet.h"
+#import "XLCLoginSettingService.h"
+#import "XLCLoginSetting.h"
+#import "XLCPasswordPersistService.h"
 
 @interface XLCMyAccountViewController () <IBActionSheetDelegate>
 {
-    BOOL hasInitialized;
+    BOOL _hasInitialized;
+    dispatch_queue_t _queue;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *avatarView;
 @property (strong, nonatomic) IBOutlet PAImageView *avatarImgView;
 @property (strong, nonatomic) IBOutlet UIButton *logoutButton;
+@property (strong, nonatomic) IBOutlet UISwitch *rememberPasswdSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *autoLoginSwitch;
 
 @end
 
@@ -32,7 +38,8 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        hasInitialized = FALSE;
+        _hasInitialized = FALSE;
+        _queue = nil;
     }
     return self;
 }
@@ -64,7 +71,7 @@
         return;
     }
     
-    if (hasInitialized) {
+    if (_hasInitialized) {
         NSLog(@"XLCMyAccountViewController has been initialized!");
         return;
     }
@@ -86,7 +93,33 @@
                         imageWithOverlayColor:[UIColor colorWithRed:212/255.0 green:63/255.0 blue:58/255.0 alpha:1]];
     [_logoutButton setBackgroundImage:bgImage forState:UIControlStateNormal];
     
-    hasInitialized = TRUE;
+    
+    
+    NSString *lastLoginUser = [[XLCLoginSettingService sharedXLCLoginSettingService] getLastLoginUser];
+    if (lastLoginUser != nil) {
+        XLCLoginSetting *loginSetting = [[XLCLoginSettingService sharedXLCLoginSettingService] getLoginSettingByUserName:lastLoginUser];
+        if (loginSetting == nil) {
+            NSLog(@"No loginSetting found for user : %@", lastLoginUser);
+        }
+        
+        if (loginSetting.rememberPasswd) {
+            _rememberPasswdSwitch.on = YES;
+        } else {
+            _rememberPasswdSwitch.on = NO;
+        }
+        
+        if (loginSetting.autoLogin) {
+            _autoLoginSwitch.on = YES;
+        } else {
+            _autoLoginSwitch.on = NO;
+        }
+    }
+    
+    if (_queue == nil) {
+        _queue = dispatch_queue_create("updateLoginSettingQueue", DISPATCH_QUEUE_SERIAL);
+    }
+    
+    _hasInitialized = TRUE;
     
     DebugLog(@"init XLCMyAccountViewController");
 }
@@ -96,8 +129,29 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)rememberPasswdValueChange{
+    NSLog(@"rememberPasswdValueChange");
+    [self updateUserLoginSetting];
+}
 
-- (IBAction)doLogout:(id)sender {
+- (IBAction)autoLoginValueChange{
+    NSLog(@"autoLoginValueChange");
+    [self updateUserLoginSetting];
+}
+
+- (void) updateUserLoginSetting
+{
+    dispatch_async(_queue, ^{
+        NSString *lastLoginUser = [[XLCLoginSettingService sharedXLCLoginSettingService] getLastLoginUser];
+        if (lastLoginUser != nil) {
+            [[XLCLoginSettingService sharedXLCLoginSettingService] insertOrUpdateLoginSettingForUser:lastLoginUser withRememberPasswd:_rememberPasswdSwitch.on autoLogin:_autoLoginSwitch.on];
+        }
+        
+    });
+}
+
+
+- (IBAction)doLogout {
     IBActionSheet *ibaActionSheet = [[IBActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"注销登录" otherButtonTitles:nil];
     [ibaActionSheet showInView:self.tabBarController.view];
 }
@@ -122,7 +176,7 @@
         
         DebugLog(@"Success to logout!");
         [XLCActivityIndicator hideOnView:self.view];
-        [self doVisitorBrowse];
+        [self performSelector:@selector(doVisitorBrowse) withObject:nil afterDelay:0.4];
         
     };
     
