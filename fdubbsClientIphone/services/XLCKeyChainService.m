@@ -87,10 +87,11 @@ SINGLETON_GCD(XLCKeyChainService);
     } else if (status == errSecItemNotFound) {
         NSLog(@"No data found");
         
+        NSMutableDictionary *newDictionary = [self newSearchDictionary:identifier];
         NSData *valueData = [value dataUsingEncoding:NSUTF8StringEncoding];
-        [searchDictionary setObject:valueData forKey:(__bridge id)kSecValueData];
+        [newDictionary setObject:valueData forKey:(__bridge id)kSecValueData];
         
-        status = SecItemAdd((__bridge CFDictionaryRef)searchDictionary, NULL);
+        status = SecItemAdd((__bridge CFDictionaryRef)newDictionary, NULL);
         
     } else {
         NSLog(@"error!");

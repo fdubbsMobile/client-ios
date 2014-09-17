@@ -27,7 +27,12 @@ SINGLETON_GCD(XLCPasswordPersistService);
 
 - (void) addOrUpdatePersistPassword:(NSString *)password forUser:(NSString *)userName
 {
-    [[XLCKeyChainService sharedXLCKeyChainService] createOrUpdateKeychainValue:password forIdentifier:userName];
+    BOOL success = [[XLCKeyChainService sharedXLCKeyChainService] createOrUpdateKeychainValue:password forIdentifier:userName];
+    if (success) {
+        NSLog(@"Success to insert/update persist password");
+    } else {
+        NSLog(@"fAIL to insert/update persist password");
+    }
 }
 
 @end
