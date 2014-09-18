@@ -289,7 +289,7 @@
     
     
     
-    [[XLCLoginManager sharedXLCUserManager]doUserLoginWithUserName:userName
+    [[XLCLoginManager sharedXLCLoginManager]doUserLoginWithUserName:userName
                                                          passWord:passWord
                                                      successBlock:successBlock
                                                         failBlock:failBlock ];

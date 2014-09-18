@@ -56,7 +56,7 @@
 
 - (void) initialize
 {
-    BOOL hasUserLogin = [[XLCLoginManager sharedXLCUserManager] hasUserAlreadyLogin];
+    BOOL hasUserLogin = [[XLCLoginManager sharedXLCLoginManager] hasUserAlreadyLogin];
     NSLog(@"hasUserLogin : %d", hasUserLogin);
     if (!hasUserLogin) {
         NSLog(@"performSegueWithIdentifier:doLogin");
@@ -124,7 +124,7 @@
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
-    BOOL hasUserLogin = [[XLCLoginManager sharedXLCUserManager] hasUserAlreadyLogin];
+    BOOL hasUserLogin = [[XLCLoginManager sharedXLCLoginManager] hasUserAlreadyLogin];
     NSLog(@"hasUserLogin : %d", hasUserLogin);
     if (!hasUserLogin) {
         [self performSegueWithIdentifier:@"doLogin" sender:self];
@@ -184,8 +184,7 @@
         NSLog(@"Hit error: %@", error);
     };
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[XLCBoardManager sharedXLCBoardManager] doLoadFavorBoardsWithAuthCode:authCode successBlock:successBlock failBlock:failBlock];
+    [[XLCBoardManager sharedXLCBoardManager] doLoadFavorBoardsWithSuccessBlock:successBlock failBlock:failBlock];
     //[indicatorView startAnimating];
     [XLCActivityIndicator showLoadingOnView:self.view];
     

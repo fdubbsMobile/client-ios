@@ -48,7 +48,7 @@ SINGLETON_GCD(XLCLoginManager);
     _persistLogin = TRUE;
 }
 
--(void) makePersistLogin
+-(void) makePersistLoginForCurrentUser
 {
     _persistLogin = TRUE;
 }
@@ -91,6 +91,9 @@ SINGLETON_GCD(XLCLoginManager);
 /* This is a block call */
 - (BOOL) doAutoLoginForCurrentUser
 {
+    __block NSLock *waitLock = [[NSLock alloc] init];
+    __block BOOL loginSuccess = FALSE;
+    
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys :
                                 _userName, @"user_id",
                                 _password, @"passwd", nil];
@@ -98,6 +101,8 @@ SINGLETON_GCD(XLCLoginManager);
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
+    [waitLock lock];
+    NSLog(@"Lock");
     [objectManager postObject:nil path:@"/api/v1/user/login"
                    parameters:parameters
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -107,17 +112,27 @@ SINGLETON_GCD(XLCLoginManager);
                               _authCode = loginResponse.authCode;
                               _isLoginSuccess = TRUE;
                               _loginExpiredTime = TIME_NOW_IN_SECOND + authKeepAliveRange;
+                              
+                              loginSuccess = TRUE;
                           } else {
                               _isLoginSuccess = FALSE;
                           }
                           
                           NSLog(@"Success to auto login for user : %@", _userName);
+                          [waitLock unlock];
+                          NSLog(@"Unlock");
                       }
                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
                           _isLoginSuccess = FALSE;
+                          [waitLock unlock];
+                          NSLog(@"Unlock");
                       }];
+    [waitLock lock];
+    NSLog(@"Success to lock");
+    [waitLock unlock];
+    NSLog(@"Success to unlock");
     
-    return TRUE;
+    return loginSuccess;
 }
 
 - (void)doUserLoginWithUserName:(NSString *)userName

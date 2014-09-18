@@ -20,10 +20,17 @@ SINGLETON_GCD(XLCMailManager);
     return self;
 }
 
+- (void) doLoadAllMailsInBoxWithStartNumber:(NSUInteger)startNumber
+                               successBlock:(void (^)(XLCMailSummaryInBox *))success
+                                  failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadAllMailsInBoxWithStartNumber:startNumber successBlock:success failBlock:failure retry:YES];
+}
 
 - (void) doLoadAllMailsInBoxWithStartNumber:(NSUInteger)startNumber
                                successBlock:(void (^)(XLCMailSummaryInBox *))success
                                   failBlock:(void (^)(NSError *))failure
+                                      retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -37,8 +44,11 @@ SINGLETON_GCD(XLCMailManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
+    
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -48,14 +58,29 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail summaris: %@", mailSummaryInBox);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadAllMailsInBoxWithStartNumber:startNumber successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
+
 
 - (void) doLoadAllMailsInBoxWithStartNumber:(NSUInteger)startNumber
                             mailCountInPage:(NSUInteger)mailCountInPage
                                successBlock:(void (^)(XLCMailSummaryInBox *))success
                                   failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadAllMailsInBoxWithStartNumber:startNumber mailCountInPage:mailCountInPage successBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadAllMailsInBoxWithStartNumber:(NSUInteger)startNumber
+                            mailCountInPage:(NSUInteger)mailCountInPage
+                               successBlock:(void (^)(XLCMailSummaryInBox *))success
+                                  failBlock:(void (^)(NSError *))failure
+                                      retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -64,8 +89,11 @@ SINGLETON_GCD(XLCMailManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
+    
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -75,12 +103,24 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail summaris: %@", mailSummaryInBox);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadAllMailsInBoxWithStartNumber:startNumber mailCountInPage:mailCountInPage successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
 - (void) doLoadNewMailsWithSuccessBlock:(void (^)(NSArray *))success
                               failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadNewMailsWithSuccessBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadNewMailsWithSuccessBlock:(void (^)(NSArray *))success
+                              failBlock:(void (^)(NSError *))failure
+                                  retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -88,8 +128,11 @@ SINGLETON_GCD(XLCMailManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
+    
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -99,7 +142,11 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail summaris: %@", mailSummary);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadNewMailsWithSuccessBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
@@ -108,14 +155,27 @@ SINGLETON_GCD(XLCMailManager);
                            successBlock:(void (^)(XLCMailDetail *))success
                               failBlock:(void (^)(NSError *))failure
 {
+    [self doLoadMailDetailWithMailNumber:mailNumber mailLink:mailLink successBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadMailDetailWithMailNumber:(NSUInteger)mailNumber
+                               mailLink:(NSString *)mailLink
+                           successBlock:(void (^)(XLCMailDetail *))success
+                              failBlock:(void (^)(NSError *))failure
+                                  retry:(BOOL)retry
+{
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     NSString *path = [NSString stringWithFormat:@"/api/v1/mail/detail/%lu/%@", mailNumber, mailLink];
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
+    
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -125,7 +185,11 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail detail: %@", mailDetail);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadMailDetailWithMailNumber:mailNumber mailLink:mailLink successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 

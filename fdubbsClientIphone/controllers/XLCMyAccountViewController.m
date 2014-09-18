@@ -62,7 +62,7 @@
 - (void) initialize
 {
     
-    BOOL hasUserLogin = [[XLCLoginManager sharedXLCUserManager] hasUserAlreadyLogin];
+    BOOL hasUserLogin = [[XLCLoginManager sharedXLCLoginManager] hasUserAlreadyLogin];
     NSLog(@"hasUserLogin : %d", hasUserLogin);
     if (!hasUserLogin) {
         NSLog(@"performSegueWithIdentifier:doLogin");
@@ -193,7 +193,7 @@
     };
     
     
-    [[XLCLoginManager sharedXLCUserManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
+    [[XLCLoginManager sharedXLCLoginManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
     [XLCActivityIndicator showLogoutOnView:self.view];
 }
 

@@ -20,9 +20,14 @@ SINGLETON_GCD(XLCFriendManager);
     return self;
 }
 
-
 - (void) doLoadAllFriendsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadAllFriendsWithSuccessBlock:success failBlock:failure retry:YES];
+}
+
+- (void) doLoadAllFriendsWithSuccessBlock:(void (^)(NSArray *))success
+                                failBlock:(void (^)(NSError *))failure retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -30,8 +35,11 @@ SINGLETON_GCD(XLCFriendManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
+    
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -41,12 +49,21 @@ SINGLETON_GCD(XLCFriendManager);
                                 NSLog(@"Loaded all friends: %@", allFriends);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadAllFriendsWithSuccessBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
 - (void) doLoadOnlineFriendsWithSuccessBlock:(void (^)(NSArray *))success
                                    failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadOnlineFriendsWithSuccessBlock:success failBlock:failure retry:YES];
+}
+
+- (void) doLoadOnlineFriendsWithSuccessBlock:(void (^)(NSArray *))success failBlock:(void (^)(NSError *))failure retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
@@ -54,8 +71,10 @@ SINGLETON_GCD(XLCFriendManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -65,7 +84,11 @@ SINGLETON_GCD(XLCFriendManager);
                                 NSLog(@"Loaded online friends: %@", onlineFriends);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadOnlineFriendsWithSuccessBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 

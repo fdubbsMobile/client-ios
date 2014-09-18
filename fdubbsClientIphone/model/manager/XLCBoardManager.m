@@ -7,6 +7,7 @@
 //
 
 #import "XLCBoardManager.h"
+#import "XLCLoginManager.h"
 
 @implementation XLCBoardManager
 
@@ -19,12 +20,24 @@ SINGLETON_GCD(XLCBoardManager);
     return self;
 }
 
-
 - (void) doLoadAllSectionsWithSuccessBlock:(void (^)(NSArray *))success
                                  failBlock:(void (^)(NSError *))failure
 {
+    [self doLoadAllSectionsWithSuccessBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadAllSectionsWithSuccessBlock:(void (^)(NSArray *))success
+                                 failBlock:(void (^)(NSError *))failure
+                                     retry:(BOOL)retry
+{
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:@"/api/v1/section/all"
                          parameters:nil
@@ -34,18 +47,38 @@ SINGLETON_GCD(XLCBoardManager);
                                 NSLog(@"Loaded all sections : %@", allSections);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadAllSectionsWithSuccessBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
-- (void) doLoadAllBoardsInSection:(NSString *)sectionId successBlock:(void (^)(XLCSection *))success
+
+- (void) doLoadAllBoardsInSection:(NSString *)sectionId
+                     successBlock:(void (^)(XLCSection *))success
                         failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadAllBoardsInSection:sectionId successBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadAllBoardsInSection:(NSString *)sectionId
+                     successBlock:(void (^)(XLCSection *))success
+                        failBlock:(void (^)(NSError *))failure
+                            retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
     NSString *path = [NSString stringWithFormat:@"/api/v1/section/detail/%@", sectionId];
     NSLog(@"path is %@", path);
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -55,20 +88,33 @@ SINGLETON_GCD(XLCBoardManager);
                                 NSLog(@"Loaded section %@ : %@", sectionId, section);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadAllBoardsInSection:sectionId successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
-- (void) doLoadFavorBoardsWithAuthCode:(NSString *)authCode successBlock:(void (^)(NSArray *))success
-                             failBlock:(void (^)(NSError *))failure
+- (void) doLoadFavorBoardsWithSuccessBlock:(void (^)(NSArray *))success
+                                 failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadFavorBoardsWithSuccessBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadFavorBoardsWithSuccessBlock:(void (^)(NSArray *))success
+                                 failBlock:(void (^)(NSError *))failure
+                                     retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     
-    //RKClient *client = objectManager.client;
-    //[client setValue:[NSString stringWithFormat:@"auth_code=%@", authCode] forHTTPHeaderField:@"Cookie"];
     
-    [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:@"/api/v1/board/favor"
                          parameters:nil
@@ -78,7 +124,11 @@ SINGLETON_GCD(XLCBoardManager);
                                 NSLog(@"Loaded favor boards : %@", favorBoards);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadFavorBoardsWithSuccessBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 

@@ -11,7 +11,7 @@
 
 @interface XLCLoginManager : NSObject
 
-+ (XLCLoginManager *) sharedXLCUserManager;
++ (XLCLoginManager *) sharedXLCLoginManager;
 
 - (void)doUserLoginWithUserName:(NSString *)userName
                        passWord:(NSString *)passwd
@@ -21,6 +21,7 @@
 - (void)doUserLogoutWithSuccessBlock:(void (^)(void))success
                            failBlock:(void (^)(NSError *))failure;
 
+- (void) makePersistLoginForCurrentUser;
 - (BOOL) hasUserAlreadyLogin;
 - (NSString *)getUserAuthCode;
 

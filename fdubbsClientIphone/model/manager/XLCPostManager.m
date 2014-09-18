@@ -15,6 +15,7 @@
 #import "XLCPostSummary.h"
 #import "XLCPostDetail.h"
 #import "XLCPostSummaryInBoard.h"
+#import "XLCLoginManager.h"
 
 @implementation XLCPostManager
 
@@ -30,8 +31,21 @@ SINGLETON_GCD(XLCPostManager);
 - (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
                                 failBlock:(void (^)(NSError *))failure
 {
+    [self doLoadTop10PostsWithSuccessBlock:success failBlock:failure retry:YES];
+}
+
+
+- (void) doLoadTop10PostsWithSuccessBlock:(void (^)(NSArray *))success
+                                failBlock:(void (^)(NSError *))failure
+                                    retry:(BOOL)retry
+{
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:@"/api/v1/post/top10"
                          parameters:nil
@@ -41,19 +55,36 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post summaries: %@", topPosts);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadTop10PostsWithSuccessBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
     
 }
 
 - (void) doLoadPostDetailWithBoard:(NSString *)board postId:(NSString *)postId
+                      successBlock:(void (^)(XLCPostDetail *))success
+                         failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadPostDetailWithBoard:board postId:postId successBlock:success failBlock:failure retry:YES];
+}
+
+- (void) doLoadPostDetailWithBoard:(NSString *)board postId:(NSString *)postId
                           successBlock:(void (^)(XLCPostDetail *))success
-                             failBlock:(void (^)(NSError *))failure
+                         failBlock:(void (^)(NSError *))failure
+                             retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     NSString *path = [NSString stringWithFormat:@"/api/v1/post/detail/board/%@/%@", board, postId];
     NSLog(@"path is %@", path);
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -64,7 +95,11 @@ SINGLETON_GCD(XLCPostManager);
                                 
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadPostDetailWithBoard:board postId:postId successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 
 }
@@ -75,10 +110,25 @@ SINGLETON_GCD(XLCPostManager);
                              successBlock:(void (^)(XLCPostReplies *))success
                                 failBlock:(void (^)(NSError *))failure
 {
+    [self doLoadMorePostRepliesWithBoardId:boardId mainPostId:mainPostId lastReplyId:lastReplyId successBlock:success failBlock:failure retry:YES];
+}
+
+- (void) doLoadMorePostRepliesWithBoardId:(NSString *)boardId
+                               mainPostId:(NSString *)mainPostId
+                              lastReplyId:(NSString *)lastReplyId
+                             successBlock:(void (^)(XLCPostReplies *))success
+                                failBlock:(void (^)(NSError *))failure
+                                    retry:(BOOL)retry
+{
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     NSString *path = [NSString stringWithFormat:@"/api/v1/post/reply/bid/%@/%@/%@", boardId, mainPostId, lastReplyId];
     NSLog(@"path is %@", path);
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -88,7 +138,11 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post replies: %@", postReplies);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadMorePostRepliesWithBoardId:boardId mainPostId:mainPostId lastReplyId:lastReplyId successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
@@ -97,10 +151,24 @@ SINGLETON_GCD(XLCPostManager);
                                   successBlock:(void (^)(XLCPostSummaryInBoard *))success
                                      failBlock:(void (^)(NSError *))failure
 {
+    [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode successBlock:success failBlock:failure retry:YES];
+}
+
+- (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
+                                          mode:(NSString *)mode
+                                  successBlock:(void (^)(XLCPostSummaryInBoard *))success
+                                     failBlock:(void (^)(NSError *))failure
+                                         retry:(BOOL)retry
+{
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     NSString *path = [NSString stringWithFormat:@"/api/v1/post/summary/board/%@/%@", boardName, mode];
     NSLog(@"path is %@", path);
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -110,8 +178,22 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post summaris: %@", postSummaryInBoard);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
+}
+
+
+- (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
+                                          mode:(NSString *)mode
+                               startPostNumber:(NSUInteger)startPostNumber
+                                  successBlock:(void (^)(XLCPostSummaryInBoard *))success
+                                     failBlock:(void (^)(NSError *))failure
+{
+    [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode startPostNumber:startPostNumber successBlock:success failBlock:failure retry:YES];
 }
 
 - (void) doLoadPostSummaryInBoardWithBoardName:(NSString *)boardName
@@ -119,11 +201,17 @@ SINGLETON_GCD(XLCPostManager);
                                   startPostNumber:(NSUInteger)startPostNumber
                                   successBlock:(void (^)(XLCPostSummaryInBoard *))success
                                      failBlock:(void (^)(NSError *))failure
+                                         retry:(BOOL)retry
 {
     // Load the object model via RestKit
     RKObjectManager *objectManager = [RKObjectManager sharedManager];
     NSString *path = [NSString stringWithFormat:@"/api/v1/post/summary/board/%@/%@/%lu", boardName, mode, (unsigned long)startPostNumber];
     NSLog(@"path is %@", path);
+    
+    NSString *authCode = [[XLCLoginManager sharedXLCLoginManager] getUserAuthCode];
+    if (authCode != nil) {
+        [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
+    }
     
     [objectManager getObjectsAtPath:path
                          parameters:nil
@@ -133,7 +221,11 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post summaris: %@", postSummaryInBoard);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                failure(error);
+                                if (retry && (error.code == 603 || error.code == 604)) {
+                                    [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode startPostNumber:startPostNumber successBlock:success failBlock:failure retry:NO];
+                                } else {
+                                    failure(error);
+                                }
                             }];
 }
 
