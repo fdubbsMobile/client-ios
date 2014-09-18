@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 cn.edu.fudan.ss.xulvcai.fdubbs.client. All rights reserved.
 //
 
-#import "XLCUserManager.h"
+#import "XLCLoginManager.h"
 #import "XLCLoginResponse.h"
 #import "XLCLogoutResponse.h"
 
@@ -14,7 +14,7 @@ static NSTimeInterval const authKeepAliveRange = 3600 * 1000;
 
 #define TIME_NOW_IN_SECOND ([[NSDate date] timeIntervalSince1970])
 
-@interface XLCUserManager()
+@interface XLCLoginManager()
 {
     __block NSString *_userName;
     __block NSString *_password;
@@ -28,9 +28,9 @@ static NSTimeInterval const authKeepAliveRange = 3600 * 1000;
 @end
 
 
-@implementation XLCUserManager
+@implementation XLCLoginManager
 
-SINGLETON_GCD(XLCUserManager);
+SINGLETON_GCD(XLCLoginManager);
 
 - (id) init {
     if ( (self = [super init]) ) {
@@ -48,19 +48,31 @@ SINGLETON_GCD(XLCUserManager);
     _persistLogin = TRUE;
 }
 
+-(void) makePersistLogin
+{
+    _persistLogin = TRUE;
+}
 
 - (BOOL) hasUserAlreadyLogin
 {
+    // No user login before
     if (!_isLoginSuccess) {
         NSLog(@"No login!");
         return FALSE;
     }
-
-    if (!_persistLogin &&
-        _loginExpiredTime < TIME_NOW_IN_SECOND) {
-        NSLog(@"Time expired");
-        return FALSE;
+    
+    // Has Login before but session expired
+    if (_loginExpiredTime < TIME_NOW_IN_SECOND) {
+        if (!_persistLogin) {
+            // no user implict login again
+            return FALSE;
+        }
+        
+        //do auto login for current user
+        return [self doAutoLoginForCurrentUser];
     }
+
+    
     
     return TRUE;
 }
@@ -74,6 +86,38 @@ SINGLETON_GCD(XLCUserManager);
     }
     
     return nil;
+}
+
+/* This is a block call */
+- (BOOL) doAutoLoginForCurrentUser
+{
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys :
+                                _userName, @"user_id",
+                                _password, @"passwd", nil];
+    
+    // Load the object model via RestKit
+    RKObjectManager *objectManager = [RKObjectManager sharedManager];
+    
+    [objectManager postObject:nil path:@"/api/v1/user/login"
+                   parameters:parameters
+                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          XLCLoginResponse *loginResponse = [mappingResult firstObject];
+                          NSLog(@"Login response : {authCode : %@, resultCode : %@}", [loginResponse resultCode], loginResponse.authCode);
+                          if ([[loginResponse resultCode] isEqualToString:SUCCESS]) {
+                              _authCode = loginResponse.authCode;
+                              _isLoginSuccess = TRUE;
+                              _loginExpiredTime = TIME_NOW_IN_SECOND + authKeepAliveRange;
+                          } else {
+                              _isLoginSuccess = FALSE;
+                          }
+                          
+                          NSLog(@"Success to auto login for user : %@", _userName);
+                      }
+                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                          _isLoginSuccess = FALSE;
+                      }];
+    
+    return TRUE;
 }
 
 - (void)doUserLoginWithUserName:(NSString *)userName

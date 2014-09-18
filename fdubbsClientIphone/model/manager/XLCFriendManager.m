@@ -7,7 +7,7 @@
 //
 
 #import "XLCFriendManager.h"
-#import "XLCUserManager.h"
+#import "XLCLoginManager.h"
 
 @implementation XLCFriendManager
 
@@ -30,7 +30,7 @@ SINGLETON_GCD(XLCFriendManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCUserManager sharedXLCUserManager] getUserAuthCode];
+    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
     [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
     
     [objectManager getObjectsAtPath:path
@@ -54,7 +54,7 @@ SINGLETON_GCD(XLCFriendManager);
     
     NSLog(@"path is %@", path);
     
-    NSString *authCode = [[XLCUserManager sharedXLCUserManager] getUserAuthCode];
+    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
     [[objectManager HTTPClient] setDefaultHeader:@"Cookie" value:[NSString stringWithFormat:@"auth_code=%@", authCode]];
     
     [objectManager getObjectsAtPath:path

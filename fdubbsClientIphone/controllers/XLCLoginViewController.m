@@ -8,7 +8,7 @@
 
 #import "XLCLoginViewController.h"
 #import "ASTextField.h"
-#import "XLCUserManager.h"
+#import "XLCLoginManager.h"
 #import "FRDLivelyButton.h"
 #import "XLCLoginResponse.h"
 #import "UIButton+Bootstrap.h"
@@ -289,7 +289,7 @@
     
     
     
-    [[XLCUserManager sharedXLCUserManager]doUserLoginWithUserName:userName
+    [[XLCLoginManager sharedXLCUserManager]doUserLoginWithUserName:userName
                                                          passWord:passWord
                                                      successBlock:successBlock
                                                         failBlock:failBlock ];

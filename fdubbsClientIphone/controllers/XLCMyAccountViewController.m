@@ -8,7 +8,7 @@
 
 #import "XLCMyAccountViewController.h"
 #import "PAImageView.h"
-#import "XLCUserManager.h"
+#import "XLCLoginManager.h"
 #import "FRDLivelyButton.h"
 #import "XLCActivityIndicator.h"
 #import "XLCActivityIndicator.h"
@@ -62,7 +62,7 @@
 - (void) initialize
 {
     
-    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    BOOL hasUserLogin = [[XLCLoginManager sharedXLCUserManager] hasUserAlreadyLogin];
     NSLog(@"hasUserLogin : %d", hasUserLogin);
     if (!hasUserLogin) {
         NSLog(@"performSegueWithIdentifier:doLogin");
@@ -193,7 +193,7 @@
     };
     
     
-    [[XLCUserManager sharedXLCUserManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
+    [[XLCLoginManager sharedXLCUserManager] doUserLogoutWithSuccessBlock:successBlock failBlock:failBlock];
     [XLCActivityIndicator showLogoutOnView:self.view];
 }
 

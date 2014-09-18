@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "XLCLoginResponse.h"
 
-@interface XLCUserManager : NSObject
+@interface XLCLoginManager : NSObject
 
-+ (XLCUserManager *) sharedXLCUserManager;
++ (XLCLoginManager *) sharedXLCUserManager;
 
 - (void)doUserLoginWithUserName:(NSString *)userName
                        passWord:(NSString *)passwd

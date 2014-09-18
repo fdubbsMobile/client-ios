@@ -13,7 +13,7 @@
 #import "XLCBoardDetail.h"
 #import "XLCBoardMetaData.h"
 #import "XLCBoardDetailPassValueDelegate.h"
-#import "XLCUserManager.h"
+#import "XLCLoginManager.h"
 #import "XLCActivityIndicator.h"
 
 @interface XLCFavorBoardsViewController () <EGORefreshTableHeaderDelegate>
@@ -56,7 +56,7 @@
 
 - (void) initialize
 {
-    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    BOOL hasUserLogin = [[XLCLoginManager sharedXLCUserManager] hasUserAlreadyLogin];
     NSLog(@"hasUserLogin : %d", hasUserLogin);
     if (!hasUserLogin) {
         NSLog(@"performSegueWithIdentifier:doLogin");
@@ -124,7 +124,7 @@
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view
 {
-    BOOL hasUserLogin = [[XLCUserManager sharedXLCUserManager] hasUserAlreadyLogin];
+    BOOL hasUserLogin = [[XLCLoginManager sharedXLCUserManager] hasUserAlreadyLogin];
     NSLog(@"hasUserLogin : %d", hasUserLogin);
     if (!hasUserLogin) {
         [self performSegueWithIdentifier:@"doLogin" sender:self];
@@ -184,7 +184,7 @@
         NSLog(@"Hit error: %@", error);
     };
     
-    NSString *authCode = [[XLCUserManager sharedXLCUserManager] getUserAuthCode];
+    NSString *authCode = [[XLCLoginManager sharedXLCUserManager] getUserAuthCode];
     [[XLCBoardManager sharedXLCBoardManager] doLoadFavorBoardsWithAuthCode:authCode successBlock:successBlock failBlock:failBlock];
     //[indicatorView startAnimating];
     [XLCActivityIndicator showLoadingOnView:self.view];
