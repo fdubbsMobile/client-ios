@@ -508,46 +508,13 @@
 		957B280119C87988006D26E0 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				957B280219C879A7006D26E0 /* XLCAllFriendViewController.h */,
-				957B280319C879A7006D26E0 /* XLCAllFriendViewController.m */,
-				957B280419C879A7006D26E0 /* XLCAllMailViewController.h */,
-				957B280519C879A7006D26E0 /* XLCAllMailViewController.m */,
-				957B280619C879A7006D26E0 /* XLCAllSectionsViewController.h */,
-				957B280719C879A7006D26E0 /* XLCAllSectionsViewController.m */,
-				957B280819C879A7006D26E0 /* XLCAppSettingViewController.h */,
-				957B280919C879A7006D26E0 /* XLCAppSettingViewController.m */,
-				957B280A19C879A7006D26E0 /* XLCBasicProfileViewController.h */,
-				957B280B19C879A7006D26E0 /* XLCBasicProfileViewController.m */,
-				957B280C19C879A7006D26E0 /* XLCBoardDetailPassValueDelegate.h */,
-				957B280D19C879A7006D26E0 /* XLCBoardDetailViewController.h */,
-				957B280E19C879A7006D26E0 /* XLCBoardDetailViewController.m */,
-				957B280F19C879A7006D26E0 /* XLCFavorBoardsViewController.h */,
-				957B281019C879A7006D26E0 /* XLCFavorBoardsViewController.m */,
-				957B281119C879A7006D26E0 /* XLCFriendViewController.h */,
-				957B281219C879A7006D26E0 /* XLCFriendViewController.m */,
-				957B281319C879A7006D26E0 /* XLCLoginViewController.h */,
-				957B281419C879A7006D26E0 /* XLCLoginViewController.m */,
-				957B281519C879A7006D26E0 /* XLCMailBoxViewController.h */,
-				957B281619C879A7006D26E0 /* XLCMailBoxViewController.m */,
-				957B281719C879A7006D26E0 /* XLCMailDetailPassValueDelegate.h */,
-				957B281819C879A7006D26E0 /* XLCMailDetailViewController.h */,
-				957B281919C879A7006D26E0 /* XLCMailDetailViewController.m */,
-				957B281A19C879A7006D26E0 /* XLCMyAccountViewController.h */,
-				957B281B19C879A7006D26E0 /* XLCMyAccountViewController.m */,
-				957B281C19C879A7006D26E0 /* XLCNewMailViewController.h */,
-				957B281D19C879A7006D26E0 /* XLCNewMailViewController.m */,
-				957B281E19C879A7006D26E0 /* XLCOnlineFriendViewController.h */,
-				957B281F19C879A7006D26E0 /* XLCOnlineFriendViewController.m */,
-				957B282019C879A7006D26E0 /* XLCPostDetailPassValueDelegate.h */,
-				957B282119C879A7006D26E0 /* XLCPostDetailViewController.h */,
-				957B282219C879A7006D26E0 /* XLCPostDetailViewController.m */,
-				957B282319C879A7006D26E0 /* XLCSectionDetailPassValueDelegate.h */,
-				957B282419C879A7006D26E0 /* XLCSectionDetailViewController.h */,
-				957B282519C879A7006D26E0 /* XLCSectionDetailViewController.m */,
-				957B282619C879A7006D26E0 /* XLCTopPostsViewController.h */,
-				957B282719C879A7006D26E0 /* XLCTopPostsViewController.m */,
-				957B282819C879A7006D26E0 /* ZGNavigationBarTitleViewController.h */,
-				957B282919C879A7006D26E0 /* ZGNavigationBarTitleViewController.m */,
+				95CB1CE219CAB40E00F81717 /* posts */,
+				95CB1CE119CAB3F400F81717 /* sections */,
+				95CB1CE319CAB44700F81717 /* boards */,
+				95CB1CE019CAB3E400F81717 /* common */,
+				95CB1CE519CAB46800F81717 /* appsetting */,
+				95CB1CE419CAB45D00F81717 /* login */,
+				95CB1CDF19CAB39000F81717 /* personal */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -932,6 +899,127 @@
 				95005FD519B5BC2F0092DE9C /* XLCActivityIndicator.m */,
 			);
 			name = XLCCustomView;
+			sourceTree = "<group>";
+		};
+		95CB1CDF19CAB39000F81717 /* personal */ = {
+			isa = PBXGroup;
+			children = (
+				95CB1CEA19CAB4F600F81717 /* favorBoards */,
+				95CB1CE919CAB4E700F81717 /* friends */,
+				95CB1CE819CAB4C800F81717 /* mails */,
+				95CB1CE619CAB4A900F81717 /* profile */,
+			);
+			name = personal;
+			sourceTree = "<group>";
+		};
+		95CB1CE019CAB3E400F81717 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				957B282819C879A7006D26E0 /* ZGNavigationBarTitleViewController.h */,
+				957B282919C879A7006D26E0 /* ZGNavigationBarTitleViewController.m */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		95CB1CE119CAB3F400F81717 /* sections */ = {
+			isa = PBXGroup;
+			children = (
+				957B282319C879A7006D26E0 /* XLCSectionDetailPassValueDelegate.h */,
+				957B282419C879A7006D26E0 /* XLCSectionDetailViewController.h */,
+				957B282519C879A7006D26E0 /* XLCSectionDetailViewController.m */,
+				957B280619C879A7006D26E0 /* XLCAllSectionsViewController.h */,
+				957B280719C879A7006D26E0 /* XLCAllSectionsViewController.m */,
+			);
+			name = sections;
+			sourceTree = "<group>";
+		};
+		95CB1CE219CAB40E00F81717 /* posts */ = {
+			isa = PBXGroup;
+			children = (
+				957B282019C879A7006D26E0 /* XLCPostDetailPassValueDelegate.h */,
+				957B282119C879A7006D26E0 /* XLCPostDetailViewController.h */,
+				957B282219C879A7006D26E0 /* XLCPostDetailViewController.m */,
+				957B282619C879A7006D26E0 /* XLCTopPostsViewController.h */,
+				957B282719C879A7006D26E0 /* XLCTopPostsViewController.m */,
+			);
+			name = posts;
+			sourceTree = "<group>";
+		};
+		95CB1CE319CAB44700F81717 /* boards */ = {
+			isa = PBXGroup;
+			children = (
+				957B280C19C879A7006D26E0 /* XLCBoardDetailPassValueDelegate.h */,
+				957B280D19C879A7006D26E0 /* XLCBoardDetailViewController.h */,
+				957B280E19C879A7006D26E0 /* XLCBoardDetailViewController.m */,
+			);
+			name = boards;
+			sourceTree = "<group>";
+		};
+		95CB1CE419CAB45D00F81717 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				957B281319C879A7006D26E0 /* XLCLoginViewController.h */,
+				957B281419C879A7006D26E0 /* XLCLoginViewController.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
+		95CB1CE519CAB46800F81717 /* appsetting */ = {
+			isa = PBXGroup;
+			children = (
+				957B280819C879A7006D26E0 /* XLCAppSettingViewController.h */,
+				957B280919C879A7006D26E0 /* XLCAppSettingViewController.m */,
+			);
+			name = appsetting;
+			sourceTree = "<group>";
+		};
+		95CB1CE619CAB4A900F81717 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				957B281A19C879A7006D26E0 /* XLCMyAccountViewController.h */,
+				957B281B19C879A7006D26E0 /* XLCMyAccountViewController.m */,
+				957B280A19C879A7006D26E0 /* XLCBasicProfileViewController.h */,
+				957B280B19C879A7006D26E0 /* XLCBasicProfileViewController.m */,
+			);
+			name = profile;
+			sourceTree = "<group>";
+		};
+		95CB1CE819CAB4C800F81717 /* mails */ = {
+			isa = PBXGroup;
+			children = (
+				957B281719C879A7006D26E0 /* XLCMailDetailPassValueDelegate.h */,
+				957B281819C879A7006D26E0 /* XLCMailDetailViewController.h */,
+				957B281919C879A7006D26E0 /* XLCMailDetailViewController.m */,
+				957B280419C879A7006D26E0 /* XLCAllMailViewController.h */,
+				957B280519C879A7006D26E0 /* XLCAllMailViewController.m */,
+				957B281519C879A7006D26E0 /* XLCMailBoxViewController.h */,
+				957B281619C879A7006D26E0 /* XLCMailBoxViewController.m */,
+				957B281C19C879A7006D26E0 /* XLCNewMailViewController.h */,
+				957B281D19C879A7006D26E0 /* XLCNewMailViewController.m */,
+			);
+			name = mails;
+			sourceTree = "<group>";
+		};
+		95CB1CE919CAB4E700F81717 /* friends */ = {
+			isa = PBXGroup;
+			children = (
+				957B281E19C879A7006D26E0 /* XLCOnlineFriendViewController.h */,
+				957B281F19C879A7006D26E0 /* XLCOnlineFriendViewController.m */,
+				957B281119C879A7006D26E0 /* XLCFriendViewController.h */,
+				957B281219C879A7006D26E0 /* XLCFriendViewController.m */,
+				957B280219C879A7006D26E0 /* XLCAllFriendViewController.h */,
+				957B280319C879A7006D26E0 /* XLCAllFriendViewController.m */,
+			);
+			name = friends;
+			sourceTree = "<group>";
+		};
+		95CB1CEA19CAB4F600F81717 /* favorBoards */ = {
+			isa = PBXGroup;
+			children = (
+				957B280F19C879A7006D26E0 /* XLCFavorBoardsViewController.h */,
+				957B281019C879A7006D26E0 /* XLCFavorBoardsViewController.m */,
+			);
+			name = favorBoards;
 			sourceTree = "<group>";
 		};
 		95CCB60B191B555700B261D6 /* Nimbus */ = {

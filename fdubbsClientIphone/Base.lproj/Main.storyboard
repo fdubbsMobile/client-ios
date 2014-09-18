@@ -346,7 +346,7 @@
                                     <rect key="frame" x="25" y="13" width="270" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                    <state key="normal" title="注     销" backgroundImage="login_button.png">
+                                    <state key="normal" title="退  出  登  录" backgroundImage="login_button.png">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
