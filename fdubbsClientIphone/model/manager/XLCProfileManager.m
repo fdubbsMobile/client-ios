@@ -53,6 +53,7 @@ SINGLETON_GCD(XLCProfileManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadUserInfoWithUserId:userId successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -92,6 +93,7 @@ SINGLETON_GCD(XLCProfileManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadUserBasicProfileWithsuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -131,6 +133,7 @@ SINGLETON_GCD(XLCProfileManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadUserIntrodutionWithsuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -166,6 +169,7 @@ SINGLETON_GCD(XLCProfileManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadUserSignatureWithsuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);

@@ -65,6 +65,7 @@ SINGLETON_GCD(XLCLoginManager);
     if (_loginExpiredTime < TIME_NOW_IN_SECOND) {
         if (!_persistLogin) {
             // no user implict login again
+            NSLog(@"login expired and not persist");
             return FALSE;
         }
         

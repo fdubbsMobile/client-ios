@@ -50,6 +50,7 @@ SINGLETON_GCD(XLCFriendManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadAllFriendsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -85,6 +86,7 @@ SINGLETON_GCD(XLCFriendManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadOnlineFriendsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);

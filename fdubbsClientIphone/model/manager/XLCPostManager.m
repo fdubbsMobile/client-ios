@@ -56,6 +56,7 @@ SINGLETON_GCD(XLCPostManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadTop10PostsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -96,6 +97,7 @@ SINGLETON_GCD(XLCPostManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadPostDetailWithBoard:board postId:postId successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -139,6 +141,7 @@ SINGLETON_GCD(XLCPostManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadMorePostRepliesWithBoardId:boardId mainPostId:mainPostId lastReplyId:lastReplyId successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -179,6 +182,7 @@ SINGLETON_GCD(XLCPostManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -222,6 +226,7 @@ SINGLETON_GCD(XLCPostManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode startPostNumber:startPostNumber successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);

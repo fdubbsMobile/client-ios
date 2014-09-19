@@ -48,6 +48,7 @@ SINGLETON_GCD(XLCBoardManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadAllSectionsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -89,6 +90,7 @@ SINGLETON_GCD(XLCBoardManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadAllBoardsInSection:sectionId successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -125,6 +127,7 @@ SINGLETON_GCD(XLCBoardManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadFavorBoardsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);

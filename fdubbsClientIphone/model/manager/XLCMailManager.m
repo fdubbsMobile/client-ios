@@ -59,6 +59,7 @@ SINGLETON_GCD(XLCMailManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadAllMailsInBoxWithStartNumber:startNumber successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -104,6 +105,7 @@ SINGLETON_GCD(XLCMailManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadAllMailsInBoxWithStartNumber:startNumber mailCountInPage:mailCountInPage successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -143,6 +145,7 @@ SINGLETON_GCD(XLCMailManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadNewMailsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);
@@ -186,6 +189,7 @@ SINGLETON_GCD(XLCMailManager);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 if (retry && (error.code == 603 || error.code == 604)) {
+                                    NSLog(@"retry");
                                     [self doLoadMailDetailWithMailNumber:mailNumber mailLink:mailLink successBlock:success failBlock:failure retry:NO];
                                 } else {
                                     failure(error);

@@ -253,6 +253,10 @@
         
         [[XLCPasswordPersistService sharedXLCPasswordPersistService] addOrUpdatePersistPassword:passWord forUser:userName];
         
+        if (autoLogin == YES) {
+            [[XLCLoginManager sharedXLCLoginManager] makePersistLoginForCurrentUser];
+        }
+        
         [XLCActivityIndicator hideOnView:self.view];
         [self performSelector:@selector(didLoginSuccess:) withObject:loginResponse afterDelay:0.2];
 
