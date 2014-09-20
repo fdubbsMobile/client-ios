@@ -55,7 +55,7 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post summaries: %@", topPosts);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadTop10PostsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -96,7 +96,7 @@ SINGLETON_GCD(XLCPostManager);
                                 
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadPostDetailWithBoard:board postId:postId successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -140,7 +140,7 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post replies: %@", postReplies);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadMorePostRepliesWithBoardId:boardId mainPostId:mainPostId lastReplyId:lastReplyId successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -181,7 +181,7 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post summaris: %@", postSummaryInBoard);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -225,7 +225,7 @@ SINGLETON_GCD(XLCPostManager);
                                 NSLog(@"Loaded post summaris: %@", postSummaryInBoard);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadPostSummaryInBoardWithBoardName:boardName mode:mode startPostNumber:startPostNumber successBlock:success failBlock:failure retry:NO];
                                 } else {

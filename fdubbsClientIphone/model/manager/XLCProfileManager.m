@@ -52,7 +52,7 @@ SINGLETON_GCD(XLCProfileManager);
                                 NSLog(@"Loaded user info: %@", userInfo);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadUserInfoWithUserId:userId successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -92,7 +92,7 @@ SINGLETON_GCD(XLCProfileManager);
                                 NSLog(@"Loaded user basic profile: %@", basicProfile);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadUserBasicProfileWithsuccessBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -132,7 +132,7 @@ SINGLETON_GCD(XLCProfileManager);
                                 NSLog(@"Loaded user introdution: %@", introdution);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadUserIntrodutionWithsuccessBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -168,7 +168,7 @@ SINGLETON_GCD(XLCProfileManager);
                                 NSLog(@"Loaded user signature: %@", signature);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadUserSignatureWithsuccessBlock:success failBlock:failure retry:NO];
                                 } else {

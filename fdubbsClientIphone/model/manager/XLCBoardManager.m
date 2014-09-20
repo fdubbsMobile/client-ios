@@ -47,7 +47,7 @@ SINGLETON_GCD(XLCBoardManager);
                                 NSLog(@"Loaded all sections : %@", allSections);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadAllSectionsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -89,7 +89,7 @@ SINGLETON_GCD(XLCBoardManager);
                                 NSLog(@"Loaded section %@ : %@", sectionId, section);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadAllBoardsInSection:sectionId successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -126,7 +126,7 @@ SINGLETON_GCD(XLCBoardManager);
                                 NSLog(@"Loaded favor boards : %@", favorBoards);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
                                     NSLog(@"retry");
                                     [self doLoadFavorBoardsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {

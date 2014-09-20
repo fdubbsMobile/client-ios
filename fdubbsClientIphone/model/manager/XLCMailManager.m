@@ -58,7 +58,13 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail summaris: %@", mailSummaryInBox);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                    message:@"Retry!"
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil];
+                                    [alert show];
                                     NSLog(@"retry");
                                     [self doLoadAllMailsInBoxWithStartNumber:startNumber successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -104,7 +110,13 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail summaris: %@", mailSummaryInBox);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                    message:@"Retry!"
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil];
+                                    [alert show];
                                     NSLog(@"retry");
                                     [self doLoadAllMailsInBoxWithStartNumber:startNumber mailCountInPage:mailCountInPage successBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -144,7 +156,13 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail summaris: %@", mailSummary);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                    message:@"Retry!"
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil];
+                                    [alert show];
                                     NSLog(@"retry");
                                     [self doLoadNewMailsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -188,7 +206,13 @@ SINGLETON_GCD(XLCMailManager);
                                 NSLog(@"Loaded mail detail: %@", mailDetail);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                    message:@"Retry!"
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil];
+                                    [alert show];
                                     NSLog(@"retry");
                                     [self doLoadMailDetailWithMailNumber:mailNumber mailLink:mailLink successBlock:success failBlock:failure retry:NO];
                                 } else {

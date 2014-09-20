@@ -49,7 +49,13 @@ SINGLETON_GCD(XLCFriendManager);
                                 NSLog(@"Loaded all friends: %@", allFriends);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                    message:@"Retry!"
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil];
+                                    [alert show];
                                     NSLog(@"retry");
                                     [self doLoadAllFriendsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
@@ -85,7 +91,14 @@ SINGLETON_GCD(XLCFriendManager);
                                 NSLog(@"Loaded online friends: %@", onlineFriends);
                             }
                             failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                if (retry && (error.code == 603 || error.code == 604)) {
+                                if (retry && error.code == NSURLErrorBadServerResponse) {
+                                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                                    message:@"Retry!"
+                                                                                   delegate:nil
+                                                                          cancelButtonTitle:@"OK"
+                                                                          otherButtonTitles:nil];
+                                    [alert show];
+                                    
                                     NSLog(@"retry");
                                     [self doLoadOnlineFriendsWithSuccessBlock:success failBlock:failure retry:NO];
                                 } else {
